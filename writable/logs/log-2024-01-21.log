@@ -1,0 +1,12 @@
+CRITICAL - 2024-01-21 10:33:01 --> Undefined variable $category_color
+in APPPATH\Views\Shop\Layout\layout.php on line 398.
+ 1 APPPATH\Views\Shop\Layout\layout.php(398): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $category_color', 'D:\\xampp\\htdocs\\ecommerce\\app\\Views\\Shop\\Layout\\layout.php', 398)
+ 2 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce\\app\\Views\\Shop\\Layout\\layout.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->render('Shop/Layout/layout', [], true)
+ 5 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/homepage', [], true)
+ 6 APPPATH\Controllers\Shop\Homepage.php(9): view('Shop/page/homepage')
+ 7 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Shop\Homepage->homepage()
+ 8 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop\Homepage))
+ 9 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
