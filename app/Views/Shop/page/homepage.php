@@ -54,7 +54,7 @@
 <div class="" style="padding-left:10px;padding-right:10px;">
     <div class='galler_heading d-flex justify-content-between' style='border-bottom: 1px solid #d5d5d5;height:40px;margin:0px 20px 10px 20px;padding-bottom:45px;'>
         <p style='font-size:25px;'>BEST SELLERS</p>
-        <div class='text-center gap'><button class='btn rounded' style='background:#000;color:#fff;'>GO TO BEST SELLERS</button></div>
+        <div class='text-center gap mobile_Head_Hide'><button class='btn rounded' style='background:#000;color:#fff;'>GO TO BEST SELLERS</button></div>
     </div>
     <div class="row m-0 gallery gap">
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 text-center p-3">
@@ -148,6 +148,7 @@
             </div>
         </div>
     </div>
+    <div class='text-center gap mobile_Head_Show' style='justify-content: center;'><button class='btn rounded-0' style='background:#000;color:#fff;'>GO TO BEST SELLERS</button></div>
 </div>
 <!-- banner for 4 images -->
 <div class="" style="padding-left:10px;padding-right:10px;">
@@ -184,7 +185,7 @@
 <div class="" style="padding-left:10px;padding-right:10px;">
     <div class='galler_heading d-flex justify-content-between' style='border-bottom: 1px solid #d5d5d5;height:40px;margin:0px 20px 10px 20px;padding-bottom:45px;'>
         <p style='font-size:25px;'>TRENDING WEAR</p>
-        <div class='text-center gap'><button class='btn rounded' style='background:#000;color:#fff;'>GO TO TRENDING WEAR</button></div>
+        <div class='text-center gap mobile_Head_Hide'><button class='btn rounded' style='background:#000;color:#fff;'>GO TO TRENDING WEAR</button></div>
     </div>
     <div class="row m-0 gallery gap">
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 text-center p-3">
@@ -233,7 +234,7 @@
             </div>
         </div>
     </div>
-    <!-- <div class='text-center gap'><button class='btn rounded-0' style='background:#000;color:#fff;'>Shop New Arrivals</button></div> -->
+    <div class='text-center gap mobile_Head_Show' style='justify-content: center;'><button class='btn rounded-0' style='background:#000;color:#fff;'>GO TO TRENDING WEAR</button></div>
 </div>
 <!-- banner for 2 images -->
 <div class="" style="padding-left:10px;padding-right:10px;">
@@ -253,7 +254,7 @@
 <div class="container-fluid product-slider gap">
     <div class='galler_heading d-flex justify-content-between' style='border-bottom: 1px solid #d5d5d5;height:40px;margin:0px 20px 10px 20px;padding-bottom:45px;'>
         <p style='font-size:25px;'>SALE AND OFFERS </p>
-        <div class='text-center gap'><button class='btn rounded' style='background:#000;color:#fff;'>GO TO SALE AND OFFERS </button></div>
+        <div class='text-center gap mobile_Head_Hide'><button class='btn rounded' style='background:#000;color:#fff;'>GO TO SALE AND OFFERS </button></div>
     </div>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -342,6 +343,7 @@
             </div>
         </div>
     </div>
+    <div class='text-center gap mobile_Head_Show' style='justify-content: center;'><button class='btn rounded-0' style='background:#000;color:#fff;'>GO TO SALE AND OFFERS</button></div>
 </div>
 
 <!-- email signup   -->

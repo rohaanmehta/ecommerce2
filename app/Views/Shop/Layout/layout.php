@@ -384,6 +384,7 @@ $category_color = '#ff1e82';
             padding: 8px;
             font-size: 15px;
             font-weight: bolder;
+            height: auto;
         }
 
         /* nav categories */
@@ -476,13 +477,48 @@ $category_color = '#ff1e82';
             margin-bottom: 35px !important;
         }
 
-
-        @media all and (min-width: 450px) and (transform-3d),
-        all and (min-width: 450px) and (-webkit-transform-3d) {
-            .banner .col-xs-6 {
-                width: 33.333% !important;
+        /* @media (min-width: 1200px) {
+            .col-md-4 {
+                width: 20% !important;
             }
         }
+
+        @media (min-width: 992px) {
+            .col-md-4 {
+                width: 20% !important;
+            }
+        } */
+
+        @media all and (min-width: 992px) {
+            .col-lg-3 {
+                flex: 0 0 20%;
+            }
+        }
+
+        @media all and (min-width: 750px) and (transform-3d),
+        all and (max-width: 1024px) and (-webkit-transform-3d) {
+            .gallery .col-xs-6 {
+                /* width: 50% !important; */
+                max-width: 25%;
+            }
+        }
+
+        @media all and (min-width: 550px) and (transform-3d),
+        all and (max-width: 750px) and (-webkit-transform-3d) {
+            .gallery .col-xs-6 {
+                /* width: 50% !important; */
+                max-width: 33.33%;
+            }
+        }
+
+        @media all and (min-width: 450px) and (transform-3d),
+        all and (max-width: 550px) and (-webkit-transform-3d) {
+            .gallery .col-xs-6 {
+                /* width: 50% !important; */
+                max-width: 50%;
+            }
+        }
+
 
         .banner_img {
             width: 100%;
@@ -508,13 +544,7 @@ $category_color = '#ff1e82';
             border: 1px solid #dfdfdf;
         }
 
-        @media all and (min-width: 450px) and (transform-3d),
-        all and (min-width: 450px) and (-webkit-transform-3d) {
-            .gallery .col-xs-6 {
-                /* width: 50% !important; */
-                max-width: 20%;
-            }
-        }
+
 
         @media all and (max-width: 500px) and (transform-3d),
         all and (max-width: 500px) and (-webkit-transform-3d) {
@@ -563,6 +593,7 @@ $category_color = '#ff1e82';
         .sidenav {
             height: 100%;
             width: 0;
+            margin-top: 45px;
             position: fixed;
             z-index: 999;
             top: 0;
@@ -653,6 +684,10 @@ $category_color = '#ff1e82';
             width: 100%;
             background-color: #fff;
             z-index: 100;
+        }
+
+        .sticky2 {
+            margin-top: 104px !important;
         }
 
         .sticky+.content {
@@ -914,13 +949,17 @@ $category_color = '#ff1e82';
         };
 
         var header = document.getElementById("myHeader");
+        // var sidenav = document.getElementById("mySidenav");
         var sticky = header.offsetTop;
 
         function myFunction() {
             if (window.pageYOffset > sticky) {
                 header.classList.add("sticky");
+                $('#mySidenav').css('margin-top','46');
             } else {
                 header.classList.remove("sticky");
+                $('#mySidenav').css('margin-top', $('.top_Bar').css('height')+46);
+
             }
         }
 
@@ -958,13 +997,18 @@ $category_color = '#ff1e82';
         // respon header 
 
         $('body').click(function(evnt) {
-            if (evnt.target.id != "closebtn" && evnt.target.id != "mySidenav" && evnt.target.id != "ic") {
+            if (evnt.target.id != "mySidenav" && evnt.target.id != "ic") {
                 closeNav();
             }
         });
 
         function openNav() {
-            document.getElementById("mySidenav").style.width = "80%";
+            if (document.getElementById("mySidenav").style.width == '80%') {
+                document.getElementById("mySidenav").style.width = "0";
+
+            } else {
+                document.getElementById("mySidenav").style.width = "80%";
+            }
         }
 
         function closeNav() {
