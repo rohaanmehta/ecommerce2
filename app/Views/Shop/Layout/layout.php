@@ -21,6 +21,7 @@ $category_color = '#ff1e82';
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="<?= base_url('assets/mobile_nav.scss'); ?>" crossorigin="anonymous">
 
     <style>
         * {
@@ -123,19 +124,25 @@ $category_color = '#ff1e82';
 
         @media all and (min-width: 300px) {
 
-            .carousel-showmanymoveone .carousel-inner>.active.left,
-            .carousel-showmanymoveone .carousel-inner>.prev {
-                left: -50%;
+            .carousel-showmanymoveone .carousel-inner>.item.active.right,
+            .carousel-showmanymoveone .carousel-inner>.item.next {
+                -webkit-transform: translate3d(50%, 0, 0);
+                transform: translate3d(50%, 0, 0);
+                left: 0;
             }
 
-            .carousel-showmanymoveone .carousel-inner>.active.right,
-            .carousel-showmanymoveone .carousel-inner>.next {
-                left: 50%;
+            .carousel-showmanymoveone .carousel-inner>.item.active.left,
+            .carousel-showmanymoveone .carousel-inner>.item.prev {
+                -webkit-transform: translate3d(-50%, 0, 0);
+                transform: translate3d(-50%, 0, 0);
+                left: 0;
             }
 
-            .carousel-showmanymoveone .carousel-inner>.left,
-            .carousel-showmanymoveone .carousel-inner>.prev.right,
-            .carousel-showmanymoveone .carousel-inner>.active {
+            .carousel-showmanymoveone .carousel-inner>.item.left,
+            .carousel-showmanymoveone .carousel-inner>.item.prev.right,
+            .carousel-showmanymoveone .carousel-inner>.item.active {
+                -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
                 left: 0;
             }
 
@@ -143,9 +150,6 @@ $category_color = '#ff1e82';
                 display: block;
             }
 
-            /* .carousel-showmanymoveone .carousel-inner .cloneditem-2 {
-                display: block;
-            } */
             .item .col-xs-12 {
                 width: 50% !important;
             }
@@ -384,6 +388,7 @@ $category_color = '#ff1e82';
             padding: 8px;
             font-size: 15px;
             font-weight: bolder;
+            height: auto;
         }
 
         /* nav categories */
@@ -476,13 +481,48 @@ $category_color = '#ff1e82';
             margin-bottom: 35px !important;
         }
 
-
-        @media all and (min-width: 450px) and (transform-3d),
-        all and (min-width: 450px) and (-webkit-transform-3d) {
-            .banner .col-xs-6 {
-                width: 33.333% !important;
+        /* @media (min-width: 1200px) {
+            .col-md-4 {
+                width: 20% !important;
             }
         }
+
+        @media (min-width: 992px) {
+            .col-md-4 {
+                width: 20% !important;
+            }
+        } */
+
+        @media all and (min-width: 992px) {
+            .col-lg-3 {
+                flex: 0 0 20%;
+            }
+        }
+
+        @media all and (min-width: 750px) and (transform-3d),
+        all and (max-width: 1024px) and (-webkit-transform-3d) {
+            .gallery .col-xs-6 {
+                /* width: 50% !important; */
+                max-width: 25%;
+            }
+        }
+
+        @media all and (min-width: 550px) and (transform-3d),
+        all and (max-width: 750px) and (-webkit-transform-3d) {
+            .gallery .col-xs-6 {
+                /* width: 50% !important; */
+                max-width: 33.33%;
+            }
+        }
+
+        @media all and (min-width: 450px) and (transform-3d),
+        all and (max-width: 550px) and (-webkit-transform-3d) {
+            .gallery .col-xs-6 {
+                /* width: 50% !important; */
+                max-width: 50%;
+            }
+        }
+
 
         .banner_img {
             width: 100%;
@@ -508,13 +548,7 @@ $category_color = '#ff1e82';
             border: 1px solid #dfdfdf;
         }
 
-        @media all and (min-width: 450px) and (transform-3d),
-        all and (min-width: 450px) and (-webkit-transform-3d) {
-            .gallery .col-xs-6 {
-                /* width: 50% !important; */
-                max-width: 20%;
-            }
-        }
+
 
         @media all and (max-width: 500px) and (transform-3d),
         all and (max-width: 500px) and (-webkit-transform-3d) {
@@ -563,6 +597,7 @@ $category_color = '#ff1e82';
         .sidenav {
             height: 100%;
             width: 0;
+            margin-top: 45px;
             position: fixed;
             z-index: 999;
             top: 0;
@@ -579,9 +614,11 @@ $category_color = '#ff1e82';
             font-size: 12px;
             font-weight: 800;
             color: #686868;
-            display: block;
+            display: flex;
+            justify-content: space-between;
+            padding-right: 20px;
             transition: 0.3s;
-            padding: 12px 0px 12px 25px;
+            padding: 12px 20px 12px 25px;
             border-bottom: 1px solid #e1e1e1;
         }
 
@@ -655,16 +692,17 @@ $category_color = '#ff1e82';
             z-index: 100;
         }
 
+        .sticky2 {
+            margin-top: 104px !important;
+        }
+
         .sticky+.content {
             padding-top: 102px;
         }
 
-        .form-control:focus{
-            border:#ccc !important;
-            box-shadow: none !important;
-            outline: none !important;
+        .mobile-menu-angle {
+            font-size: 15px;
         }
-
     </style>
 </head>
 
@@ -782,15 +820,69 @@ $category_color = '#ff1e82';
         </div>
     </div>
     <!-- nav bar mobile   -->
-    <div id="mySidenav" class="sidenav">
-        <!-- <a href="javascript:void(0)" class="closebtn" id='closebtn' onclick="closeNav()">&times;</a> -->
-        <a href="index.php" id="link" class='mobile-menu-bars'> HOME </a>
-        <a href="catalogue.php" id="link" class='mobile-menu-bars'> CATALOGUE </a>
-        <a href="aboutus.php" id="link" class='mobile-menu-bars'> ABOUT US </a>
-        <a href="contact.php" id="link" class='mobile-menu-bars'> CONTACT </a>
-        <a href="dashboard.php" id="link" class='mobile-menu-bars'> DASHBOARD </a>
-        <a href="myorder.php" id="link" class='mobile-menu-bars'> MY ORDERS </a>
-        <a href="config/logout.php" id="link" class='mobile-menu-bars'> LOGOUT </a>
+    <div id="mySidenav" class="sidenav nav-mobile">
+        <div id='sidenav-menus' class='menu-container'>
+            <!-- <a href="#" id="link" class='mobile-menu-bars'>HOME </a>
+
+            <a href="#" id="link" class='mobile-menu-bars'> CATALOGUE
+                <i class="mobile-menu-angle fa-solid fa-angle-right"></i>
+            </a>
+            <a href="#" id="link" class='mobile-menu-bars'> ABOUT US </a>
+            <a href="#" id="link" class='mobile-menu-bars'> CONTACT </a>
+            <a href="#" id="link" class='mobile-menu-bars'> DASHBOARD </a>
+            <a href="#" id="link" class='mobile-menu-bars'> MY ORDERS </a>
+            <a href="#" id="link" class='mobile-menu-bars'> LOGOUT </a> -->
+
+            <!-- <ul class="">
+                <li>Open, Sesame!</li>
+                <li class="menu-container"> -->
+                    <input id="menu-toggle" type="checkbox">
+                    <!-- <label for="menu-toggle" class="menu-button">
+                        <svg class="icon-open" viewBox="0 0 24 24">
+                            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+                        </svg>
+                        <svg class="icon-close" viewBox="0 0 100 100">
+                            <path d="M83.288 88.13c-2.114 2.112-5.575 2.112-7.69 0L53.66 66.188c-2.113-2.112-5.572-2.112-7.686 0l-21.72 21.72c-2.114 2.113-5.572 2.113-7.687 0l-4.693-4.692c-2.114-2.114-2.114-5.573 0-7.688l21.72-21.72c2.112-2.115 2.112-5.574 0-7.687L11.87 24.4c-2.114-2.113-2.114-5.57 0-7.686l4.842-4.842c2.113-2.114 5.57-2.114 7.686 0l21.72 21.72c2.114 2.113 5.572 2.113 7.688 0l21.72-21.72c2.115-2.114 5.574-2.114 7.688 0l4.695 4.695c2.112 2.113 2.112 5.57-.002 7.686l-21.72 21.72c-2.112 2.114-2.112 5.573 0 7.686L88.13 75.6c2.112 2.11 2.112 5.572 0 7.687l-4.842 4.84z" />
+                        </svg>
+                    </label> -->
+                    <ul class="menu-sidebar">
+                        <li><a href="#">Item</a></li>
+                        <li><a href="#">Item</a></li>
+                        <li><a href="#">Item</a></li>
+                        <li>
+                            <input type="checkbox" id="sub-one" class="submenu-toggle">
+                            <label class="submenu-label" for="sub-one">Category</label>
+                            <div class="arrow right">&#8250;</div>
+                            <ul class="menu-sub">
+                                <li class="menu-sub-title">
+                                    <label class="submenu-label" for="sub-one">Back</label>
+                                    <div class="arrow left">&#8249;</div>
+                                </li>
+                                <li><a href="#">Sub-item</a></li>
+                                <li><a href="#">Sub-item</a></li>
+                                <li><a href="#">Sub-item</a></li>
+                                <li><a href="#">Sub-item</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="sub-two" class="submenu-toggle">
+                            <label class="submenu-label" for="sub-two">Category</label>
+                            <div class="arrow right">&#8250;</div>
+                            <ul class="menu-sub">
+                                <li class="menu-sub-title">
+                                    <label class="submenu-label" for="sub-two">Back</label>
+                                    <div class="arrow left">&#8249;</div>
+                                </li>
+                                <li><a href="#">Sub-item</a></li>
+                                <li><a href="#">Sub-item</a></li>
+                                <li><a href="#">Sub-item</a></li>
+                                <li><a href="#">Sub-item</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                <!-- </li>
+            </ul> -->
+        </div>
     </div>
     <!-- categories    -->
     <!-- <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center nav_Categories mobile_Head_Hide pb-1' style='border-bottom: 2px solid #e7e7e7;'> -->
@@ -921,17 +1013,39 @@ $category_color = '#ff1e82';
         };
 
         var header = document.getElementById("myHeader");
+        // var sidenav = document.getElementById("mySidenav");
         var sticky = header.offsetTop;
 
         function myFunction() {
             if (window.pageYOffset > sticky) {
                 header.classList.add("sticky");
+                $('#mySidenav').css('margin-top', '45');
             } else {
                 header.classList.remove("sticky");
+                // console.log($('.top_Bar').css('height'));
+                var height = parseFloat($('.top_Bar').css('height')) + parseFloat(45);
+                $('#mySidenav').css('margin-top', height);
+
             }
         }
 
         $(document).ready(function() {
+
+            $('.mobile-menu-bars').click(function() {
+                if ($(this).children().hasClass('fa-rotate-90')) {
+                    $(this).children().removeClass('fa-rotate-90');
+                } else {
+                    $(this).children().addClass('fa-rotate-90');
+                }
+
+                // if ($(this).children().hasClass('d-none')) {
+                //     $(this).children().removeClass('d-none');
+                // } else {
+                //     $(this).children().addClass('d-none');
+                // }
+            });
+
+            myFunction();
             $('#itemslider').carousel({
                 // interval: 3000;
                 interval: false
@@ -965,13 +1079,18 @@ $category_color = '#ff1e82';
         // respon header 
 
         $('body').click(function(evnt) {
-            if (evnt.target.id != "closebtn" && evnt.target.id != "mySidenav" && evnt.target.id != "ic") {
+            if (evnt.target.id != "link" && evnt.target.id != "mySidenav" && evnt.target.id != "ic") {
                 closeNav();
             }
         });
 
         function openNav() {
-            document.getElementById("mySidenav").style.width = "80%";
+            if (document.getElementById("mySidenav").style.width == '80%') {
+                document.getElementById("mySidenav").style.width = "0";
+
+            } else {
+                document.getElementById("mySidenav").style.width = "80%";
+            }
         }
 
         function closeNav() {
