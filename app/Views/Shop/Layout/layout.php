@@ -658,6 +658,13 @@ $category_color = '#ff1e82';
         .sticky+.content {
             padding-top: 102px;
         }
+
+        .form-control:focus{
+            border:#ccc !important;
+            box-shadow: none !important;
+            outline: none !important;
+        }
+
     </style>
 </head>
 
