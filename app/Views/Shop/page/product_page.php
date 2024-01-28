@@ -86,8 +86,9 @@
     .active {
         color: #383838 !important;
     }
+
     #product img {
-        width:100%;
+        width: 100%;
         /* height:100%; */
     }
 </style>
@@ -96,7 +97,7 @@
 <div class='row p-4'>
     <div class='col-1'>
         <div class='row pl-5 justify-content-center'>
-            <img class='product_image_thumbnails rounded' src='https://d31cu6kgfv0h34.cloudfront.net/uploads/images/202311/img_1920x_654b6441ccb990-96367438-19638772.jpg' />
+            <img class='product_image_thumbnails rounded' style='border:1px solid #b5b5b5' src='https://d31cu6kgfv0h34.cloudfront.net/uploads/images/202311/img_1920x_654b6441ccb990-96367438-19638772.jpg' />
             <img class='product_image_thumbnails rounded' src='https://d31cu6kgfv0h34.cloudfront.net/uploads/images/202311/img_x300_656075fde69238-97863729-57278107.jpg' />
             <img class='product_image_thumbnails rounded' src='https://d31cu6kgfv0h34.cloudfront.net/uploads/images/202311/img_1920x_654b6441ccb990-96367438-19638772.jpg' />
             <img class='product_image_thumbnails rounded' src='https://d31cu6kgfv0h34.cloudfront.net/uploads/images/202311/img_1920x_654b6441ccb990-96367438-19638772.jpg' />
@@ -540,6 +541,8 @@
         });
         $('.product_image_thumbnails').click(function() {
             $('.product_image').attr('src', $(this).attr('src'));
+            $('.product_image_thumbnails').css('border','none');
+            $(this).css('border', '1px solid #b5b5b5');
             $('.product_image').addClass('w3-animate-opacity');
             setTimeout(function() {
                 $('.product_image').removeClass('w3-animate-opacity');

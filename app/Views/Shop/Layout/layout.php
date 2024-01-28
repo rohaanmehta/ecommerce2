@@ -414,6 +414,11 @@ $category_color = '#ff1e82';
             padding-bottom: 29px;
         }
 
+        .bordertest {
+            padding-bottom: 29px !important;
+            border-bottom: 3px <?= 'solid ' . $category_color ?>;
+        }
+
         .nav_Categories_Sub_Menu {
             background-color: #fff;
             display: none;
@@ -454,7 +459,7 @@ $category_color = '#ff1e82';
         }
 
         .anim_menu {
-            transition: 10s;
+            /* transition: 10s; */
             /* transform: translateY(1%); */
             display: block !important;
         }
@@ -745,7 +750,8 @@ $category_color = '#ff1e82';
             }
         }
 
-        .form-control:focus , button {
+        .form-control:focus,
+        button {
             /* color: #495057; */
             /* background-color: #fff; */
             border-color: #ccc !important;
@@ -803,7 +809,7 @@ $category_color = '#ff1e82';
                     <span class='nav_Categories_Btn nav_Categories_Btn_Hover' id='14'>BEAUTY</span>
                 </div>
                 <div style='margin-top: 31px;border-top: 1px solid #e7e7e7;' class='nav_Categories_Btn_Hover_anim pb-5 nav_Categories_Sub_Menu nav_Categories_Btn_Hover'>
-                    <div class='row'>
+                    <div class='row nav_Categories_Sub_Menu_Tittle'>
                         <div class='col-lg-2 text-left'>
                             <div class='nav_Categories_Sub_Menu_Tittle' style='color: <?= $category_color ?>'>Fabric</div>
                             <div class='nav_Categories_Sub_Menu_Item'>COTTON</div>
@@ -1196,14 +1202,31 @@ $category_color = '#ff1e82';
         });
 
         //nav categories
+        // $(".nav_Categories_Btn").mouseover(function() {
+        //     $('.nav_Categories_Btn').removeClass('bordertest');
+        // });
+
+        $(".nav_Categories_Sub_Menu").mouseout(function() {
+            // $('.nav_Categories_Btn').removeClass('bordertest');
+        });
+
+
         $(".nav_Categories_Btn_Hover").mouseover(function() {
             $(".nav_Categories_Sub_Menu").addClass("anim_menu");
             $(".nav_Categories_Sub_Menu").addClass("w3-animate-opacity");
-            $('.dynamic_Test').html($(this).attr('id'));
-        }).mouseout(function() {
+            // $(this).addClass('bordertest');
+        }).mouseout(function(evnt) {
             $(".nav_Categories_Sub_Menu").removeClass("anim_menu");
+            // if (!$(event.target).hasClass('nav_Categories_Btn_Hover') && !$(event.target).hasClass('nav_Categories_Btn') && !$(event.target).hasClass('nav_Categories_Sub_Menu_Tittle') && !$(event.target).hasClass('nav_Categories_Sub_Menu_Item') && !$(event.target).hasClass('nav_Categories_Sub_Menu_Item_parent')) {
+            //     alert();
+            // }
         });
 
+        $('body').mouseover(function(evnt) {
+            // if (!$(event.target).hasClass('nav_Categories_Btn_Hover') && !$(event.target).hasClass('nav_Categories_Btn') && !$(event.target).hasClass('nav_Categories_Sub_Menu_Tittle') && !$(event.target).hasClass('nav_Categories_Sub_Menu_Item')) {
+            //     $(".nav_Categories_Sub_Menu").removeClass("anim_menu");
+            // }
+        });
         // respon header 
 
         $('body').click(function(evnt) {
@@ -1211,8 +1234,8 @@ $category_color = '#ff1e82';
                 closeNav();
             }
             if (evnt.target.id != "product") {
-                if( !$(event.target).hasClass('product-360')){
-                    $('#product').css('display', 'none');                    
+                if (!$(event.target).hasClass('product-360')) {
+                    $('#product').css('display', 'none');
                 }
             }
         });
