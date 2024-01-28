@@ -8,7 +8,8 @@ $category_color = '#ff1e82';
 <html>
 
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,700&subset=latin-ext" rel="stylesheet">
@@ -17,11 +18,13 @@ $category_color = '#ff1e82';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="<?= base_url('assets/mobile_nav.scss'); ?>" crossorigin="anonymous">
+
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
 
     <style>
         * {
@@ -399,7 +402,7 @@ $category_color = '#ff1e82';
         }
 
         .nav_Categories_Btn {
-            padding: 0px 15px 0px 15px;
+            margin: 0px 15px 0px 15px;
             font-size: 13px;
             cursor: pointer;
             color: #707070;
@@ -408,7 +411,7 @@ $category_color = '#ff1e82';
 
         .nav_Categories_Btn:hover {
             border-bottom: 3px <?= 'solid ' . $category_color ?>;
-            padding-bottom: 28px;
+            padding-bottom: 29px;
         }
 
         .nav_Categories_Sub_Menu {
@@ -452,7 +455,7 @@ $category_color = '#ff1e82';
 
         .anim_menu {
             transition: 10s;
-            transform: translateY(1%);
+            /* transform: translateY(1%); */
             display: block !important;
         }
 
@@ -650,16 +653,16 @@ $category_color = '#ff1e82';
             }
         }
 
-        .footer_Tittle {
+        .footer_Tittle a {
             color: #fff;
             font-size: 14px;
-            font-weight: 700;
+            font-weight: 600;
         }
 
         .footer_Opt a {
-            font-size: 11px;
-            font-weight: 500;
-            color: #fff;
+            font-size: 12px;
+            font-weight: 100;
+            color: #e9e9e9;
         }
 
         .search-box {
@@ -703,6 +706,52 @@ $category_color = '#ff1e82';
         .mobile-menu-angle {
             font-size: 15px;
         }
+
+        .blink {
+            animation: blinker 2s linear infinite;
+        }
+
+        @keyframes blinker {
+            50% {
+                opacity: 0.6;
+            }
+        }
+
+        .popular-links {
+            color: #998d8d;
+            text-decoration: none;
+        }
+
+        .popular-links::after {
+            content: " |";
+        }
+
+        .popular-links:hover {
+            color: #998d8d;
+            text-decoration: none;
+        }
+
+        .w3-animate-opacity {
+            animation: opac 0.6s
+        }
+
+        @keyframes opac {
+            from {
+                opacity: 0
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        .form-control:focus , button {
+            /* color: #495057; */
+            /* background-color: #fff; */
+            border-color: #ccc !important;
+            outline: none !important;
+            box-shadow: none !important;
+        }
     </style>
 </head>
 
@@ -710,7 +759,7 @@ $category_color = '#ff1e82';
     <!-- //topbar   -->
     <!-- //top bar  -->
     <div class='col-lg-12 text-center top_Bar' style='background:<?= $topbar_bg ?>'>
-        <a href='<?= $topbar_link ?>' style='color:<?= $topbar_text_color ?>; text-decoration:none'>
+        <a class='blink' href='<?= $topbar_link ?>' style='color:<?= $topbar_text_color ?>; text-decoration:none'>
             Delightful Deals Await! Shop From Our Republic Day Sale Now!
         </a>
     </div>
@@ -746,14 +795,14 @@ $category_color = '#ff1e82';
                 <img src='<?= base_url('uploads/logo/logo.jpg'); ?>' width='120px' class='p-3' />
             </a>
             <div class='col-lg-12 text-center nav_Categories mobile_Head_Hide pb-1'>
-                <div class='nav_Categories_Btn_Hover' style='text-align:left'>
+                <div class='' style='text-align:left'>
                     <span class='nav_Categories_Btn nav_Categories_Btn_Hover' id='11'>MEN</span>
                     <span class='nav_Categories_Btn nav_Categories_Btn_Hover' id='12'>WOMEN</span>
                     <span class='nav_Categories_Btn nav_Categories_Btn_Hover' id='13'>KIDS</span>
                     <span class='nav_Categories_Btn nav_Categories_Btn_Hover' id='14'>HOME & LIVING</span>
                     <span class='nav_Categories_Btn nav_Categories_Btn_Hover' id='14'>BEAUTY</span>
                 </div>
-                <div style='margin-top: 28px;border-top: 2px solid #e7e7e7;' class='pb-5 nav_Categories_Sub_Menu nav_Categories_Btn_Hover'>
+                <div style='margin-top: 31px;border-top: 1px solid #e7e7e7;' class='nav_Categories_Btn_Hover_anim pb-5 nav_Categories_Sub_Menu nav_Categories_Btn_Hover'>
                     <div class='row'>
                         <div class='col-lg-2 text-left'>
                             <div class='nav_Categories_Sub_Menu_Tittle' style='color: <?= $category_color ?>'>Fabric</div>
@@ -836,8 +885,8 @@ $category_color = '#ff1e82';
             <!-- <ul class="">
                 <li>Open, Sesame!</li>
                 <li class="menu-container"> -->
-                    <input id="menu-toggle" type="checkbox">
-                    <!-- <label for="menu-toggle" class="menu-button">
+            <input id="menu-toggle" type="checkbox">
+            <!-- <label for="menu-toggle" class="menu-button">
                         <svg class="icon-open" viewBox="0 0 24 24">
                             <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
                         </svg>
@@ -845,42 +894,42 @@ $category_color = '#ff1e82';
                             <path d="M83.288 88.13c-2.114 2.112-5.575 2.112-7.69 0L53.66 66.188c-2.113-2.112-5.572-2.112-7.686 0l-21.72 21.72c-2.114 2.113-5.572 2.113-7.687 0l-4.693-4.692c-2.114-2.114-2.114-5.573 0-7.688l21.72-21.72c2.112-2.115 2.112-5.574 0-7.687L11.87 24.4c-2.114-2.113-2.114-5.57 0-7.686l4.842-4.842c2.113-2.114 5.57-2.114 7.686 0l21.72 21.72c2.114 2.113 5.572 2.113 7.688 0l21.72-21.72c2.115-2.114 5.574-2.114 7.688 0l4.695 4.695c2.112 2.113 2.112 5.57-.002 7.686l-21.72 21.72c-2.112 2.114-2.112 5.573 0 7.686L88.13 75.6c2.112 2.11 2.112 5.572 0 7.687l-4.842 4.84z" />
                         </svg>
                     </label> -->
-                    <ul class="menu-sidebar">
-                        <li><a href="#">Item</a></li>
-                        <li><a href="#">Item</a></li>
-                        <li><a href="#">Item</a></li>
-                        <li>
-                            <input type="checkbox" id="sub-one" class="submenu-toggle">
-                            <label class="submenu-label" for="sub-one">Category</label>
-                            <div class="arrow right">&#8250;</div>
-                            <ul class="menu-sub">
-                                <li class="menu-sub-title">
-                                    <label class="submenu-label" for="sub-one">Back</label>
-                                    <div class="arrow left">&#8249;</div>
-                                </li>
-                                <li><a href="#">Sub-item</a></li>
-                                <li><a href="#">Sub-item</a></li>
-                                <li><a href="#">Sub-item</a></li>
-                                <li><a href="#">Sub-item</a></li>
-                            </ul>
+            <ul class="menu-sidebar">
+                <li><a href="#">Item</a></li>
+                <li><a href="#">Item</a></li>
+                <li><a href="#">Item</a></li>
+                <li>
+                    <input type="checkbox" id="sub-one" class="submenu-toggle">
+                    <label class="submenu-label" for="sub-one">Category</label>
+                    <div class="arrow right">&#8250;</div>
+                    <ul class="menu-sub">
+                        <li class="menu-sub-title">
+                            <label class="submenu-label" for="sub-one">Back</label>
+                            <div class="arrow left">&#8249;</div>
                         </li>
-                        <li>
-                            <input type="checkbox" id="sub-two" class="submenu-toggle">
-                            <label class="submenu-label" for="sub-two">Category</label>
-                            <div class="arrow right">&#8250;</div>
-                            <ul class="menu-sub">
-                                <li class="menu-sub-title">
-                                    <label class="submenu-label" for="sub-two">Back</label>
-                                    <div class="arrow left">&#8249;</div>
-                                </li>
-                                <li><a href="#">Sub-item</a></li>
-                                <li><a href="#">Sub-item</a></li>
-                                <li><a href="#">Sub-item</a></li>
-                                <li><a href="#">Sub-item</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="#">Sub-item</a></li>
+                        <li><a href="#">Sub-item</a></li>
+                        <li><a href="#">Sub-item</a></li>
+                        <li><a href="#">Sub-item</a></li>
                     </ul>
-                <!-- </li>
+                </li>
+                <li>
+                    <input type="checkbox" id="sub-two" class="submenu-toggle">
+                    <label class="submenu-label" for="sub-two">Category</label>
+                    <div class="arrow right">&#8250;</div>
+                    <ul class="menu-sub">
+                        <li class="menu-sub-title">
+                            <label class="submenu-label" for="sub-two">Back</label>
+                            <div class="arrow left">&#8249;</div>
+                        </li>
+                        <li><a href="#">Sub-item</a></li>
+                        <li><a href="#">Sub-item</a></li>
+                        <li><a href="#">Sub-item</a></li>
+                        <li><a href="#">Sub-item</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- </li>
             </ul> -->
         </div>
     </div>
@@ -938,8 +987,8 @@ $category_color = '#ff1e82';
     <!-- </div> -->
     <?= $this->renderSection('content') ?>
     <!-- footer  -->
-    <div style='background-color:#000;' class='p-5'>
-        <div class='row m-0 p-0 mb-5' style='padding:30px'>
+    <div style='background-color:#000;padding-left:50px;padding-right:50px;' class='p-5'>
+        <div class='row m-0 mb-5' style='padding:30px 60px 0px 60px'>
             <div class='col-md-3 col-xs-12 mb-4'>
                 <div class='footer_Col'>
                     <p class='footer_Tittle'><a href='#' style='text-decoration:none'>ONLINE SHOPPING</a></p>
@@ -978,13 +1027,11 @@ $category_color = '#ff1e82';
             </div>
             <div class='col-md-3 col-xs-12 mb-4'>
                 <div class='footer_Col'>
-                    <input type='text' placeholder='subscribe' class='form-control pl-2 mb-3' style='border-radius:0px' />
                     <p class='footer_Tittle'><a href='#' style='text-decoration:none'>ANY QUESTIONS?</a></p>
                     <div class="footer_Opt mb-4">
                         <p><a href='#' style='text-decoration:none'>Call or SMS: +1 (201) 733-3934</a></p>
                         <p><a href='#' style='text-decoration:none'>Email: support @Nykaa.com</a></p>
                     </div>
-
                     <p class='footer_Tittle mb-1'><a href='#' style='text-decoration:none;'>FOLLOW US</a></p>
                     <div class="footer_Opt">
                         <a href="https://www.instagram.com/rohaan.mehta/">
@@ -1000,11 +1047,91 @@ $category_color = '#ff1e82';
                             <i class="fa fa-whatsapp" style="font-size:25px; margin-right:15px;color:#fff;"></i>
                         </a>
                     </div>
+                    <input type='text' placeholder='subscribe' class='form-control pl-2 mt-3' style='border-radius:0px' />
                 </div>
             </div>
         </div>
-        <div style='font-size:12px;' class='d-flex text-light d-flex justify-content-center'>
-            <p>Copyright © 2023 Karmaplace.com</p>
+        <div style='font-size:12px;color:#e9e9e9' class='d-flex d-flex justify-content-center'>
+            <p> © <?= date('Y') ?> www.nykaa.com. All rights reserved</p>
+        </div>
+        <div style='font-size:12px;border-top:1px solid #464646;margin:10px 60px 0px 60px;padding-top:20px;color:#998d8d' class=''>
+            <p>POPULAR SEARCHES</p>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
+            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
         </div>
     </div>
     <script>
@@ -1071,6 +1198,7 @@ $category_color = '#ff1e82';
         //nav categories
         $(".nav_Categories_Btn_Hover").mouseover(function() {
             $(".nav_Categories_Sub_Menu").addClass("anim_menu");
+            $(".nav_Categories_Sub_Menu").addClass("w3-animate-opacity");
             $('.dynamic_Test').html($(this).attr('id'));
         }).mouseout(function() {
             $(".nav_Categories_Sub_Menu").removeClass("anim_menu");
@@ -1081,6 +1209,11 @@ $category_color = '#ff1e82';
         $('body').click(function(evnt) {
             if (evnt.target.id != "link" && evnt.target.id != "mySidenav" && evnt.target.id != "ic") {
                 closeNav();
+            }
+            if (evnt.target.id != "product") {
+                if( !$(event.target).hasClass('product-360')){
+                    $('#product').css('display', 'none');                    
+                }
             }
         });
 

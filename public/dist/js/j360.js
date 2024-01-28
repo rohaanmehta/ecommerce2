@@ -56,9 +56,10 @@
             jQuery('img', $obj).each(function() {
                 aImages[++imageTotal] = jQuery(this).attr('src');
                 preload(jQuery(this).attr('src'));
-            })
+            });
+
             var imageCount = 0;
-            jQuery('.preload_img').load(function() {
+            jQuery('.preload_img').on('load', function() {
                 if (++imageCount == imageTotal) {
                     $overlay.animate({
                         'filter' : 'alpha(Opacity=0)',
@@ -107,19 +108,19 @@
                 }
             });
 
-            if (jQuery.browser.msie || jQuery.browser.mozilla || jQuery.browser.opera || jQuery.browser.safari ) {
-                jQuery(window).resize(function() {
-                    onresizeFunc($obj, $overlay);
-                });
-            } else {
-                var supportsOrientationChange = "onorientationchange" in window,
-                orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
+            // if (jQuery.browser.mozilla || jQuery.browser.opera || jQuery.browser.safari ) {
+            //     jQuery(window).resize(function() {
+            //         onresizeFunc($obj, $overlay);
+            //     });
+            // } else {
+            //     var supportsOrientationChange = "onorientationchange" in window,
+            //     orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
                 window.addEventListener(orientationEvent, function() {
                     onresizeFunc($obj, $overlay);
                 }, false);
-            }
+            // }
+            
             onresizeFunc($obj, $overlay)
-
         });
     };
 })(jQuery)
