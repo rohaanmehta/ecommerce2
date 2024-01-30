@@ -11,7 +11,7 @@
  * http://www.opensource.org/licenses/mit-license.php
  * http://www.gnu.org/licenses/gpl.html
  */
-(function($){
+(function($) {
     $.fn.j360 = function(options) {
         var defaults = {
             clicked: false,
@@ -22,32 +22,32 @@
             var $obj = jQuery(this);
             var aImages = {};
             $obj.css({
-                'margin-left' : 'auto',
-                'margin-right' : 'auto',
-                'text-align' : 'center',
-                'overflow' : 'hidden'
+                'margin-left': 'auto',
+                'margin-right': 'auto',
+                'text-align': 'center',
+                'overflow': 'hidden'
             });
             // $obj.prepend('<img src="/images/loader.gif" class="loader" style="margin-top:' + ($obj.height()/2 - 15) + 'px" />');
 
             $overlay = $obj.clone(true);
-            $overlay.html('<img src="images/loader.gif" class="loader" style="margin-top:' + ($obj.height()/2 - 15) + 'px" />');
+            $overlay.html('<img src="images/loader.gif" class="loader" style="margin-top:' + ($obj.height() / 2 - 15) + 'px" />');
             $overlay.attr('id', 'view_overlay');
             $overlay.css({
-                'position' : 'fixed',
+                'position': 'fixed',
                 'z-index': '5',
-                'top' : '50%',
-                'left' : '50%',
-                'background' : '#f3f3f3',
+                'top': '50%',
+                'left': '50%',
+                'background': '#f3f3f3',
                 'transform': 'translate(-50%, -50%)'
             });
             $obj.after($overlay);
             $obj.after('<div id="colors_ctrls"></div>');
             jQuery('#colors_ctrls').css({
-                'width' : $obj.width(),
-                'position' : 'absolute',
+                'width': $obj.width(),
+                'position': 'absolute',
                 'z-index': '5',
-                'top' : $obj.offset().top + $obj.height - 50,
-                'left' : $obj.offset().left,
+                'top': $obj.offset().top + $obj.height - 50,
+                'left': $obj.offset().left,
                 // 'top':'50%',
                 // 'left':'50%',
             });
@@ -62,8 +62,8 @@
             jQuery('.preload_img').on('load', function() {
                 if (++imageCount == imageTotal) {
                     $overlay.animate({
-                        'filter' : 'alpha(Opacity=0)',
-                        'opacity' : 0
+                        'filter': 'alpha(Opacity=0)',
+                        'opacity': 0
                     }, 500);
                     $obj.html('<img src="' + aImages[1] + '" />');
                     $overlay.bind('mousedown touchstart', function(e) {
@@ -115,11 +115,11 @@
             // } else {
             //     var supportsOrientationChange = "onorientationchange" in window,
             //     orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
-                window.addEventListener(orientationEvent, function() {
-                    onresizeFunc($obj, $overlay);
-                }, false);
+            window.addEventListener(orientationEvent, function() {
+                onresizeFunc($obj, $overlay);
+            }, false);
             // }
-            
+            $(this).append('<button>gfgg</button>');
             onresizeFunc($obj, $overlay)
         });
     };
@@ -131,14 +131,14 @@ function onresizeFunc($obj, $overlay) {
         'margin-top' : $(document).height()/2 - 150
     });*/
     $overlay.css({
-        'margin-top' : 0,
-        'top' : $obj.offset().top,
-        'left' : $obj.offset().left
+        'margin-top': 0,
+        'top': $obj.offset().top,
+        'left': $obj.offset().left
     });
 
     jQuery('#colors_ctrls').css({
-        'top' : $obj.offset().top + $obj.height - 50,
-        'left' : $obj.offset().left
+        'top': $obj.offset().top + $obj.height - 50,
+        'left': $obj.offset().left
     });
 }
 
@@ -152,7 +152,7 @@ function preload(image) {
         s.visibility = "hidden";
         document.body.appendChild(div);
         div.innerHTML = "<img class=\"preload_img\" src=\"" + image + "\" />";
-    } catch(e) {
-    // Error. Do nothing.
+    } catch (e) {
+        // Error. Do nothing.
     }
 }

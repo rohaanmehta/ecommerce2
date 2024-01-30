@@ -91,6 +91,66 @@
         width: 100%;
         /* height:100%; */
     }
+
+    .backdrop {
+        background-color: #93877975;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0px;
+        /* z-index: 100; */
+        display: none;
+    }
+
+    .product-360-box {
+        background: #fff;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        position: fixed;
+        display: none;
+        width: 500px;
+        height: 400px;
+    }
+
+    .product-360-border {
+        background: #fff;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        position: fixed;
+        display: none;
+        width: 580px;
+        height: 480px;
+    }
+
+    .responsive-product-360 {
+        display: block;
+    }
+
+    @media all and (max-width: 768px) and (transform-3d),
+    all and (max-width: 768px) and (-webkit-transform-3d) {
+        .product-360-box {
+            /* transform: translate(-50%, -50%); */
+            /* top: 20%; */
+            /* left: 50%; */
+            position: fixed;
+            width: 100%;
+            height: 100%;
+        }
+
+        .responsive-product-360 {
+            display: flex;
+            align-items: center;
+        }
+        .product-360-border{
+            width: 100vw;
+            position: absolute;
+            transform: none;
+            top:0%;
+            left:0%;
+        }
+    }
 </style>
 <div class='invisible'>gap fill</div>
 
@@ -180,47 +240,65 @@
     </div>
 </div>
 <!-- Modal -->
+<div class='backdrop'></div>
 
-<div id='main' class='product-360'>
-    <div id="product" style="background:#fff;border-radius:4px;border:5px solid #e3e3e3;transform: translate(-50%, -50%);top:50%;left:50%;position:fixed;display:none;width: 500px; height: 400px;" class='product-360'>
-        <button class='btn btn-primary'>x</button>
+<div id="product3" style="" class='product-360-border backdrop'>
+    <button class='close-360' style="z-index:1903;top:10px;border:none;background:none;right:10px;position:absolute;"><i style='font-size:x-large' class='fa fa-xmark'></i></button>
+</div>
+<div id='main' class=''>
 
-        <img src="<?= base_url('public/images/01.jpg') ?>" />
-        <img src="<?= base_url('public/images/02.jpg') ?>" />
-        <img src="<?= base_url('public/images/03.jpg') ?>" />
-        <img src="<?= base_url('public/images/04.jpg') ?>" />
-        <img src="<?= base_url('public/images/05.jpg') ?>" />
-        <img src="<?= base_url('public/images/06.jpg') ?>" />
-        <img src="<?= base_url('public/images/07.jpg') ?>" />
-        <img src="<?= base_url('public/images/08.jpg') ?>" />
-        <img src="<?= base_url('public/images/09.jpg') ?>" />
-        <img src="<?= base_url('public/images/10.jpg') ?>" />
-        <img src="<?= base_url('public/images/11.jpg') ?>" />
-        <img src="<?= base_url('public/images/12.jpg') ?>" />
-        <img src="<?= base_url('public/images/13.jpg') ?>" />
-        <img src="<?= base_url('public/images/14.jpg') ?>" />
-        <img src="<?= base_url('public/images/15.jpg') ?>" />
-        <img src="<?= base_url('public/images/16.jpg') ?>" />
-        <img src="<?= base_url('public/images/17.jpg') ?>" />
-        <img src="<?= base_url('public/images/18.jpg') ?>" />
-        <img src="<?= base_url('public/images/19.jpg') ?>" />
-        <img src="<?= base_url('public/images/20.jpg') ?>" />
-        <img src="<?= base_url('public/images/21.jpg') ?>" />
-        <img src="<?= base_url('public/images/22.jpg') ?>" />
-        <img src="<?= base_url('public/images/23.jpg') ?>" />
-        <img src="<?= base_url('public/images/24.jpg') ?>" />
-        <img src="<?= base_url('public/images/25.jpg') ?>" />
-        <img src="<?= base_url('public/images/26.jpg') ?>" />
-        <img src="<?= base_url('public/images/27.jpg') ?>" />
-        <img src="<?= base_url('public/images/28.jpg') ?>" />
-        <img src="<?= base_url('public/images/29.jpg') ?>" />
-        <img src="<?= base_url('public/images/30.jpg') ?>" />
-        <img src="<?= base_url('public/images/31.jpg') ?>" />
-        <img src="<?= base_url('public/images/32.jpg') ?>" />
-        <img src="<?= base_url('public/images/33.jpg') ?>" />
-        <img src="<?= base_url('public/images/34.jpg') ?>" />
-        <img src="<?= base_url('public/images/35.jpg') ?>" />
-        <img src="<?= base_url('public/images/36.jpg') ?>" />
+    <div id="product" style="" class='product-360-box'>
+        <img src="<?= base_url('public/images/1.png') ?>" />
+        <img src="<?= base_url('public/images/2.png') ?>" />
+        <img src="<?= base_url('public/images/3.png') ?>" />
+        <img src="<?= base_url('public/images/4.png') ?>" />
+        <img src="<?= base_url('public/images/5.png') ?>" />
+        <img src="<?= base_url('public/images/6.png') ?>" />
+        <img src="<?= base_url('public/images/7.png') ?>" />
+        <img src="<?= base_url('public/images/8.png') ?>" />
+        <img src="<?= base_url('public/images/9.png') ?>" />
+        <img src="<?= base_url('public/images/10.png') ?>" />
+        <img src="<?= base_url('public/images/11.png') ?>" />
+        <img src="<?= base_url('public/images/12.png') ?>" />
+        <img src="<?= base_url('public/images/13.png') ?>" />
+        <img src="<?= base_url('public/images/14.png') ?>" />
+        <img src="<?= base_url('public/images/15.png') ?>" />
+        <img src="<?= base_url('public/images/16.png') ?>" />
+        <img src="<?= base_url('public/images/17.png') ?>" />
+        <img src="<?= base_url('public/images/18.png') ?>" />
+        <img src="<?= base_url('public/images/19.png') ?>" />
+        <img src="<?= base_url('public/images/20.png') ?>" />
+        <img src="<?= base_url('public/images/21.png') ?>" />
+        <img src="<?= base_url('public/images/22.png') ?>" />
+        <img src="<?= base_url('public/images/23.png') ?>" />
+        <img src="<?= base_url('public/images/24.png') ?>" />
+        <img src="<?= base_url('public/images/25.png') ?>" />
+        <img src="<?= base_url('public/images/26.png') ?>" />
+        <img src="<?= base_url('public/images/27.png') ?>" />
+        <img src="<?= base_url('public/images/28.png') ?>" />
+        <img src="<?= base_url('public/images/29.png') ?>" />
+        <img src="<?= base_url('public/images/30.png') ?>" />
+        <img src="<?= base_url('public/images/31.png') ?>" />
+        <img src="<?= base_url('public/images/32.png') ?>" />
+        <img src="<?= base_url('public/images/33.png') ?>" />
+        <img src="<?= base_url('public/images/34.png') ?>" />
+        <img src="<?= base_url('public/images/35.png') ?>" />
+        <img src="<?= base_url('public/images/36.png') ?>" />
+        <img src="<?= base_url('public/images/36.png') ?>" />
+        <img src="<?= base_url('public/images/37.png') ?>" />
+        <img src="<?= base_url('public/images/38.png') ?>" />
+        <img src="<?= base_url('public/images/39.png') ?>" />
+        <img src="<?= base_url('public/images/40.png') ?>" />
+        <img src="<?= base_url('public/images/41.png') ?>" />
+        <img src="<?= base_url('public/images/42.png') ?>" />
+        <img src="<?= base_url('public/images/43.png') ?>" />
+        <img src="<?= base_url('public/images/44.png') ?>" />
+        <img src="<?= base_url('public/images/45.png') ?>" />
+        <img src="<?= base_url('public/images/46.png') ?>" />
+        <img src="<?= base_url('public/images/47.png') ?>" />
+        <img src="<?= base_url('public/images/48.png') ?>" />
+        <img src="<?= base_url('public/images/49.png') ?>" />
+        <!-- <img src="<?= base_url('public/images/50.png') ?>" /> -->
     </div>
 </div>
 
@@ -515,8 +593,16 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('.tap-btn').click(function() {
-            $('#product').css('display', 'block');
+            // $('#product').css('display', 'block');
+            $('#product').addClass('responsive-product-360');
+
+            $('.backdrop').css('display', 'block');
+            $('#main').css('display', 'block');
+
+            $('body').css('position', 'fixed');
+
             jQuery('#product').j360();
+
         });
 
         $('.nav-link').click(function() {
@@ -539,14 +625,25 @@
                 $('.product-description').css('display', 'block');
             }
         });
+
         $('.product_image_thumbnails').click(function() {
             $('.product_image').attr('src', $(this).attr('src'));
-            $('.product_image_thumbnails').css('border','none');
+            $('.product_image_thumbnails').css('border', 'none');
             $(this).css('border', '1px solid #b5b5b5');
             $('.product_image').addClass('w3-animate-opacity');
             setTimeout(function() {
                 $('.product_image').removeClass('w3-animate-opacity');
             }, 1000);
+        });
+
+        $('.close-360').click(function() {
+            // $('#product').css('display', 'none');
+            $('#product').removeClass('responsive-product-360');
+
+            $('.backdrop').css('display', 'none');
+            $('#main').css('display', 'none');
+            
+            $('body').css('position', 'initial');
         });
     });
 </script>

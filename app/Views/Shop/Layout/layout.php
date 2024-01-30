@@ -579,8 +579,20 @@ $category_color = '#ff1e82';
             text-align: center;
         }
 
+        .popular-link-box {
+            font-size: 12px;
+            border-top: 1px solid #464646;
+            margin: 10px 60px 0px 60px;
+            padding-top: 20px;
+            color: #998d8d
+        }
+
         @media all and (max-width: 768px) and (transform-3d),
         all and (max-width: 768px) and (-webkit-transform-3d) {
+            .popular-link-box {
+                margin: 10px 25px 0px 25px;
+            }
+
             .mobile_Head_Show {
                 display: flex;
             }
@@ -802,45 +814,45 @@ $category_color = '#ff1e82';
             </a>
             <div class='col-lg-12 text-center nav_Categories mobile_Head_Hide pb-1'>
                 <div class='' style='text-align:left'>
-                    <span class='nav_Categories_Btn nav_Categories_Btn_Hover' id='11'>MEN</span>
-                    <span class='nav_Categories_Btn nav_Categories_Btn_Hover' id='12'>WOMEN</span>
-                    <span class='nav_Categories_Btn nav_Categories_Btn_Hover' id='13'>KIDS</span>
-                    <span class='nav_Categories_Btn nav_Categories_Btn_Hover' id='14'>HOME & LIVING</span>
-                    <span class='nav_Categories_Btn nav_Categories_Btn_Hover' id='14'>BEAUTY</span>
+                    <span class='nav_Categories_Btn exit-menu nav_Categories_Btn_Hover' id='11'>MEN</span>
+                    <span class='nav_Categories_Btn exit-menu nav_Categories_Btn_Hover' id='12'>WOMEN</span>
+                    <span class='nav_Categories_Btn exit-menu nav_Categories_Btn_Hover' id='13'>KIDS</span>
+                    <span class='nav_Categories_Btn exit-menu nav_Categories_Btn_Hover' id='14'>HOME & LIVING</span>
+                    <span class='nav_Categories_Btn exit-menu nav_Categories_Btn_Hover' id='14'>BEAUTY</span>
                 </div>
-                <div style='margin-top: 31px;border-top: 1px solid #e7e7e7;' class='nav_Categories_Btn_Hover_anim pb-5 nav_Categories_Sub_Menu nav_Categories_Btn_Hover'>
-                    <div class='row nav_Categories_Sub_Menu_Tittle'>
-                        <div class='col-lg-2 text-left'>
-                            <div class='nav_Categories_Sub_Menu_Tittle' style='color: <?= $category_color ?>'>Fabric</div>
-                            <div class='nav_Categories_Sub_Menu_Item'>COTTON</div>
-                            <div class='nav_Categories_Sub_Menu_Item'>SILK</div>
-                            <div class='nav_Categories_Sub_Menu_Item'>VELVET</div>
-                            <div class='nav_Categories_Sub_Menu_Item'>POLYTHENE</div>
-                            <div class='nav_Categories_Sub_Menu_Item'>SOFT FABRIC</div>
+                <div style='margin-top: 31px;border-top: 1px solid #e7e7e7;' class='exit-menu nav_Categories_Btn_Hover_anim pb-5 nav_Categories_Sub_Menu nav_Categories_Btn_Hover'>
+                    <div class='exit-menu row nav_Categories_Sub_Menu_Tittle'>
+                        <div class='exit-menu col-lg-2 text-left'>
+                            <div class='exit-menu nav_Categories_Sub_Menu_Tittle' style='color: <?= $category_color ?>'>Fabric</div>
+                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>COTTON</div>
+                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>SILK</div>
+                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>VELVET</div>
+                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>POLYTHENE</div>
+                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>SOFT FABRIC</div>
                         </div>
-                        <div class='col-lg-2 text-left'>
-                            <div class='nav_Categories_Sub_Menu_Tittle' style='color: <?= $category_color ?>'>Occassion</div>
-                            <div class='nav_Categories_Sub_Menu_Item'>COTTON</div>
-                            <div class='nav_Categories_Sub_Menu_Item'>SILK</div>
-                            <div class='nav_Categories_Sub_Menu_Item'>VELVET</div>
-                            <div class='nav_Categories_Sub_Menu_Item'>POLYTHENE</div>
-                            <div class='nav_Categories_Sub_Menu_Item'>SOFT FABRIC</div>
+                        <div class='exit-menu col-lg-2 text-left'>
+                            <div class='exit-menu nav_Categories_Sub_Menu_Tittle' style='color: <?= $category_color ?>'>Occassion</div>
+                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>COTTON</div>
+                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>SILK</div>
+                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>VELVET</div>
+                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>POLYTHENE</div>
+                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>SOFT FABRIC</div>
                         </div>
-                        <div class='col-lg-2 text-left'>
-                            <div class='nav_Categories_Sub_Menu_Tittle' style='color: <?= $category_color ?>'>Material</div>
-                            <div class='nav_Categories_Sub_Menu_Item'>COTTON</div>
-                            <div class='nav_Categories_Sub_Menu_Item'>SILK</div>
-                            <div class='nav_Categories_Sub_Menu_Item'>VELVET</div>
-                            <div class='nav_Categories_Sub_Menu_Item'>POLYTHENE</div>
-                            <div class='nav_Categories_Sub_Menu_Item'>SOFT FABRIC</div>
+                        <div class='exit-menu col-lg-2 text-left'>
+                            <div class='exit-menu nav_Categories_Sub_Menu_Tittle' style='color: <?= $category_color ?>'>Material</div>
+                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>COTTON</div>
+                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>SILK</div>
+                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>VELVET</div>
+                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>POLYTHENE</div>
+                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>SOFT FABRIC</div>
                         </div>
-                        <div class='col-lg-2 text-left'>
-                            <div class='nav_Categories_Sub_Menu_Tittle' style='color: <?= $category_color ?>'>Work</div>
-                            <div class='nav_Categories_Sub_Menu_Item'>COTTON</div>
-                            <div class='nav_Categories_Sub_Menu_Item'>SILK</div>
-                            <div class='nav_Categories_Sub_Menu_Item'>VELVET</div>
-                            <div class='nav_Categories_Sub_Menu_Item'>POLYTHENE</div>
-                            <div class='nav_Categories_Sub_Menu_Item'>SOFT FABRIC</div>
+                        <div class='exit-menu col-lg-2 text-left'>
+                            <div class='exit-menu nav_Categories_Sub_Menu_Tittle' style='color: <?= $category_color ?>'>Work</div>
+                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>COTTON</div>
+                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>SILK</div>
+                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>VELVET</div>
+                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>POLYTHENE</div>
+                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>SOFT FABRIC</div>
                         </div>
                     </div>
                 </div>
@@ -993,8 +1005,9 @@ $category_color = '#ff1e82';
     <!-- </div> -->
     <?= $this->renderSection('content') ?>
     <!-- footer  -->
-    <div style='background-color:#000;padding-left:50px;padding-right:50px;' class='p-5'>
-        <div class='row m-0 mb-5' style='padding:30px 60px 0px 60px'>
+
+    <div style='background-color:#000;' class='pl-3 pt-5 pr-3'>
+        <div class='row m-0 mb-5 mobile_Head_Hide' style='padding:30px 60px 0px 60px'>
             <div class='col-md-3 col-xs-12 mb-4'>
                 <div class='footer_Col'>
                     <p class='footer_Tittle'><a href='#' style='text-decoration:none'>ONLINE SHOPPING</a></p>
@@ -1057,10 +1070,92 @@ $category_color = '#ff1e82';
                 </div>
             </div>
         </div>
+        <!-- //mobile footer -->
+        <div class='row m-0 mb-5 mobile_Head_Show' style='padding:0px 0px 0px 0px'>
+            <div class='col-12 mb-5'>
+                <p class='footer_Tittle mb-3'><a href='#' style='text-decoration:none;'>FOLLOW US</a></p>
+                <div class="footer_Opt">
+                    <a href="https://www.instagram.com/rohaan.mehta/">
+                        <i class="fa fa-instagram" style="font-size:25px; margin-right:15px;color:#fff;"></i>
+                    </a>
+                    <a href="https://www.facebook.com/RohaanMehta/">
+                        <i class="fa fa-facebook-square" style="font-size:25px; margin-right:15px;color:#fff;"></i>
+                    </a>
+                    <a href="gmail.com">
+                        <i class="fa fa-envelope" style="font-size:25px; margin-right:15px;color:#fff;"></i>
+                    </a>
+                    <a href="https://wa.me/919766084748/?text= I need to book an appointment">
+                        <i class="fa fa-whatsapp" style="font-size:25px; margin-right:15px;color:#fff;"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row text-light" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    <p class='col-10 footer_Tittle mb-2 pb-4'><a style='text-decoration:none'>ONLINE SHOPPING</a></p>
+                    <i style='text-align: end;' class='col-2 fa fa-angle-down'></i>
+                </div>
+                <div id="collapseOne" class="collapse" data-parent="#accordion">
+                    <div class="pb-3">
+                        <div class="footer_Opt">
+                            <p><a href='#' style='text-decoration:none'>Men</a></p>
+                            <p><a href='#' style='text-decoration:none'>Women</a></p>
+                            <p><a href='#' style='text-decoration:none'>Kids</a></p>
+                            <p><a href='#' style='text-decoration:none'>Home & Living</a></p>
+                            <p><a href='#' style='text-decoration:none'>Beauty</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row text-light" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <p class='col-10 footer_Tittle mb-2 pb-4'><a style='text-decoration:none'>CUSTOMER POLICIES</a></p>
+                    <i style='text-align: end;' class='col-2 fa fa-angle-down'></i>
+                </div>
+                <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                    <div class="pb-3">
+                        <div class="footer_Opt">
+                            <p><a href='#' style='text-decoration:none'>T&C</a></p>
+                            <p><a href='#' style='text-decoration:none'>Terms Of Use</a></p>
+                            <p><a href='#' style='text-decoration:none'>Track Orders</a></p>
+                            <p><a href='#' style='text-decoration:none'>Shipping</a></p>
+                            <p><a href='#' style='text-decoration:none'>Privacy Policy</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row text-light" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <p class='col-10 footer_Tittle mb-2 pb-4'><a style='text-decoration:none'>GET TO KNOW US</a></p>
+                    <i style='text-align: end;' class='col-2 fa fa-angle-down'></i>
+                </div>
+                <div id="collapseThree" class="collapse" data-parent="#accordion">
+                    <div class="pb-3">
+                        <div class="footer_Opt">
+                            <p><a href='#' style='text-decoration:none'>About Us</a></p>
+                            <p><a href='#' style='text-decoration:none'>Contact Us</a></p>
+                            <p><a href='#' style='text-decoration:none'>FAQ</a></p>
+                            <p><a href='#' style='text-decoration:none'>Our Blog</a></p>
+                            <p><a href='#' style='text-decoration:none'>Cancellation</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='col-12 mt-3'>
+                <div class='footer_Col'>
+                    <p class='footer_Tittle'><a href='#' style='text-decoration:none'>ANY QUESTIONS?</a></p>
+                    <div class="footer_Opt mb-4">
+                        <p><a href='#' style='text-decoration:none'>Call or SMS: +1 (201) 733-3934</a></p>
+                        <p><a href='#' style='text-decoration:none'>Email: support @Nykaa.com</a></p>
+                    </div>
+                    <!-- <input type='text' placeholder='subscribe' class='form-control pl-2 mt-3' style='border-radius:0px' /> -->
+                </div>
+            </div>
+        </div>
         <div style='font-size:12px;color:#e9e9e9' class='d-flex d-flex justify-content-center'>
             <p> © <?= date('Y') ?> www.nykaa.com. All rights reserved</p>
         </div>
-        <div style='font-size:12px;border-top:1px solid #464646;margin:10px 60px 0px 60px;padding-top:20px;color:#998d8d' class=''>
+        <!-- popular links -->
+        <div style='' class='popular-link-box pb-5'>
             <p>POPULAR SEARCHES</p>
             <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
             <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
@@ -1140,6 +1235,7 @@ $category_color = '#ff1e82';
             <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
         </div>
     </div>
+
     <script>
         window.onscroll = function() {
             myFunction()
@@ -1201,43 +1297,38 @@ $category_color = '#ff1e82';
             });
         });
 
-        //nav categories
-        // $(".nav_Categories_Btn").mouseover(function() {
-        //     $('.nav_Categories_Btn').removeClass('bordertest');
-        // });
-
-        $(".nav_Categories_Sub_Menu").mouseout(function() {
-            // $('.nav_Categories_Btn').removeClass('bordertest');
-        });
-
-
         $(".nav_Categories_Btn_Hover").mouseover(function() {
             $(".nav_Categories_Sub_Menu").addClass("anim_menu");
             $(".nav_Categories_Sub_Menu").addClass("w3-animate-opacity");
-            // $(this).addClass('bordertest');
         }).mouseout(function(evnt) {
             $(".nav_Categories_Sub_Menu").removeClass("anim_menu");
-            // if (!$(event.target).hasClass('nav_Categories_Btn_Hover') && !$(event.target).hasClass('nav_Categories_Btn') && !$(event.target).hasClass('nav_Categories_Sub_Menu_Tittle') && !$(event.target).hasClass('nav_Categories_Sub_Menu_Item') && !$(event.target).hasClass('nav_Categories_Sub_Menu_Item_parent')) {
-            //     alert();
-            // }
+        });
+
+        $(".nav_Categories_Btn ").mouseover(function() {
+            $(".nav_Categories_Btn ").removeClass('bordertest');
+            $(this).addClass('bordertest');
         });
 
         $('body').mouseover(function(evnt) {
-            // if (!$(event.target).hasClass('nav_Categories_Btn_Hover') && !$(event.target).hasClass('nav_Categories_Btn') && !$(event.target).hasClass('nav_Categories_Sub_Menu_Tittle') && !$(event.target).hasClass('nav_Categories_Sub_Menu_Item')) {
-            //     $(".nav_Categories_Sub_Menu").removeClass("anim_menu");
-            // }
+            if (!$(evnt.target).hasClass('exit-menu')) {
+                $(".nav_Categories_Btn ").removeClass('bordertest');
+                // alert();
+            }
         });
+
+
         // respon header 
 
         $('body').click(function(evnt) {
             if (evnt.target.id != "link" && evnt.target.id != "mySidenav" && evnt.target.id != "ic") {
                 closeNav();
             }
-            if (evnt.target.id != "product") {
-                if (!$(event.target).hasClass('product-360')) {
-                    $('#product').css('display', 'none');
-                }
-            }
+            // if (evnt.target.id != "product") {
+            //     if (!$(event.target).hasClass('product-360')) {
+            //         $('#product').css('display', 'none');
+            //         $('.backdrop').css('display', 'none');
+            //     }
+            // }
         });
 
         function openNav() {
