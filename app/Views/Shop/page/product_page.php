@@ -11,14 +11,57 @@
     <script src="<?= base_url('public/dist/js/j360.js') ?>"></script>
 </head>
 <style>
+    .selector-item {
+        /* flex-basis: calc(70% / 3); */
+        height: 50px;
+        width: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 10px;
+    }
+
+    .selector-item_radio {
+        appearance: none;
+        display: none;
+    }
+
+    .selector-item_label {
+        cursor: pointer;
+
+        position: relative;
+        height: 80%;
+        width: 100%;
+        text-align: center;
+        border: 1px solid #000;
+        border-radius: 4px;
+        line-height: 40px;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        transition-duration: .5s;
+        transition-property: transform, box-shadow;
+        transform: none;
+    }
+
+    .selector-item_radio:checked+.selector-item_label {
+        background-color: #000;
+        color: #fff;
+    }
+
+    /* @media (max-width:480px) {
+        .selector {
+            width: 90%;
+        }
+    } */
+
     .product_image {
-        width: 500px;
-        height: 500px;
+        width: 100%;
+        /* height: 500px; */
     }
 
     .product_image_thumbnails {
-        width: 100px;
-        height: 100px;
+        width: 70px;
+        /* height: 70px; */
         cursor: pointer;
         margin-bottom: 10px;
     }
@@ -143,33 +186,36 @@
             display: flex;
             align-items: center;
         }
-        .product-360-border{
+
+        .product-360-border {
             width: 100vw;
             position: absolute;
             transform: none;
-            top:0%;
-            left:0%;
+            top: 0%;
+            left: 0%;
         }
     }
 </style>
-<div class='invisible'>gap fill</div>
+<div class='invisible mobile_Head_Hide'>gap fill</div>
 
 <div class='row p-4'>
-    <div class='col-1'>
-        <div class='row pl-5 justify-content-center'>
-            <img class='product_image_thumbnails rounded' style='border:1px solid #b5b5b5' src='https://d31cu6kgfv0h34.cloudfront.net/uploads/images/202311/img_1920x_654b6441ccb990-96367438-19638772.jpg' />
-            <img class='product_image_thumbnails rounded' src='https://d31cu6kgfv0h34.cloudfront.net/uploads/images/202311/img_x300_656075fde69238-97863729-57278107.jpg' />
-            <img class='product_image_thumbnails rounded' src='https://d31cu6kgfv0h34.cloudfront.net/uploads/images/202311/img_1920x_654b6441ccb990-96367438-19638772.jpg' />
-            <img class='product_image_thumbnails rounded' src='https://d31cu6kgfv0h34.cloudfront.net/uploads/images/202311/img_1920x_654b6441ccb990-96367438-19638772.jpg' />
-            <img class='product_image_thumbnails rounded' src='https://d31cu6kgfv0h34.cloudfront.net/uploads/images/202311/img_1920x_654b6441ccb990-96367438-19638772.jpg' />
+    <div class='col-1 mobile_Head_Hide'>
+        <div class='row pl-5 justify-content-end'>
+            <img class='product_image_thumbnails rounded' style='border:1px solid #b5b5b5' src='https://static.nike.com/a/images/t_default/175f9715-a518-420d-b806-356dbfd31373/sportswear-long-sleeve-t-shirt-QkVp5r.png' />
+            <img class='product_image_thumbnails rounded' src='https://static.nike.com/a/images/t_default/f1dcaf6b-999e-424c-93df-09448d97e75b/sportswear-long-sleeve-t-shirt-QkVp5r.png' />
+            <img class='product_image_thumbnails rounded' src='https://static.nike.com/a/images/t_default/175f9715-a518-420d-b806-356dbfd31373/sportswear-long-sleeve-t-shirt-QkVp5r.png' />
+            <img class='product_image_thumbnails rounded' src='https://static.nike.com/a/images/t_default/175f9715-a518-420d-b806-356dbfd31373/sportswear-long-sleeve-t-shirt-QkVp5r.png' />
+            <img class='product_image_thumbnails rounded' src='https://static.nike.com/a/images/t_default/175f9715-a518-420d-b806-356dbfd31373/sportswear-long-sleeve-t-shirt-QkVp5r.png' />
         </div>
     </div>
-    <div class='col-12 col-md-5'>
+    <div class='col-12 col-md-4 pl-0 pr-0'>
         <div class='d-flex justify-content-center pl-4 pr-4'>
-            <img class='product_image rounded' src='https://d31cu6kgfv0h34.cloudfront.net/uploads/images/202311/img_1920x_654b6441ccb990-96367438-19638772.jpg' />
+            <img class='product_image rounded' src='https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/a53a794f-375a-499d-8ec6-9024e16161ea/sportswear-long-sleeve-t-shirt-QkVp5r.png' />
         </div>
-        <div class='d-flex justify-content-center mt-2'>
-            <button class='btn rounded text-white tap-btn product-360' style='background:#000' data-toggle="modal" data-target="#exampleModalCenter">Tap to view 360</button>
+        <div class='d-flex justify-content-center mt-2 mb-5 mb-md-2'>
+            <button class='btn rounded text-white tap-btn product-360' style='background:#000' data-toggle="modal" data-target="#exampleModalCenter">Tap to view 360
+                <i class="fa-solid fa-rotate"></i>
+            </button>
         </div>
     </div>
 
@@ -188,55 +234,166 @@
             <span class='text-secondary' style='min-width:100px'> Status : </span><span class='text-success'>In Stock</span> <br>
             <span class='text-secondary' style='min-width:100px'> SKU : </span><span class='text-secondary'>16K-872-KSKUCRGP-2-3Y</span>
         </div>
+        <div class='row product_info d-flex' style='flex-wrap:wrap'>
+            <div class='col-12 d-flex justify-content-between'>
+                <div class='col-12 pl-0'>Select Size</div>
+            </div>
+            <div class='col-12 d-flex'>
+                <div class="selector-item">
+                    <input type="radio" id="radio1" name="selector" class="selector-item_radio" checked>
+                    <label for="radio1" class="selector-item_label">S</label>
+                </div>
+                <div class="selector-item">
+                    <input type="radio" id="radio2" name="selector" class="selector-item_radio">
+                    <label for="radio2" class="selector-item_label">M</label>
+                </div>
+                <div class="selector-item">
+                    <input type="radio" id="radio3" name="selector" class="selector-item_radio">
+                    <label for="radio3" class="selector-item_label">L</label>
+                </div>
+                <div class="selector-item">
+                    <input type="radio" id="radio4" name="selector" class="selector-item_radio">
+                    <label for="radio4" class="selector-item_label">XL</label>
+                </div>
+                <div class="selector-item">
+                    <input type="radio" id="radio5" name="selector" class="selector-item_radio">
+                    <label for="radio5" class="selector-item_label">XXL</label>
+                </div>
+            </div>
+        </div>
+        <div class='col-12 pl-0'>
+            <button class='mt-3 btn rounded' style='background:#dfdfdf;color:#2e2e2e;font-weight:600'>Size Guide
+                <i class="fa fa-sort-amount-asc"></i>
+            </button>
+        </div>
+        <div class='col-12 pl-0 mt-4'>
+            <button class='mt-5 btn btn-lg rounded text-white' style='background:#000;min-width:220px'>Add to Cart
+                <i class="fa-solid fa-ta[e"></i>
+            </button>
+            <button class='mt-5 btn btn-outline-dark btn-lg rounded text-white wishlist-btn'><i id='www' style='' class='wishlist-heart fa fa-heart'></i>
+                <i class="fa-solid fa-ta[e"></i>
+            </button>
+        </div>
     </div>
 </div>
-<div class='p-5'>
-    <div class='product_navs_tabs'>
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link active" id="product-description-btn" aria-current="page">Description</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="product-additional-info-btn">Additional Information</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="product-reviews-btn">Reviews</a>
-            </li>
-        </ul>
+
+<!-- mobile desc  -->
+<div class='row m-0 mb-5 mobile_Head_Show' style='padding:0px 0px 0px 0px'>
+    <div class="col-12">
+        <div class="row" data-toggle="collapse" data-target="#Description-box" aria-expanded="false" aria-controls="Description-box">
+            <p class='col-10 footer_Tittle mb-2 pb-4'><a style='text-decoration:none'>Description</a></p>
+            <i style='text-align: end;' class='col-2 fa fa-angle-down'></i>
+        </div>
+        <div id="Description-box" class="collapse" data-parent="#accordion">
+            <div class="pb-3">
+                <div class="" style='color:#000'>
+                    <ul class='pl-4'>
+                        Product Features:
+                        <li> Color: Black </li>
+                        <li> Fabric: georgette </li>
+                        <li> Pattern: Embroidered </li>
+                        <li> Wash Care: Dry Clean </li>
+                        <li> Occasion: Festival/Party </li>
+                        <li> Product Type: Kurta Sets </li>
+                        <li> Disclaimer: There will be slight difference in digital to actual image </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class='pt-5 pb-5 product-description' style='font-size:14px;font-weight:100;color:#7e7e7e'>
-        <ul>
-            Product Features:
-            <li> Color: Black </li>
-            <li> Fabric: georgette </li>
-            <li> Pattern: Embroidered </li>
-            <li> Wash Care: Dry Clean </li>
-            <li> Occasion: Festival/Party </li>
-            <li> Product Type: Kurta Sets </li>
-            <li> Disclaimer: There will be slight difference in digital to actual image </li>
-        </ul>
+    <div class="col-12">
+        <div class="row" data-toggle="collapse" data-target="#additional-box" aria-expanded="false" aria-controls="additional-box">
+            <p class='col-10 footer_Tittle mb-2 pb-4'><a style='text-decoration:none'>Additional Information</a></p>
+            <i style='text-align: end;' class='col-2 fa fa-angle-down'></i>
+        </div>
+        <div id="additional-box" class="collapse" data-parent="#accordion">
+            <div class="pb-3">
+                <div class="" style='color:#000'>
+                    <table class="table table-bordered" cellspacing="0" cellpadding="0">
+                        <tbody>
+                            <tr>
+                                <td class="text-dark" style='background:#f3f3f3;width:200px'><b> Color</b> </td>
+                                <td class="text-dark"> Black </td>
+                            </tr>
+                            <tr>
+                                <td class="text-dark" style='background:#f3f3f3;width:200px'><b> Occassion</b> </td>
+                                <td class="text-dark"> Diwali </td>
+                            </tr>
+                            <tr>
+                                <td class="text-dark" style='background:#f3f3f3;width:200px'><b> Fabric</b> </td>
+                                <td class="text-dark"> Cotton </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class='pt-5 pb-5 w-100 product-additional-info' style='display:none;font-size:14px;font-weight:100;color:#7e7e7e'>
-        <table class="table table-bordered" cellspacing="0" cellpadding="0">
-            <tbody>
-                <tr>
-                    <td class="text-dark" style='background:#f3f3f3;width:200px'><b> Color</b> </td>
-                    <td class="text-dark"> Black </td>
-                </tr>
-                <tr>
-                    <td class="text-dark" style='background:#f3f3f3;width:200px'><b> Occassion</b> </td>
-                    <td class="text-dark"> Diwali </td>
-                </tr>
-                <tr>
-                    <td class="text-dark" style='background:#f3f3f3;width:200px'><b> Fabric</b> </td>
-                    <td class="text-dark"> Cotton </td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="col-12">
+        <div class="row" data-toggle="collapse" data-target="#Reviews-box" aria-expanded="false" aria-controls="Reviews-box">
+            <p class='col-10 footer_Tittle mb-2 pb-4'><a style='text-decoration:none'>Reviews</a></p>
+            <i style='text-align: end;' class='col-2 fa fa-angle-down'></i>
+        </div>
+        <div id="Reviews-box" class="collapse" data-parent="#accordion">
+            <div class="pb-3">
+                <div class="" style='color:#000'>
+                    <p style='color:#7e7e7e'><b>No reviews found !</b></p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class='pt-5 pb-5 w-100 text-dark product-reviews' style='display:none;font-size:15px;font-weight:100;'>
-        <p><b>Reviews</b></p>
-        <p style='color:#7e7e7e'><b>No reviews found !</b></p>
+</div>
+
+<!-- pc desc  -->
+<div class='mobile_Head_hide'>
+    <div class='p-5'>
+        <div class='product_navs_tabs'>
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" id="product-description-btn" aria-current="page">Description</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="product-additional-info-btn">Additional Information</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="product-reviews-btn">Reviews</a>
+                </li>
+            </ul>
+        </div>
+        <div class='pt-5 pb-5 product-description' style='font-size:14px;font-weight:100;color:#7e7e7e'>
+            <ul>
+                Product Features:
+                <li> Color: Black </li>
+                <li> Fabric: georgette </li>
+                <li> Pattern: Embroidered </li>
+                <li> Wash Care: Dry Clean </li>
+                <li> Occasion: Festival/Party </li>
+                <li> Product Type: Kurta Sets </li>
+                <li> Disclaimer: There will be slight difference in digital to actual image </li>
+            </ul>
+        </div>
+        <div class='pt-5 pb-5 w-100 product-additional-info' style='display:none;font-size:14px;font-weight:100;color:#7e7e7e'>
+            <table class="table table-bordered" cellspacing="0" cellpadding="0">
+                <tbody>
+                    <tr>
+                        <td class="text-dark" style='background:#f3f3f3;width:200px'><b> Color</b> </td>
+                        <td class="text-dark"> Black </td>
+                    </tr>
+                    <tr>
+                        <td class="text-dark" style='background:#f3f3f3;width:200px'><b> Occassion</b> </td>
+                        <td class="text-dark"> Diwali </td>
+                    </tr>
+                    <tr>
+                        <td class="text-dark" style='background:#f3f3f3;width:200px'><b> Fabric</b> </td>
+                        <td class="text-dark"> Cotton </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class='pt-5 pb-5 w-100 text-dark product-reviews' style='display:none;font-size:15px;font-weight:100;'>
+            <p><b>Reviews</b></p>
+            <p style='color:#7e7e7e'><b>No reviews found !</b></p>
+        </div>
     </div>
 </div>
 <!-- Modal -->
@@ -302,106 +459,10 @@
     </div>
 </div>
 
-<!-- Item slider 5 items more from shop-->
-<div class="container-fluid product-slider gap">
-    <div class='galler_heading d-flex justify-content-between' style='border-bottom: 1px solid #d5d5d5;height:40px;margin:0px 20px 10px 20px;padding-bottom:45px;'>
-        <p style='font-size:25px;'>More from G MENTOR </p>
-        <div class='text-center gap mobile_Head_Hide'><button class='btn rounded' style='background:#000;color:#fff;'>View All </button></div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="carousel carousel-showmanymoveone slide" id="itemslider">
-                <div class="carousel-inner">
-                    <div class="item active">
-                        <div class="col-xs-12 col-sm-4 col-md-2 product-slider-img">
-                            <a href="#"><img src="https://images.unsplash.com/photo-1539840093138-9b3e230e5206?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=765a2eb222b1851840a4a157780fb487&auto=format&fit=crop&w=1534&q=80" class="img-responsive center-block"></a>
-                            <h4 class="text-center">MAYORAL SUKNJA</h4>
-                            <h5 class="text-center">200,00 TK</h5>
-                            <div class='add-to-cart'>
-                                <a href='#'>
-                                    <span class="fa-stack fa-2x">
-                                        <i class="fa-solid fa-circle fa-stack-2x add-to-cart-btn-outer"></i>
-                                        <i class="fa-solid fa-cart-shopping fa-stack-1x add-to-cart-btn" style='top:2'></i>
-                                    </span>
-                                </a>
-                                <a href='#'>
-                                    <span class="fa-stack fa-2x">
-                                        <i class="fa-solid fa-circle fa-stack-2x wishlist-btn-outer"></i>
-                                        <i class="fa-regular fa-bounce fa-heart fa-stack-1x fa-inverse wishlist-btn" style='top:2'></i>
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="col-xs-12 col-sm-4 col-md-2">
-                            <a href="#"><img src="https://images.unsplash.com/photo-1524010349062-860def6649c3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e725946a3f177dce83a705d4b12019c2&auto=format&fit=crop&w=500&q=60" class="img-responsive center-block"></a>
-                            <h4 class="text-center">MAYORAL KOŠULJA</h4>
-                            <h5 class="text-center">800 TK</h5>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="col-xs-12 col-sm-4 col-md-2">
-                            <a href="#"><img src="https://images.unsplash.com/photo-1511556820780-d912e42b4980?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=04aebe9a22884efa1a5f61e434215597&auto=format&fit=crop&w=500&q=60" class="img-responsive center-block"></a>
-                            <span class="badge">10%</span>
-                            <h4 class="text-center">PANTALONE TERI 2</h4>
-                            <h5 class="text-center">4000,00 TK</h5>
-                            <h6 class="text-center">5000,00 TK</h6>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="col-xs-12 col-sm-4 col-md-2">
-                            <a href="#"><img src="https://images.unsplash.com/photo-1531925470851-1b5896b67dcd?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=91fe0ca1b5d72338a8aac04935b52148&auto=format&fit=crop&w=500&q=60" class="img-responsive center-block"></a>
-                            <h4 class="text-center">CVETNA HALJINA</h4>
-                            <h5 class="text-center">4000,00 RSD</h5>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="col-xs-12 col-sm-4 col-md-2">
-                            <a href="#"><img src="https://images.unsplash.com/photo-1516961642265-531546e84af2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=74065eec3c2f6a8284bbe30402432f1d&auto=format&fit=crop&w=500&q=60" class="img-responsive center-block"></a>
-                            <h4 class="text-center">MAJICA FOTO</h4>
-                            <h5 class="text-center">40,00 TK</h5>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="col-xs-12 col-sm-4 col-md-2">
-                            <a href="#"><img src="https://images.unsplash.com/photo-1532086853747-99450c17fa2e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=61a42a11f627b0d21d0df757d9b8fe23&auto=format&fit=crop&w=500&q=60" class="img-responsive center-block"></a>
-                            <h4 class="text-center">MAJICA MAYORAL</h4>
-                            <h5 class="text-center">100,00 TK</h5>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div id="slider-control">
-                    <a class="left carousel-control" href="#itemslider" data-slide="prev">
-                        <span class="fa-stack fa-1x">
-                            <i class="fa-solid fa-circle fa-stack-2x"></i>
-                            <i class="fa-solid fa-angle-left fa-stack-1x" style='color:#7b838d'></i>
-                        </span>
-                    </a>
-                    <a class="right carousel-control" href="#itemslider" data-slide="next">
-                        <span class="fa-stack fa-1x">
-                            <i class="fa-solid fa-circle fa-stack-2x"></i>
-                            <i class="fa-solid fa-angle-right fa-stack-1x" style='color:#7b838d'></i>
-                        </span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class='text-center gap mobile_Head_Show' style='justify-content: center;'><button class='btn rounded-0' style='background:#000;color:#fff;'>View All</button></div>
-</div>
-
 <!-- Item slider 5 items you may also like-->
 <div class="container-fluid product-slider gap">
     <div class='galler_heading d-flex justify-content-between' style='border-bottom: 1px solid #d5d5d5;height:40px;margin:0px 20px 10px 20px;padding-bottom:45px;'>
-        <p style='font-size:25px;'>SIMILAR PRODUCTS</p>
+        <p style='font-size:25px;'>You Might Also Like</p>
         <!-- <div class='text-center gap mobile_Head_Hide'><button class='btn rounded' style='background:#000;color:#fff;'>View All </button></div> -->
     </div>
     <div class="row">
@@ -592,6 +653,10 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
+        $(".wishlist-btn").mouseover(function() {
+            $("#www").css("display", "none !important");
+        });
+
         $('.tap-btn').click(function() {
             // $('#product').css('display', 'block');
             $('#product').addClass('responsive-product-360');
@@ -642,7 +707,7 @@
 
             $('.backdrop').css('display', 'none');
             $('#main').css('display', 'none');
-            
+
             $('body').css('position', 'initial');
         });
     });
