@@ -1,241 +1,138 @@
 <?= $this->extend('Shop/Layout/layout') ?>
 <?= $this->section('content') ?>
 <!-- corousel -->
-<div id="carouselExampleIndicators" style='z-index:-100;' class="carousel slide gap" data-ride="carousel">
+<div id="carouselExampleIndicators" style='z-index:-100;' class="carousel slide carousel-fade" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img class="d-block w-100" src="<?= base_url('uploads/carousel1.webp') ?>" alt="First slide">
-        </div>
-        <div class="carousel-item">
-            <img class="d-block w-100" src="<?= base_url('uploads/carousel2.webp') ?>" alt="Second slide">
-        </div>
-        <div class="carousel-item">
-            <img class="d-block w-100" src="<?= base_url('uploads/carousel3.webp') ?>" alt="Third slide">
-        </div>
+        <?php if (isset($slider)) {
+            $i = 0;
+            foreach ($slider as $row) { ?>
+                <div class="carousel-item <?php if ($i == 0) {
+                                                echo 'active';
+                                            } ?>">
+                    <img class="d-block w-100" src="<?= base_url('uploads/slider/' . $row->name) ?>" alt="corousel">
+                </div>
+        <?php $i++;
+            }
+        } ?>
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
+    <!-- <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a> -->
 </div>
+
+<!-- maliaka Edit -->
+<!-- landing padding-left -->
+<!-- <div class='row p-3 pb-0 m-0 mb-4' id='philosophy' style='background:#7C0935;'>
+    <div class='col-6 p-4'>
+        <p class='h2 mb-3 text-light'>OUR PHILOSOPHY</p>
+        <p style='font-size:15px;' class='text-light'>Cara, believes in redefining spaces to inspire lives. Our philosophy is rooted in the idea that every kitchen and living area should not just be functional, but also reflect the unique personality and lifestyle of its inhabitants. We strive to blend innovation with practicality, offering modular kitchen and furniture solutions that seamlessly adapt to diverse needs and preferences. From sleek and modern designs to timeless classics, our goal is to empower our customers to create spaces that they truly love to live in. With a commitment to quality craftsmanship and unparalleled customer service, we're dedicated to helping you transform your vision into reality, one modular piece at a time. Welcome to a world where your imagination knows no bounds, and your space becomes an expression of your individuality.</p>
+
+    </div>
+    <div class='col-6 p-0'>
+        <img width='100%' src='<//?= base_url('/uploads/philosophy.jpg'); ?>'>
+    </div>
+</div> -->
+
+
 <!-- banner  for 6 images -->
-<div class="" style="padding-left:10px;padding-right:10px;">
-    <div class="row m-0 banner gap">
-        <div class="col-lg-2 col-md-4 col-xs-6 text-center">
-            <img class='banner_img rounded' src='<?= base_url('uploads/banner/banner1.jpg') ?>' />
-        </div>
-        <div class="col-lg-2 col-md-4 col-xs-6 text-center">
-            <img class='banner_img rounded' src='<?= base_url('uploads/banner/banner2.jpg') ?>' />
-        </div>
-        <div class="col-lg-2 col-md-4 col-xs-6 text-center">
-            <img class='banner_img rounded' src='<?= base_url('uploads/banner/banner3.jpg') ?>' />
-        </div>
-        <div class="col-lg-2 col-md-4 col-xs-6 text-center">
-            <img class='banner_img rounded' src='<?= base_url('uploads/banner/banner4.jpg') ?>' />
-        </div>
-        <div class="col-lg-2 col-md-4 col-xs-6 text-center">
-            <img class='banner_img rounded' src='<?= base_url('uploads/banner/banner5.jpg') ?>' />
-        </div>
-        <div class="col-lg-2 col-md-4 col-xs-6 text-center">
-            <img class='banner_img rounded' src='<?= base_url('uploads/banner/banner6.jpg') ?>' />
+<?php if (isset($banner1)) { ?>
+    <div class="" style="padding-left:10px;padding-right:10px;">
+        <div class="row m-0 banner gap">
+            <?php foreach ($banner1 as $row) { ?>
+                <div class="col-lg-2 col-md-4 col-xs-6 text-center">
+                    <img class='banner_img rounded' src='<?= base_url('uploads/banner/' . $row->name) ?>' />
+                </div>
+            <?php } ?>
         </div>
     </div>
-</div>
+<?php } ?>
+
 <!-- product gallery for 10 items -->
 <div class="" style="padding-left:10px;padding-right:10px;">
     <div class='galler_heading d-flex justify-content-between' style='border-bottom: 1px solid #d5d5d5;height:40px;margin:0px 20px 10px 20px;padding-bottom:45px;'>
-        <p style='font-size:25px;'>BEST SELLERS</p>
-        <div class='text-center gap mobile_Head_Hide'><button class='btn rounded' style='background:#000;color:#fff;'>GO TO BEST SELLERS</button></div>
+        <p style='font-size:25px;'>FURNITURE</p>
+        <!-- <div class='text-center gap mobile_Head_Hide'><button class='btn rounded' style='background:#7C0935;color:#fff;'> VIEW MORE </button></div> -->
     </div>
+
     <div class="row m-0 gallery gap">
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 text-center p-3">
-            <div class='p-3 gallery_container'>
-                <img class='gallery_img' src='<?= base_url('/uploads/product_images/product1.webp') ?>' />
-                <div class='text-left pt-3'>
-                    <p class='mb-2'>$118</p>
-                    <p>Men's Art Silk Embroided joghpuri Jacket</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 text-center p-3">
-            <div class='p-3 gallery_container'>
-                <img class='gallery_img' src='<?= base_url('/uploads/product_images/product2.webp') ?>' />
-                <div class='text-left pt-3'>
-                    <p class='mb-2'>$118</p>
-                    <p>Men's Art Silk Embroided joghpuri Jacket</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 text-center p-3">
-            <div class='p-3 gallery_container'>
-                <img class='gallery_img' src='<?= base_url('/uploads/product_images/product3.webp') ?>' />
-                <div class='text-left pt-3'>
-                    <p class='mb-2'>$118</p>
-                    <p>Men's Art Silk Embroided joghpuri Jacket</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 text-center p-3">
-            <div class='p-3 gallery_container'>
-                <img class='gallery_img' src='<?= base_url('/uploads/product_images/product4.webp') ?>' />
-                <div class='text-left pt-3'>
-                    <p class='mb-2'>$118</p>
-                    <p>Men's Art Silk Embroided joghpuri Jacket</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 text-center p-3">
-            <div class='p-3 gallery_container'>
-                <img class='gallery_img' src='<?= base_url('/uploads/product_images/product5.webp') ?>' />
-                <div class='text-left pt-3'>
-                    <p class='mb-2'>$118</p>
-                    <p>Men's Art Silk Embroided joghpuri Jacket</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 text-center p-3">
-            <div class='p-3 gallery_container'>
-                <img class='gallery_img' src='<?= base_url('/uploads/product_images/product6.webp') ?>' />
-                <div class='text-left pt-3'>
-                    <p class='mb-2'>$118</p>
-                    <p>Men's Art Silk Embroided joghpuri Jacket</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 text-center p-3">
-            <div class='p-3 gallery_container'>
-                <img class='gallery_img' src='<?= base_url('/uploads/product_images/product7.webp') ?>' />
-                <div class='text-left pt-3'>
-                    <p class='mb-2'>$118</p>
-                    <p>Men's Art Silk Embroided joghpuri Jacket</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 text-center p-3">
-            <div class='p-3 gallery_container'>
-                <img class='gallery_img' src='<?= base_url('/uploads/product_images/product8.webp') ?>' />
-                <div class='text-left pt-3'>
-                    <p class='mb-2'>$118</p>
-                    <p>Men's Art Silk Embroided joghpuri Jacket</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 text-center p-3">
-            <div class='p-3 gallery_container'>
-                <img class='gallery_img' src='<?= base_url('/uploads/product_images/product3.webp') ?>' />
-                <div class='text-left pt-3'>
-                    <p class='mb-2'>$118</p>
-                    <p>Men's Art Silk Embroided joghpuri Jacket</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 text-center p-3">
-            <div class='p-3 gallery_container'>
-                <img class='gallery_img' src='<?= base_url('/uploads/product_images/product4.webp') ?>' />
-                <div class='text-left pt-3'>
-                    <p class='mb-2'>$118</p>
-                    <p>Men's Art Silk Embroided joghpuri Jacket</p>
-                </div>
-            </div>
-        </div>
+        <?php if (isset($section1)) {
+            include('section1.php');
+        } ?>
     </div>
-    <div class='text-center gap mobile_Head_Show' style='justify-content: center;'><button class='btn rounded-0' style='background:#000;color:#fff;'>GO TO BEST SELLERS</button></div>
+    <!-- <div class='text-center gap mobile_Head_Show' style='justify-content: center;'><button class='btn rounded-0' style='background:#000;color:#fff;'>GO TO BEST SELLERS</button></div> -->
 </div>
+
+
+<!-- mallika our story # -->
+<!-- <div class='row p-3 pb-0 m-0 mb-5' style='background:#7C0935;'>
+    <div class='col-6 p-0'>
+        <img width='100%' src='<?= base_url('/uploads/story.jpg'); ?>'>
+    </div>
+    <div class='col-6 p-4' id='story'>
+        <p class='h2 mb-3  text-light'>OUR STORY</p>
+        <p style='font-size:15px;color:#dfdfdf' class=''>At the heart of Cara's ethos lies a dedication to quality craftsmanship and functional design. Established in 2003, Cara gained popularity with setting up its first showroom that displays kitchen layouts with aesthetic appeal and practical solutions to everyday living and furniture that suit specific room dimensions.
+            Started by Ms.Mallika Shaikh, driven by a passion for innovation, continually pushes the boundaries of design, incorporating the latest trends and technological advancements to deliver products that exceed expectations. From sleek, minimalist kitchens to multifunctional furniture solutions, each Cara creation is a testament to the brand's commitment to elevating the way we live and interact with our surroundings.
+            With Cara, the journey to a dream home begins with endless possibilities. Discover the art of modular living and transform your space with Cara's exquisite collection of kitchen and furniture designs. </p>
+        <a href='<//?= base_url('/story'); ?>'><button class='btn bg-light text-dark'> Read More </button></a>
+    </div>
+</div> -->
+
 <!-- banner for 4 images -->
-<div class="" style="padding-left:10px;padding-right:10px;">
-    <div class='galler_heading d-flex justify-content-between' style='border-bottom: 1px solid #d5d5d5;height:40px;margin:0px 20px 10px 20px;padding-bottom:45px;'>
-        <p style='font-size:25px;'>CRAZY DEALS</p>
-    </div>
-    <div class="row m-0 banner4 gap">
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 text-center">
-            <img class='banner_img_4 mb-4' src='<?= base_url('uploads/banner/crazydeals1.jpg') ?>' />
+<?php if (isset($banner2[0])) { ?>
+    <div class="" style="padding-left:10px;padding-right:10px;">
+        <div class='galler_heading d-flex justify-content-between' style='border-bottom: 1px solid #d5d5d5;height:40px;margin:0px 20px 10px 20px;padding-bottom:45px;'>
+            <p style='font-size:25px;'>OUR TOP FINISHES</p>
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 text-center">
-            <img class='banner_img_4 mb-4' src='<?= base_url('uploads/banner/crazydeals2.jpg') ?>' />
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 text-center">
-            <img class='banner_img_4 mb-4' src='<?= base_url('uploads/banner/crazydeals3.jpg') ?>' />
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 text-center">
-            <img class='banner_img_4 mb-4' src='<?= base_url('uploads/banner/crazydeals4.jpg') ?>' />
+        <div class="row m-0 banner4 gap">
+            <?php foreach ($banner2 as $row) { ?>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 text-center">
+                    <img class='banner_img_4 mb-4' src='<?= base_url('uploads/banner/' . $row->name) ?>' />
+                </div>
+            <?php } ?>
         </div>
     </div>
-</div>
+<?php } ?>
+
 <!-- banner for 1 images -->
-<div class="" style="padding-left:10px;padding-right:10px;">
-    <!-- <div class='galler_heading text-center'>
+<?php if (isset($banner3)) { ?>
+    <div class="" style="padding-left:10px;padding-right:10px;">
+        <!-- <div class='galler_heading text-center'>
         <p style='font-size:35px;font-weight:700'>Coupons Corner</p>
     </div> -->
-    <div class="row m-0 banner4 gap">
-        <div class="col-12 text-center">
-            <img style='width:100%' class='mb-4' src='<?= base_url('uploads/banner/banner_full.avif') ?>' />
+        <div class="row m-0 banner4 gap">
+            <?php foreach ($banner3 as $row) { ?>
+                <div class="col-12 text-center">
+                    <img style='width:100%' class='mb-4' src='<?= base_url('uploads/banner/' . $row->name) ?>' />
+                </div>
+            <?php } ?>
         </div>
     </div>
-</div>
+<?php } ?>
+
 <!-- product gallery for 5 items -->
 <div class="" style="padding-left:10px;padding-right:10px;">
     <div class='galler_heading d-flex justify-content-between' style='border-bottom: 1px solid #d5d5d5;height:40px;margin:0px 20px 10px 20px;padding-bottom:45px;'>
-        <p style='font-size:25px;'>TRENDING WEAR</p>
-        <div class='text-center gap mobile_Head_Hide'><button class='btn rounded' style='background:#000;color:#fff;'>GO TO TRENDING WEAR</button></div>
+        <p style='font-size:25px;'>CHAIRS </p>
+        <!-- <div class='text-center gap mobile_Head_Hide'><button class='btn rounded' style='background:#7C0935;color:#fff;'>VIEW MORE</button></div> -->
     </div>
     <div class="row m-0 gallery gap">
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 text-center p-3">
-            <div class='p-3 gallery_container'>
-                <img class='gallery_img' src='<?= base_url('/uploads/product_images/product4.webp') ?>' />
-                <div class='text-left pt-3'>
-                    <p class='mb-2'>$118</p>
-                    <p>Men's Art Silk Embroided joghpuri Jacket</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 text-center p-3">
-            <div class='p-3 gallery_container'>
-                <img class='gallery_img' src='<?= base_url('/uploads/product_images/product5.webp') ?>' />
-                <div class='text-left pt-3'>
-                    <p class='mb-2'>$118</p>
-                    <p>Men's Art Silk Embroided joghpuri Jacket</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 text-center p-3">
-            <div class='p-3 gallery_container'>
-                <img class='gallery_img' src='<?= base_url('/uploads/product_images/product6.webp') ?>' />
-                <div class='text-left pt-3'>
-                    <p class='mb-2'>$118</p>
-                    <p>Men's Art Silk Embroided joghpuri Jacket</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 text-center p-3">
-            <div class='p-3 gallery_container'>
-                <img class='gallery_img' src='<?= base_url('/uploads/product_images/product7.webp') ?>' />
-                <div class='text-left pt-3'>
-                    <p class='mb-2'>$118</p>
-                    <p>Men's Art Silk Embroided joghpuri Jacket</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 text-center p-3">
-            <div class='p-3 gallery_container'>
-                <img class='gallery_img' src='<?= base_url('/uploads/product_images/product8.webp') ?>' />
-                <div class='text-left pt-3'>
-                    <p class='mb-2'>$118</p>
-                    <p>Men's Art Silk Embroided joghpuri Jacket</p>
-                </div>
-            </div>
-        </div>
+        <?php if (isset($section2)) {
+            include('section2.php');
+        } ?>
     </div>
-    <div class='text-center gap mobile_Head_Show' style='justify-content: center;'><button class='btn rounded-0' style='background:#000;color:#fff;'>GO TO TRENDING WEAR</button></div>
+    <!-- <div class='text-center gap mobile_Head_Show' style='justify-content: center;'><button class='btn rounded-0' style='background:#000;color:#fff;'>GO TO TRENDING WEAR</button></div> -->
 </div>
+
 <!-- banner for 2 images -->
 <div class="" style="padding-left:10px;padding-right:10px;">
     <div class='galler_heading d-flex justify-content-between' style='border-bottom: 1px solid #d5d5d5;height:40px;margin:0px 20px 10px 20px;padding-bottom:45px;'>
@@ -243,15 +140,15 @@
     </div>
     <div class="row m-0 banner4 gap">
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
-            <img style='width:100%' class='mb-4' src='<?= base_url('uploads/banner/coupon1.jpg') ?>' />
+            <img style='width:100%' class='mb-4' src='<?= base_url('uploads/banner/coupon1.png') ?>' />
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
-            <img style='width:100%' class='mb-4' src='<?= base_url('uploads/banner/coupon2.jpg') ?>' />
+            <img style='width:100%' class='mb-4' src='<?= base_url('uploads/banner/coupon1.png') ?>' />
         </div>
     </div>
 </div>
 <!-- Item slider 5 items-->
-<div class="container-fluid product-slider gap">
+<!-- <div class="container-fluid product-slider gap">
     <div class='galler_heading d-flex justify-content-between' style='border-bottom: 1px solid #d5d5d5;height:40px;margin:0px 20px 10px 20px;padding-bottom:45px;'>
         <p style='font-size:25px;'>SALE AND OFFERS </p>
         <div class='text-center gap mobile_Head_Hide'><button class='btn rounded' style='background:#000;color:#fff;'>GO TO SALE AND OFFERS </button></div>
@@ -344,19 +241,9 @@
         </div>
     </div>
     <div class='text-center gap mobile_Head_Show' style='justify-content: center;'><button class='btn rounded-0' style='background:#000;color:#fff;'>GO TO SALE AND OFFERS</button></div>
-</div>
+</div> -->
 
-<!-- email signup   -->
-<div class="row justify-content-center m-0 gap">
-    <div class='col-lg-12 text-center col-md-12 mb-0 mt-4'>
-        <p style='font-size:20px;font-weight:700;margin:0px'>BE IN THE KNOW AT NYKAA</p>
-    </div>
-    <div class='col-lg-12 text-center col-md-12 mb-4'>
-        <p style='font-size:12px;font-weight:500;margin:0px'>Subscribe to hear about our sales, special discounts, and new product launches</p>
-    </div>
-    <div class='col-lg-12 col-md-12 mb-4 d-flex justify-content-center'>
-        <input type="text" class="form-control rounded-0" placeholder="Enter your Email" style='width:220px' />
-        <button class="btn rounded-0" style='background:#000;color:#fff'>Subscribe</button>
-    </div>
-</div>
+
+<?php include('app\Views\Shop\Layout\reviewslider.php'); ?>
+
 <?= $this->endSection() ?>

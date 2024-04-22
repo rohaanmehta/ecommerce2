@@ -201,40 +201,53 @@
 <div class='row p-4'>
     <div class='col-1 mobile_Head_Hide'>
         <div class='row pl-5 justify-content-end'>
-            <img class='product_image_thumbnails rounded' style='border:1px solid #b5b5b5' src='https://static.nike.com/a/images/t_default/175f9715-a518-420d-b806-356dbfd31373/sportswear-long-sleeve-t-shirt-QkVp5r.png' />
-            <img class='product_image_thumbnails rounded' src='https://static.nike.com/a/images/t_default/f1dcaf6b-999e-424c-93df-09448d97e75b/sportswear-long-sleeve-t-shirt-QkVp5r.png' />
-            <img class='product_image_thumbnails rounded' src='https://static.nike.com/a/images/t_default/175f9715-a518-420d-b806-356dbfd31373/sportswear-long-sleeve-t-shirt-QkVp5r.png' />
-            <img class='product_image_thumbnails rounded' src='https://static.nike.com/a/images/t_default/175f9715-a518-420d-b806-356dbfd31373/sportswear-long-sleeve-t-shirt-QkVp5r.png' />
-            <img class='product_image_thumbnails rounded' src='https://static.nike.com/a/images/t_default/175f9715-a518-420d-b806-356dbfd31373/sportswear-long-sleeve-t-shirt-QkVp5r.png' />
+            <?php if (isset($product)) { ?>
+                <?php if ($product[0]->image_name1 != '') { ?>
+                    <img class='product_image_thumbnails rounded' style='filter:brightness(80%);border:1px solid #b5b5b5' src='<?= base_url('uploads/product_images/' . $product[0]->image_name1); ?>' />
+                <?php } ?>
+                <?php if ($product[0]->image_name2 != '') { ?>
+                    <img class='product_image_thumbnails rounded' src='<?= base_url('uploads/product_images/' . $product[0]->image_name2); ?>' />
+                <?php } ?>
+                <?php if ($product[0]->image_name3 != '') { ?>
+                    <img class='product_image_thumbnails rounded' src='<?= base_url('uploads/product_images/' . $product[0]->image_name3); ?>' />
+                <?php } ?>
+                <?php if ($product[0]->image_name4 != '') { ?>
+                    <img class='product_image_thumbnails rounded' src='<?= base_url('uploads/product_images/' . $product[0]->image_name4); ?>' />
+            <?php }
+            } ?>
         </div>
     </div>
     <div class='col-12 col-md-4 pl-0 pr-0'>
         <div class='d-flex justify-content-center pl-4 pr-4'>
-            <img class='product_image rounded' src='https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/a53a794f-375a-499d-8ec6-9024e16161ea/sportswear-long-sleeve-t-shirt-QkVp5r.png' />
+            <img class='product_image rounded' src='<?= base_url('uploads/product_images/' . $product[0]->image_name1); ?>' />
         </div>
-        <div class='d-flex justify-content-center mt-2 mb-5 mb-md-2'>
+        <!-- tap to view 360  -->
+        <!-- <div class='d-flex justify-content-center mt-2 mb-5 mb-md-2'>
             <button class='btn rounded text-white tap-btn product-360' style='background:#000' data-toggle="modal" data-target="#exampleModalCenter">Tap to view 360
                 <i class="fa-solid fa-rotate"></i>
             </button>
-        </div>
+        </div> -->
     </div>
 
     <div class='col-12 col-md-5'>
         <div class='product_heading'>
-            Girls Orange Crepe Gold Striped Printed Kids Dress Kurta With Attached Dupatta
+            <?= $product[0]->title; ?>
         </div>
         <div class='product_shop_tittle'>
-            Shop the collection by <a href='#' class='shop_name'>G mentor </a>
+            <!-- Shop the collection by <a href='#' class='shop_name'>G mentor </a> -->
         </div>
 
         <div class='product_price'>
-            $50
+            $<?= $product[0]->price; ?>
         </div>
         <div class='product_info'>
-            <span class='text-secondary' style='min-width:100px'> Status : </span><span class='text-success'>In Stock</span> <br>
-            <span class='text-secondary' style='min-width:100px'> SKU : </span><span class='text-secondary'>16K-872-KSKUCRGP-2-3Y</span>
+            <span class='text-secondary' style='min-width:100px'> Status : </span>
+            <?php if ($product[0]->stock > 0) { ?> <span class='text-success'>In Stock</span> <?php } else { ?> <span class='text-danger'>OUT of Stock</span> <?php } ?><br>
+            <span class='text-secondary' style='min-width:100px'> SKU : </span><span class='text-secondary'> <?= $product[0]->sku ?> </span>
         </div>
-        <div class='row product_info d-flex' style='flex-wrap:wrap'>
+
+        <!-- variation  -->
+        <!-- <div class='row product_info d-flex' style='flex-wrap:wrap'>
             <div class='col-12 d-flex justify-content-between'>
                 <div class='col-12 pl-0'>Select Size</div>
             </div>
@@ -260,25 +273,65 @@
                     <label for="radio5" class="selector-item_label">XXL</label>
                 </div>
             </div>
-        </div>
-        <div class='col-12 pl-0'>
+        </div> -->
+
+        <!-- sizeguide -->
+        <!-- <div class='col-12 pl-0'>
             <button class='mt-3 btn rounded' style='background:#dfdfdf;color:#2e2e2e;font-weight:600'>Size Guide
                 <i class="fa fa-sort-amount-asc"></i>
             </button>
-        </div>
-        <div class='col-12 pl-0 mt-4'>
-            <button class='mt-5 btn btn-lg rounded text-white' style='background:#000;min-width:220px'>Add to Cart
+        </div> -->
+
+        <?php if ($product[0]->purchasable == 1) { ?>
+            <div class='col-12 pl-0 mt-0'>
+                <?php if ($product[0]->stock > 0) { ?>
+                    <button class='mt-5 btn btn-lg rounded text-white addtocart' style='background:#000;min-width:220px'>Add to Cart
+                        <i class="fa-solid fa-ta[e"></i>
+                    </button>
+                <?php } else { ?>
+                    <button class='mt-5 btn btn-lg rounded text-white' style='background:#000;min-width:220px'>OUT OF STOCK
+                        <i class="fa-solid fa-ta[e"></i>
+                    </button>
+                <?php } ?>
+                <!-- <button class='mt-5 btn btn-outline-dark btn-lg rounded text-white wishlist-btn'><i id='www' style='' class='wishlist-heart fa fa-heart'></i>
+                <i class="fa-solid fa-ta[e"></i>
+            </button> -->
+            </div>
+        <?php } else { ?>
+            <button class='mt-5 btn btn-lg rounded text-white' data-toggle="modal" data-target="#exampleModal" style='background:#000;min-width:220px'>Enquiry
                 <i class="fa-solid fa-ta[e"></i>
             </button>
-            <button class='mt-5 btn btn-outline-dark btn-lg rounded text-white wishlist-btn'><i id='www' style='' class='wishlist-heart fa fa-heart'></i>
-                <i class="fa-solid fa-ta[e"></i>
-            </button>
-        </div>
+        <?php } ?>
     </div>
 </div>
 
+<!-- you may also like  -->
+<div class="mt-5" style="padding-left:10px;padding-right:10px;">
+    <div class='galler_heading d-flex justify-content-between' style='border-bottom: 1px solid #d5d5d5;height:40px;margin:0px 20px 10px 20px;padding-bottom:45px;'>
+        <p style='font-size:25px;'>YOU MAY ALSO LIKE </p>
+    </div>
+    <div class="row m-0 gallery gap">
+        <?php if (isset($section1)) {
+            include('section1.php');
+        } ?>
+    </div>
+</div>
+
+<!-- you may also like  -->
+<div class="" style="padding-left:10px;padding-right:10px;">
+    <div class='galler_heading d-flex justify-content-between' style='border-bottom: 1px solid #d5d5d5;height:40px;margin:0px 20px 10px 20px;padding-bottom:45px;'>
+        <p style='font-size:25px;'>OUR BEST PRODUCTS </p>
+    </div>
+    <div class="row m-0 gallery gap">
+        <?php if (isset($section2)) {
+            include('section2.php');
+        } ?>
+    </div>
+</div>
+
+
 <!-- mobile desc  -->
-<div class='row m-0 mb-5 mobile_Head_Show' style='padding:0px 0px 0px 0px'>
+<!-- <div class='row m-0 mb-5 mobile_Head_Show' style='padding:0px 0px 0px 0px'>
     <div class="col-12">
         <div class="row" data-toggle="collapse" data-target="#Description-box" aria-expanded="false" aria-controls="Description-box">
             <p class='col-10 footer_Tittle mb-2 pb-4'><a style='text-decoration:none'>Description</a></p>
@@ -342,10 +395,10 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- pc desc  -->
-<div class='mobile_Head_hide'>
+<!-- <div class='mobile_Head_hide'>
     <div class='p-5'>
         <div class='product_navs_tabs'>
             <ul class="nav nav-tabs">
@@ -395,7 +448,8 @@
             <p style='color:#7e7e7e'><b>No reviews found !</b></p>
         </div>
     </div>
-</div>
+</div> -->
+
 <!-- Modal -->
 <div class='backdrop'></div>
 
@@ -459,12 +513,44 @@
     </div>
 </div>
 
-<!-- Item slider 5 items you may also like-->
-<div class="container-fluid product-slider gap">
-    <div class='galler_heading d-flex justify-content-between' style='border-bottom: 1px solid #d5d5d5;height:40px;margin:0px 20px 10px 20px;padding-bottom:45px;'>
-        <p style='font-size:25px;'>You Might Also Like</p>
-        <!-- <div class='text-center gap mobile_Head_Hide'><button class='btn rounded' style='background:#000;color:#fff;'>View All </button></div> -->
+<!-- malika enquiry modal  -->
+<!-- Modal -->
+<form class='enquiry-form'>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Enquiry </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class='mb-2'>
+                        <span class='form-label'>Name</span>
+                        <input type='text' name='name' required class='form-control w-50 name' placeholder='Name' />
+                    </div>
+                    <div class='mb-2'>
+                        <span class='form-label'>Contact</span>
+                        <input type='text' name='contact' required class='form-control w-50 contact' placeholder='Contact' />
+                    </div>
+                    <input type='hidden' class='product_id' value='<?= $product[0]->id; ?>' name='product_id'>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
     </div>
+</form>
+
+<!-- Item slider 5 items you may also like-->
+<!-- <div class="container-fluid product-slider gap">
+    <div class='galler_heading d-flex justify-content-between' style='border-bottom: 1px solid #d5d5d5;height:40px;margin:0px 20px 10px 20px;padding-bottom:45px;'>
+        <p style='font-size:25px;'>You Might Also Like</p> -->
+<!-- <div class='text-center gap mobile_Head_Hide'><button class='btn rounded' style='background:#000;color:#fff;'>View All </button></div> -->
+<!-- </div>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="carousel carousel-showmanymoveone slide" id="itemslider">
@@ -551,17 +637,17 @@
                 </div>
             </div>
         </div>
-    </div>
-    <!-- <div class='text-center gap mobile_Head_Show' style='justify-content: center;'><button class='btn rounded-0' style='background:#000;color:#fff;'>View All</button></div> -->
+    </div> -->
+<!-- <div class='text-center gap mobile_Head_Show' style='justify-content: center;'><button class='btn rounded-0' style='background:#000;color:#fff;'>View All</button></div> -->
 </div>
 
 <!-- Item slider 5 items recently view-->
-<div class="container-fluid product-slider gap">
+<!-- <div class="container-fluid product-slider gap">
     <div class='galler_heading d-flex justify-content-between' style='border-bottom: 1px solid #d5d5d5;height:40px;margin:0px 20px 10px 20px;padding-bottom:45px;'>
-        <p style='font-size:25px;'> RECENTLY VIEWED</p>
-        <!-- <div class='text-center gap mobile_Head_Hide'><button class='btn rounded' style='background:#000;color:#fff;'>View All </button></div> -->
-    </div>
-    <div class="row">
+        <p style='font-size:25px;'> RECENTLY VIEWED</p> -->
+<!-- <div class='text-center gap mobile_Head_Hide'><button class='btn rounded' style='background:#000;color:#fff;'>View All </button></div> -->
+<!-- </div> -->
+<!-- <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="carousel carousel-showmanymoveone slide" id="itemslider">
                 <div class="carousel-inner">
@@ -647,12 +733,73 @@
                 </div>
             </div>
         </div>
-    </div>
-    <!-- <div class='text-center gap mobile_Head_Show' style='justify-content: center;'><button class='btn rounded-0' style='background:#000;color:#fff;'>View All</button></div> -->
+    </div> -->
+<!-- <div class='text-center gap mobile_Head_Show' style='justify-content: center;'><button class='btn rounded-0' style='background:#000;color:#fff;'>View All</button></div> -->
 </div>
 
 <script type="text/javascript">
     $(document).ready(function() {
+        $('.addtocart').click(function(){
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('add_to_cart') ?>",
+                data: {
+                    product_id: '<?= $product[0]->id; ?>',
+                    price: '<?= $product[0]->price; ?>'
+                },
+                // contentType: false,
+                // cache: false,
+                // processData: false,
+                dataType: "json",
+                success: function(data) {
+                    if (data.status == '100') {
+                        alert('Login to add product in your cart !');
+                    }else if (data.status == '200') {
+                        alert('Added to Cart !');
+                        setTimeout(function() {
+                            // $('#download').css('display', 'block');
+                            // $('#loader').css('visibility', 'hidden');
+                            window.location.reload();
+                        }, 1000);
+                        // alert('registered_successfully');
+
+                    } else {
+                        alert('something went wrong');
+                    }
+                }
+            });
+        });
+
+
+        $('.enquiry-form').submit(function(e) {
+            e.preventDefault();
+
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('add_enquiry') ?>",
+                data: new FormData(this),
+                contentType: false,
+                cache: false,
+                processData: false,
+                dataType: "json",
+                success: function(data) {
+                    if (data.status == '200') {
+                        alert('Application Sent Successfully');
+                        setTimeout(function() {
+                            // $('#download').css('display', 'block');
+                            // $('#loader').css('visibility', 'hidden');
+                            window.location.reload();
+                        }, 1000);
+                        // alert('registered_successfully');
+
+                    } else {
+                        alert('something went wrong');
+                    }
+                }
+            });
+        });
+
+
         $(".wishlist-btn").mouseover(function() {
             $("#www").css("display", "none !important");
         });
@@ -694,11 +841,13 @@
         $('.product_image_thumbnails').click(function() {
             $('.product_image').attr('src', $(this).attr('src'));
             $('.product_image_thumbnails').css('border', 'none');
+            $('.product_image_thumbnails').css('filter', 'none');
             $(this).css('border', '1px solid #b5b5b5');
+            $(this).css('filter', 'brightness(80%)');
             $('.product_image').addClass('w3-animate-opacity');
             setTimeout(function() {
                 $('.product_image').removeClass('w3-animate-opacity');
-            }, 1000);
+            }, 500);
         });
 
         $('.close-360').click(function() {

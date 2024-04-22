@@ -1,8 +1,10 @@
 <?php
 //dynamic variables
-$topbar_bg = '#ff1e82';
-$topbar_text_color = 'white';
+$topbar_bg = '#000';
+$topbar_text_color = '#fff';
 $topbar_link = base_url();
+$category_color = '#ff1e82';
+$header_color = '#ff1e82';
 $category_color = '#ff1e82';
 ?>
 <html>
@@ -10,7 +12,7 @@ $category_color = '#ff1e82';
 <head>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
 
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,700&subset=latin-ext" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,14 +23,23 @@ $category_color = '#ff1e82';
     <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="<?= base_url('assets/mobile_nav.scss'); ?>" crossorigin="anonymous">
 
     <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
 
     <style>
+        
+        .dropdown-toggle::after {
+            content: none;
+        }
+
         * {
             font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            /* background-color: #f2f2f2; */
         }
 
         #slider-text {
@@ -411,7 +422,8 @@ $category_color = '#ff1e82';
 
         .nav_Categories_Btn:hover {
             border-bottom: 3px <?= 'solid ' . $category_color ?>;
-            padding-bottom: 29px;
+            /* padding-bottom: 29px; */
+            padding-bottom: 10px;
         }
 
         .bordertest {
@@ -468,7 +480,8 @@ $category_color = '#ff1e82';
         .head_Section {
             display: flex;
             justify-content: space-between;
-            box-shadow: -1px 1px 1px 1px #f3f3f3;
+            /* box-shadow: -1px 1px 1px 1px #f3f3f3; */
+            background-color: #fff;
         }
 
         .head_Icons {
@@ -709,6 +722,7 @@ $category_color = '#ff1e82';
             top: 0;
             width: 100%;
             background-color: #fff;
+            /* background-color: #fff; */
             z-index: 100;
         }
 
@@ -770,6 +784,88 @@ $category_color = '#ff1e82';
             outline: none !important;
             box-shadow: none !important;
         }
+
+        .pagination {
+            justify-content: end;
+            margin-right: 20px;
+        }
+
+        .pagination .active a {
+            width: 40px;
+            height: 40px;
+            display: block;
+            background-color: #000;
+            text-align: center;
+            margin-right: 5px;
+            color: #f2f2f2;
+            text-decoration: none;
+            padding-top: 8px;
+        }
+
+        .pagination a {
+            width: 40px;
+            height: 40px;
+            display: block;
+            background-color: #f2f2f2;
+            border: 1px solid #dfdfdf;
+            text-align: center;
+            margin-right: 5px;
+            color: #686868;
+            text-decoration: none;
+            padding-top: 8px;
+        }
+
+        .product_title {
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 1.5em;
+            height: 3em;
+            /* height is 2x line-height, so two lines will display */
+            overflow: hidden;
+        }
+
+        .product_price {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .gallery_container:hover {
+            border: 1px solid #979797;
+        }
+
+        .dropdown:hover>.dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-item:hover>.dropdown-menu {
+            display: block;
+        }
+
+        ul li {
+            list-style-type: none;
+            display: inline;
+        }
+
+        .navbar-nav .nav-link {
+            display: inline-block;
+        }
+
+        .ml-auto {
+            display: inline-block !important;
+        }
+
+        .dropdown>.dropdown-toggle:active {
+            pointer-events: none;
+        }
+
+        .dropdown-item {
+            /* margin: 0px 15px 0px 15px; */
+            font-size: 13px;
+            cursor: pointer;
+            color: #707070;
+            font-weight: 800;
+        }
     </style>
 </head>
 
@@ -778,10 +874,18 @@ $category_color = '#ff1e82';
     <!-- //top bar  -->
     <div class='col-lg-12 text-center top_Bar' style='background:<?= $topbar_bg ?>'>
         <a class='blink' href='<?= $topbar_link ?>' style='color:<?= $topbar_text_color ?>; text-decoration:none'>
-            Delightful Deals Await! Shop From Our Republic Day Sale Now!
+            Transform Your Kitchen with Cara: Where Style Meets Functionality in Modular Design!
         </a>
     </div>
-    <!-- header  -->
+    <?php $session = session();
+    if ($session->get('role') == 'admin') { ?>
+        <div class='col-lg-12 text-right pr-5 top_Bar' style='background:#fff'>
+            <a class='text-dark' href='<?= base_url('Admin/dashboard'); ?>'>Go to Admin </a>
+        </div>
+    <?php } ?>
+
+
+    <!-- multiple dropdown header  -->
     <div class='col-lg-12 head_Section' id='myHeader'>
         <!-- mobile header  -->
         <div class='mobile_Head_Show' style='width:100%;justify-content:space-between'>
@@ -792,13 +896,17 @@ $category_color = '#ff1e82';
                 </a>
             </div>
             <div style="display:flex;align-self: center;text-align:end; justify-content:end" class=''>
+                <?php $session = session();
+                $session->get('userid');
+                if ($session->get('userid') == '') { ?>
+                    <div style='text-align:center;display:flex;'>
+                        <a class='btn' href='<?= base_url("login") ?>'>
+                            <i class='head_Icons fa-light fa fa-user'></i>
+                        </a>
+                    </div>
+                <?php } ?>
                 <div style='text-align:center;display:flex;'>
-                    <a class='btn' href='<?= base_url("login") ?>'>
-                        <i class='head_Icons fa-light fa fa-user'></i>
-                    </a>
-                </div>
-                <div style='text-align:center;display:flex;'>
-                    <a class='btn' href='<?= base_url("login") ?>'><i class='head_Icons fa fa-heart'></i>
+                    <a class='btn' href='<?= base_url("wishlist") ?>'><i class='head_Icons fa fa-heart'></i>
                     </a>
                 </div>
                 <div style='text-align:center;display:flex;'>
@@ -812,7 +920,17 @@ $category_color = '#ff1e82';
             <a href='<?= base_url() ?>'>
                 <img src='<?= base_url('uploads/logo/logo.jpg'); ?>' width='120px' class='p-3' />
             </a>
-            <div class='col-lg-12 text-center nav_Categories mobile_Head_Hide pb-1'>
+            <div class='col-lg-12 text-center nav_Categories mobile_Head_Hide pb-1' style='background:#fff'>
+
+                <div class='d-flex' style='text-align:left;align-items: baseline;'>
+                    <!-- <a style='text-decoration:none' href='<? //= base_url('finishes'); 
+                                                                ?>'>
+                        <span class='nav_Categories_Btn'> OUR FINISHES </span>
+                    </a> -->
+                </div>
+
+                <!-- uncomment this for multiple dropdown header  -->
+
                 <div class='' style='text-align:left'>
                     <span class='nav_Categories_Btn exit-menu nav_Categories_Btn_Hover' id='11'>MEN</span>
                     <span class='nav_Categories_Btn exit-menu nav_Categories_Btn_Hover' id='12'>WOMEN</span>
@@ -820,6 +938,8 @@ $category_color = '#ff1e82';
                     <span class='nav_Categories_Btn exit-menu nav_Categories_Btn_Hover' id='14'>HOME & LIVING</span>
                     <span class='nav_Categories_Btn exit-menu nav_Categories_Btn_Hover' id='14'>BEAUTY</span>
                 </div>
+
+
                 <div style='margin-top: 31px;border-top: 1px solid #e7e7e7;' class='exit-menu nav_Categories_Btn_Hover_anim pb-5 nav_Categories_Sub_Menu nav_Categories_Btn_Hover'>
                     <div class='exit-menu row nav_Categories_Sub_Menu_Tittle'>
                         <div class='exit-menu col-lg-2 text-left'>
@@ -858,23 +978,40 @@ $category_color = '#ff1e82';
                 </div>
             </div>
         </div>
+
+
+
         <div class='col-lg-5 pt-4 mobile_Head_Hide' style='display:flex;justify-content:end'>
+            <!-- search bar  -->
             <div style="text-align:start;" class='pl-0'>
                 <div class="mb-3 d-flex  justify-content-center mobile_Head_Hide search-wrapper">
                     <i class="fa fa-search font-awesome-icon" aria-hidden="true"></i>
                     <input type="text" class="form-control search-box" placeholder="Search on Nykaa" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                    <!-- <button class="btn rounded-0" style='background:#000;color:#fff'><i class='fa fa-search'></i></button> -->
+                    <button class="btn rounded-0" style='background:#000;color:#fff'><i class='fa fa-search'></i></button>
                 </div>
             </div>
             <div style="display:flex;align-self: center;text-align:end; justify-content:end" class=''>
+                <?php $session = session();
+                $session->get('userid');
+                if ($session->get('userid') == '') { ?>
+                    <div style='text-align:center;display:flex;'>
+                        <a class='btn mobile_Head_Hide' data-toggle="modal" data-target="#loginexampleModal">
+                            <i class='head_Icons fa-light fa fa-user'></i>
+                            <p style='color:#858585;padding-top:3px;font-size:12px;font-weight:600'>Login</p>
+                        </a>
+                    </div>
+                <?php } else { ?>
+                    <div style='text-align:center;display:flex;'>
+                        <a class='btn mobile_Head_Hide' href='<?= base_url("logout") ?>'>
+                            <i class='head_Icons fa-light fa fa-sign-out'></i>
+                            <p style='color:#858585;padding-top:3px;font-size:12px;font-weight:600'>Logout</p>
+                        </a>
+                    </div>
+                <?php } ?>
+                <!-- wishlist  -->
                 <div style='text-align:center;display:flex;'>
-                    <a class='btn mobile_Head_Hide' href='<?= base_url("login") ?>'>
-                        <i class='head_Icons fa-light fa fa-user'></i>
-                        <p style='color:#858585;padding-top:3px;font-size:12px;font-weight:600'>Login</p>
-                    </a>
-                </div>
-                <div style='text-align:center;display:flex;'>
-                    <a class='btn mobile_Head_Hide' href='<?= base_url("login") ?>'><i class='head_Icons fa fa-heart'></i>
+                    <a class='btn mobile_Head_Hide' href='<? //= base_url("login") 
+                                                            ?>'><i class='head_Icons fa fa-heart'></i>
                         <p style='color:#858585;padding-top:3px;font-size:12px;font-weight:600'>Wishlist</p>
                     </a>
                 </div>
@@ -886,6 +1023,10 @@ $category_color = '#ff1e82';
             </div>
         </div>
     </div>
+
+
+
+
     <!-- nav bar mobile   -->
     <div id="mySidenav" class="sidenav nav-mobile">
         <div id='sidenav-menus' class='menu-container'>
@@ -951,9 +1092,11 @@ $category_color = '#ff1e82';
             </ul> -->
         </div>
     </div>
+
+
     <!-- categories    -->
-    <!-- <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center nav_Categories mobile_Head_Hide pb-1' style='border-bottom: 2px solid #e7e7e7;'> -->
-    <!-- <div class='nav_Categories_Btn_Hover' style='width:fit-content;cursor:pointer;margin:auto'>
+    <!-- <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center nav_Categories mobile_Head_Hide pb-1' style='border-bottom: 2px solid #e7e7e7;'>
+    <div class='nav_Categories_Btn_Hover' style='width:fit-content;cursor:pointer;margin:auto'>
             <span class='nav_Categories_Btn nav_Categories_Btn_Hover' id='11'>WOMEN</span>
             <span class='nav_Categories_Btn nav_Categories_Btn_Hover' id='12'>KURTI</span>
             <span class='nav_Categories_Btn nav_Categories_Btn_Hover' id='13'>SAREE</span>
@@ -965,8 +1108,8 @@ $category_color = '#ff1e82';
             <span class='nav_Categories_Btn nav_Categories_Btn_Hover' id='15'>JEWELLERY</span>
             <span class='nav_Categories_Btn nav_Categories_Btn_Hover' id='15'>LIFESTYLE</span>
             <span class='nav_Categories_Btn nav_Categories_Btn_Hover' id='15'>SALE</span>
-        </div> -->
-    <!-- <div style='border: 2px solid #e7e7e7;width:90%;margin-left:5%;padding-left:6%;' class='pb-5 nav_Categories_Sub_Menu nav_Categories_Btn_Hover'>
+        </div>
+    <div style='border: 2px solid #e7e7e7;width:90%;margin-left:5%;padding-left:6%;' class='pb-5 nav_Categories_Sub_Menu nav_Categories_Btn_Hover'>
             <div class='row'>
                 <div class='col-lg-2 text-left'>
                     <div class='nav_Categories_Sub_Menu_Tittle'>Fabric</div>
@@ -1001,240 +1144,23 @@ $category_color = '#ff1e82';
                     <div class='nav_Categories_Sub_Menu_Item'>SOFT FABRIC</div>
                 </div>
             </div>
-        </div> -->
-    <!-- </div> -->
+        </div>
+    </div> -->
+
+
     <?= $this->renderSection('content') ?>
     <!-- footer  -->
 
-    <div style='background-color:#000;' class='pl-3 pt-5 pr-3'>
-        <div class='row m-0 mb-5 mobile_Head_Hide' style='padding:30px 60px 0px 60px'>
-            <div class='col-md-3 col-xs-12 mb-4'>
-                <div class='footer_Col'>
-                    <p class='footer_Tittle'><a href='#' style='text-decoration:none'>ONLINE SHOPPING</a></p>
-                    <div class="footer_Opt">
-                        <p><a href='#' style='text-decoration:none'>Men</a></p>
-                        <p><a href='#' style='text-decoration:none'>Women</a></p>
-                        <p><a href='#' style='text-decoration:none'>Kids</a></p>
-                        <p><a href='#' style='text-decoration:none'>Home & Living</a></p>
-                        <p><a href='#' style='text-decoration:none'>Beauty</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class='col-md-3 col-xs-12 mb-4'>
-                <div class='footer_Col'>
-                    <p class='footer_Tittle'><a href='#' style='text-decoration:none'>CUSTOMER POLICIES</a></p>
-                    <div class="footer_Opt">
-                        <p><a href='#' style='text-decoration:none'>T&C</a></p>
-                        <p><a href='#' style='text-decoration:none'>Terms Of Use</a></p>
-                        <p><a href='#' style='text-decoration:none'>Track Orders</a></p>
-                        <p><a href='#' style='text-decoration:none'>Shipping</a></p>
-                        <p><a href='#' style='text-decoration:none'>Privacy Policy</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class='col-md-3 col-xs-12 mb-4'>
-                <div class='footer_Col'>
-                    <p class='footer_Tittle'><a href='#' style='text-decoration:none'>GET TO KNOW US</a></p>
-                    <div class="footer_Opt">
-                        <p><a href='#' style='text-decoration:none'>About Us</a></p>
-                        <p><a href='#' style='text-decoration:none'>Contact Us</a></p>
-                        <p><a href='#' style='text-decoration:none'>FAQ</a></p>
-                        <p><a href='#' style='text-decoration:none'>Our Blog</a></p>
-                        <p><a href='#' style='text-decoration:none'>Cancellation</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class='col-md-3 col-xs-12 mb-4'>
-                <div class='footer_Col'>
-                    <p class='footer_Tittle'><a href='#' style='text-decoration:none'>ANY QUESTIONS?</a></p>
-                    <div class="footer_Opt mb-4">
-                        <p><a href='#' style='text-decoration:none'>Call or SMS: +1 (201) 733-3934</a></p>
-                        <p><a href='#' style='text-decoration:none'>Email: support @Nykaa.com</a></p>
-                    </div>
-                    <p class='footer_Tittle mb-1'><a href='#' style='text-decoration:none;'>FOLLOW US</a></p>
-                    <div class="footer_Opt">
-                        <a href="https://www.instagram.com/rohaan.mehta/">
-                            <i class="fa fa-instagram" style="font-size:25px; margin-right:15px;color:#fff;"></i>
-                        </a>
-                        <a href="https://www.facebook.com/RohaanMehta/">
-                            <i class="fa fa-facebook-square" style="font-size:25px; margin-right:15px;color:#fff;"></i>
-                        </a>
-                        <a href="gmail.com">
-                            <i class="fa fa-envelope" style="font-size:25px; margin-right:15px;color:#fff;"></i>
-                        </a>
-                        <a href="https://wa.me/919766084748/?text= I need to book an appointment">
-                            <i class="fa fa-whatsapp" style="font-size:25px; margin-right:15px;color:#fff;"></i>
-                        </a>
-                    </div>
-                    <input type='text' placeholder='subscribe' class='form-control pl-2 mt-3' style='border-radius:0px' />
-                </div>
-            </div>
-        </div>
-        <!-- //mobile footer -->
-        <div class='row m-0 mb-5 mobile_Head_Show' style='padding:0px 0px 0px 0px'>
-            <div class='col-12 mb-5'>
-                <p class='footer_Tittle mb-3'><a href='#' style='text-decoration:none;'>FOLLOW US</a></p>
-                <div class="footer_Opt">
-                    <a href="https://www.instagram.com/rohaan.mehta/">
-                        <i class="fa fa-instagram" style="font-size:25px; margin-right:15px;color:#fff;"></i>
-                    </a>
-                    <a href="https://www.facebook.com/RohaanMehta/">
-                        <i class="fa fa-facebook-square" style="font-size:25px; margin-right:15px;color:#fff;"></i>
-                    </a>
-                    <a href="gmail.com">
-                        <i class="fa fa-envelope" style="font-size:25px; margin-right:15px;color:#fff;"></i>
-                    </a>
-                    <a href="https://wa.me/919766084748/?text= I need to book an appointment">
-                        <i class="fa fa-whatsapp" style="font-size:25px; margin-right:15px;color:#fff;"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="row text-light" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                    <p class='col-10 footer_Tittle mb-2 pb-4'><a style='text-decoration:none'>ONLINE SHOPPING</a></p>
-                    <i style='text-align: end;' class='col-2 fa fa-angle-down'></i>
-                </div>
-                <div id="collapseOne" class="collapse" data-parent="#accordion">
-                    <div class="pb-3">
-                        <div class="footer_Opt">
-                            <p><a href='#' style='text-decoration:none'>Men</a></p>
-                            <p><a href='#' style='text-decoration:none'>Women</a></p>
-                            <p><a href='#' style='text-decoration:none'>Kids</a></p>
-                            <p><a href='#' style='text-decoration:none'>Home & Living</a></p>
-                            <p><a href='#' style='text-decoration:none'>Beauty</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="row text-light" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    <p class='col-10 footer_Tittle mb-2 pb-4'><a style='text-decoration:none'>CUSTOMER POLICIES</a></p>
-                    <i style='text-align: end;' class='col-2 fa fa-angle-down'></i>
-                </div>
-                <div id="collapseTwo" class="collapse" data-parent="#accordion">
-                    <div class="pb-3">
-                        <div class="footer_Opt">
-                            <p><a href='#' style='text-decoration:none'>T&C</a></p>
-                            <p><a href='#' style='text-decoration:none'>Terms Of Use</a></p>
-                            <p><a href='#' style='text-decoration:none'>Track Orders</a></p>
-                            <p><a href='#' style='text-decoration:none'>Shipping</a></p>
-                            <p><a href='#' style='text-decoration:none'>Privacy Policy</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="row text-light" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    <p class='col-10 footer_Tittle mb-2 pb-4'><a style='text-decoration:none'>GET TO KNOW US</a></p>
-                    <i style='text-align: end;' class='col-2 fa fa-angle-down'></i>
-                </div>
-                <div id="collapseThree" class="collapse" data-parent="#accordion">
-                    <div class="pb-3">
-                        <div class="footer_Opt">
-                            <p><a href='#' style='text-decoration:none'>About Us</a></p>
-                            <p><a href='#' style='text-decoration:none'>Contact Us</a></p>
-                            <p><a href='#' style='text-decoration:none'>FAQ</a></p>
-                            <p><a href='#' style='text-decoration:none'>Our Blog</a></p>
-                            <p><a href='#' style='text-decoration:none'>Cancellation</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class='col-12 mt-3'>
-                <div class='footer_Col'>
-                    <p class='footer_Tittle'><a href='#' style='text-decoration:none'>ANY QUESTIONS?</a></p>
-                    <div class="footer_Opt mb-4">
-                        <p><a href='#' style='text-decoration:none'>Call or SMS: +1 (201) 733-3934</a></p>
-                        <p><a href='#' style='text-decoration:none'>Email: support @Nykaa.com</a></p>
-                    </div>
-                    <!-- <input type='text' placeholder='subscribe' class='form-control pl-2 mt-3' style='border-radius:0px' /> -->
-                </div>
-            </div>
-        </div>
-        <div style='font-size:12px;color:#e9e9e9' class='d-flex d-flex justify-content-center'>
-            <p> © <?= date('Y') ?> www.nykaa.com. All rights reserved</p>
-        </div>
-        <!-- popular links -->
-        <div style='' class='popular-link-box pb-5'>
-            <p>POPULAR SEARCHES</p>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-            <a class='popular-links' href='<?= base_url() ?>'>Mobile</a>
-        </div>
-    </div>
+
+    <?php include('footer.php');?>
+
+    <!-- login modal  -->
+    <!-- Button trigger modal -->
+    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginexampleModal">
+        Launch demo modal
+    </button> -->
+
+    <?php include('login.php');?>
 
     <script>
         window.onscroll = function() {
