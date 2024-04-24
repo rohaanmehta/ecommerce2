@@ -6,7 +6,7 @@ class Product extends BaseController
 {
     public function product_page_view($slug)
     {
-        $data['product'] = $this->db->table('products')->select('products.id,products.title,pi.image_name1,pi.image_name2,products.stock,products.sku,products.purchasable,products.product_slug,,pi.image_name3,pi.image_name4,products.price')->where('product_slug',$slug)->join('product_images as pi','pi.product_id = products.id')->get()->getResult();
+        $data['product'] = $this->db->table('products')->select('products.desc,products.id,products.title,pi.image_name1,pi.image_name2,products.stock,products.sku,products.purchasable,products.product_slug,,pi.image_name3,pi.image_name4,products.price')->where('product_slug',$slug)->join('product_images as pi','pi.product_id = products.id')->get()->getResult();
        
         $data['section1'] = $this->db->table('products')->select('products.id,products.title,pi.image_name1,pi.image_name2,products.stock,products.sku,products.purchasable,products.product_slug,,pi.image_name3,pi.image_name4,products.price')->orderBy('rand()')->join('product_images as pi','pi.product_id = products.id')->limit(5)->get()->getResult();
 

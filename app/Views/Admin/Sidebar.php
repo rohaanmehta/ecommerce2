@@ -207,6 +207,29 @@
                         </p>
                     </a>
                 </li> -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-cog"></i>
+                        <p>
+                        General Settings
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= base_url('Admin/website_settings') ?>" class="nav-link">
+                                <i class="nav-icon fa fa-cog"></i>
+                                <p>Website Settings</p>
+                            </a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a href="<?= base_url('/product_enquiry') ?>" class="nav-link">
+                                <i class="nav-icon fa fa-envelope-open"></i>
+                                <p>Product Enquiries</p>
+                            </a>
+                        </li> -->
+                    </ul>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

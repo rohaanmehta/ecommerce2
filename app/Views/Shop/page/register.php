@@ -17,7 +17,7 @@
   <div class="text-center w-100" style='margin-top:20px;font-size:25px'>
     <p>CREATE A ACCOUNT</p>
   </div>
-  <form class='register-form'>
+  <form class='register-form' autocomplete="off">
     <div class="row text-center">
       <div class="col-lg-12 m-2">
         <input type='text' class='m-auto login_Input form-control rounded-0' required name='first_name' placeholder='First Name' />
@@ -59,8 +59,8 @@
         <button class='login_Input login_Links btn rounded-0 btn-dark'>SIGN UP</button>
       </div>
     </div>
-    <div class="row text-center justify-content-center">
-      <p> Returning Customer ? <a href='<?= base_url("login") ?>' style='text-decoration:none' href=''> Sign In </a></p>
+    <div class="row text-center justify-content-center" >
+      <p> Returning Customer ? <a data-toggle="modal" data-target="#loginexampleModal" style='text-decoration:none' href=''> Sign In </a></p>
     </div>
   </form>
 </div>

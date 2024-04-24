@@ -28,14 +28,41 @@ $category_color = '#ff1e82';
 
     <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
     <style>
-        
+        .zoom-img-box {
+            overflow: hidden;
+        }
+
+        .banner-homepage-sections img {
+            width: 100%;
+            transition: transform 0.4s ease;
+            transform-origin: 50% 50%;
+        }
+
+        .banner-homepage-sections img:hover {
+            transform: scale(1.1);
+            width: 100%;
+        }
+
+        .black-btn {
+            border: none;
+            border-radius: 0px;
+            background: #000;
+            color: #fff;
+        }
+
         .dropdown-toggle::after {
             content: none;
         }
 
         * {
-            font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+            font-family: "Lato", sans-serif;
+            font-weight: 700;
+            font-style: normal;
         }
 
         body {
@@ -480,8 +507,13 @@ $category_color = '#ff1e82';
         .head_Section {
             display: flex;
             justify-content: space-between;
-            /* box-shadow: -1px 1px 1px 1px #f3f3f3; */
+            box-shadow: -1px 1px 1px 1px #f3f3f3;
             background-color: #fff;
+
+            /* //topbar */
+            z-index: 2;
+            position: sticky;
+            top: 0px;
         }
 
         .head_Icons {
@@ -489,6 +521,7 @@ $category_color = '#ff1e82';
             background: #0000;
             color: #a5a5a5;
             align-self: center;
+            margin-bottom: 0px;
         }
 
         /* banner */
@@ -499,7 +532,7 @@ $category_color = '#ff1e82';
         }
 
         .gap {
-            margin-bottom: 35px !important;
+            margin-bottom: 25px !important;
         }
 
         /* @media (min-width: 1200px) {
@@ -516,7 +549,7 @@ $category_color = '#ff1e82';
 
         @media all and (min-width: 992px) {
             .col-lg-3 {
-                flex: 0 0 20%;
+                /* flex: 0 0 20%; */
             }
         }
 
@@ -696,12 +729,15 @@ $category_color = '#ff1e82';
         }
 
         .search-box {
-            background-color: #f4f4f4;
+            background-color: #f5f5f6;
             height: 45px;
-            padding-left: 40px;
-            font-size: 15px;
-            border-radius: 8px;
+            width: 350px;
+            padding: 8px 10px 10px 50px;
+            font-size: 14px;
+            border-radius: 3px;
             margin-right: 15px;
+            color: #696e79;
+            border: 1px solid #f5f5f6;
         }
 
         .search-wrapper {
@@ -710,9 +746,9 @@ $category_color = '#ff1e82';
 
         .font-awesome-icon {
             position: absolute;
-            left: 10px;
+            left: 20px;
             top: 13px;
-            font-size: 20px;
+            font-size: 17px;
             color: #b9b9b9;
             font-family: 'FontAwesome';
         }
@@ -866,17 +902,24 @@ $category_color = '#ff1e82';
             color: #707070;
             font-weight: 800;
         }
+
+        a::after {
+            box-sizing: unset;
+        }
     </style>
 </head>
 
 <body>
     <!-- //topbar   -->
     <!-- //top bar  -->
-    <div class='col-lg-12 text-center top_Bar' style='background:<?= $topbar_bg ?>'>
+
+    <!-- <div class='col-lg-12 text-center top_Bar' style='background:<?= $topbar_bg ?>'>
         <a class='blink' href='<?= $topbar_link ?>' style='color:<?= $topbar_text_color ?>; text-decoration:none'>
             Transform Your Kitchen with Cara: Where Style Meets Functionality in Modular Design!
         </a>
-    </div>
+    </div> -->
+
+
     <?php $session = session();
     if ($session->get('role') == 'admin') { ?>
         <div class='col-lg-12 text-right pr-5 top_Bar' style='background:#fff'>
@@ -906,17 +949,17 @@ $category_color = '#ff1e82';
                     </div>
                 <?php } ?>
                 <div style='text-align:center;display:flex;'>
-                    <a class='btn' href='<?= base_url("wishlist") ?>'><i class='head_Icons fa fa-heart'></i>
+                    <a class='btn' href='<?= base_url("wishlist") ?>'><i class='head_Icons fa-light fa-heart'></i>
                     </a>
                 </div>
                 <div style='text-align:center;display:flex;'>
-                    <a class='btn' href='<?= base_url("cart") ?>'><i class='head_Icons fa fa-shopping-bag'></i>
+                    <a class='btn' href='<?= base_url("cart") ?>'><i class='head_Icons fa-light fa-shopping-bag'></i>
                     </a>
                 </div>
             </div>
         </div>
         <!-- pc header  -->
-        <div class='d-flex col-lg-7 mobile_Head_Hide pt-4'>
+        <div class='d-flex col-lg-7 mobile_Head_Hide pt-3'>
             <a href='<?= base_url() ?>'>
                 <img src='<?= base_url('uploads/logo/logo.jpg'); ?>' width='120px' class='p-3' />
             </a>
@@ -932,11 +975,11 @@ $category_color = '#ff1e82';
                 <!-- uncomment this for multiple dropdown header  -->
 
                 <div class='' style='text-align:left'>
-                    <span class='nav_Categories_Btn exit-menu nav_Categories_Btn_Hover' id='11'>MEN</span>
-                    <span class='nav_Categories_Btn exit-menu nav_Categories_Btn_Hover' id='12'>WOMEN</span>
-                    <span class='nav_Categories_Btn exit-menu nav_Categories_Btn_Hover' id='13'>KIDS</span>
-                    <span class='nav_Categories_Btn exit-menu nav_Categories_Btn_Hover' id='14'>HOME & LIVING</span>
-                    <span class='nav_Categories_Btn exit-menu nav_Categories_Btn_Hover' id='14'>BEAUTY</span>
+                    <?php if (isset($categories) && !empty($categories)) {
+                        foreach ($categories as $row) { ?>
+                            <span class='nav_Categories_Btn exit-menu nav_Categories_Btn_Hover' id='11'><?= $row->category_name ?></span>
+                    <?php }
+                    } ?>
                 </div>
 
 
@@ -981,15 +1024,15 @@ $category_color = '#ff1e82';
 
 
 
-        <div class='col-lg-5 pt-4 mobile_Head_Hide' style='display:flex;justify-content:end'>
+        <div class='col-lg-5 pt-3 pb-2 mobile_Head_Hide' style='display:flex;justify-content:end'>
             <!-- search bar  -->
             <div style="text-align:start;" class='pl-0'>
-                <div class="mb-3 d-flex  justify-content-center mobile_Head_Hide search-wrapper">
+                <div class="mb-0 d-flex  justify-content-center mobile_Head_Hide search-wrapper">
                     <i class="fa fa-search font-awesome-icon" aria-hidden="true"></i>
-                    <input type="text" class="form-control search-box" placeholder="Search on Nykaa" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                    <button class="btn rounded-0" style='background:#000;color:#fff'><i class='fa fa-search'></i></button>
+                    <input type="text" class="form-control search-box" placeholder="Search for products" aria-label="Recipient's username" aria-describedby="basic-addon2">
                 </div>
             </div>
+
             <div style="display:flex;align-self: center;text-align:end; justify-content:end" class=''>
                 <?php $session = session();
                 $session->get('userid');
@@ -997,27 +1040,26 @@ $category_color = '#ff1e82';
                     <div style='text-align:center;display:flex;'>
                         <a class='btn mobile_Head_Hide' data-toggle="modal" data-target="#loginexampleModal">
                             <i class='head_Icons fa-light fa fa-user'></i>
-                            <p style='color:#858585;padding-top:3px;font-size:12px;font-weight:600'>Login</p>
+                            <p style='color:#858585;padding-top:3px;font-size:12px;font-weight:600;margin-bottom:0px'>Login</p>
                         </a>
                     </div>
                 <?php } else { ?>
                     <div style='text-align:center;display:flex;'>
                         <a class='btn mobile_Head_Hide' href='<?= base_url("logout") ?>'>
                             <i class='head_Icons fa-light fa fa-sign-out'></i>
-                            <p style='color:#858585;padding-top:3px;font-size:12px;font-weight:600'>Logout</p>
+                            <p style='color:#858585;padding-top:3px;font-size:12px;font-weight:600;margin-bottom:0px'>Logout</p>
                         </a>
                     </div>
                 <?php } ?>
                 <!-- wishlist  -->
                 <div style='text-align:center;display:flex;'>
-                    <a class='btn mobile_Head_Hide' href='<? //= base_url("login") 
-                                                            ?>'><i class='head_Icons fa fa-heart'></i>
-                        <p style='color:#858585;padding-top:3px;font-size:12px;font-weight:600'>Wishlist</p>
+                    <a class='btn mobile_Head_Hide' href='<?= base_url("wishlist") ?>'><i class='head_Icons fa-light fa fa-heart'></i>
+                        <p style='color:#858585;padding-top:3px;font-size:12px;font-weight:600;margin-bottom:0px'>Wishlist</p>
                     </a>
                 </div>
                 <div style='text-align:center;display:flex;'>
                     <a class='btn mobile_Head_Hide' href='<?= base_url("cart") ?>'><i class='head_Icons fa fa-shopping-bag'></i>
-                        <p style='color:#858585;padding-top:3px;font-size:12px;font-weight:600'>Cart</p>
+                        <p style='color:#858585;padding-top:3px;font-size:12px;font-weight:600;margin-bottom:0px'>Cart</p>
                     </a>
                 </div>
             </div>
@@ -1152,7 +1194,7 @@ $category_color = '#ff1e82';
     <!-- footer  -->
 
 
-    <?php include('footer.php');?>
+    <?php include('footer.php'); ?>
 
     <!-- login modal  -->
     <!-- Button trigger modal -->
@@ -1160,29 +1202,30 @@ $category_color = '#ff1e82';
         Launch demo modal
     </button> -->
 
-    <?php include('login.php');?>
+    <?php include('login.php'); ?>
 
     <script>
-        window.onscroll = function() {
-            myFunction()
-        };
+        //top bar 
+        // window.onscroll = function() {
+        //     myFunction()
+        // };
 
-        var header = document.getElementById("myHeader");
+        // var header = document.getElementById("myHeader");
         // var sidenav = document.getElementById("mySidenav");
-        var sticky = header.offsetTop;
+        // var sticky = header.offsetTop;
 
-        function myFunction() {
-            if (window.pageYOffset > sticky) {
-                header.classList.add("sticky");
-                $('#mySidenav').css('margin-top', '45');
-            } else {
-                header.classList.remove("sticky");
-                // console.log($('.top_Bar').css('height'));
-                var height = parseFloat($('.top_Bar').css('height')) + parseFloat(45);
-                $('#mySidenav').css('margin-top', height);
+        //  function myFunction() {
+        //      if (window.pageYOffset > sticky) {
+        //          header.classList.add("sticky");
+        //       $('#mySidenav').css('margin-top', '45');
+        //     } else {
+        //         header.classList.remove("sticky");
+        //         // console.log($('.top_Bar').css('height'));
+        //      var height = parseFloat($('.top_Bar').css('height')) + parseFloat(45);
+        //     $('#mySidenav').css('margin-top', height);
 
-            }
-        }
+        //   }
+        //   }
 
         $(document).ready(function() {
 
@@ -1200,9 +1243,9 @@ $category_color = '#ff1e82';
                 // }
             });
 
-            myFunction();
+            // myFunction();
             $('#itemslider').carousel({
-                // interval: 3000;
+                interval: 3000;
                 interval: false
             });
 

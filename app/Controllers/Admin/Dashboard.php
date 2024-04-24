@@ -76,6 +76,7 @@ class Dashboard extends BaseController
             $array = array(
                 'name' => $fileName,
                 'order' => $_POST['order'],
+                'link' => $_POST['link'],
                 'type' => $_POST['type'],
                 'storage' => 'local'
             );

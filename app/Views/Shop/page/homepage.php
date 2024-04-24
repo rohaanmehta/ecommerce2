@@ -1,7 +1,8 @@
 <?= $this->extend('Shop/Layout/layout') ?>
 <?= $this->section('content') ?>
+
 <!-- corousel -->
-<div id="carouselExampleIndicators" style='z-index:-100;' class="carousel slide carousel-fade" data-ride="carousel">
+<div id="carouselExampleIndicators" style='z-index:-100;' class="mb-4 carousel slide carousel-fade" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -20,14 +21,15 @@
             }
         } ?>
     </div>
-    <!-- <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a> -->
+
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
 </div>
 
 <!-- maliaka Edit -->
@@ -46,11 +48,20 @@
 
 <!-- banner  for 6 images -->
 <?php if (isset($banner1)) { ?>
-    <div class="" style="padding-left:10px;padding-right:10px;">
-        <div class="row m-0 banner gap">
+    <div class="banner-homepage-sections" style="padding-left:10px;padding-right:10px;">
+        <?php if (isset($banner_section1name) && !empty($banner_section1name) && $banner_section1name[0]->value_1 != '') { ?>
+            <div class='galler_heading d-flex justify-content-between' style='border-bottom: 1px solid #d5d5d5;height:40px;margin:0px 20px 10px 20px;padding-bottom:45px;'>
+                <p style='font-size:25px;'><?= $banner_section1name[0]->value_1; ?></p>
+            </div>
+        <?php } ?>
+        <div class="row m-0 banner4 gap">
             <?php foreach ($banner1 as $row) { ?>
-                <div class="col-lg-2 col-md-4 col-xs-6 text-center">
-                    <img class='banner_img rounded' src='<?= base_url('uploads/banner/' . $row->name) ?>' />
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 text-center" style='overflow:hidden'>
+                    <a href='<?= base_url($row->link); ?>'>
+                        <div class='zoom-img-box p-0 w-100'>
+                            <img class='galleryimg banner_img_4' src='<?= base_url('uploads/banner/' . $row->name) ?>' />
+                        </div>
+                    </a>
                 </div>
             <?php } ?>
         </div>
@@ -60,16 +71,27 @@
 <!-- product gallery for 10 items -->
 <div class="" style="padding-left:10px;padding-right:10px;">
     <div class='galler_heading d-flex justify-content-between' style='border-bottom: 1px solid #d5d5d5;height:40px;margin:0px 20px 10px 20px;padding-bottom:45px;'>
-        <p style='font-size:25px;'>FURNITURE</p>
-        <!-- <div class='text-center gap mobile_Head_Hide'><button class='btn rounded' style='background:#7C0935;color:#fff;'> VIEW MORE </button></div> -->
+        <p style='font-size:25px;'><?php if (isset($banner1_info) && !empty(($banner1_info))) {
+                                        echo $banner1_info[0]->value_1;
+                                    } ?></p>
+
+        <?php if (isset($banner1_info) && !empty(($banner1_info) && $banner1_info[0]->value_2 != '')) { ?>
+            <div class='text-center gap mobile_Head_Hide'>
+                <a href='<?= base_url($banner1_info[0]->value_2); ?>'><button class='btn black-btn'>VIEW MORE</button></a>
+            </div>
+        <?php } ?>
     </div>
 
-    <div class="row m-0 gallery gap">
+    <div class="row m-0 gallery">
         <?php if (isset($section1)) {
             include('section1.php');
         } ?>
     </div>
-    <!-- <div class='text-center gap mobile_Head_Show' style='justify-content: center;'><button class='btn rounded-0' style='background:#000;color:#fff;'>GO TO BEST SELLERS</button></div> -->
+    <?php if (isset($banner1_info) && !empty(($banner1_info) && $banner1_info[0]->value_2 != '')) { ?>
+        <div class='text-center gap mobile_Head_Show' style='justify-content: center;'>
+            <a href='<?= base_url($banner1_info[0]->value_2); ?>'><button class='btn black-btn'>VIEW MORE</button></a>
+        </div>
+    <?php } ?>
 </div>
 
 
@@ -89,14 +111,20 @@
 
 <!-- banner for 4 images -->
 <?php if (isset($banner2[0])) { ?>
-    <div class="" style="padding-left:10px;padding-right:10px;">
-        <div class='galler_heading d-flex justify-content-between' style='border-bottom: 1px solid #d5d5d5;height:40px;margin:0px 20px 10px 20px;padding-bottom:45px;'>
-            <p style='font-size:25px;'>OUR TOP FINISHES</p>
-        </div>
+    <div class="banner-homepage-sections" style="padding-left:10px;padding-right:10px;">
+        <?php if (isset($banner_section2name) && !empty($banner_section2name) && $banner_section2name[0]->value_1 != '') { ?>
+            <div class='galler_heading d-flex justify-content-between' style='border-bottom: 1px solid #d5d5d5;height:40px;margin:0px 20px 10px 20px;padding-bottom:45px;'>
+                <p style='font-size:25px;'><?= $banner_section2name[0]->value_1; ?></p>
+            </div>
+        <?php } ?>
         <div class="row m-0 banner4 gap">
             <?php foreach ($banner2 as $row) { ?>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 text-center">
-                    <img class='banner_img_4 mb-4' src='<?= base_url('uploads/banner/' . $row->name) ?>' />
+                <div class="col-12 col-md-4 text-center" style='overflow:hidden'>
+                    <a href='<?= base_url($row->link); ?>'>
+                        <div class='zoom-img-box p-0 w-100'>
+                            <img class='galleryimg banner_img_4' src='<?= base_url('uploads/banner/' . $row->name) ?>' />
+                        </div>
+                    </a>
                 </div>
             <?php } ?>
         </div>
@@ -106,14 +134,18 @@
 <!-- banner for 1 images -->
 <?php if (isset($banner3)) { ?>
     <div class="" style="padding-left:10px;padding-right:10px;">
-        <!-- <div class='galler_heading text-center'>
-        <p style='font-size:35px;font-weight:700'>Coupons Corner</p>
-    </div> -->
+        <?php if (isset($banner_section3name) && !empty($banner_section3name) && $banner_section3name[0]->value_1 != '') { ?>
+            <div class='galler_heading d-flex justify-content-between' style='border-bottom: 1px solid #d5d5d5;height:40px;margin:0px 20px 10px 20px;padding-bottom:45px;'>
+                <p style='font-size:25px;'><?= $banner_section3name[0]->value_1; ?></p>
+            </div>
+        <?php } ?>
         <div class="row m-0 banner4 gap">
             <?php foreach ($banner3 as $row) { ?>
-                <div class="col-12 text-center">
-                    <img style='width:100%' class='mb-4' src='<?= base_url('uploads/banner/' . $row->name) ?>' />
-                </div>
+                <a href='<?= base_url($row->link); ?>'>
+                    <div class="col-12 text-center">
+                        <img style='width:100%' class='mb-4' src='<?= base_url('uploads/banner/' . $row->name) ?>' />
+                    </div>
+                </a>
             <?php } ?>
         </div>
     </div>
@@ -122,31 +154,49 @@
 <!-- product gallery for 5 items -->
 <div class="" style="padding-left:10px;padding-right:10px;">
     <div class='galler_heading d-flex justify-content-between' style='border-bottom: 1px solid #d5d5d5;height:40px;margin:0px 20px 10px 20px;padding-bottom:45px;'>
-        <p style='font-size:25px;'>CHAIRS </p>
-        <!-- <div class='text-center gap mobile_Head_Hide'><button class='btn rounded' style='background:#7C0935;color:#fff;'>VIEW MORE</button></div> -->
+        <p style='font-size:25px;'><?php if (isset($banner2_info) && !empty(($banner2_info))) {
+                                        echo $banner2_info[0]->value_1;
+                                    } ?></p>
+
+        <?php if (isset($banner2_info) && !empty(($banner2_info) && $banner2_info[0]->value_2 != '')) { ?>
+            <div class='text-center gap mobile_Head_Hide'>
+                <a href='<?= base_url($banner2_info[0]->value_2); ?>'><button class='btn black-btn'>VIEW MORE</button></a>
+            </div>
+        <?php } ?>
     </div>
-    <div class="row m-0 gallery gap">
+    <div class="row m-0 gallery">
         <?php if (isset($section2)) {
             include('section2.php');
         } ?>
     </div>
-    <!-- <div class='text-center gap mobile_Head_Show' style='justify-content: center;'><button class='btn rounded-0' style='background:#000;color:#fff;'>GO TO TRENDING WEAR</button></div> -->
+    <?php if (isset($banner2_info) && !empty(($banner2_info) && $banner2_info[0]->value_2 != '')) { ?>
+        <div class='text-center gap mobile_Head_Show' style='justify-content: center;'>
+            <a href='<?= base_url($banner2_info[0]->value_2); ?>'><button class='btn black-btn'>VIEW MORE</button></a>
+        </div>
+    <?php } ?>
 </div>
 
 <!-- banner for 2 images -->
-<div class="" style="padding-left:10px;padding-right:10px;">
-    <div class='galler_heading d-flex justify-content-between' style='border-bottom: 1px solid #d5d5d5;height:40px;margin:0px 20px 10px 20px;padding-bottom:45px;'>
-        <p style='font-size:25px;'>COUPONS CORNER</p>
-    </div>
+<div class="banner-homepage-sections" style="padding-left:10px;padding-right:10px;">
+    <?php if (isset($banner_section4name) && !empty($banner_section4name) && $banner_section4name[0]->value_1 != '') { ?>
+        <div class='galler_heading d-flex justify-content-between' style='border-bottom: 1px solid #d5d5d5;height:40px;margin:0px 20px 10px 20px;padding-bottom:45px;'>
+            <p style='font-size:25px;'><?= $banner_section4name[0]->value_1; ?></p>
+        </div>
+    <?php } ?>
     <div class="row m-0 banner4 gap">
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
-            <img style='width:100%' class='mb-4' src='<?= base_url('uploads/banner/coupon1.png') ?>' />
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
-            <img style='width:100%' class='mb-4' src='<?= base_url('uploads/banner/coupon1.png') ?>' />
-        </div>
+
+        <?php foreach ($banner4 as $row) { ?>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
+                <a href='<?= base_url($row->link); ?>'>
+                    <div class='zoom-img-box p-0 w-100'>
+                        <img style='width:100%' class='' src='<?= base_url('uploads/banner/' . $row->name) ?>' />
+                    </div>
+                </a>
+            </div>
+        <?php } ?>
     </div>
 </div>
+
 <!-- Item slider 5 items-->
 <!-- <div class="container-fluid product-slider gap">
     <div class='galler_heading d-flex justify-content-between' style='border-bottom: 1px solid #d5d5d5;height:40px;margin:0px 20px 10px 20px;padding-bottom:45px;'>
@@ -244,6 +294,7 @@
 </div> -->
 
 
-<?php include('app\Views\Shop\Layout\reviewslider.php'); ?>
+<!-- <? //php include('app\Views\Shop\Layout\reviewslider.php'); 
+        ?> -->
 
 <?= $this->endSection() ?>

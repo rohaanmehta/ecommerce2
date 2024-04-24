@@ -36,10 +36,20 @@
   .login_Links:hover {
     color: #fff
   }
+
+
+  .login-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%) !important;
+    transform: translate(-50%, -50%) !important;
+    max-width: 350px;
+  }
 </style>
 <!-- Modal -->
 <div class="modal fade" id="loginexampleModal" tabindex="-1" role="dialog" aria-labelledby="loginexampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document" style='max-width:350px'>
+  <div class="modal-dialog login-box w-100" role="document" style=''>
     <div class="modal-content">
       <div class="m-2">
         <div class="text-center w-100" style='margin-top:20px;font-size:25px'>

@@ -20,6 +20,11 @@ $routes->set404Override();
 $routes->group('',['namespace' => 'App\controllers\Admin'], static function ($routes) {
     //dashboard
     $routes->get('Admin/dashboard', 'Dashboard::dashboard');
+    
+    $routes->get('Admin/website_settings', 'Website_settings::view');
+    $routes->post('add_website_settings', 'Website_settings::add_website_settings');
+    $routes->post('add_website_settings_banner', 'Website_settings::add_website_settings_banner');
+    
     // products
     // $routes->get('Admin/product_slider', 'Dashboard::dashboard');
     $routes->get('Admin/slider-view', 'Dashboard::slider_view');
@@ -72,6 +77,8 @@ $routes->group('',['namespace' => 'App\controllers\Shop'], static function ($rou
 
     $routes->post('add_to_cart', 'Cart::add_to_cart');    
     $routes->post('delete-from-cart', 'Cart::delete_from_cart');    
+
+    $routes->get('wishlist', 'Wishlist::view');
 });
 
 

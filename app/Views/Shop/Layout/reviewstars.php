@@ -1,11 +1,10 @@
-
 <!-- // reviewstars file -->
-
-<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-<div class="rating">
-    <i class="<?php echo ($review >= 1) ? 'icon-star' : 'icon-star-o'; ?>"></i>
-    <i class="<?php echo ($review >= 2) ? 'icon-star' : 'icon-star-o'; ?>"></i>
-    <i class="<?php echo ($review >= 3) ? 'icon-star' : 'icon-star-o'; ?>"></i>
-    <i class="<?php echo ($review >= 4) ? 'icon-star' : 'icon-star-o'; ?>"></i>
-    <i class="<?php echo ($review >= 5) ? 'icon-star' : 'icon-star-o'; ?>"></i>
+<?php $review = 3 ?>
+<div class="rating" style='color:#fbc12a'>
+    <i class="<?php echo ($review >= 1) ? 'fa fa-star' : 'fa fa-star-o review-star-empty'; ?>"></i>
+    <i class="<?php echo ($review >= 2) ? 'fa fa-star' : 'fa fa-star-o review-star-empty'; ?>"></i>
+    <i class="<?php echo ($review >= 3) ? 'fa fa-star' : 'fa fa-star-o review-star-empty'; ?>"></i>
+    <i class="<?php echo ($review >= 4) ? 'fa fa-star' : 'fa fa-star-o review-star-empty'; ?>"></i>
+    <i class="<?php echo ($review >= 5) ? 'fa fa-star' : 'fa fa-star-o review-star-empty'; ?>"></i>
 </div>
+

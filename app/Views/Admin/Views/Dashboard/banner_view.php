@@ -63,7 +63,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Upload Slider</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Upload Banners</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -72,6 +72,10 @@
                     <div class='mb-2'>
                         <span class='form-label'>Select Image</span>
                         <input type='file' name='banner_image' required class='form-control w-50' />
+                    </div>
+                    <div class='mb-2'>
+                        <span class='form-label'>Link</span>
+                        <input type='text' name='link' class='form-control w-50' placeholder='Link' />
                     </div>
                     <div class='mb-2'>
                         <span class='form-label'>Order</span>
@@ -83,6 +87,7 @@
                             <option value='banner1'>banner1</option>
                             <option value='banner2'>banner2</option>
                             <option value='banner3'>banner3</option>
+                            <option value='banner4'>banner4</option>
                         </select>
                     </div>
                 </div>

@@ -76,6 +76,13 @@
         font-weight: 600;
     }
 
+    .product_desc {
+        font-size: 15px;
+        color: #7e7e7e;
+        font-weight: 500;
+        margin-top: 10px;
+    }
+
     .product_shop_tittle {
         font-size: 15px;
         color: #a9a9a9;
@@ -233,6 +240,9 @@
         <div class='product_heading'>
             <?= $product[0]->title; ?>
         </div>
+        <div class='product_desc'>
+            <?= $product[0]->desc; ?>
+        </div>
         <div class='product_shop_tittle'>
             <!-- Shop the collection by <a href='#' class='shop_name'>G mentor </a> -->
         </div>
@@ -240,14 +250,17 @@
         <div class='product_price'>
             $<?= $product[0]->price; ?>
         </div>
-        <div class='product_info'>
+
+        <!-- status in stock and sku  -->
+
+        <!-- <div class='product_info'>
             <span class='text-secondary' style='min-width:100px'> Status : </span>
             <?php if ($product[0]->stock > 0) { ?> <span class='text-success'>In Stock</span> <?php } else { ?> <span class='text-danger'>OUT of Stock</span> <?php } ?><br>
             <span class='text-secondary' style='min-width:100px'> SKU : </span><span class='text-secondary'> <?= $product[0]->sku ?> </span>
-        </div>
+        </div> -->
 
         <!-- variation  -->
-        <!-- <div class='row product_info d-flex' style='flex-wrap:wrap'>
+        <div class='row product_info d-flex' style='flex-wrap:wrap'>
             <div class='col-12 d-flex justify-content-between'>
                 <div class='col-12 pl-0'>Select Size</div>
             </div>
@@ -273,14 +286,14 @@
                     <label for="radio5" class="selector-item_label">XXL</label>
                 </div>
             </div>
-        </div> -->
+        </div>
 
         <!-- sizeguide -->
-        <!-- <div class='col-12 pl-0'>
-            <button class='mt-3 btn rounded' style='background:#dfdfdf;color:#2e2e2e;font-weight:600'>Size Guide
+        <div class='col-12 pl-0'>
+            <button class='mt-3 btn btn-sm rounded' style='background:#dfdfdf;color:#2e2e2e;font-weight:600'>Size Chart
                 <i class="fa fa-sort-amount-asc"></i>
             </button>
-        </div> -->
+        </div>
 
         <?php if ($product[0]->purchasable == 1) { ?>
             <div class='col-12 pl-0 mt-0'>
@@ -739,7 +752,7 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $('.addtocart').click(function(){
+        $('.addtocart').click(function() {
             $.ajax({
                 type: "POST",
                 url: "<?= base_url('add_to_cart') ?>",
@@ -754,7 +767,7 @@
                 success: function(data) {
                     if (data.status == '100') {
                         alert('Login to add product in your cart !');
-                    }else if (data.status == '200') {
+                    } else if (data.status == '200') {
                         alert('Added to Cart !');
                         setTimeout(function() {
                             // $('#download').css('display', 'block');
