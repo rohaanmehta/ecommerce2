@@ -8,7 +8,7 @@ use CodeIgniter\View\ViewDecoratorInterface;
 class View extends BaseView
 {
     /**
-     * When false, the viedw method will clear the data between each
+     * When false, the viedethod will clear the data between each
      * call. This keeps your data safe and ensures there is no accidental
      * leaking between calls, so you would need to explicitly pass the data
      * to each view. You might prefer to have the data stick around between

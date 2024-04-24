@@ -16,4 +16,13 @@ class Product extends BaseController
         $data['categories'] = $this->db->table('categories')->orderBy('category_order', 'ASC')->where('show_on_homepage', '1')->get()->getResult();
         return view('Shop/page/product_page',$data);
     }
+
+    public function search_product(){
+        // print_r($_POST);exit;
+        $data['product'] = $this->db->table('products')->like('title',$_POST['search'])->join('product_images as pi','pi.product_id = products.id')->get()->getResult();
+
+        
+        header('Content-Type: application/json');
+        echo json_encode($data);
+    }
 }

@@ -906,6 +906,21 @@ $category_color = '#ff1e82';
         a::after {
             box-sizing: unset;
         }
+
+        .search-results {
+            position: absolute;
+            top: 40px;
+            background-color: #f5f5f6;
+            margin-right: 15px;
+            max-height: 500px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+
+        .search-product-title {
+            font-size: 14px;
+            color: #000;
+        }
     </style>
 </head>
 
@@ -1026,10 +1041,12 @@ $category_color = '#ff1e82';
 
         <div class='col-lg-5 pt-3 pb-2 mobile_Head_Hide' style='display:flex;justify-content:end'>
             <!-- search bar  -->
-            <div style="text-align:start;" class='pl-0'>
+            <div style="text-align:start;position:relative;" class='pl-0'>
                 <div class="mb-0 d-flex  justify-content-center mobile_Head_Hide search-wrapper">
                     <i class="fa fa-search font-awesome-icon" aria-hidden="true"></i>
-                    <input type="text" class="form-control search-box" placeholder="Search for products" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <input type="text" class="form-control search-box" placeholder="Search for products">
+                </div>
+                <div class='search-results'>
                 </div>
             </div>
 
@@ -1203,6 +1220,7 @@ $category_color = '#ff1e82';
     </button> -->
 
     <?php include('login.php'); ?>
+    <!-- var title = '<?php character_limiter('dfdfd',10,'...');?>'; -->
 
     <script>
         //top bar 
@@ -1228,6 +1246,26 @@ $category_color = '#ff1e82';
         //   }
 
         $(document).ready(function() {
+            $('.search-box').keyup(function() {
+                if ($('.search-box').val().length >= 4) {
+                    $.ajax({
+                        type: "POST",
+                        url: "<?= base_url('search-product') ?>",
+                        data: {
+                            search: $('.search-box').val()
+                        },
+                        dataType: "json",
+                        success: function(data) {
+                            $('.search-results').html();
+                            for (var i = 0; i < data.product.length; i++) {
+                                var html = "<a href=''><div class='search-item row p-2'><div class='col-3'><img width='100%' src='<?= base_url('uploads/product_images/1240324121518.png') ?>'></div><div class='col-8'><p class='mb-0 search-product-title'>" + data.product[i]['title'] + "</p><p> $ " + data.product[i]['price'] + "</p></div></div></a>";
+                                $('.search-results').append(html);
+                            }
+                            console.log(data);
+                        }
+                    });
+                }
+            });
 
             $('.mobile-menu-bars').click(function() {
                 if ($(this).children().hasClass('fa-rotate-90')) {
@@ -1245,7 +1283,7 @@ $category_color = '#ff1e82';
 
             // myFunction();
             $('#itemslider').carousel({
-                interval: 3000;
+                interval: 3000,
                 interval: false
             });
 

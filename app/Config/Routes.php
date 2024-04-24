@@ -79,6 +79,9 @@ $routes->group('',['namespace' => 'App\controllers\Shop'], static function ($rou
     $routes->post('delete-from-cart', 'Cart::delete_from_cart');    
 
     $routes->get('wishlist', 'Wishlist::view');
+
+    $routes->post('search-product', 'Product::search_product');
+    
 });
 
 
