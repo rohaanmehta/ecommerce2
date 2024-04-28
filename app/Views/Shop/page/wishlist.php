@@ -31,7 +31,7 @@ if ($userid == '') { ?>
     </div>
     <div class='row pl-5 pr-5'>
         <?php if(isset($products) && !empty($products)){ foreach($products as $row){?>
-            <?php echo view('Shop/page/single_product',['row' => $row]); ?>
+            <?php echo view('Shop/page/single_product', ['row' => $row , 'wishlist' =>  $session->get('userid')]); ?>
         <?php } }?>
     </div>
 <?php } ?>

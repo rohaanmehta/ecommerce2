@@ -6,7 +6,9 @@ $topbar_link = base_url();
 $category_color = '#ff1e82';
 $header_color = '#ff1e82';
 $category_color = '#ff1e82';
+$session = session();
 ?>
+
 <html>
 
 <head>
@@ -32,7 +34,81 @@ $category_color = '#ff1e82';
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
     <style>
+        .slick-slider {
+            display: flex !important;
+        }
+
+        .slick-prev:hover,
+        .slick-next:hover {
+            opacity: 1;
+        }
+
+        .slick-prev {
+            border-radius: 50px !important;
+            opacity: 0.6;
+            width: 40px !important;
+            height: 40px !important;
+            border: 1px solid grey !important;
+            position: absolute !important;
+            z-index: 1 !important;
+            left: 50px !important;
+            top: 45% !important;
+            transform: translate(-50%, -50%) !important;
+            cursor: pointer !important;
+        }
+
+        .slick-next {
+            border-radius: 50px !important;
+            opacity: 0.6;
+            width: 40px !important;
+            height: 40px !important;
+            border: 1px solid grey !important;
+            position: absolute !important;
+            z-index: 1 !important;
+            right: 13px !important;
+            top: 45% !important;
+            transform: translate(-50%, -50%) !important;
+            cursor: pointer !important;
+        }
+
+        .mybadge {
+            background-color: red;
+            height: 16px;
+            width: 16px;
+            border-radius: 50px;
+            font-size: 10px;
+            position: absolute;
+            top: 0px;
+            right: 13px;
+            color: #fff;
+        }
+
+        .product-items-icon {
+            background-color: #adadad;
+            border-radius: 50px;
+            opacity: 0.3;
+            width: fit-content;
+            padding: 8px;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+
+        .product-items-icon>.fa-heart-o {
+            font-size: 19px;
+            color: #000;
+        }
+
+        .product-items-icon>.fa-heart {
+            font-size: 19px;
+            color: #af1b1e;
+        }
+
         .zoom-img-box {
             overflow: hidden;
         }
@@ -115,22 +191,6 @@ $category_color = '#ff1e82';
             ;
             font-size: 10px;
             margin: 2px auto 5px;
-        }
-
-        .badge {
-            background: #b20c0c;
-            position: absolute;
-            height: 40px;
-            width: 40px;
-            border-radius: 50%;
-            line-height: 31px;
-            font-family: 'Josefin Sans', sans-serif;
-            font-weight: 300;
-            font-size: 14px;
-            border: 2px solid #FFF;
-            box-shadow: 0 0 0 1px #b20c0c;
-            top: 5px;
-            right: 25%;
         }
 
         #slider-control img {
@@ -909,8 +969,8 @@ $category_color = '#ff1e82';
 
         .search-results {
             position: absolute;
-            top: 40px;
-            background-color: #f5f5f6;
+            top: 45px;
+            background-color: #fff;
             margin-right: 15px;
             max-height: 500px;
             overflow-y: scroll;
@@ -918,8 +978,12 @@ $category_color = '#ff1e82';
         }
 
         .search-product-title {
-            font-size: 14px;
-            color: #000;
+            font-size: 12px;
+            color: #696e79;
+        }
+
+        .search-item:hover {
+            background-color: #e3e3e3;
         }
     </style>
 </head>
@@ -954,8 +1018,7 @@ $category_color = '#ff1e82';
                 </a>
             </div>
             <div style="display:flex;align-self: center;text-align:end; justify-content:end" class=''>
-                <?php $session = session();
-                $session->get('userid');
+                <?php
                 if ($session->get('userid') == '') { ?>
                     <div style='text-align:center;display:flex;'>
                         <a class='btn' href='<?= base_url("login") ?>'>
@@ -1041,18 +1104,17 @@ $category_color = '#ff1e82';
 
         <div class='col-lg-5 pt-3 pb-2 mobile_Head_Hide' style='display:flex;justify-content:end'>
             <!-- search bar  -->
-            <div style="text-align:start;position:relative;" class='pl-0'>
-                <div class="mb-0 d-flex  justify-content-center mobile_Head_Hide search-wrapper">
-                    <i class="fa fa-search font-awesome-icon" aria-hidden="true"></i>
-                    <input type="text" class="form-control search-box" placeholder="Search for products">
+            <div style="text-align:start;position:relative;" class='pl-0 exit-search'>
+                <div class="mb-0 d-flex  justify-content-center mobile_Head_Hide search-wrapper exit-search">
+                    <i class="fa fa-search font-awesome-icon exit-search" aria-hidden="true"></i>
+                    <input type="text" class="form-control search-box exit-search" placeholder="Search for products">
                 </div>
-                <div class='search-results'>
+                <div class='search-results exit-search'>
                 </div>
             </div>
 
             <div style="display:flex;align-self: center;text-align:end; justify-content:end" class=''>
-                <?php $session = session();
-                $session->get('userid');
+                <?php
                 if ($session->get('userid') == '') { ?>
                     <div style='text-align:center;display:flex;'>
                         <a class='btn mobile_Head_Hide' data-toggle="modal" data-target="#loginexampleModal">
@@ -1069,10 +1131,14 @@ $category_color = '#ff1e82';
                     </div>
                 <?php } ?>
                 <!-- wishlist  -->
-                <div style='text-align:center;display:flex;'>
+                <div style='text-align:center;display:flex;position:relative'>
                     <a class='btn mobile_Head_Hide' href='<?= base_url("wishlist") ?>'><i class='head_Icons fa-light fa fa-heart'></i>
                         <p style='color:#858585;padding-top:3px;font-size:12px;font-weight:600;margin-bottom:0px'>Wishlist</p>
                     </a>
+                    <?php
+                    if ($session->get('userid') != '' && $session->get('wishlist_total') > 0) { ?>
+                        <span class="mybadge"><?= $session->get('wishlist_total') ?></span>
+                    <?php } ?>
                 </div>
                 <div style='text-align:center;display:flex;'>
                     <a class='btn mobile_Head_Hide' href='<?= base_url("cart") ?>'><i class='head_Icons fa fa-shopping-bag'></i>
@@ -1220,7 +1286,6 @@ $category_color = '#ff1e82';
     </button> -->
 
     <?php include('login.php'); ?>
-    <!-- var title = '<?php character_limiter('dfdfd',10,'...');?>'; -->
 
     <script>
         //top bar 
@@ -1246,6 +1311,34 @@ $category_color = '#ff1e82';
         //   }
 
         $(document).ready(function() {
+            $('.add-to-wishlist').click(function(e) {
+                e.preventDefault();
+
+                if ($(this).children().attr('class') == 'fa fa-heart') {
+                    $(this).children().attr('class', 'fa fa-heart-o');
+                } else {
+                    $(this).children().attr('class', 'fa fa-heart');
+                }
+                // console.log($(this).children().attr('class'));
+                // return false;
+                $.ajax({
+                    type: "POST",
+                    url: "<?= base_url('add-to-wishlist') ?>",
+                    data: {
+                        productid: $(this).attr('id')
+                    },
+                    dataType: "json",
+                    success: function(data) {
+                        if (data.status == 200) {
+                            // alert('product added to wishlist');
+                        } else {
+                            // alert('something went wrong');
+                        }
+                    }
+                });
+            });
+
+
             $('.search-box').keyup(function() {
                 if ($('.search-box').val().length >= 4) {
                     $.ajax({
@@ -1256,16 +1349,26 @@ $category_color = '#ff1e82';
                         },
                         dataType: "json",
                         success: function(data) {
-                            $('.search-results').html();
+                            $('.search-results').html('');
                             for (var i = 0; i < data.product.length; i++) {
-                                var html = "<a href=''><div class='search-item row p-2'><div class='col-3'><img width='100%' src='<?= base_url('uploads/product_images/1240324121518.png') ?>'></div><div class='col-8'><p class='mb-0 search-product-title'>" + data.product[i]['title'] + "</p><p> $ " + data.product[i]['price'] + "</p></div></div></a>";
+                                var html = "<a class='exit-search' style='text-decoration:none' href='<?= base_url('products/') ?>" + data.product[i]['product_slug'] + "'><div class='search-item row p-2 exit-search'><div class='col-3 text-center exit-search'><img height='50px' src='<?= base_url('uploads/product_images/') ?>" + data.product[i]['image_name1'] + "'></div><div class='col-8 p-0 exit-search'><p class='mb-0 search-product-title exit-search'>" + data.product[i]['title'] + "</p></div></div></a>";
                                 $('.search-results').append(html);
                             }
-                            console.log(data);
+                            // console.log(data);
+                            // console.log(data.product.length);
                         }
                     });
                 }
             });
+
+            $('.search-box').focusout(function(e) {
+                if ($(e.target).hasClass('exit-search')) {
+                    // $('.search-results').html('');
+                } else {
+                    $('.search-results').html('');
+                }
+            });
+
 
             $('.mobile-menu-bars').click(function() {
                 if ($(this).children().hasClass('fa-rotate-90')) {
@@ -1327,9 +1430,17 @@ $category_color = '#ff1e82';
         // respon header 
 
         $('body').click(function(evnt) {
+            if ($(evnt.target).hasClass('exit-search')) {
+                // $('.search-results').html('');
+            } else {
+                $('.search-results').html('');
+            }
+
             if (evnt.target.id != "link" && evnt.target.id != "mySidenav" && evnt.target.id != "ic") {
                 closeNav();
             }
+
+
             // if (evnt.target.id != "product") {
             //     if (!$(event.target).hasClass('product-360')) {
             //         $('#product').css('display', 'none');

@@ -1,5 +1,6 @@
 <?= $this->extend('Shop/Layout/layout') ?>
 <?= $this->section('content') ?>
+<?php $session = session(); ?>
 
 <head>
     <!-- 360 degrees -->
@@ -325,7 +326,9 @@
     </div>
     <div class="row m-0 gallery gap">
         <?php if (isset($section1)) {
-            include('section1.php');
+            foreach ($section1 as $row) { ?>
+                <?php echo view('Shop/page/single_product', ['row' => $row , 'wishlist' =>  $session->get('userid')]); ?>
+        <?php }
         } ?>
     </div>
 </div>
@@ -337,7 +340,9 @@
     </div>
     <div class="row m-0 gallery gap">
         <?php if (isset($section2)) {
-            include('section2.php');
+            foreach ($section2 as $row) { ?>
+                <?php echo view('Shop/page/single_product', ['row' => $row , 'wishlist' =>  $session->get('userid')]); ?>
+        <?php }
         } ?>
     </div>
 </div>

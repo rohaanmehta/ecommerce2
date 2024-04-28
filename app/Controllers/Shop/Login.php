@@ -64,9 +64,12 @@ class Login extends BaseController
 
         if ($check > 0) {
             $userid = $user[0]->id;
+            $wishlist_total = $this->db->table('wishlist')->where('user_id',$userid)->countAllResults();
             $data['status'] = 200;
             $this->session->set('userid', $userid);
             $this->session->set('role', $user[0]->role);
+            $this->session->set('wishlist_total', $wishlist_total);
+
         } else {
             $data['status'] = 400;
         }

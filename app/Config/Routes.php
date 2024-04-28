@@ -81,6 +81,7 @@ $routes->group('',['namespace' => 'App\controllers\Shop'], static function ($rou
     $routes->get('wishlist', 'Wishlist::view');
 
     $routes->post('search-product', 'Product::search_product');
+    $routes->post('add-to-wishlist', 'Product::add_to_wishlist');
     
 });
 

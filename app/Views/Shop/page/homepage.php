@@ -1,8 +1,9 @@
 <?= $this->extend('Shop/Layout/layout') ?>
 <?= $this->section('content') ?>
 
+<?php $session = session(); ?>
 <!-- corousel -->
-<div id="carouselExampleIndicators" style='z-index:-100;' class="mb-4 carousel slide carousel-fade" data-ride="carousel">
+<div id="carouselExampleIndicators" class="mb-4 carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -16,12 +17,15 @@
                                                 echo 'active';
                                             } ?>">
                     <img class="d-block w-100" src="<?= base_url('uploads/slider/' . $row->name) ?>" alt="corousel">
+                    <!-- <div class="carousel-caption d-none d-md-block">
+                        <h5>This is heading Caption</h5>
+                        <p>Description small for Images of corousel</p>
+                    </div> -->
                 </div>
         <?php $i++;
             }
         } ?>
     </div>
-
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
@@ -31,6 +35,7 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
+
 
 <!-- maliaka Edit -->
 <!-- landing padding-left -->
@@ -82,9 +87,12 @@
         <?php } ?>
     </div>
 
-    <div class="row m-0 gallery">
+    <div class="row m-0 gallery section1-slider">
         <?php if (isset($section1)) {
-            include('section1.php');
+            foreach ($section1 as $row) { ?>
+                <?php echo view('Shop/page/single_product', ['row' => $row, 'wishlist' =>  $session->get('userid')]);
+                ?>
+        <?php }
         } ?>
     </div>
     <?php if (isset($banner1_info) && !empty(($banner1_info) && $banner1_info[0]->value_2 != '')) { ?>
@@ -166,7 +174,9 @@
     </div>
     <div class="row m-0 gallery">
         <?php if (isset($section2)) {
-            include('section2.php');
+            foreach ($section2 as $row) { ?>
+                <?php echo view('Shop/page/single_product', ['row' => $row, 'wishlist' =>  $session->get('userid')]); ?>
+        <?php }
         } ?>
     </div>
     <?php if (isset($banner2_info) && !empty(($banner2_info) && $banner2_info[0]->value_2 != '')) { ?>
@@ -296,5 +306,47 @@
 
 <!-- <? //php include('app\Views\Shop\Layout\reviewslider.php'); 
         ?> -->
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.section1-slider').slick({
+            // dots: true,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 5,
+            slidesToScroll: 5,
+            prevArrow: "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+            nextArrow: "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
+            responsive: [{
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 5,
+                        slidesToScroll: 5,
+                        infinite: true,
+                        // dots: true
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+                // You can unslick at a given breakpoint now by adding:
+                // settings: "unslick"
+                // instead of a settings object
+            ]
+        });
+    });
+</script>
 
 <?= $this->endSection() ?>
