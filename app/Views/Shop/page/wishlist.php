@@ -29,7 +29,7 @@ if ($userid == '') { ?>
     <div class='galler_heading d-flex justify-content-left pt-5 pl-5 pb-2' style=''>
         <p style='font-size:25px;'>Your Wishlist</p>
     </div>
-    <div class='row pl-5 pr-5'>
+    <div class='row pl-5 pr-5 products-5'>
         <?php if(isset($products) && !empty($products)){ foreach($products as $row){?>
             <?php echo view('Shop/page/single_product', ['row' => $row , 'wishlist' =>  $session->get('userid')]); ?>
         <?php } }?>
