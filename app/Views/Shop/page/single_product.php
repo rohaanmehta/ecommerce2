@@ -24,7 +24,7 @@
                 <?php } ?>
             </div>
             <div class='wishlist-box'>
-                <button class='w-100 btn btn-sm btn-light add-to-wishlist' id='<?= $row->id ?>'>
+                <button class='border-0 btn btn-sm btn-light add-to-wishlist' id='<?= $row->id ?>'>
                 <i class='fa fa-heart-o mr-1'></i>  WISHLIST
                 </button>
             </div>
