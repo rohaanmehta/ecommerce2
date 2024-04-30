@@ -24,6 +24,7 @@ class Website_settings extends BaseController
             'name' => 'bannersection1',
             'value_1' => $_POST['banner1name'],
             'value_2' => $_POST['banner1link'],
+            'value_3' => $_POST['banner1slider'],
         );
 
 
@@ -39,6 +40,7 @@ class Website_settings extends BaseController
             'name' => 'bannersection2',
             'value_1' => $_POST['banner2name'],
             'value_2' => $_POST['banner2link'],
+            'value_3' => $_POST['banner2slider'],
         );
 
 

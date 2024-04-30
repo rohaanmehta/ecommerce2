@@ -23,10 +23,10 @@
     <section class="content">
         <form class='setting-form'>
             <div class='p-5 m-3 card'>
-                <div class='border border-secondary col-6 rounded p-4 m-4'>
+                <div class='border border-secondary col-8 rounded p-4 m-4'>
                     <p class='form-label h5 mb-3'> Homepage Products Section </p>
                     <div class='row'>
-                        <div class='mb-2 col-6'>
+                        <div class='mb-2 col-4'>
                             <span class='form-label'> Section 1 Name </span>
                             <input name='banner1name' class='form-control' value='<?php if (isset($banner1) && !empty(($banner1))) {
                                                                                         echo $banner1[0]->value_1;
@@ -38,9 +38,20 @@
                                                                                         echo $banner1[0]->value_2;
                                                                                     } ?>'>
                         </div>
+                        <div class='mb-2 col-2'>
+                            <span class='form-label'> Is Slider ? </span>
+                            <select class='form-control' name='banner1slider'>
+                                <option value='YES' <?php if (isset($banner1) && !empty($banner1) && $banner1[0]->value_3 == 'YES') {
+                                                        echo 'selected';
+                                                    }; ?>>YES</option>
+                                <option value='NO' <?php if (isset($banner1) && !empty($banner1) && $banner1[0]->value_3 == 'NO') {
+                                                        echo 'selected';
+                                                    }; ?>>NO</option>
+                            </select>
+                        </div>
                     </div>
                     <div class='row'>
-                        <div class='mb-2 col-6'>
+                        <div class='mb-2 col-4'>
                             <span class='form-label'> Section 2 Name </span>
                             <input name='banner2name' class='form-control' value='<?php if (isset($banner2) && !empty(($banner2))) {
                                                                                         echo $banner2[0]->value_1;
@@ -51,6 +62,18 @@
                             <input name='banner2link' class='form-control' value='<?php if (isset($banner2) && !empty(($banner2))) {
                                                                                         echo $banner2[0]->value_1;
                                                                                     } ?>'>
+                        </div>
+                        
+                        <div class='mb-2 col-2'>
+                            <span class='form-label'> Is Slider ? </span>
+                            <select class='form-control' name='banner2slider'>
+                                <option value='YES' <?php if (isset($banner2) && !empty($banner2) && $banner2[0]->value_3 == 'YES') {
+                                                        echo 'selected';
+                                                    }; ?>>YES</option>
+                                <option value='NO' <?php if (isset($banner2) && !empty($banner2) && $banner2[0]->value_3 == 'NO') {
+                                                        echo 'selected';
+                                                    }; ?>>NO</option>
+                            </select>
                         </div>
                     </div>
                     <div class='row'>

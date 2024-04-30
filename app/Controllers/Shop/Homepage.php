@@ -25,7 +25,7 @@ class Homepage extends BaseController
         $data['banner_section3name'] = $this->db->table('general_settings')->where('name', 'banner_section3name')->get()->getResult();
         $data['banner_section4name'] = $this->db->table('general_settings')->where('name', 'banner_section4name')->get()->getResult();
 
-        $section1 = $this->db->table('products')->select('products.id,products.title,products.price,pi.image_name1,products.product_slug')->where('promote', 'section1');
+        $section1 = $this->db->table('products')->select('products.id,products.title,products.price,pi.image_name1,pi.image_name2,pi.image_name3,pi.image_name4,products.product_slug')->where('promote', 'section1');
 
         if ($this->session->get('userid') != '') {
             $section1 = $section1->select('wishlist.user_id as wishlist')->join('wishlist', 'wishlist.product_id = products.id AND user_id = ' . $this->session->get('userid') . '', 'left');
@@ -36,7 +36,7 @@ class Homepage extends BaseController
         $data['section1'] = $section1->get()->getResult();
 
 
-        $section2 = $this->db->table('products')->select('products.id,products.title,products.price,pi.image_name1,products.product_slug')->where('promote', 'section2');
+        $section2 = $this->db->table('products')->select('products.id,products.title,products.price,pi.image_name1,pi.image_name2,pi.image_name3,pi.image_name4,products.product_slug')->where('promote', 'section2');
         
         if ($this->session->get('userid') != '') {
             $section2 = $section2->select('wishlist.user_id as wishlist')->join('wishlist', 'wishlist.product_id = products.id AND user_id = ' . $this->session->get('userid') . '', 'left');

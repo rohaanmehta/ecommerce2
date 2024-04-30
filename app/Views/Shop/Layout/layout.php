@@ -39,6 +39,83 @@ $session = session();
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
     <style>
+        .gallery_container:hover>.wishlist-box {
+            display: block;
+            transform: translateY(0);
+        }
+
+        .main-product-slider:hover .slick-dots {
+            opacity: 1;
+        }
+
+        .add-to-wishlist {
+            font-size: 12px;
+            font-weight: 600;
+            position: absolute;
+            bottom: 0px;
+            width: 100%;
+            left: 0px;
+        }
+
+        .wishlist-box {
+            width: 100%;
+            background-color: #fff;
+            position: absolute;
+            bottom: 95px;
+            display: none;
+            /* transform: translateY(100%); */
+            transition: 0.5s ease;
+            height: 50px;
+            z-index: 2;
+
+        }
+
+        .slick-dots {
+            opacity: 0;
+            display: flex !important;
+            z-index: 2;
+            justify-content: center;
+            position: absolute;
+            transform: translate(-50%, -50%) !important;
+            bottom: 0px;
+            left: 50%;
+            margin: 0;
+            padding: 1rem 0;
+
+            list-style-type: none;
+
+            li {
+                margin: 0 0.25rem;
+            }
+
+            button {
+                display: block;
+                width: 0.3rem;
+                height: 0.3rem;
+                padding: 0;
+                /* position: absolute; */
+                /* padding-right: 6px; */
+                bottom: 0px;
+                border: none;
+                border-radius: 100%;
+                background-color: #dfdfdf;
+
+                text-indent: -9999px;
+            }
+
+            li.slick-active button {
+                background-color: #9b9b9b;
+            }
+
+        }
+
+        @media only screen and (min-width: 992px) {
+            .products-5 .col-lg-3 {
+                flex: 0 0 20%;
+                max-width: 20%;
+            }
+        }
+
         .slick-slider {
             display: flex !important;
         }
@@ -145,319 +222,6 @@ $session = session();
             /* background-color: #f2f2f2; */
         }
 
-        #slider-text {
-            padding-top: 40px;
-            display: block;
-        }
-
-        #slider-text .col-md-6 {
-            overflow: hidden;
-        }
-
-        #slider-text h2 {
-            font-family: 'Josefin Sans', sans-serif;
-            font-weight: 400;
-            font-size: 30px;
-            letter-spacing: 3px;
-            margin: 30px auto;
-            padding-left: 40px;
-        }
-
-        #slider-text h2::after {
-            border-top: 2px solid #c7c7c7;
-            content: "";
-            position: absolute;
-            bottom: 35px;
-            width: 100%;
-        }
-
-        #itemslider h4 {
-            font-family: 'Josefin Sans', sans-serif;
-            font-weight: 400;
-            font-size: 12px;
-            margin: 10px auto 3px;
-        }
-
-        #itemslider h5 {
-            font-family: 'Josefin Sans', sans-serif;
-            font-weight: bold;
-            font-size: 12px;
-            margin: 3px auto 2px;
-        }
-
-        #itemslider h6 {
-            font-family: 'Josefin Sans', sans-serif;
-            font-weight: 300;
-            ;
-            font-size: 10px;
-            margin: 2px auto 5px;
-        }
-
-        #slider-control img {
-            padding-top: 60%;
-            margin: 0 auto;
-        }
-
-        @media screen and (max-width: 992px) {
-            #slider-control img {
-                padding-top: 70px;
-                margin: 0 auto;
-            }
-        }
-
-        .carousel-showmanymoveone .carousel-control {
-            /* width: 4%; */
-            background-image: none;
-            /* margin-top: 160px; */
-        }
-
-        /* .carousel-showmanymoveone .carousel-control.left {
-            margin-left: 0px;
-        } */
-
-        .carousel-showmanymoveone .cloneditem-1,
-        .carousel-showmanymoveone .cloneditem-2,
-        .carousel-showmanymoveone .cloneditem-3,
-        .carousel-showmanymoveone .cloneditem-4,
-        .carousel-showmanymoveone .cloneditem-5 {
-            display: none;
-        }
-
-        @media all and (min-width: 300px) {
-
-            .carousel-showmanymoveone .carousel-inner>.item.active.right,
-            .carousel-showmanymoveone .carousel-inner>.item.next {
-                -webkit-transform: translate3d(50%, 0, 0);
-                transform: translate3d(50%, 0, 0);
-                left: 0;
-            }
-
-            .carousel-showmanymoveone .carousel-inner>.item.active.left,
-            .carousel-showmanymoveone .carousel-inner>.item.prev {
-                -webkit-transform: translate3d(-50%, 0, 0);
-                transform: translate3d(-50%, 0, 0);
-                left: 0;
-            }
-
-            .carousel-showmanymoveone .carousel-inner>.item.left,
-            .carousel-showmanymoveone .carousel-inner>.item.prev.right,
-            .carousel-showmanymoveone .carousel-inner>.item.active {
-                -webkit-transform: translate3d(0, 0, 0);
-                transform: translate3d(0, 0, 0);
-                left: 0;
-            }
-
-            .carousel-showmanymoveone .carousel-inner .cloneditem-1 {
-                display: block;
-            }
-
-            .item .col-xs-12 {
-                width: 50% !important;
-            }
-
-            .item .col-xs-2 {
-                max-width: 50% !important;
-            }
-        }
-
-
-        @media all and (min-width: 425px) and (transform-3d),
-        all and (min-width: 425px) and (-webkit-transform-3d) {
-
-            .carousel-showmanymoveone .carousel-inner>.item.active.right,
-            .carousel-showmanymoveone .carousel-inner>.item.next {
-                -webkit-transform: translate3d(50%, 0, 0);
-                transform: translate3d(50%, 0, 0);
-                left: 0;
-            }
-
-            .carousel-showmanymoveone .carousel-inner>.item.active.left,
-            .carousel-showmanymoveone .carousel-inner>.item.prev {
-                -webkit-transform: translate3d(-50%, 0, 0);
-                transform: translate3d(-50%, 0, 0);
-                left: 0;
-            }
-
-            .carousel-showmanymoveone .carousel-inner>.item.left,
-            .carousel-showmanymoveone .carousel-inner>.item.prev.right,
-            .carousel-showmanymoveone .carousel-inner>.item.active {
-                -webkit-transform: translate3d(0, 0, 0);
-                transform: translate3d(0, 0, 0);
-                left: 0;
-            }
-
-            /* .carousel-showmanymoveone .carousel-control.left {
-                margin-left: -18px;
-            }
-
-            .carousel-showmanymoveone .carousel-control.right {
-                margin-right: 10px;
-            } */
-        }
-
-        @media all and (min-width: 576px) {
-
-            .carousel-showmanymoveone .carousel-inner>.active.left,
-            .carousel-showmanymoveone .carousel-inner>.prev {
-                left: -20%;
-            }
-
-            .carousel-showmanymoveone .carousel-inner>.active.right,
-            .carousel-showmanymoveone .carousel-inner>.next {
-                left: 20%;
-            }
-
-            .carousel-showmanymoveone .carousel-inner>.left,
-            .carousel-showmanymoveone .carousel-inner>.prev.right,
-            .carousel-showmanymoveone .carousel-inner>.active {
-                left: 0;
-            }
-
-            .carousel-showmanymoveone .carousel-inner .cloneditem-1 {
-                display: block;
-            }
-
-            .carousel-showmanymoveone .carousel-inner .cloneditem-2 {
-                display: block;
-            }
-
-            /* .carousel-showmanymoveone .carousel-inner .cloneditem-3 {
-                display: block;
-            } */
-
-            /* .carousel-showmanymoveone .carousel-inner .cloneditem-4 {
-                display: block;
-            } */
-            /* .carousel-showmanymoveone .carousel-control.left {
-                margin-left: -12px;
-            }
-
-            .carousel-showmanymoveone .carousel-control.right {
-                margin-right: 5px;
-            } */
-        }
-
-        @media all and (min-width: 576px) and (transform-3d),
-        all and (min-width: 576px) and (-webkit-transform-3d) {
-
-            .carousel-showmanymoveone .carousel-inner>.item.active.right,
-            .carousel-showmanymoveone .carousel-inner>.item.next {
-                -webkit-transform: translate3d(33.333%, 0, 0);
-                transform: translate3d(33.333%, 0, 0);
-                left: 0;
-            }
-
-            .carousel-showmanymoveone .carousel-inner>.item.active.left,
-            .carousel-showmanymoveone .carousel-inner>.item.prev {
-                -webkit-transform: translate3d(-33.333%, 0, 0);
-                transform: translate3d(-33.333%, 0, 0);
-                left: 0;
-            }
-
-            .carousel-showmanymoveone .carousel-inner>.item.left,
-            .carousel-showmanymoveone .carousel-inner>.item.prev.right,
-            .carousel-showmanymoveone .carousel-inner>.item.active {
-                -webkit-transform: translate3d(0, 0, 0);
-                transform: translate3d(0, 0, 0);
-                left: 0;
-            }
-
-            .item .col-xs-12 {
-                width: 33.333% !important;
-            }
-
-            .item .col-md-2 {
-                max-width: 33.333% !important;
-            }
-
-        }
-
-        @media all and (min-width: 900px) {
-
-            .carousel-showmanymoveone .carousel-inner>.active.left,
-            .carousel-showmanymoveone .carousel-inner>.prev {
-                left: -20%;
-            }
-
-            .carousel-showmanymoveone .carousel-inner>.active.right,
-            .carousel-showmanymoveone .carousel-inner>.next {
-                left: 20%;
-            }
-
-            .carousel-showmanymoveone .carousel-inner>.left,
-            .carousel-showmanymoveone .carousel-inner>.prev.right,
-            .carousel-showmanymoveone .carousel-inner>.active {
-                left: 0;
-            }
-
-            .carousel-showmanymoveone .carousel-inner .cloneditem-2,
-            .carousel-showmanymoveone .carousel-inner .cloneditem-3,
-            .carousel-showmanymoveone .carousel-inner .cloneditem-4,
-            .carousel-showmanymoveone .carousel-inner .cloneditem-5,
-            .carousel-showmanymoveone .carousel-inner .cloneditem-6 {
-                display: block;
-            }
-        }
-
-        @media all and (min-width: 900px) and (transform-3d),
-        all and (min-width: 900px) and (-webkit-transform-3d) {
-
-            .carousel-showmanymoveone .carousel-inner>.item.active.right,
-            .carousel-showmanymoveone .carousel-inner>.item.next {
-                -webkit-transform: translate3d(20%, 0, 0);
-                transform: translate3d(20%, 0, 0);
-                left: 0;
-            }
-
-            .carousel-showmanymoveone .carousel-inner>.item.active.left,
-            .carousel-showmanymoveone .carousel-inner>.item.prev {
-                -webkit-transform: translate3d(-20%, 0, 0);
-                transform: translate3d(-20%, 0, 0);
-                left: 0;
-            }
-
-            .carousel-showmanymoveone .carousel-inner>.item.left,
-            .carousel-showmanymoveone .carousel-inner>.item.prev.right,
-            .carousel-showmanymoveone .carousel-inner>.item.active {
-                -webkit-transform: translate3d(0, 0, 0);
-                transform: translate3d(0, 0, 0);
-                left: 0;
-            }
-
-            .item .col-lg-2 {
-                width: 20% !important;
-            }
-
-            .item .col-md-2 {
-                max-width: 20% !important;
-            }
-
-            /* .carousel-showmanymoveone .carousel-control.left {
-                margin-left: 0px;
-            } */
-        }
-
-        .carousel-control {
-            opacity: 1 !important;
-            top: 60%;
-            -ms-transform: translateY(-50%);
-            transform: translateY(-50%);
-        }
-
-        .carousel-showmanymoveone .carousel-control.right {
-            right: -11px !important;
-            width: auto !important;
-        }
-
-        .carousel-showmanymoveone .carousel-control.left {
-            left: -11px !important;
-            width: auto !important;
-        }
-
-
-        .product-slider-img {
-            position: relative;
-        }
 
         .add-to-cart {
             display: none;
@@ -660,6 +424,7 @@ $session = session();
             margin: auto;
             width: 95%;
             border: 1px solid #dfdfdf;
+            position: relative;
         }
 
 
@@ -927,7 +692,7 @@ $session = session();
         }
 
         .gallery_container:hover {
-            border: 1px solid #979797;
+            border: 1px solid #9d9d9d;
         }
 
         .dropdown:hover>.dropdown-menu {
@@ -1311,31 +1076,59 @@ $session = session();
         //   }
 
         $(document).ready(function() {
+            $('.single-product-slider').slick({
+                dots: true,
+                autoplay: false,
+                autoplaySpeed: 1000,
+                infinite: true,
+                speed: 300,
+                slidesToShow: 1,
+                // adaptiveHeight: true,
+                prevArrow: "",
+                nextArrow: "",
+                pauseOnHover: false,
+                pauseOnFocus: false,
+            });
+
+            $('.main-product-slider').hover(
+                function() {
+                    // $('.product-slider-image').css('display','block !important');
+                    $(this).find('.single-product-slider').slick('play')
+                },
+
+                function() {
+                    $(this).find('.single-product-slider').slick('slickGoTo', '0');
+                    $(this).find('.single-product-slider').slick('pause');
+                }
+            );
+
             $('.add-to-wishlist').click(function(e) {
                 e.preventDefault();
-
-                if ($(this).children().attr('class') == 'fa fa-heart') {
-                    $(this).children().attr('class', 'fa fa-heart-o');
-                } else {
-                    $(this).children().attr('class', 'fa fa-heart');
-                }
-                // console.log($(this).children().attr('class'));
-                // return false;
-                $.ajax({
-                    type: "POST",
-                    url: "<?= base_url('add-to-wishlist') ?>",
-                    data: {
-                        productid: $(this).attr('id')
-                    },
-                    dataType: "json",
-                    success: function(data) {
-                        if (data.status == 200) {
-                            // alert('product added to wishlist');
-                        } else {
-                            // alert('something went wrong');
-                        }
+                if ($(this).attr('data-target') == '') {
+                    if ($(this).children().attr('class') == 'fa fa-heart mr-1') {
+                        $(this).children().attr('class', 'fa fa-heart-o mr-1');
+                    } else {
+                        $(this).children().attr('class', 'fa fa-heart mr-1');
                     }
-                });
+
+                    // console.log($(this).children().attr('class'));
+                    // return false;
+                    $.ajax({
+                        type: "POST",
+                        url: "<?= base_url('add-to-wishlist') ?>",
+                        data: {
+                            productid: $(this).attr('id')
+                        },
+                        dataType: "json",
+                        success: function(data) {
+                            if (data.status == 200) {
+                                alert('product added to wishlist');
+                            } else {
+                                alert('something went wrong');
+                            }
+                        }
+                    });
+                }
             });
 
 
