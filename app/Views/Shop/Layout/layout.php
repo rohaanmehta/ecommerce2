@@ -44,26 +44,34 @@ $session = session();
             transform: translateY(0);
         }
 
-        .gallery_container:hover>.slick-dots {
-            display: flex !important;
+        .main-product-slider:hover .slick-dots {
+            opacity: 1;
         }
+
         .add-to-wishlist {
             font-size: 12px;
             font-weight: 600;
+            position: absolute;
+            bottom: 0px;
+            width: 100%;
+            left: 0px;
         }
 
         .wishlist-box {
             width: 100%;
             background-color: #fff;
             position: absolute;
-            bottom: 120px;
+            bottom: 95px;
             display: none;
-            transform: translateY(100%);
+            /* transform: translateY(100%); */
             transition: 0.5s ease;
+            height: 50px;
+            z-index: 2;
 
         }
 
         .slick-dots {
+            opacity: 0;
             display: flex !important;
             z-index: 2;
             justify-content: center;
@@ -82,10 +90,12 @@ $session = session();
 
             button {
                 display: block;
-                width: 0.5rem;
-                height: 0.5rem;
+                width: 0.3rem;
+                height: 0.3rem;
                 padding: 0;
-
+                /* position: absolute; */
+                /* padding-right: 6px; */
+                bottom: 0px;
                 border: none;
                 border-radius: 100%;
                 background-color: #dfdfdf;
@@ -413,6 +423,7 @@ $session = session();
             margin: auto;
             width: 95%;
             border: 1px solid #dfdfdf;
+            position: relative;
         }
 
 
@@ -680,7 +691,7 @@ $session = session();
         }
 
         .gallery_container:hover {
-            border: 1px solid #979797;
+            border: 1px solid #9d9d9d;
         }
 
         .dropdown:hover>.dropdown-menu {
@@ -1078,43 +1089,45 @@ $session = session();
                 pauseOnFocus: false,
             });
 
-            $('.single-product-slider').hover(
+            $('.main-product-slider').hover(
                 function() {
                     // $('.product-slider-image').css('display','block !important');
-                    $(this).slick('play')
+                    $(this).find('.single-product-slider').slick('play')
                 },
 
                 function() {
-                    $(this).slick('slickGoTo', '0');
-                    $(this).slick('pause');
+                    $(this).find('.single-product-slider').slick('slickGoTo', '0');
+                    $(this).find('.single-product-slider').slick('pause');
                 }
             );
 
             $('.add-to-wishlist').click(function(e) {
                 e.preventDefault();
-
-                if ($(this).children().attr('class') == 'fa fa-heart') {
-                    $(this).children().attr('class', 'fa fa-heart-o');
-                } else {
-                    $(this).children().attr('class', 'fa fa-heart');
-                }
-                // console.log($(this).children().attr('class'));
-                // return false;
-                $.ajax({
-                    type: "POST",
-                    url: "<?= base_url('add-to-wishlist') ?>",
-                    data: {
-                        productid: $(this).attr('id')
-                    },
-                    dataType: "json",
-                    success: function(data) {
-                        if (data.status == 200) {
-                            // alert('product added to wishlist');
-                        } else {
-                            // alert('something went wrong');
-                        }
+                if ($(this).attr('data-target') == '') {
+                    if ($(this).children().attr('class') == 'fa fa-heart mr-1') {
+                        $(this).children().attr('class', 'fa fa-heart-o mr-1');
+                    } else {
+                        $(this).children().attr('class', 'fa fa-heart mr-1');
                     }
-                });
+
+                    // console.log($(this).children().attr('class'));
+                    // return false;
+                    $.ajax({
+                        type: "POST",
+                        url: "<?= base_url('add-to-wishlist') ?>",
+                        data: {
+                            productid: $(this).attr('id')
+                        },
+                        dataType: "json",
+                        success: function(data) {
+                            if (data.status == 200) {
+                                alert('product added to wishlist');
+                            } else {
+                                alert('something went wrong');
+                            }
+                        }
+                    });
+                }
             });
 
 
