@@ -112,6 +112,7 @@ $session = session();
         @media only screen and (min-width: 992px) {
             .products-5 .col-lg-3 {
                 flex: 0 0 20%;
+                max-width: 20%;
             }
         }
 
