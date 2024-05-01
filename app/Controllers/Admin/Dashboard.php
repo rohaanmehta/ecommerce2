@@ -15,7 +15,7 @@ class Dashboard extends BaseController
 
     public function slider_view()
     {
-        $data['sliders'] = $this->db->table('homepage_slider')->get()->getResult();
+        $data['sliders'] = $this->db->table('homepage_slider')->orderBy('order')->get()->getResult();
         return view('Admin/Views/Dashboard/slider_view',$data);
     }
 
@@ -35,6 +35,7 @@ class Dashboard extends BaseController
             $array = array(
                 'name' => $fileName,
                 'order' => $_POST['order'],
+                'link' => $_POST['link'],
                 'storage' => 'local'
             );
             $this->db->table('homepage_slider')->insert($array);

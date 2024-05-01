@@ -53,6 +53,7 @@ abstract class BaseController extends Controller
 
         $this->db = \Config\Database::connect();
         $this->session = \Config\Services::session();
+
         // E.g.: $this->session = \Config\Services::session();
     }
 }

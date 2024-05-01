@@ -103,7 +103,7 @@
         color: darkblue;
     }
 
-    .product_price {
+    .product_price_main {
         font-size: 26px;
         color: #222222;
         font-weight: 600;
@@ -206,7 +206,7 @@
 </style>
 <div class='invisible mobile_Head_Hide'>gap fill</div>
 
-<div class='row p-4'>
+<div class='row'>
     <div class='col-1 mobile_Head_Hide'>
         <div class='row pl-5 justify-content-end'>
             <?php if (isset($product)) { ?>
@@ -248,7 +248,7 @@
             <!-- Shop the collection by <a href='#' class='shop_name'>G mentor </a> -->
         </div>
 
-        <div class='product_price'>
+        <div class='product_price_main'>
             $<?= $product[0]->price; ?>
         </div>
 
@@ -322,12 +322,14 @@
 <!-- you may also like  -->
 <div class="mt-5" style="padding-left:10px;padding-right:10px;">
     <div class='galler_heading d-flex justify-content-between' style='border-bottom: 1px solid #d5d5d5;height:40px;margin:0px 20px 10px 20px;padding-bottom:45px;'>
-        <p style='font-size:25px;'>YOU MAY ALSO LIKE </p>
+        <p style='font-size:25px;'><?php if (isset($productbanner1) && $productbanner1[0]->value_1 != '') {
+                                        echo $productbanner1[0]->value_1;
+                                    } ?> </p>
     </div>
-    <div class="row m-0 gallery gap">
+    <div class="row m-0 gallery gap section1-slider products-5">
         <?php if (isset($section1)) {
             foreach ($section1 as $row) { ?>
-                <?php echo view('Shop/page/single_product', ['row' => $row , 'wishlist' =>  $session->get('userid')]); ?>
+                <?php echo view('Shop/page/single_product', ['row' => $row, 'wishlist' =>  $session->get('userid')]); ?>
         <?php }
         } ?>
     </div>
@@ -336,12 +338,14 @@
 <!-- you may also like  -->
 <div class="" style="padding-left:10px;padding-right:10px;">
     <div class='galler_heading d-flex justify-content-between' style='border-bottom: 1px solid #d5d5d5;height:40px;margin:0px 20px 10px 20px;padding-bottom:45px;'>
-        <p style='font-size:25px;'>OUR BEST PRODUCTS </p>
+        <p style='font-size:25px;'><?php if (isset($productbanner2) && $productbanner2[0]->value_1 != '') {
+                                        echo $productbanner2[0]->value_1;
+                                    } ?> </p>
     </div>
-    <div class="row m-0 gallery gap">
+    <div class="row m-0 gallery gap section2-slider products-5">
         <?php if (isset($section2)) {
             foreach ($section2 as $row) { ?>
-                <?php echo view('Shop/page/single_product', ['row' => $row , 'wishlist' =>  $session->get('userid')]); ?>
+                <?php echo view('Shop/page/single_product', ['row' => $row, 'wishlist' =>  $session->get('userid')]); ?>
         <?php }
         } ?>
     </div>
@@ -757,6 +761,85 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
+
+        <?php if (isset($productbanner1) && !empty(($productbanner1) && $productbanner1[0]->value_3 == 'YES')) { ?>
+            $('.section1-slider').slick({
+                // dots: true,
+                infinite: true,
+                speed: 300,
+                slidesToShow: 5,
+                slidesToScroll: 5,
+                prevArrow: "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+                nextArrow: "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
+                responsive: [{
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 5,
+                            slidesToScroll: 5,
+                            infinite: true,
+                            // dots: true
+                        }
+                    },
+                    {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }
+                    // You can unslick at a given breakpoint now by adding:
+                    // settings: "unslick"
+                    // instead of a settings object
+                ]
+            });
+        <?php } ?>
+        
+        <?php if (isset($productbanner2) && !empty(($productbanner2) && $productbanner2[0]->value_3 == 'YES')) { ?>
+            $('.section2-slider').slick({
+                // dots: true,
+                infinite: true,
+                speed: 300,
+                slidesToShow: 5,
+                slidesToScroll: 5,
+                prevArrow: "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+                nextArrow: "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
+                responsive: [{
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 5,
+                            slidesToScroll: 5,
+                            infinite: true,
+                            // dots: true
+                        }
+                    },
+                    {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }
+                    // You can unslick at a given breakpoint now by adding:
+                    // settings: "unslick"
+                    // instead of a settings object
+                ]
+            });
+        <?php } ?>
+
         $('.addtocart').click(function() {
             $.ajax({
                 type: "POST",

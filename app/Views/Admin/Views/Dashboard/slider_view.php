@@ -33,6 +33,7 @@
             <table class='table table-bordered table-striped'>
                 <tr>
                     <td>Image</td>
+                    <td>Link</td>
                     <td>Order</td>
                     <td>Action</td>
                 </tr>
@@ -40,9 +41,10 @@
                 <?php if (isset($sliders[0])) {
                     foreach ($sliders as $row) { ?>
                         <tr>
-                            <td><img width='200px' src='<?= base_url('/uploads/slider/' . $row->name); ?>'></td>
-                            <td><?= $row->order; ?></td>
-                            <td><a href='<?= base_url('/delete-slider' . '/' . $row->id); ?>'><button class='btn btn-danger'>Delete</button></a></td>
+                            <td width='220px'><img width='200px' src='<?= base_url('/uploads/slider/' . $row->name); ?>'></td>
+                            <td><?= $row->link; ?></td>
+                            <td width='100px'><?= $row->order; ?></td>
+                            <td width='100px'><a href='<?= base_url('/delete-slider' . '/' . $row->id); ?>'><button class='btn btn-danger'>Delete</button></a></td>
                         </tr>
                     <?php  }
                 } else {  ?>
@@ -70,6 +72,10 @@
                     <div class='mb-2'>
                         <span class='form-label'>Select Image</span>
                         <input type='file' name='slider_image' required class='form-control w-50' />
+                    </div>
+                    <div class='mb-2'>
+                        <span class='form-label'>Link</span>
+                        <input type='text' name='link' required class='form-control w-50' placeholder='Link' />
                     </div>
                     <div class='mb-2'>
                         <span class='form-label'>Order</span>

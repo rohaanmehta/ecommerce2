@@ -3,7 +3,7 @@
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
         <img src="<?= base_url('uploads/logo/cara_small.png') ?>" alt="AdminLTE Logo" class="brand-image">
-        <span class="brand-text font-weight-light"><?= $_ENV['websitename'];?></span>
+        <span class="brand-text font-weight-light"><?= $_ENV['websitename']; ?></span>
     </a>
 
     <!-- Sidebar -->
@@ -11,8 +11,9 @@
         <!-- Sidebar user panel (optional) -->
         <!-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image"> -->
-                <!-- <img src="<?//= base_url('public/dist/img/user2-160x160.jpg') ?>" class="img-circle elevation-2" alt="User Image"> -->
-            <!-- </div>
+        <!-- <img src="<? //= base_url('public/dist/img/user2-160x160.jpg') 
+                        ?>" class="img-circle elevation-2" alt="User Image"> -->
+        <!-- </div>
             <div class="info">
                 <a href="#" class="d-block"><//?= 'WELCOME: MALLIKA '?></a>
             </div>
@@ -147,6 +148,53 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-cog"></i>
+                        <p>
+                            Orders
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= base_url('Admin/website_settings') ?>" class="nav-link">
+                                <i class="nav-icon fa fa-cog"></i>
+                                <p>Orders</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-cog"></i>
+                        <p>
+                            Users
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= base_url('Admin/website_settings') ?>" class="nav-link">
+                                <i class="nav-icon fa fa-cog"></i>
+                                <p>Add Users</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('Admin/website_settings') ?>" class="nav-link">
+                                <i class="nav-icon fa fa-cog"></i>
+                                <p>Administrators</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('Admin/website_settings') ?>" class="nav-link">
+                                <i class="nav-icon fa fa-cog"></i>
+                                <p>Members</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-envelope"></i>
                         <p>
                             Enquiries
@@ -211,7 +259,95 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-cog"></i>
                         <p>
-                        General Settings
+                            Coupons
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= base_url('Admin/add-coupons') ?>" class="nav-link">
+                                <i class="nav-icon fa fa-cog"></i>
+                                <p>Add Coupons</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('Admin/coupons-list') ?>" class="nav-link">
+                                <i class="nav-icon fa fa-list"></i>
+                                <p>Coupons List</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-cog"></i>
+                        <p>
+                            Sale
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= base_url('Admin/add-coupons') ?>" class="nav-link">
+                                <i class="nav-icon fa fa-cog"></i>
+                                <p>Add Sale</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('Admin/coupons-list') ?>" class="nav-link">
+                                <i class="nav-icon fa fa-list"></i>
+                                <p>Sale List</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-star"></i>
+                        <p>
+                            Reviews
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= base_url('Admin/review-list') ?>" class="nav-link">
+                                <i class="nav-icon fa fa-list"></i>
+                                <p>Reviews List</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-cog"></i>
+                        <p>
+                            Size Chart
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= base_url('Admin/add-sizechart') ?>" class="nav-link">
+                                <i class="nav-icon fa fa-cog"></i>
+                                <p>Add Size Chart</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('Admin/sizechart-list') ?>" class="nav-link">
+                                <i class="nav-icon fa fa-cog"></i>
+                                <p>Size Chart List</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-cog"></i>
+                        <p>
+                            General Settings
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
@@ -219,15 +355,21 @@
                         <li class="nav-item">
                             <a href="<?= base_url('Admin/website_settings') ?>" class="nav-link">
                                 <i class="nav-icon fa fa-cog"></i>
-                                <p>Website Settings</p>
+                                <p>Products Settings</p>
                             </a>
                         </li>
-                        <!-- <li class="nav-item">
-                            <a href="<?= base_url('/product_enquiry') ?>" class="nav-link">
-                                <i class="nav-icon fa fa-envelope-open"></i>
-                                <p>Product Enquiries</p>
+                        <li class="nav-item">
+                            <a href="<?= base_url('Admin/visual_settings') ?>" class="nav-link">
+                                <i class="nav-icon fa fa-cog"></i>
+                                <p>Visual Settings</p>
                             </a>
-                        </li> -->
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('Admin/payment-view') ?>" class="nav-link">
+                                <i class="nav-icon fa fa-cog"></i>
+                                <p>Payment Settings</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
             </ul>

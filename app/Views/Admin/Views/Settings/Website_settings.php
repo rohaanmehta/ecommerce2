@@ -133,11 +133,78 @@
                 </div>
             </div>
         </form>
+
+        <form class='product-page-form'>
+            <div class='p-5 m-3 card'>
+                <div class='border border-secondary col-8 rounded p-4 m-4'>
+                    <p class='form-label h5 mb-3'> Product Page Section </p>
+                    <div class='row'>
+                        <div class='mb-2 col-4'>
+                            <span class='form-label'> Section 1 Name </span>
+                            <input name='banner1name' class='form-control' value='<?php if (isset($productbanner1) && !empty(($productbanner1))) {
+                                                                                        echo $productbanner1[0]->value_1;
+                                                                                    } ?>'>
+                        </div>
+                        <div class='mb-2 col-6'>
+                            <span class='form-label'> Section 1 Product Count </span>
+                            <input name='banner1count' class='form-control' value='<?php if (isset($productbanner1) && !empty(($productbanner1))) {
+                                                                                        echo $productbanner1[0]->value_2;
+                                                                                    } ?>'>
+                        </div>
+                        <div class='mb-2 col-2'>
+                            <span class='form-label'> Is Slider ? </span>
+                            <select class='form-control' name='banner1slider'>
+                                <option value='YES' <?php if (isset($productbanner1) && !empty($productbanner1) && $productbanner1[0]->value_3 == 'YES') {
+                                                        echo 'selected';
+                                                    }; ?>>YES</option>
+                                <option value='NO' <?php if (isset($productbanner1) && !empty($productbanner1) && $productbanner1[0]->value_3 == 'NO') {
+                                                        echo 'selected';
+                                                    }; ?>>NO</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class='mb-2 col-4'>
+                            <span class='form-label'> Section 2 Name </span>
+                            <input name='banner2name' class='form-control' value='<?php if (isset($productbanner2) && !empty(($productbanner2))) {
+                                                                                        echo $productbanner2[0]->value_1;
+                                                                                    } ?>'>
+                        </div>
+                        <div class='mb-2 col-6'>
+                            <span class='form-label'> Section 1 Product Count </span>
+                            <input name='banner2count' class='form-control' value='<?php if (isset($productbanner2) && !empty(($productbanner2))) {
+                                                                                        echo $productbanner2[0]->value_2;
+                                                                                    } ?>'>
+                        </div>
+                        
+                        <div class='mb-2 col-2'>
+                            <span class='form-label'> Is Slider ? </span>
+                            <select class='form-control' name='banner2slider'>
+                                <option value='YES' <?php if (isset($productbanner2) && !empty($productbanner2) && $productbanner2[0]->value_3 == 'YES') {
+                                                        echo 'selected';
+                                                    }; ?>>YES</option>
+                                <option value='NO' <?php if (isset($productbanner2) && !empty($productbanner2) && $productbanner2[0]->value_3 == 'NO') {
+                                                        echo 'selected';
+                                                    }; ?>>NO</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class='mb-2 col-12'>
+                            <div class="mt-3 d-flex justify-content-center">
+                                <button class='btn btn-primary'> Save </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
     </section>
 </div>
 
 <script>
     $(document).ready(function() {
+        
         $('.setting-form').submit(function(e) {
             e.preventDefault();
             $.ajax({
@@ -170,6 +237,33 @@
             $.ajax({
                 type: "POST",
                 url: "<?= base_url('add_website_settings_banner') ?>",
+                data: new FormData(this),
+                contentType: false,
+                cache: false,
+                processData: false,
+                dataType: "json",
+                success: function(data) {
+                    if (data.status == '200') {
+                        alert('uploaded successfully');
+                        setTimeout(function() {
+                            // $('#download').css('display', 'block');
+                            // $('#loader').css('visibility', 'hidden');
+                            window.location.href = '<?= base_url('/Admin/website_settings'); ?>';
+                        }, 1000);
+                        // alert('registered_successfully');
+
+                    } else {
+                        alert('something went wrong');
+                    }
+                }
+            });
+        });
+        
+        $('.product-page-form').submit(function(e) {
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('add_website_settings_product_page') ?>",
                 data: new FormData(this),
                 contentType: false,
                 cache: false,

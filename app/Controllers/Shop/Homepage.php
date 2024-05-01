@@ -45,7 +45,7 @@ class Homepage extends BaseController
         $section2 = $section2->join('product_images as pi', 'pi.product_id = products.id')->where('is_deleted', '0')->limit(10)->orderBy('products.id', 'ASC');
 
         $data['section2'] =  $section2->get()->getResult();
-
+        
         // echo '<pre>';print_r($data['section2']);exit;
         return view('Shop/page/homepage', $data);
     }

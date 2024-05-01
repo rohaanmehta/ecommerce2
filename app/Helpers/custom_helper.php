@@ -11,6 +11,12 @@ function get_categories($id)
     // echo json_encode($data);
 }
 
+function website_settings(){
+    $db = \Config\Database::connect();
+    $data =  $db->table('general_settings')->where('name', 'website_settings')->get()->getResult();
+    return $data;
+}
+
 function character_limiter($str, $n = 500, $end_char = '&#8230;')
 {
     if (mb_strlen($str) < $n) {

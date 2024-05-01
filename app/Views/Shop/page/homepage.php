@@ -16,11 +16,17 @@
                 <div class="carousel-item <?php if ($i == 0) {
                                                 echo 'active';
                                             } ?>">
-                    <img class="d-block w-100" src="<?= base_url('uploads/slider/' . $row->name) ?>" alt="corousel">
-                    <!-- <div class="carousel-caption d-none d-md-block">
+                    <?php if ($row->link != '') { ?>
+                        <a href='<?= base_url($row->link); ?>'>
+                        <?php } ?>
+                        <img class="d-block w-100" src="<?= base_url('uploads/slider/' . $row->name) ?>" alt="corousel">
+                        <!-- <div class="carousel-caption d-none d-md-block">
                         <h5>This is heading Caption</h5>
                         <p>Description small for Images of corousel</p>
                     </div> -->
+                        <?php if ($row->link != '') { ?>
+                        </a>
+                    <?php } ?>
                 </div>
         <?php $i++;
             }
@@ -35,21 +41,6 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
-
-
-<!-- maliaka Edit -->
-<!-- landing padding-left -->
-<!-- <div class='row p-3 pb-0 m-0 mb-4' id='philosophy' style='background:#7C0935;'>
-    <div class='col-6 p-4'>
-        <p class='h2 mb-3 text-light'>OUR PHILOSOPHY</p>
-        <p style='font-size:15px;' class='text-light'>Cara, believes in redefining spaces to inspire lives. Our philosophy is rooted in the idea that every kitchen and living area should not just be functional, but also reflect the unique personality and lifestyle of its inhabitants. We strive to blend innovation with practicality, offering modular kitchen and furniture solutions that seamlessly adapt to diverse needs and preferences. From sleek and modern designs to timeless classics, our goal is to empower our customers to create spaces that they truly love to live in. With a commitment to quality craftsmanship and unparalleled customer service, we're dedicated to helping you transform your vision into reality, one modular piece at a time. Welcome to a world where your imagination knows no bounds, and your space becomes an expression of your individuality.</p>
-
-    </div>
-    <div class='col-6 p-0'>
-        <img width='100%' src='<//?= base_url('/uploads/philosophy.jpg'); ?>'>
-    </div>
-</div> -->
-
 
 <!-- banner  for 6 images -->
 <?php if (isset($banner1)) { ?>
@@ -101,21 +92,6 @@
         </div>
     <?php } ?>
 </div>
-
-
-<!-- mallika our story # -->
-<!-- <div class='row p-3 pb-0 m-0 mb-5' style='background:#7C0935;'>
-    <div class='col-6 p-0'>
-        <img width='100%' src='<?= base_url('/uploads/story.jpg'); ?>'>
-    </div>
-    <div class='col-6 p-4' id='story'>
-        <p class='h2 mb-3  text-light'>OUR STORY</p>
-        <p style='font-size:15px;color:#dfdfdf' class=''>At the heart of Cara's ethos lies a dedication to quality craftsmanship and functional design. Established in 2003, Cara gained popularity with setting up its first showroom that displays kitchen layouts with aesthetic appeal and practical solutions to everyday living and furniture that suit specific room dimensions.
-            Started by Ms.Mallika Shaikh, driven by a passion for innovation, continually pushes the boundaries of design, incorporating the latest trends and technological advancements to deliver products that exceed expectations. From sleek, minimalist kitchens to multifunctional furniture solutions, each Cara creation is a testament to the brand's commitment to elevating the way we live and interact with our surroundings.
-            With Cara, the journey to a dream home begins with endless possibilities. Discover the art of modular living and transform your space with Cara's exquisite collection of kitchen and furniture designs. </p>
-        <a href='<//?= base_url('/story'); ?>'><button class='btn bg-light text-dark'> Read More </button></a>
-    </div>
-</div> -->
 
 <!-- banner for 4 images -->
 <?php if (isset($banner2[0])) { ?>

@@ -7,6 +7,8 @@ $category_color = '#ff1e82';
 $header_color = '#ff1e82';
 $category_color = '#ff1e82';
 $session = session();
+helper('custom_helper');
+$website_images = website_settings();
 ?>
 
 <html>
@@ -38,7 +40,42 @@ $session = session();
 
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
+    <!-- favicon -->
+    <?php if (isset($website_images[0]->value_3) && !empty($website_images[0]->value_3)) { ?>
+        <link rel="icon" type="image/x-icon" href="<?= base_url('uploads/website/'.$website_images[0]->value_3); ?>">
+    <?php } ?>
     <style>
+        .profile-box-links:hover {
+            font-weight: 800;
+            color: #000;
+        }
+
+        .profile-box-links {
+            font-weight: 400;
+            font-size: 13px;
+            margin-top: 20px !important;
+            margin-bottom: 20px !important;
+            color: #000;
+        }
+
+        .profile-hover:hover>.profile-box {
+            display: block;
+        }
+
+        .profile-box {
+            display: none;
+            position: absolute;
+            top: 50px;
+            left: 0px;
+            background-color: #fff;
+            border-radius: 4px;
+            width: 200px;
+            font-size: 14px;
+            text-align: left;
+            padding: 12px;
+            box-shadow: 0px 0px 6px 0px #d9d9d9;
+        }
+
         .gallery_container:hover>.wishlist-box {
             display: block;
             transform: translateY(0);
@@ -763,15 +800,6 @@ $session = session();
         </a>
     </div> -->
 
-
-    <?php $session = session();
-    if ($session->get('role') == 'admin') { ?>
-        <div class='col-lg-12 text-right pr-5 top_Bar' style='background:#fff'>
-            <a class='text-dark' href='<?= base_url('Admin/dashboard'); ?>'>Go to Admin </a>
-        </div>
-    <?php } ?>
-
-
     <!-- multiple dropdown header  -->
     <div class='col-lg-12 head_Section' id='myHeader'>
         <!-- mobile header  -->
@@ -803,9 +831,11 @@ $session = session();
         </div>
         <!-- pc header  -->
         <div class='d-flex col-lg-7 mobile_Head_Hide pt-3'>
-            <a href='<?= base_url() ?>'>
-                <img src='<?= base_url('uploads/logo/logo.jpg'); ?>' width='120px' class='p-3' />
-            </a>
+            <?php if (isset($website_images[0]->value_1) && !empty($website_images[0]->value_1)) { ?>
+                <a href='<?= base_url() ?>'>
+                    <img src='<?= base_url('uploads/website/' . $website_images[0]->value_1); ?>' width='120px' class='p-3' />
+                </a>
+            <?php } ?>
             <div class='col-lg-12 text-center nav_Categories mobile_Head_Hide pb-1' style='background:#fff'>
 
                 <div class='d-flex' style='text-align:left;align-items: baseline;'>
@@ -879,22 +909,44 @@ $session = session();
             </div>
 
             <div style="display:flex;align-self: center;text-align:end; justify-content:end" class=''>
-                <?php
-                if ($session->get('userid') == '') { ?>
-                    <div style='text-align:center;display:flex;'>
-                        <a class='btn mobile_Head_Hide' data-toggle="modal" data-target="#loginexampleModal">
-                            <i class='head_Icons fa-light fa fa-user'></i>
-                            <p style='color:#858585;padding-top:3px;font-size:12px;font-weight:600;margin-bottom:0px'>Login</p>
-                        </a>
+                <!-- user     -->
+                <div class='profile-hover' style='text-align:center;display:flex;position:relative'>
+                    <a class='btn mobile_Head_Hide'>
+                        <i class='head_Icons fa-light fa fa-user'></i>
+                        <p style='color:#858585;padding-top:3px;font-size:12px;font-weight:600;margin-bottom:0px'>Profile</p>
+                    </a>
+
+                    <div class='profile-box'>
+                        <b>
+                            <p class='m-0'>Welcome</p>
+                        </b>
+                        <?php
+                        if ($session->get('userid') == '') { ?>
+                            <p style='font-weight:300'>To access account and manage orders</p>
+                            <button class='btn btn-outline-dark' data-toggle="modal" data-target="#loginexampleModal">Login / Signup</button>
+                        <?php } else { ?>
+                            <p style='font-weight:300'><?= $session->get('userid') ?></p>
+                            <a href='<?= base_url("logout") ?>'><button class='btn btn-outline-dark'>Logout</button></a>
+                        <?php } ?>
+                        <hr style='width:100%;border-width:1px;margin-top:20px;margin-bottom:20px;'>
+                        </hr>
+                        <?php if ($session->get('userid') == '') { ?>
+                            <a href='<?= base_url(); ?>' class='profile-box-links' style='text-decoration:none' data-toggle="modal" data-target="#loginexampleModal"> Profile </a><br>
+                            <a href='<?= base_url(); ?>' class='profile-box-links' style='text-decoration:none' data-toggle="modal" data-target="#loginexampleModal"> Orders </a><br>
+                            <a href='<?= base_url(); ?>' class='profile-box-links' style='text-decoration:none' data-toggle="modal" data-target="#loginexampleModal"> Wishlist </a><br>
+                            <a href='<?= base_url(); ?>' class='profile-box-links' style='text-decoration:none' data-toggle="modal" data-target="#loginexampleModal"> Coupons </a>
+                        <?php } else { ?>
+                            <?php
+                            if ($session->get('role') == 'admin') { ?>
+                                <a target='_blank' href='<?= base_url('Admin/dashboard'); ?>' class='profile-box-links' style='text-decoration:none'> Go to Admin </a><br>
+                            <?php } ?>
+                            <a href='<?= base_url(); ?>' class='profile-box-links' style='text-decoration:none'> Profile </a><br>
+                            <a href='<?= base_url(); ?>' class='profile-box-links' style='text-decoration:none'> Orders </a><br>
+                            <a href='<?= base_url(); ?>' class='profile-box-links' style='text-decoration:none'> Wishlist </a><br>
+                            <a href='<?= base_url(); ?>' class='profile-box-links' style='text-decoration:none'> Coupons </a>
+                        <?php } ?>
                     </div>
-                <?php } else { ?>
-                    <div style='text-align:center;display:flex;'>
-                        <a class='btn mobile_Head_Hide' href='<?= base_url("logout") ?>'>
-                            <i class='head_Icons fa-light fa fa-sign-out'></i>
-                            <p style='color:#858585;padding-top:3px;font-size:12px;font-weight:600;margin-bottom:0px'>Logout</p>
-                        </a>
-                    </div>
-                <?php } ?>
+                </div>
                 <!-- wishlist  -->
                 <div style='text-align:center;display:flex;position:relative'>
                     <a class='btn mobile_Head_Hide' href='<?= base_url("wishlist") ?>'><i class='head_Icons fa-light fa fa-heart'></i>

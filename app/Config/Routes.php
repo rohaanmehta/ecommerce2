@@ -24,6 +24,9 @@ $routes->group('',['namespace' => 'App\controllers\Admin'], static function ($ro
     $routes->get('Admin/website_settings', 'Website_settings::view');
     $routes->post('add_website_settings', 'Website_settings::add_website_settings');
     $routes->post('add_website_settings_banner', 'Website_settings::add_website_settings_banner');
+    $routes->post('add_website_settings_product_page', 'Website_settings::add_website_settings_product_page');
+    $routes->get('Admin/visual_settings', 'Website_settings::visual_settings');
+    $routes->post('add_visual_settings', 'Website_settings::add_visual_settings');
     
     // products
     // $routes->get('Admin/product_slider', 'Dashboard::dashboard');

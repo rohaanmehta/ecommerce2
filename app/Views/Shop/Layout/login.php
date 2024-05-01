@@ -83,7 +83,7 @@
           <div class="m-auto" style='width:90%'>
             <div class="mb-2">
               <input type='password' class='m-auto login_Input form-control rounded-0' required name='password' placeholder='Password ' />
-              <span id='loginmsg' class='text-danger' style='display:none;font-size:12px;'>Wrong Username or Password </span>
+              <span id='loginmsg' class='text-danger' style='display:none;font-size:12px;'>Username or Password don't match !</span>
             </div>
           </div>
           <div class="m-auto" style='width:90%'>
@@ -114,17 +114,19 @@
         processData: false,
         dataType: "json",
         success: function(data) {
+          $('.login_Input').attr('disabled', true);
           if (data.status == '200') {
-            $('#msg').css('display', 'none');
+            $('#loginmsg').css('display', 'none');
             setTimeout(function() {
               // $('#download').css('display', 'block');
               // $('#loader').css('visibility', 'hidden');
               window.location.href = '<?= base_url(); ?>';
-            }, 1000);
+            }, 500);
             // alert('registered_successfully');
 
           } else {
-            $('#msg').css('display', 'block');
+            $('#loginmsg').css('display', 'block');
+            $('.login_Input').attr('disabled', false);
           }
         }
       });
