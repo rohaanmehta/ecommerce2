@@ -144,6 +144,30 @@
                                 <p>Add Product</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('bulk-product-update-view') ?>" class="nav-link">
+                                <i class="nav-icon fa fa-cloud-upload"></i>
+                                <p>Bulk Product Update</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('bulk-product-download-view') ?>" class="nav-link">
+                                <i class="nav-icon fa fa-cloud-upload"></i>
+                                <p>Bulk Product Download</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('bulk-product-delete-view') ?>" class="nav-link">
+                                <i class="nav-icon fa fa-cloud-upload"></i>
+                                <p>Bulk Product Delete</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('bulk-product-badge-view') ?>" class="nav-link">
+                                <i class="nav-icon fa fa-cloud-upload"></i>
+                                <p>Bulk Product Badge</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -174,21 +198,15 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="<?= base_url('Admin/website_settings') ?>" class="nav-link">
+                            <a href="<?= base_url('Admin/add-users') ?>" class="nav-link">
                                 <i class="nav-icon fa fa-cog"></i>
                                 <p>Add Users</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= base_url('Admin/website_settings') ?>" class="nav-link">
+                            <a href="<?= base_url('Admin/users-list') ?>" class="nav-link">
                                 <i class="nav-icon fa fa-cog"></i>
-                                <p>Administrators</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url('Admin/website_settings') ?>" class="nav-link">
-                                <i class="nav-icon fa fa-cog"></i>
-                                <p>Members</p>
+                                <p>Users List</p>
                             </a>
                         </li>
                     </ul>

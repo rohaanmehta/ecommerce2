@@ -12,10 +12,10 @@ class Product extends BaseController
         $data['productbanner2'] = $this->db->table('general_settings')->where('name', 'productbannersection2')->get()->getResult();
         $limit1 = 1;
         $limit2 = 1;
-        if (isset($data['productbanner1']) && $data['productbanner1'][0]->value_2 != '') {
+        if (isset($data['productbanner1'][0]) && $data['productbanner1'][0]->value_2 != '') {
             $limit1 = $data['productbanner1'][0]->value_2;
         }
-        if (isset($data['productbanner2']) && $data['productbanner2'][0]->value_2 != '') {
+        if (isset($data['productbanner2'][0]) && $data['productbanner2'][0]->value_2 != '') {
             $limit2 = $data['productbanner2'][0]->value_2;
         }
 

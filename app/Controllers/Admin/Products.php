@@ -6,6 +6,20 @@ use App\Controllers\BaseController;
 
 class Products extends BaseController
 {
+    public function bulk_product_download_view(){
+        return view('Admin/Views/Products/bulk_product_download_view');
+    }
+    public function bulk_product_badge_view(){
+        return view('Admin/Views/Products/bulk_product_badge_view');
+    }
+    public function bulk_product_update_view(){
+        return view('Admin/Views/Products/bulk_product_update_view');
+    }
+
+    public function bulk_product_delete_view(){
+        return view('Admin/Views/Products/bulk_product_delete_view');
+    }
+
     public function products_view()
     {
         $data['products'] = $this->db->table('products')->join('product_category as pc', 'pc.product_id = products.id')->join('categories as c', 'c.id = pc.category_id')->get()->getResult();

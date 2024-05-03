@@ -49,6 +49,22 @@ $routes->group('',['namespace' => 'App\controllers\Admin'], static function ($ro
     $routes->get('add_products/?(:any)', 'Products::add_products/$1');
     $routes->post('add_product_data', 'Products::add_product_data');
     $routes->get('delete-product/?(:any)', 'Products::delete_product/$1');
+    $routes->get('bulk-product-update-view', 'Products::bulk_product_update_view');
+    $routes->get('bulk-product-delete-view', 'Products::bulk_product_delete_view');
+    $routes->get('bulk-product-download-view', 'Products::bulk_product_download_view');
+    $routes->get('bulk-product-badge-view', 'Products::bulk_product_badge_view');
+
+
+
+    //users
+    $routes->get('Admin/add-users', 'Users::add_users');
+    $routes->get('Admin/add-users', 'Users::add_users');
+    $routes->post('add_user_data', 'Users::add_user_data');
+    $routes->get('Admin/users-list', 'Users::users_list');
+
+    
+    
+
 
 
     $routes->get('job_enquiry', 'Enquiry::job_enquiry');

@@ -322,7 +322,7 @@
 <!-- you may also like  -->
 <div class="mt-5" style="padding-left:10px;padding-right:10px;">
     <div class='galler_heading d-flex justify-content-between' style='border-bottom: 1px solid #d5d5d5;height:40px;margin:0px 20px 10px 20px;padding-bottom:45px;'>
-        <p style='font-size:25px;'><?php if (isset($productbanner1) && $productbanner1[0]->value_1 != '') {
+        <p style='font-size:25px;'><?php if (isset($productbanner1[0]) && $productbanner1[0]->value_1 != '') {
                                         echo $productbanner1[0]->value_1;
                                     } ?> </p>
     </div>
@@ -338,7 +338,7 @@
 <!-- you may also like  -->
 <div class="" style="padding-left:10px;padding-right:10px;">
     <div class='galler_heading d-flex justify-content-between' style='border-bottom: 1px solid #d5d5d5;height:40px;margin:0px 20px 10px 20px;padding-bottom:45px;'>
-        <p style='font-size:25px;'><?php if (isset($productbanner2) && $productbanner2[0]->value_1 != '') {
+        <p style='font-size:25px;'><?php if (isset($productbanner2[0]) && $productbanner2[0]->value_1 != '') {
                                         echo $productbanner2[0]->value_1;
                                     } ?> </p>
     </div>
