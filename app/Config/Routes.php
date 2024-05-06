@@ -17,7 +17,7 @@ $routes->setTranslateURIDashes(false);
 $routes->set404Override();
 
 
-$routes->group('',['namespace' => 'App\controllers\Admin'], static function ($routes) {
+$routes->group('',['namespace' => 'App\controllers\Admin',"filter" => "Auth"], static function ($routes) {
     //dashboard
     $routes->get('Admin/dashboard', 'Dashboard::dashboard');
     
@@ -53,7 +53,16 @@ $routes->group('',['namespace' => 'App\controllers\Admin'], static function ($ro
     $routes->get('bulk-product-delete-view', 'Products::bulk_product_delete_view');
     $routes->get('bulk-product-download-view', 'Products::bulk_product_download_view');
     $routes->get('bulk-product-badge-view', 'Products::bulk_product_badge_view');
+    $routes->post('product_badge_update', 'Products::product_badge_update');
+    $routes->post('product_badge_delete', 'Products::product_badge_delete');
+    $routes->get('product_badge_download', 'Products::product_badge_download');
 
+
+    $routes->get('Admin/sizechart-list', 'Sizechart::view');
+    $routes->get('Admin/sizechart-list', 'Sizechart::view');
+    $routes->post('add_sizechart', 'Sizechart::add_sizechart');
+    $routes->post('get_sizechart', 'Sizechart::get_sizechart');
+    $routes->get('delete_sizechart/?(:any)', 'Sizechart::delete_sizechart/$1');
 
 
     //users
@@ -84,8 +93,7 @@ $routes->group('',['namespace' => 'App\controllers\Shop'], static function ($rou
     $routes->post('add_register_data', 'Login::add_register_data');
     $routes->get('logout', 'Login::logout');
     $routes->post('login-user', 'Login::login_user');
-    $routes->get('category/?(:any)', 'Category::category_shop_page/$1');
-    $routes->get('products/?(:any)', 'Product::product_page_view/$1');
+    $routes->get('(:any)/(:any)', 'Product::product_page_view/$1/$2');
 
 
     //static pages
@@ -101,7 +109,7 @@ $routes->group('',['namespace' => 'App\controllers\Shop'], static function ($rou
 
     $routes->post('search-product', 'Product::search_product');
     $routes->post('add-to-wishlist', 'Product::add_to_wishlist');
-    
+    $routes->get('/(:any)', 'Category::category_shop_page/$1');
 });
 
 

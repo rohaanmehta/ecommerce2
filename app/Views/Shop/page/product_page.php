@@ -12,6 +12,30 @@
     <script src="<?= base_url('public/dist/js/j360.js') ?>"></script>
 </head>
 <style>
+    .sizechart-modal .table table td {
+        font-size: 13px;
+        border: 1px solid #dfdfdf;
+        text-align: center;
+    }
+
+    .sizechart-modal .table table {
+        overflow-y: scroll;
+        width: 100%;
+    }
+
+    .breadcrum {
+        padding: 12px;
+        padding-left: 0px;
+        padding-top: 0px;
+    }
+
+    .breadcrum a {
+        font-size: 14px;
+        color: #000 !important;
+        text-decoration: none;
+        text-transform: capitalize !important;
+    }
+
     .selector-item {
         /* flex-basis: calc(70% / 3); */
         height: 50px;
@@ -206,6 +230,16 @@
 </style>
 <div class='invisible mobile_Head_Hide'>gap fill</div>
 
+<div class='row pl-5'>
+    <div class='mobile_Head_Hide breadcrum'>
+        <a href='<?= base_url(); ?>'> Home</a>
+        <?php foreach ($all_categories as $row) { ?>
+            / <a href='<?= base_url($row['slug']); ?>'> <?= $row['name']; ?> </a>
+        <?php $category_id = $row['id'];
+        } ?>
+    </div>
+</div>
+
 <div class='row'>
     <div class='col-1 mobile_Head_Hide'>
         <div class='row pl-5 justify-content-end'>
@@ -290,10 +324,33 @@
         </div>
 
         <!-- sizeguide -->
-        <div class='col-12 pl-0'>
-            <button class='mt-3 btn btn-sm rounded' style='background:#dfdfdf;color:#2e2e2e;font-weight:600'>Size Chart
-                <i class="fa fa-sort-amount-asc"></i>
-            </button>
+        <?php helper('custom');
+        $sizechart = get_sizechart_by_productid($category_id);
+        if (isset($sizechart) && !empty($sizechart)) { ?>
+            <div class='col-12 pl-0'>
+                <button class='mt-3 btn btn-sm rounded' data-toggle="modal" data-target="#exampleModalCenter" style='background:#dfdfdf;color:#2e2e2e;font-weight:600'>Size Chart
+                    <i class="fa fa-sort-amount-asc"></i>
+                </button>
+            </div>
+        <?php } ?>
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"> Sizechart</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body sizechart-modal">
+                        <?php print_r($sizechart) ?>
+                    </div>
+                    <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button class="btn btn-primary">Save</button>
+                    </div> -->
+                </div>
+            </div>
         </div>
 
         <?php if ($product[0]->purchasable == 1) { ?>
@@ -800,7 +857,7 @@
                 ]
             });
         <?php } ?>
-        
+
         <?php if (isset($productbanner2) && !empty(($productbanner2) && $productbanner2[0]->value_3 == 'YES')) { ?>
             $('.section2-slider').slick({
                 // dots: true,

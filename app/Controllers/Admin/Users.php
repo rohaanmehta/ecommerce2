@@ -13,7 +13,8 @@ class Users extends BaseController
 
     public function users_list()
     {
-        return view('Admin/Views/Users/users_list');
+        $data['users'] = $this->db->table('users')->get()->getResult();
+        return view('Admin/Views/Users/users_list',$data);
     }
 
     public function add_user_data()

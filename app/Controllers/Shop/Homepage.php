@@ -14,7 +14,7 @@ class Homepage extends BaseController
         $data['banner3'] = $this->db->table('homepage_banner')->orderBy('order', 'ASC')->where('type', 'banner3')->get()->getResult();
         $data['banner4'] = $this->db->table('homepage_banner')->orderBy('order', 'ASC')->where('type', 'banner4')->get()->getResult();
 
-        $data['categories'] = $this->db->table('categories')->orderBy('category_order', 'ASC')->where('show_on_homepage', '1')->get()->getResult();
+        // $data['categories'] = $this->db->table('categories')->orderBy('category_order', 'ASC')->where('show_on_homepage', '1')->get()->getResult();
 
         $data['banner1_info'] = $this->db->table('general_settings')->where('name', 'bannersection1')->get()->getResult();
         $data['banner2_info'] = $this->db->table('general_settings')->where('name', 'bannersection2')->get()->getResult();

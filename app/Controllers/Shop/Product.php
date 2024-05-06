@@ -6,7 +6,7 @@ use App\Controllers\BaseController;
 
 class Product extends BaseController
 {
-    public function product_page_view($slug)
+    public function product_page_view($category = null, $slug)
     {
         $data['productbanner1'] = $this->db->table('general_settings')->where('name', 'productbannersection1')->get()->getResult();
         $data['productbanner2'] = $this->db->table('general_settings')->where('name', 'productbannersection2')->get()->getResult();
@@ -43,9 +43,52 @@ class Product extends BaseController
 
         $data['section2'] =  $section2->get()->getResult();
 
-        $data['categories'] = $this->db->table('categories')->orderBy('category_order', 'ASC')->where('show_on_homepage', '1')->get()->getResult();
+        //all product categories for breadcrum
+        $product_category = $this->db->table('products')->select('categories.id')->join('product_category', 'product_category.product_id = products.id')->join('categories', 'categories.id = product_category.category_id')->where('parent_category', '')->limit(1)->where('product_slug', $slug)->get()->getResult();
 
+        $last_category_id = $this->db->table('categories')->where('category_slug', $category)->get()->getresult();
+        $data['all_categories'] = $this->all_product_categories($product_category[0]->id, $last_category_id[0]->id);
+        // echo $category;
+        // echo '<pre>';print_r($data['all_categories']);
         return view('Shop/page/product_page', $data);
+    }
+
+    public function all_product_categories($id, $last_category_id)
+    {
+        $category_array = array();
+        $first_category = $this->db->table('categories')->select('id,category_name,category_slug')->where('id', $id)->get()->getResult();
+
+        $category_array[0]['id'] = $first_category[0]->id;
+        $category_array[0]['name'] = $first_category[0]->category_name;
+        $category_array[0]['slug'] = $first_category[0]->category_slug;
+        $first_cat = 0;
+
+        for ($i = 1; $i < 6; $i++) {
+            $count = $this->db->table('categories')->select('id,category_name,category_slug')->where('parent_category', $id)->get()->getResult();
+
+            if (isset($count[0]) && !empty($count[0])) {
+                $category_array[$i]['id'] = $count[0]->id;
+                $category_array[$i]['name'] = $count[0]->category_name;
+                $category_array[$i]['slug'] = $count[0]->category_slug;
+
+                // print_r($count);
+                if ($count[0]->id == $last_category_id) {
+                    $first_cat = 1;
+                    break;
+                }
+                $id = $count[0]->id;
+            } else {
+                break;
+            }
+        }
+        if ($first_cat == 0) {
+            $category_array = array();
+            $category_array[0]['id'] = $first_category[0]->id;
+            $category_array[0]['name'] = $first_category[0]->category_name;
+            $category_array[0]['slug'] = $first_category[0]->category_slug;
+        }
+
+        return $category_array;
     }
 
     public function search_product()

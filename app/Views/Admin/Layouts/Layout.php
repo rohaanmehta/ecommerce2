@@ -31,6 +31,10 @@
   <link rel="stylesheet" href="<?= base_url('public/plugins/daterangepicker/daterangepicker.css') ?>">
   <!-- summernote -->
   <link rel="stylesheet" href="<?= base_url('public/plugins/summernote/summernote-bs4.min.css') ?>">
+  <!-- ck editor  -->
+  <script src="https://cdn.ckeditor.com/ckeditor5/28.0.0/classic/ckeditor.js"></script>
+
+  
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">

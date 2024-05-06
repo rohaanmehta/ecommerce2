@@ -1,10 +1,12 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-        <img src="<?= base_url('uploads/logo/cara_small.png') ?>" alt="AdminLTE Logo" class="brand-image">
-        <span class="brand-text font-weight-light"><?= $_ENV['websitename']; ?></span>
-    </a>
+    <div class='text-center'>
+        <a href="<?= base_url(); ?>" target='_blank' class="brand-link">
+            <!-- <img src="<?= base_url('uploads/logo/cara_small.png') ?>" alt="AdminLTE Logo" class="brand-image"> -->
+            <span class="brand-text font-weight-light"><?= $_ENV['websitename']; ?></span>
+        </a>
+    </div>
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -346,12 +348,12 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="<?= base_url('Admin/add-sizechart') ?>" class="nav-link">
+                        <!-- <li class="nav-item">
+                            <a href="<?//= base_url('Admin/add-sizechart') ?>" class="nav-link">
                                 <i class="nav-icon fa fa-cog"></i>
                                 <p>Add Size Chart</p>
                             </a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a href="<?= base_url('Admin/sizechart-list') ?>" class="nav-link">
                                 <i class="nav-icon fa fa-cog"></i>

@@ -55,7 +55,7 @@
                     </select>
                 </div>
                 <div class="d-flex justify-content-center">
-                    <button class='btn btn-primary'> Save Product</button>
+                    <button class='btn btn-primary'> Save User</button>
                 </div>
             </div>
         </form>

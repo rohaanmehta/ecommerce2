@@ -1,5 +1,7 @@
 <?= $this->extend('Shop/Layout/layout') ?>
 <?= $this->section('content') ?>
+<?php $session = session(); ?>
+
 <style>
     .category_name {
         font-size: 22px;
@@ -16,7 +18,8 @@
         <div class="pt-5 pl-5 pr-4 row" style='align-items: center;'>
             <div class='col-4 pl-0 category_name'>
                 <span>
-                    <?= $categoriesinfo[0]->category_name; ?>
+                    <?= $categoriesinfo[0]->category_name;
+                    ?>
                 </span>
             </div>
             <div class='col-8 text-right' style='display:flex;justify-content:end;align-items: center;'>
@@ -33,14 +36,17 @@
             </div>
             <div class='col-12 pl-0 pt-4' style='font-size:13px;color:#747474;'>
                 <span>
-                    <?= $categoriesinfo[0]->category_desc_top; ?>
+                    <?= $categoriesinfo[0]->category_desc_top;
+                    ?>
                 </span>
             </div>
         </div>
 
-        <div class="row m-4 gallery gap">
-            <?php if (isset($products)) {
-                include('single_product.php');
+        <div class="row m-4 gallery products-5">
+            <?php if (isset($products) && !empty($products)) {
+                foreach ($products as $row) { ?>
+                    <?php echo view('Shop/page/single_product', ['row' => $row, 'wishlist' =>  $session->get('userid')]); ?>
+            <?php }
             } ?>
         </div>
         <div class=''>
@@ -51,7 +57,8 @@
 <script>
     $(document).ready(function() {
         $('.sort').change(function() {
-            window.location.href = '<?= base_url('category/' . $categoriesinfo[0]->category_slug . '?sort='); ?>' + $('.sort').val();
+            window.location.href = '<?= base_url('/' . $categoriesinfo[0]->category_slug . '?sort=');
+                                    ?>' + $('.sort').val();
         });
     });
 </script>

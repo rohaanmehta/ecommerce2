@@ -29,53 +29,63 @@
                 </div>
             </div>
         </div> -->
-        <form class='bulk_product_details_update'>
-            <div class='p-5 m-3 card'>
-                <div class='row'>
-                    <div class='col-6'>
+        <div class='p-5 m-3 card'>
+            <div class='row'>
+                <div class='col-6'>
+                    <form class='product-badge-update'>
                         <div class='mb-2 col-12 bg-light p-3 border-rounded rounded'>
                             <p><b>Bulk Product Badge Upload</b></p>
                             <div class='mb-2 col-12'>
                                 <span class='form-label'> Upload File </span>
                                 <input name='file' class='form-control' type='file'>
                                 <div class='row p-0 m-0 justify-content-end'>
-                                    <a class='text-sm' href='<?= base_url('assets/files/bulk_product_badge_upload.xlsx'); ?>' download>Download Example File</a>
+                                    <a class='text-sm' href='<?= base_url('assets/files/bulk_product_badge_upload.csv'); ?>' download>Download Example File</a>
                                 </div>
                             </div>
                             <div class="col-12 d-flex justify-content-center">
                                 <button class='btn btn-primary'> Save</button>
                             </div>
                         </div>
-                    </div>
-                    <div class='col-6'>
+                    </form>
+                </div>
+                <div class='col-6'>
+                    <form class='product-badge-delete'>
                         <div class='mb-2 col-12 bg-light p-3 border-rounded rounded'>
                             <p><b>Bulk Product Badge Delete</b></p>
                             <div class='mb-2 col-12'>
                                 <span class='form-label'> Upload File </span>
                                 <input name='file' class='form-control' type='file'>
                                 <div class='row p-0 m-0 justify-content-end'>
-                                    <a class='text-sm' href='<?= base_url('assets/files/bulk_product_badge_delete.xlsx'); ?>' download>Download Example File</a>
+                                    <a class='text-sm' href='<?= base_url('assets/files/bulk_product_badge_delete.csv'); ?>' download>Download Example File</a>
                                 </div>
                             </div>
                             <div class="col-12 d-flex justify-content-center">
                                 <button class='btn btn-primary'> Save</button>
                             </div>
                         </div>
-                    </div>
+                    </form>
+                </div>
+                <div class='col-6'>
+                        <div class='mb-2 col-12 bg-light p-3 border-rounded rounded'>
+                            <p><b>Bulk Product Badge Download</b></p>
+                            <div class="col-12 d-flex justify-content-center">
+                                <a href='<?= base_url('/product_badge_download');?>'><button class='btn btn-primary'> Download</button></a>
+                            </div>
+                        </div>
                 </div>
             </div>
-        </form>
+        </div>
 
     </section>
 </div>
 
 <script>
     $(document).ready(function() {
-        $('.product-form').submit(function(e) {
+        $('.product-badge-update').submit(function(e) {
             e.preventDefault();
             $.ajax({
                 type: "POST",
-                url: "<?= base_url('add_product_data') ?>",
+                url: "<?= base_url('product_badge_update') ?>",
                 data: new FormData(this),
                 contentType: false,
                 cache: false,
@@ -85,12 +95,31 @@
                     if (data.status == '200') {
                         alert('uploaded successfully');
                         setTimeout(function() {
-                            // $('#download').css('display', 'block');
-                            // $('#loader').css('visibility', 'hidden');
-                            window.location.href = '<?= base_url('/Admin/products'); ?>';
+                            window.location.href = '<?= base_url('/bulk-product-badge-view'); ?>';
                         }, 1000);
-                        // alert('registered_successfully');
+                    } else {
+                        alert('something went wrong');
+                    }
+                }
+            });
+        });
 
+        $('.product-badge-delete').submit(function(e) {
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('product_badge_delete') ?>",
+                data: new FormData(this),
+                contentType: false,
+                cache: false,
+                processData: false,
+                dataType: "json",
+                success: function(data) {
+                    if (data.status == '200') {
+                        alert('uploaded successfully');
+                        setTimeout(function() {
+                            window.location.href = '<?= base_url('/bulk-product-badge-view'); ?>';
+                        }, 1000);
                     } else {
                         alert('something went wrong');
                     }

@@ -9,6 +9,7 @@ $category_color = '#ff1e82';
 $session = session();
 helper('custom_helper');
 $website_images = website_settings();
+$categories = get_categories_header();
 ?>
 
 <html>
@@ -42,9 +43,14 @@ $website_images = website_settings();
 
     <!-- favicon -->
     <?php if (isset($website_images[0]->value_3) && !empty($website_images[0]->value_3)) { ?>
-        <link rel="icon" type="image/x-icon" href="<?= base_url('uploads/website/'.$website_images[0]->value_3); ?>">
+        <link rel="icon" type="image/x-icon" href="<?= base_url('uploads/website/' . $website_images[0]->value_3); ?>">
     <?php } ?>
     <style>
+        .link-none,
+        .link-none:hover {
+            text-decoration: none;
+        }
+
         .profile-box-links:hover {
             font-weight: 800;
             color: #000;
@@ -305,13 +311,12 @@ $website_images = website_settings();
             font-size: 13px;
             cursor: pointer;
             color: #707070;
+            padding-bottom: 26px;
             font-weight: 800;
         }
 
         .nav_Categories_Btn:hover {
-            border-bottom: 3px <?= 'solid ' . $category_color ?>;
-            /* padding-bottom: 29px; */
-            padding-bottom: 10px;
+            /* border-bottom: 3px <?= 'solid ' . $category_color ?>; */
         }
 
         .bordertest {
@@ -335,22 +340,25 @@ $website_images = website_settings();
         }
 
         .nav_Categories_Sub_Menu_Tittle {
-            font-size: 14px;
-            font-weight: 700;
+            font-size: 13px;
+            font-weight: 800;
             cursor: pointer;
             padding-bottom: 7px;
+            padding-top: 13px;
+            /* border-top: 1px solid #000; */
         }
 
         .nav_Categories_Sub_Menu_Item {
-            color: #404040;
+            color: #5e5e5e;
             padding: 2px;
-            font-size: 11px;
-            font-weight: 500;
+            font-size: 13px;
+            font-weight: 400;
             cursor: pointer;
+            text-transform: capitalize;
         }
 
         .nav_Categories_Sub_Menu_Item:hover {
-            color: #404040;
+            color: #5e5e5e;
             font-weight: 800;
         }
 
@@ -790,7 +798,10 @@ $website_images = website_settings();
     </style>
 </head>
 
-<body>
+<body style='position:relative'>
+    <!-- blocker -->
+    <div class='bg-dark blocker' style='display:none;width:100vw;min-height:100vh;opacity:0.4;position:fixed;margin-top:2px;z-index:1;'></div>
+
     <!-- //topbar   -->
     <!-- //top bar  -->
 
@@ -800,15 +811,17 @@ $website_images = website_settings();
         </a>
     </div> -->
 
-    <!-- multiple dropdown header  -->
+    <!--  header  -->
     <div class='col-lg-12 head_Section' id='myHeader'>
         <!-- mobile header  -->
         <div class='mobile_Head_Show' style='width:100%;justify-content:space-between'>
             <div style='display:flex;align-items: center;'>
                 <a class='btn' onclick="openNav()" id='closebtn'><i id='ic' class='head_Icons fa fa-bars'></i></a>
-                <a href='<?= base_url() ?>'>
-                    <img src='<?= base_url('uploads/logo/logo.jpg'); ?>' width='90px' class='p-3' />
-                </a>
+                <?php if (isset($website_images[0]->value_2) && !empty($website_images[0]->value_2)) { ?>
+                    <a href='<?= base_url() ?>'>
+                        <img src='<?= base_url('uploads/website/' . $website_images[0]->value_2); ?>' height='55px' class='pl-2 pt-3 pb-3' />
+                    </a>
+                <?php } ?>
             </div>
             <div style="display:flex;align-self: center;text-align:end; justify-content:end" class=''>
                 <?php
@@ -836,69 +849,23 @@ $website_images = website_settings();
                     <img src='<?= base_url('uploads/website/' . $website_images[0]->value_1); ?>' width='120px' class='p-3' />
                 </a>
             <?php } ?>
-            <div class='col-lg-12 text-center nav_Categories mobile_Head_Hide pb-1' style='background:#fff'>
-
-                <div class='d-flex' style='text-align:left;align-items: baseline;'>
-                    <!-- <a style='text-decoration:none' href='<? //= base_url('finishes'); 
-                                                                ?>'>
-                        <span class='nav_Categories_Btn'> OUR FINISHES </span>
-                    </a> -->
-                </div>
-
-                <!-- uncomment this for multiple dropdown header  -->
-
+            <div class='col-lg-12 text-center nav_Categories mobile_Head_Hide pb-1' style='background:#fff;'>
                 <div class='' style='text-align:left'>
                     <?php if (isset($categories) && !empty($categories)) {
-                        foreach ($categories as $row) { ?>
-                            <span class='nav_Categories_Btn exit-menu nav_Categories_Btn_Hover' id='11'><?= $row->category_name ?></span>
+                        foreach ($categories as $row) {
+                            if ($row->parent_category == '') { ?>
+                                <a class='link-none text-uppercase' href='<?= base_url('/' . $row->category_slug); ?>'><span class='nav_Categories_Btn hover_category' showid='<?= $row->id; ?>'><?= $row->category_name ?></span></a>
                     <?php }
+                        }
                     } ?>
-                </div>
-
-
-                <div style='margin-top: 31px;border-top: 1px solid #e7e7e7;' class='exit-menu nav_Categories_Btn_Hover_anim pb-5 nav_Categories_Sub_Menu nav_Categories_Btn_Hover'>
-                    <div class='exit-menu row nav_Categories_Sub_Menu_Tittle'>
-                        <div class='exit-menu col-lg-2 text-left'>
-                            <div class='exit-menu nav_Categories_Sub_Menu_Tittle' style='color: <?= $category_color ?>'>Fabric</div>
-                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>COTTON</div>
-                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>SILK</div>
-                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>VELVET</div>
-                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>POLYTHENE</div>
-                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>SOFT FABRIC</div>
-                        </div>
-                        <div class='exit-menu col-lg-2 text-left'>
-                            <div class='exit-menu nav_Categories_Sub_Menu_Tittle' style='color: <?= $category_color ?>'>Occassion</div>
-                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>COTTON</div>
-                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>SILK</div>
-                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>VELVET</div>
-                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>POLYTHENE</div>
-                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>SOFT FABRIC</div>
-                        </div>
-                        <div class='exit-menu col-lg-2 text-left'>
-                            <div class='exit-menu nav_Categories_Sub_Menu_Tittle' style='color: <?= $category_color ?>'>Material</div>
-                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>COTTON</div>
-                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>SILK</div>
-                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>VELVET</div>
-                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>POLYTHENE</div>
-                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>SOFT FABRIC</div>
-                        </div>
-                        <div class='exit-menu col-lg-2 text-left'>
-                            <div class='exit-menu nav_Categories_Sub_Menu_Tittle' style='color: <?= $category_color ?>'>Work</div>
-                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>COTTON</div>
-                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>SILK</div>
-                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>VELVET</div>
-                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>POLYTHENE</div>
-                            <div class='exit-menu nav_Categories_Sub_Menu_Item'>SOFT FABRIC</div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
 
 
+        <!-- search bar  -->
 
         <div class='col-lg-5 pt-3 pb-2 mobile_Head_Hide' style='display:flex;justify-content:end'>
-            <!-- search bar  -->
             <div style="text-align:start;position:relative;" class='pl-0 exit-search'>
                 <div class="mb-0 d-flex  justify-content-center mobile_Head_Hide search-wrapper exit-search">
                     <i class="fa fa-search font-awesome-icon exit-search" aria-hidden="true"></i>
@@ -965,9 +932,34 @@ $website_images = website_settings();
             </div>
         </div>
     </div>
-
-
-
+    <!-- multiple categories pc  -->
+    <div class='d-flex justify-content-center' style='position:relative;'>
+        <?php if (isset($categories) && !empty($categories)) {
+            foreach ($categories as $row_main) {
+                if ($row_main->parent_category == '') {  ?>
+                    <div id='' showid='<?= $row_main->id; ?>' style='z-index:3;width:80%;margin-top:2px;display:none;padding: 30px;padding-top:0px;border: 1px solid #e7e7e7;border-top:none;position:fixed;background:#fff' class='show<?= $row_main->id ?> pb-3 text-left allcategories allcategories-show'>
+                        <div class='nav_Categories_Sub_Menu_Tittle allcategories-show' style='border-right:1px solid #dfdfdf;width:180px;height:300px;display:flex;flex-wrap:wrap;flex-direction:column'>
+                            <?php
+                            foreach ($categories as $row) {
+                                if ($row->parent_category == $row_main->id) { ?>
+                                    <a class='link-none' href='<?= base_url('/' . $row->category_slug); ?>'>
+                                        <div class='nav_Categories_Sub_Menu_Tittle allcategories-show' style='color: <?= $category_color ?>'><?= $row->category_name ?></div>
+                                    </a>
+                                    <?php foreach ($categories as $row3) {
+                                        if ($row3->parent_category == $row->id) { ?>
+                                            <a class='link-none' href='<?= base_url('/' . $row3->category_slug); ?>'>
+                                                <div class='nav_Categories_Sub_Menu_Item allcategories-show'><?= $row3->category_name; ?></div>
+                                            </a>
+                                    <?php }
+                                    } ?>
+                            <?php }
+                            } ?>
+                        </div>
+                    </div>
+        <?php }
+            }
+        } ?>
+    </div>
 
     <!-- nav bar mobile   -->
     <div id="mySidenav" class="sidenav nav-mobile">
@@ -1036,63 +1028,7 @@ $website_images = website_settings();
     </div>
 
 
-    <!-- categories    -->
-    <!-- <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center nav_Categories mobile_Head_Hide pb-1' style='border-bottom: 2px solid #e7e7e7;'>
-    <div class='nav_Categories_Btn_Hover' style='width:fit-content;cursor:pointer;margin:auto'>
-            <span class='nav_Categories_Btn nav_Categories_Btn_Hover' id='11'>WOMEN</span>
-            <span class='nav_Categories_Btn nav_Categories_Btn_Hover' id='12'>KURTI</span>
-            <span class='nav_Categories_Btn nav_Categories_Btn_Hover' id='13'>SAREE</span>
-            <span class='nav_Categories_Btn nav_Categories_Btn_Hover' id='14'>LEHENGA</span>
-            <span class='nav_Categories_Btn nav_Categories_Btn_Hover' id='14'>Men</span>
-            <span class='nav_Categories_Btn nav_Categories_Btn_Hover' id='14'>Fusion</span>
-            <span class='nav_Categories_Btn nav_Categories_Btn_Hover' id='15'>DRESS</span>
-            <span class='nav_Categories_Btn nav_Categories_Btn_Hover' id='15'>KIDS</span>
-            <span class='nav_Categories_Btn nav_Categories_Btn_Hover' id='15'>JEWELLERY</span>
-            <span class='nav_Categories_Btn nav_Categories_Btn_Hover' id='15'>LIFESTYLE</span>
-            <span class='nav_Categories_Btn nav_Categories_Btn_Hover' id='15'>SALE</span>
-        </div>
-    <div style='border: 2px solid #e7e7e7;width:90%;margin-left:5%;padding-left:6%;' class='pb-5 nav_Categories_Sub_Menu nav_Categories_Btn_Hover'>
-            <div class='row'>
-                <div class='col-lg-2 text-left'>
-                    <div class='nav_Categories_Sub_Menu_Tittle'>Fabric</div>
-                    <div class='nav_Categories_Sub_Menu_Item'>COTTON</div>
-                    <div class='nav_Categories_Sub_Menu_Item'>SILK</div>
-                    <div class='nav_Categories_Sub_Menu_Item'>VELVET</div>
-                    <div class='nav_Categories_Sub_Menu_Item'>POLYTHENE</div>
-                    <div class='nav_Categories_Sub_Menu_Item'>SOFT FABRIC</div>
-                </div>
-                <div class='col-lg-2 text-left'>
-                    <div class='nav_Categories_Sub_Menu_Tittle'>Work</div>
-                    <div class='nav_Categories_Sub_Menu_Item'>COTTON</div>
-                    <div class='nav_Categories_Sub_Menu_Item'>SILK</div>
-                    <div class='nav_Categories_Sub_Menu_Item'>VELVET</div>
-                    <div class='nav_Categories_Sub_Menu_Item'>POLYTHENE</div>
-                    <div class='nav_Categories_Sub_Menu_Item'>SOFT FABRIC</div>
-                </div>
-                <div class='col-lg-2 text-left'>
-                    <div class='nav_Categories_Sub_Menu_Tittle'>Style</div>
-                    <div class='nav_Categories_Sub_Menu_Item'>COTTON</div>
-                    <div class='nav_Categories_Sub_Menu_Item'>SILK</div>
-                    <div class='nav_Categories_Sub_Menu_Item'>VELVET</div>
-                    <div class='nav_Categories_Sub_Menu_Item'>POLYTHENE</div>
-                    <div class='nav_Categories_Sub_Menu_Item'>SOFT FABRIC</div>
-                </div>
-                <div class='col-lg-2 text-left'>
-                    <div class='nav_Categories_Sub_Menu_Tittle'>Occassion</div>
-                    <div class='nav_Categories_Sub_Menu_Item'>COTTON</div>
-                    <div class='nav_Categories_Sub_Menu_Item'>SILK</div>
-                    <div class='nav_Categories_Sub_Menu_Item'>VELVET</div>
-                    <div class='nav_Categories_Sub_Menu_Item'>POLYTHENE</div>
-                    <div class='nav_Categories_Sub_Menu_Item'>SOFT FABRIC</div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-
     <?= $this->renderSection('content') ?>
-    <!-- footer  -->
-
 
     <?php include('footer.php'); ?>
 
@@ -1128,6 +1064,7 @@ $website_images = website_settings();
         //   }
 
         $(document).ready(function() {
+
             $('.single-product-slider').slick({
                 dots: true,
                 autoplay: false,
@@ -1206,15 +1143,6 @@ $website_images = website_settings();
                 }
             });
 
-            $('.search-box').focusout(function(e) {
-                if ($(e.target).hasClass('exit-search')) {
-                    // $('.search-results').html('');
-                } else {
-                    $('.search-results').html('');
-                }
-            });
-
-
             $('.mobile-menu-bars').click(function() {
                 if ($(this).children().hasClass('fa-rotate-90')) {
                     $(this).children().removeClass('fa-rotate-90');
@@ -1252,27 +1180,13 @@ $website_images = website_settings();
             });
         });
 
-        $(".nav_Categories_Btn_Hover").mouseover(function() {
-            $(".nav_Categories_Sub_Menu").addClass("anim_menu");
-            $(".nav_Categories_Sub_Menu").addClass("w3-animate-opacity");
-        }).mouseout(function(evnt) {
-            $(".nav_Categories_Sub_Menu").removeClass("anim_menu");
-        });
-
-        $(".nav_Categories_Btn ").mouseover(function() {
-            $(".nav_Categories_Btn ").removeClass('bordertest');
-            $(this).addClass('bordertest');
-        });
-
         $('body').mouseover(function(evnt) {
-            if (!$(evnt.target).hasClass('exit-menu')) {
-                $(".nav_Categories_Btn ").removeClass('bordertest');
-                // alert();
+            if (!$(evnt.target).hasClass('hover_category') && !$(evnt.target).hasClass('allcategories') && !$(evnt.target).hasClass('allcategories-show')) {
+                $('.allcategories').css('display', 'none');
+                $('.hover_category').css('border-bottom', 'none');
+                $('.blocker').css('display', 'none');
             }
         });
-
-
-        // respon header 
 
         $('body').click(function(evnt) {
             if ($(evnt.target).hasClass('exit-search')) {
@@ -1280,19 +1194,38 @@ $website_images = website_settings();
             } else {
                 $('.search-results').html('');
             }
-
-            if (evnt.target.id != "link" && evnt.target.id != "mySidenav" && evnt.target.id != "ic") {
-                closeNav();
-            }
-
-
-            // if (evnt.target.id != "product") {
-            //     if (!$(event.target).hasClass('product-360')) {
-            //         $('#product').css('display', 'none');
-            //         $('.backdrop').css('display', 'none');
-            //     }
-            // }
         });
+
+        $('.hover_category').hover(
+            function() {
+                var d = '.show' + $(this).attr('showid') + '';
+                $(d).css('display', 'block');
+                $(this).css('border-bottom', ' 3px <?= 'solid ' . $category_color ?>');
+                $('.blocker').css('display', 'block');
+            }
+        );
+
+        // respon header 
+
+        // $('body').click(function(evnt) {
+        //     if ($(evnt.target).hasClass('exit-search')) {
+        //         // $('.search-results').html('');
+        //     } else {
+        //         $('.search-results').html('');
+        //     }
+
+        //     if (evnt.target.id != "link" && evnt.target.id != "mySidenav" && evnt.target.id != "ic") {
+        //         closeNav();
+        //     }
+
+
+        //     // if (evnt.target.id != "product") {
+        //     //     if (!$(event.target).hasClass('product-360')) {
+        //     //         $('#product').css('display', 'none');
+        //     //         $('.backdrop').css('display', 'none');
+        //     //     }
+        //     // }
+        // });
 
         function openNav() {
             if (document.getElementById("mySidenav").style.width == '80%') {

@@ -10,6 +10,22 @@
         </div> -->
     <?php } ?>
     <div class='gallery_container'>
+        <?php helper('custom');
+        $badge = get_product_badge($row->id);
+        $category = get_category_by_productid($row->id);
+        
+        // if(isset($category[0]->category_slug) && !empty($category[0]->category_slug)){
+            $category = $category[0]->category_slug;
+        // }else{
+        //     $category = 'products';
+        // }
+
+        if (!empty($badge)) { ?>
+            <div class="badge badge-primary text-wrap" style="font-weight:bolder;font-size:11px;border-radius:0px 4px 4px 0px;background:#000;width:95px;position:absolute;z-index:1;top:6px;left:0px;">
+                <?= $badge[0]->badge_text; ?>
+            </div>
+        <?php } ?>
+
         <div class='wishlist-box'>
             <?php if ($wishlist != '') { ?>
                 <button class='border-0 btn btn-sm btn-light add-to-wishlist' data-target='' id='<?= $row->id ?>'>
@@ -27,7 +43,7 @@
                 </button>
             <?php } ?>
         </div>
-        <a href='<?= base_url('products/' . $row->product_slug); ?>' style='display:contents;color:#000'>
+        <a href='<?= base_url($category.'/'. $row->product_slug); ?>' style='display:contents;color:#000'>
             <div class='single-product-slider'>
                 <img class='gallery_img' src='<?= base_url('/uploads/product_images/' . $row->image_name1) ?>' />
                 <?php if ($row->image_name2 != '') { ?>

@@ -9,8 +9,6 @@ class Cart extends BaseController
     public function cart_view()
     {
 
-        $data['categories'] = $this->db->table('categories')->orderBy('category_order', 'ASC')->where('show_on_homepage', '1')->get()->getResult();
-
         $userid = $this->session->get('userid');
 
         if ($userid !== '') {

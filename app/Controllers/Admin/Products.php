@@ -6,17 +6,72 @@ use App\Controllers\BaseController;
 
 class Products extends BaseController
 {
-    public function bulk_product_download_view(){
+    public function product_badge_download(){
+        $data['data'] = $this->db->table('product_badge')->get()->getresult();
+        return view('Admin/Views/Products/bulk_product_download_data',$data);
+    }
+
+    public function product_badge_delete()
+    {
+        $csv = array();
+        $lines = file($_FILES['file']['tmp_name'], FILE_IGNORE_NEW_LINES);
+
+        $i = 0;
+        foreach ($lines as $key => $value) {
+            $csv = str_getcsv($value);
+            $this->db->table('product_badge')->where('product_id',$csv[0])->delete();
+        }
+
+        $data['status'] = 200;
+        header('Content-Type: application/json');
+        echo json_encode($data);
+    }
+
+    public function product_badge_update()
+    {
+        $csv = array();
+        $lines = file($_FILES['file']['tmp_name'], FILE_IGNORE_NEW_LINES);
+
+        $i = 0;
+        foreach ($lines as $key => $value) {
+            if ($i != 0) {
+                $csv = str_getcsv($value);
+
+                $array = array(
+                    'product_id' => $csv[0],
+                    'badge_text' => $csv[1],
+                );
+
+                $count = $this->db->table('product_badge')->where('product_id', $csv[0])->countAllResults();
+                if ($count == 0) {
+                    $this->db->table('product_badge')->insert($array);
+                } else {
+                    $this->db->table('product_badge')->where('product_id', $csv[0])->update($array);
+                }
+            }
+            $i++;
+        }
+
+        $data['status'] = 200;
+        header('Content-Type: application/json');
+        echo json_encode($data);
+    }
+
+    public function bulk_product_download_view()
+    {
         return view('Admin/Views/Products/bulk_product_download_view');
     }
-    public function bulk_product_badge_view(){
+    public function bulk_product_badge_view()
+    {
         return view('Admin/Views/Products/bulk_product_badge_view');
     }
-    public function bulk_product_update_view(){
+    public function bulk_product_update_view()
+    {
         return view('Admin/Views/Products/bulk_product_update_view');
     }
 
-    public function bulk_product_delete_view(){
+    public function bulk_product_delete_view()
+    {
         return view('Admin/Views/Products/bulk_product_delete_view');
     }
 
@@ -63,7 +118,7 @@ class Products extends BaseController
             'sku' => $_POST['sku'],
             'promote' => $_POST['promote'],
             'purchasable' => $_POST['purchasable'],
-            'product_slug' => str_replace([' ',',','/'],'',$_POST['sku'] . rand(00000, 99999) . Date('dmyhis')),
+            'product_slug' => str_replace([' ', ',', '/'], '', $_POST['sku'] . rand(00000, 99999) . Date('dmyhis')),
         );
 
         $category_array['category_id'] = $_POST['category'];
