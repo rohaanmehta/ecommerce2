@@ -530,48 +530,6 @@ $categories = get_categories_header();
             }
         }
 
-        .sidenav {
-            height: 100%;
-            width: 0;
-            margin-top: 45px;
-            position: fixed;
-            z-index: 999;
-            top: 0;
-            left: 0;
-            background-color: #fff;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 5px;
-            max-width: 250px;
-        }
-
-        .sidenav .mobile-menu-bars {
-            text-decoration: none;
-            font-size: 12px;
-            font-weight: 800;
-            color: #686868;
-            display: flex;
-            justify-content: space-between;
-            padding-right: 20px;
-            transition: 0.3s;
-            padding: 12px 20px 12px 25px;
-            border-bottom: 1px solid #e1e1e1;
-        }
-
-        .sidenav a:hover {
-            color: #000;
-        }
-
-        .sidenav .closebtn {
-            position: absolute;
-            top: 0;
-            right: 25px;
-            font-size: 36px;
-            margin-left: 50px;
-        }
-
-        /* scrollbar  */
-
         /* footeer   \ */
         .footer_Col {
             width: 80%;
@@ -816,7 +774,8 @@ $categories = get_categories_header();
         <!-- mobile header  -->
         <div class='mobile_Head_Show' style='width:100%;justify-content:space-between'>
             <div style='display:flex;align-items: center;'>
-                <a class='btn' onclick="openNav()" id='closebtn'><i id='ic' class='head_Icons fa fa-bars'></i></a>
+                <span id="show-nav" class='mobile-nav-bar'><i class="mobile-nav-bar head_Icons fa fa-bars"></i></span>
+                <!-- <a class='btn' onclick="openNav()" id='closebtn'><i id='ic' class='head_Icons fa fa-bars'></i></a> -->
                 <?php if (isset($website_images[0]->value_2) && !empty($website_images[0]->value_2)) { ?>
                     <a href='<?= base_url() ?>'>
                         <img src='<?= base_url('uploads/website/' . $website_images[0]->value_2); ?>' height='55px' class='pl-2 pt-3 pb-3' />
@@ -841,6 +800,9 @@ $categories = get_categories_header();
                     </a>
                 </div>
             </div>
+            <?php if (isset($categories) && !empty($categories)) {
+                echo view('Shop/Layout/mobile_sidenav.php', ['categories' => $categories]);
+            } ?>
         </div>
         <!-- pc header  -->
         <div class='d-flex col-lg-7 mobile_Head_Hide pt-3'>
@@ -961,73 +923,6 @@ $categories = get_categories_header();
         } ?>
     </div>
 
-    <!-- nav bar mobile   -->
-    <div id="mySidenav" class="sidenav nav-mobile">
-        <div id='sidenav-menus' class='menu-container'>
-            <!-- <a href="#" id="link" class='mobile-menu-bars'>HOME </a>
-
-            <a href="#" id="link" class='mobile-menu-bars'> CATALOGUE
-                <i class="mobile-menu-angle fa-solid fa-angle-right"></i>
-            </a>
-            <a href="#" id="link" class='mobile-menu-bars'> ABOUT US </a>
-            <a href="#" id="link" class='mobile-menu-bars'> CONTACT </a>
-            <a href="#" id="link" class='mobile-menu-bars'> DASHBOARD </a>
-            <a href="#" id="link" class='mobile-menu-bars'> MY ORDERS </a>
-            <a href="#" id="link" class='mobile-menu-bars'> LOGOUT </a> -->
-
-            <!-- <ul class="">
-                <li>Open, Sesame!</li>
-                <li class="menu-container"> -->
-            <input id="menu-toggle" type="checkbox">
-            <!-- <label for="menu-toggle" class="menu-button">
-                        <svg class="icon-open" viewBox="0 0 24 24">
-                            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
-                        </svg>
-                        <svg class="icon-close" viewBox="0 0 100 100">
-                            <path d="M83.288 88.13c-2.114 2.112-5.575 2.112-7.69 0L53.66 66.188c-2.113-2.112-5.572-2.112-7.686 0l-21.72 21.72c-2.114 2.113-5.572 2.113-7.687 0l-4.693-4.692c-2.114-2.114-2.114-5.573 0-7.688l21.72-21.72c2.112-2.115 2.112-5.574 0-7.687L11.87 24.4c-2.114-2.113-2.114-5.57 0-7.686l4.842-4.842c2.113-2.114 5.57-2.114 7.686 0l21.72 21.72c2.114 2.113 5.572 2.113 7.688 0l21.72-21.72c2.115-2.114 5.574-2.114 7.688 0l4.695 4.695c2.112 2.113 2.112 5.57-.002 7.686l-21.72 21.72c-2.112 2.114-2.112 5.573 0 7.686L88.13 75.6c2.112 2.11 2.112 5.572 0 7.687l-4.842 4.84z" />
-                        </svg>
-                    </label> -->
-            <ul class="menu-sidebar">
-                <li><a href="#">Item</a></li>
-                <li><a href="#">Item</a></li>
-                <li><a href="#">Item</a></li>
-                <li>
-                    <input type="checkbox" id="sub-one" class="submenu-toggle">
-                    <label class="submenu-label" for="sub-one">Category</label>
-                    <div class="arrow right">&#8250;</div>
-                    <ul class="menu-sub">
-                        <li class="menu-sub-title">
-                            <label class="submenu-label" for="sub-one">Back</label>
-                            <div class="arrow left">&#8249;</div>
-                        </li>
-                        <li><a href="#">Sub-item</a></li>
-                        <li><a href="#">Sub-item</a></li>
-                        <li><a href="#">Sub-item</a></li>
-                        <li><a href="#">Sub-item</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <input type="checkbox" id="sub-two" class="submenu-toggle">
-                    <label class="submenu-label" for="sub-two">Category</label>
-                    <div class="arrow right">&#8250;</div>
-                    <ul class="menu-sub">
-                        <li class="menu-sub-title">
-                            <label class="submenu-label" for="sub-two">Back</label>
-                            <div class="arrow left">&#8249;</div>
-                        </li>
-                        <li><a href="#">Sub-item</a></li>
-                        <li><a href="#">Sub-item</a></li>
-                        <li><a href="#">Sub-item</a></li>
-                        <li><a href="#">Sub-item</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <!-- </li>
-            </ul> -->
-        </div>
-    </div>
-
-
     <?= $this->renderSection('content') ?>
 
     <?php include('footer.php'); ?>
@@ -1045,23 +940,6 @@ $categories = get_categories_header();
         // window.onscroll = function() {
         //     myFunction()
         // };
-
-        // var header = document.getElementById("myHeader");
-        // var sidenav = document.getElementById("mySidenav");
-        // var sticky = header.offsetTop;
-
-        //  function myFunction() {
-        //      if (window.pageYOffset > sticky) {
-        //          header.classList.add("sticky");
-        //       $('#mySidenav').css('margin-top', '45');
-        //     } else {
-        //         header.classList.remove("sticky");
-        //         // console.log($('.top_Bar').css('height'));
-        //      var height = parseFloat($('.top_Bar').css('height')) + parseFloat(45);
-        //     $('#mySidenav').css('margin-top', height);
-
-        //   }
-        //   }
 
         $(document).ready(function() {
 
@@ -1143,19 +1021,7 @@ $categories = get_categories_header();
                 }
             });
 
-            $('.mobile-menu-bars').click(function() {
-                if ($(this).children().hasClass('fa-rotate-90')) {
-                    $(this).children().removeClass('fa-rotate-90');
-                } else {
-                    $(this).children().addClass('fa-rotate-90');
-                }
 
-                // if ($(this).children().hasClass('d-none')) {
-                //     $(this).children().removeClass('d-none');
-                // } else {
-                //     $(this).children().addClass('d-none');
-                // }
-            });
 
             // myFunction();
             $('#itemslider').carousel({
@@ -1194,6 +1060,11 @@ $categories = get_categories_header();
             } else {
                 $('.search-results').html('');
             }
+
+            if (!$(evnt.target).hasClass('mobile-nav-bar') && $('#show-nav').hasClass('open')) {
+                $('#show-nav').trigger('click');
+            }
+
         });
 
         $('.hover_category').hover(
@@ -1204,41 +1075,6 @@ $categories = get_categories_header();
                 $('.blocker').css('display', 'block');
             }
         );
-
-        // respon header 
-
-        // $('body').click(function(evnt) {
-        //     if ($(evnt.target).hasClass('exit-search')) {
-        //         // $('.search-results').html('');
-        //     } else {
-        //         $('.search-results').html('');
-        //     }
-
-        //     if (evnt.target.id != "link" && evnt.target.id != "mySidenav" && evnt.target.id != "ic") {
-        //         closeNav();
-        //     }
-
-
-        //     // if (evnt.target.id != "product") {
-        //     //     if (!$(event.target).hasClass('product-360')) {
-        //     //         $('#product').css('display', 'none');
-        //     //         $('.backdrop').css('display', 'none');
-        //     //     }
-        //     // }
-        // });
-
-        function openNav() {
-            if (document.getElementById("mySidenav").style.width == '80%') {
-                document.getElementById("mySidenav").style.width = "0";
-
-            } else {
-                document.getElementById("mySidenav").style.width = "80%";
-            }
-        }
-
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-        }
     </script>
 </body>
 
