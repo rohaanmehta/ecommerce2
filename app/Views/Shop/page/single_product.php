@@ -1,4 +1,4 @@
-<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 text-center p-0 mb-4 main-product-slider">
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 text-center p-1 mb-4 main-product-slider">
     <?php
     if ($wishlist != '') { ?>
         <!-- <div class='product-items-icon add-to-wishlist' id='<?= $row->id ?>'>

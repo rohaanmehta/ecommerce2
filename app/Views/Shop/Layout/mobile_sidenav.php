@@ -1,6 +1,11 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <style>
+    .mobile-nav-bar a {
+        color: inherit;
+        text-decoration: none;
+    }
+
     ::-webkit-scrollbar {
         width: 7px;
         height: 7px;
@@ -156,7 +161,7 @@
 
     .sidebar-subcategories.active::before {
         /* transform: rotate(90deg); */
-        content:"\f107";
+        content: "\f107";
         /* animation-duration: 1s;
         transition-timing-function: ease-in;
         animation-fill-mode: both;
@@ -225,36 +230,6 @@
         animation-iteration-count: infinite;
     }
 
-    #container {
-        padding: 0.5rem;
-    }
-
-    #container.nav-open {
-        margin-left: var(--nav-width);
-    }
-
-    #container.card-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        height: calc(100% - var(--gutter));
-        width: calc(100% - var(--gutter));
-        overflow-x: auto;
-    }
-
-    div.card {
-        margin-bottom: 1rem;
-        padding: 1rem;
-        width: 80%;
-        max-width: 1024px;
-        min-width: 512px;
-        background-color: #4b4ead;
-        color: white;
-        -webkit-box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.5);
-        -moz-box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.5);
-        box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.5);
-    }
-
     /* animation stuff */
     @keyframes bounce-right {
         0% {
@@ -318,18 +293,26 @@
         <?php foreach ($categories as $row) {
             $subcategories = get_categories($row->id);
             if ($row->parent_category == '') { ?>
-                <li class="sub-menu-link mobile-nav-bar <?php  if (isset($subcategories) && !empty($subcategories)) { echo ' sidebar-subcategories'; } ?>"><a href="#" class='mobile-nav-bar'><?= $row->category_name; ?></a></li>
+                <?php if (empty($subcategories)) { ?><a href="<?= base_url($row->category_slug); ?>"> <?php } ?> <li class="sub-menu-link mobile-nav-bar <?php if (isset($subcategories) && !empty($subcategories)) {
+                                                            echo ' sidebar-subcategories';
+                                                        } ?>"><?= $row->category_name; ?></li>
+                <?php if (empty($subcategories)) { ?> </a> <?php } ?>
             <?php }
             if (isset($subcategories) && !empty($subcategories)) { ?>
                 <ul class="side-nav-sub-menu mobile-nav-bar">
-                    <?php foreach ($subcategories as $row2) { 
+                    <?php foreach ($subcategories as $row2) {
                         $subcategories2 = get_categories($row2->id); ?>
-                        <li class='sub-menu-link mobile-nav-bar <?php  if (isset($subcategories2) && !empty($subcategories2)) { echo ' sidebar-subcategories'; } ?>'><a href="#" class='mobile-nav-bar'></a><?= $row2->category_name; ?></li>
-                        <?php 
+                        <?php if (empty($subcategories2)) { ?><a href="<?= base_url($row->category_slug); ?>"> <?php } ?> <li class='sub-menu-link mobile-nav-bar <?php if (isset($subcategories2) && !empty($subcategories2)) {
+                                                                                                                                                                    echo ' sidebar-subcategories';
+                                                                                                                                                                } ?>'> <?= $row2->category_name; ?></li>
+                            <?php if (empty($subcategories2)) { ?> </a> <?php } ?>
+                        <?php
                         if (isset($subcategories2) && !empty($subcategories2)) { ?>
                             <ul class="side-nav-sub-menu mobile-nav-bar">
                                 <?php foreach ($subcategories2 as $row3) { ?>
-                                    <li class='sub-menu-link mobile-nav-bar'><a href="#" class='mobile-nav-bar'></a><?= $row3->category_name; ?></li>
+                                    <?php if (empty($subcategories2)) { ?> <?php } ?><a href="<?= base_url($row3->category_slug); ?>">
+                                        <li class='sub-menu-link mobile-nav-bar'><?= $row3->category_name; ?></li>
+                                    </a>
                                 <?php }  ?>
                             </ul>
                     <?php }

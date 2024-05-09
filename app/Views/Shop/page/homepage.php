@@ -42,7 +42,7 @@
     </a>
 </div>
 
-<!-- banner  for 6 images -->
+<!-- banner  for 4 images -->
 <?php if (isset($banner1)) { ?>
     <div class="banner-homepage-sections" style="padding-left:10px;padding-right:10px;">
         <?php if (isset($banner_section1name) && !empty($banner_section1name) && $banner_section1name[0]->value_1 != '') { ?>
@@ -52,7 +52,7 @@
         <?php } ?>
         <div class="row m-0 banner4 gap">
             <?php foreach ($banner1 as $row) { ?>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 text-center" style='overflow:hidden'>
+                <div class="col-6 col-md-3 text-center p-1" style='overflow:hidden'>
                     <a href='<?= base_url($row->link); ?>'>
                         <div class='zoom-img-box p-0 w-100'>
                             <img class='galleryimg banner_img_4' src='<?= base_url('uploads/banner/' . $row->name) ?>' />
@@ -93,7 +93,7 @@
     <?php } ?>
 </div>
 
-<!-- banner for 4 images -->
+<!-- banner for 3 images -->
 <?php if (isset($banner2[0])) { ?>
     <div class="banner-homepage-sections" style="padding-left:10px;padding-right:10px;">
         <?php if (isset($banner_section2name) && !empty($banner_section2name) && $banner_section2name[0]->value_1 != '') { ?>
@@ -103,7 +103,7 @@
         <?php } ?>
         <div class="row m-0 banner4 gap">
             <?php foreach ($banner2 as $row) { ?>
-                <div class="col-12 col-md-4 text-center" style='overflow:hidden'>
+                <div class="col-6 col-md-4 text-center p-1" style='overflow:hidden'>
                     <a href='<?= base_url($row->link); ?>'>
                         <div class='zoom-img-box p-0 w-100'>
                             <img class='galleryimg banner_img_4' src='<?= base_url('uploads/banner/' . $row->name) ?>' />
@@ -123,13 +123,13 @@
                 <p style='font-size:25px;'><?= $banner_section3name[0]->value_1; ?></p>
             </div>
         <?php } ?>
-        <div class="row m-0 banner4 gap">
+        <div class="row m-0 banner4 gap p-0">
             <?php foreach ($banner3 as $row) { ?>
-                <a href='<?= base_url($row->link); ?>'>
-                    <div class="col-12 text-center">
-                        <img style='width:100%' class='mb-4' src='<?= base_url('uploads/banner/' . $row->name) ?>' />
-                    </div>
-                </a>
+                <div class="col-12 text-center p-1">
+                    <a href='<?= base_url($row->link); ?>'>
+                        <img style='width:100%' class='mb-4 p-0' src='<?= base_url('uploads/banner/' . $row->name) ?>' />
+                    </a>
+                </div>
             <?php } ?>
         </div>
     </div>
@@ -172,7 +172,7 @@
     <div class="row m-0 banner4 gap">
 
         <?php foreach ($banner4 as $row) { ?>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center mb-3">
                 <a href='<?= base_url($row->link); ?>'>
                     <div class='zoom-img-box p-0 w-100'>
                         <img style='width:100%' class='' src='<?= base_url('uploads/banner/' . $row->name) ?>' />
@@ -286,6 +286,12 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
+       setTimeout(function(){
+        load_sliders(); 
+       },1000);
+    });
+
+    function load_sliders(){
         <?php if (isset($banner1_info) && !empty(($banner1_info) && $banner1_info[0]->value_3 == 'YES')) { ?>
             $('.section1-slider').slick({
                 // dots: true,
@@ -299,9 +305,16 @@
                         breakpoint: 1024,
                         settings: {
                             slidesToShow: 5,
-                            slidesToScroll: 5,
+                            slidesToScroll: 1,
                             infinite: true,
                             // dots: true
+                        }
+                    },
+                    {
+                        breakpoint: 769,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 1
                         }
                     },
                     {
@@ -309,13 +322,6 @@
                         settings: {
                             slidesToShow: 2,
                             slidesToScroll: 2
-                        }
-                    },
-                    {
-                        breakpoint: 480,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1
                         }
                     }
                     // You can unslick at a given breakpoint now by adding:
@@ -337,9 +343,16 @@
                         breakpoint: 1024,
                         settings: {
                             slidesToShow: 5,
-                            slidesToScroll: 5,
+                            slidesToScroll: 1,
                             infinite: true,
                             // dots: true
+                        }
+                    },
+                    {
+                        breakpoint: 769,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 1
                         }
                     },
                     {
@@ -348,13 +361,6 @@
                             slidesToShow: 2,
                             slidesToScroll: 2
                         }
-                    },
-                    {
-                        breakpoint: 480,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1
-                        }
                     }
                     // You can unslick at a given breakpoint now by adding:
                     // settings: "unslick"
@@ -362,7 +368,7 @@
                 ]
             });
         <?php } ?>
-    });
+    }
 </script>
 
 <?= $this->endSection() ?>

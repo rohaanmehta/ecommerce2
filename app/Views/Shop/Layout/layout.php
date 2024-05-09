@@ -46,6 +46,9 @@ $categories = get_categories_header();
         <link rel="icon" type="image/x-icon" href="<?= base_url('uploads/website/' . $website_images[0]->value_3); ?>">
     <?php } ?>
     <style>
+        #carouselExampleIndicators{
+            z-index: 1 !important;
+        }
         .link-none,
         .link-none:hover {
             text-decoration: none;
@@ -759,7 +762,6 @@ $categories = get_categories_header();
 <body style='position:relative'>
     <!-- blocker -->
     <div class='bg-dark blocker' style='display:none;width:100vw;min-height:100vh;opacity:0.4;position:fixed;margin-top:2px;z-index:1;'></div>
-
     <!-- //topbar   -->
     <!-- //top bar  -->
 
