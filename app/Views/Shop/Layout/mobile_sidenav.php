@@ -6,7 +6,7 @@
         text-decoration: none;
     }
 
-    ::-webkit-scrollbar {
+    /* ::-webkit-scrollbar {
         width: 7px;
         height: 7px;
     }
@@ -30,7 +30,7 @@
 
     ::-webkit-scrollbar-corner {
         background: transparent;
-    }
+    } */
 
     :root {
         --nav-width: 15rem;
@@ -294,17 +294,17 @@
             $subcategories = get_categories($row->id);
             if ($row->parent_category == '') { ?>
                 <?php if (empty($subcategories)) { ?><a href="<?= base_url($row->category_slug); ?>"> <?php } ?> <li class="sub-menu-link mobile-nav-bar <?php if (isset($subcategories) && !empty($subcategories)) {
-                                                            echo ' sidebar-subcategories';
-                                                        } ?>"><?= $row->category_name; ?></li>
-                <?php if (empty($subcategories)) { ?> </a> <?php } ?>
+                                                                                                                                                                echo ' sidebar-subcategories';
+                                                                                                                                                            } ?>"><?= $row->category_name; ?></li>
+                    <?php if (empty($subcategories)) { ?> </a> <?php } ?>
             <?php }
             if (isset($subcategories) && !empty($subcategories)) { ?>
                 <ul class="side-nav-sub-menu mobile-nav-bar">
                     <?php foreach ($subcategories as $row2) {
                         $subcategories2 = get_categories($row2->id); ?>
                         <?php if (empty($subcategories2)) { ?><a href="<?= base_url($row->category_slug); ?>"> <?php } ?> <li class='sub-menu-link mobile-nav-bar <?php if (isset($subcategories2) && !empty($subcategories2)) {
-                                                                                                                                                                    echo ' sidebar-subcategories';
-                                                                                                                                                                } ?>'> <?= $row2->category_name; ?></li>
+                                                                                                                                                                        echo ' sidebar-subcategories';
+                                                                                                                                                                    } ?>'> <?= $row2->category_name; ?></li>
                             <?php if (empty($subcategories2)) { ?> </a> <?php } ?>
                         <?php
                         if (isset($subcategories2) && !empty($subcategories2)) { ?>
@@ -346,10 +346,11 @@
     });
 
     showNavBtn.addEventListener('click', (event) => {
+
         if (nav.style.left !== '0px') {
             showNavBtn.classList.toggle('open');
             nav.classList.toggle('open');
-            container.classList.toggle('nav-open');
+            // container.classList.toggle('nav-open');
             document.body.style.overflow = 'hidden';
         } else {
             showNavBtn.classList.toggle('open');

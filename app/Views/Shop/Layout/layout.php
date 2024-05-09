@@ -761,7 +761,7 @@ $categories = get_categories_header();
 
 <body style='position:relative'>
     <!-- blocker -->
-    <div class='bg-dark blocker' style='display:none;width:100vw;min-height:100vh;opacity:0.4;position:fixed;margin-top:2px;z-index:1;'></div>
+    <div class='bg-dark blocker' style='display:none;width:100vw;min-height:100vh;opacity:0.4;position:fixed;margin-top:2px;z-index:2;'></div>
     <!-- //topbar   -->
     <!-- //top bar  -->
 
@@ -906,12 +906,12 @@ $categories = get_categories_header();
                             <?php
                             foreach ($categories as $row) {
                                 if ($row->parent_category == $row_main->id) { ?>
-                                    <a class='link-none' href='<?= base_url('/' . $row->category_slug); ?>'>
+                                    <a class='link-none text-capitalize' href='<?= base_url('/' . $row->category_slug); ?>'>
                                         <div class='nav_Categories_Sub_Menu_Tittle allcategories-show' style='color: <?= $category_color ?>'><?= $row->category_name ?></div>
                                     </a>
                                     <?php foreach ($categories as $row3) {
                                         if ($row3->parent_category == $row->id) { ?>
-                                            <a class='link-none' href='<?= base_url('/' . $row3->category_slug); ?>'>
+                                            <a class='link-none text-capitalize' href='<?= base_url('/' . $row3->category_slug); ?>'>
                                                 <div class='nav_Categories_Sub_Menu_Item allcategories-show'><?= $row3->category_name; ?></div>
                                             </a>
                                     <?php }
@@ -1065,9 +1065,15 @@ $categories = get_categories_header();
 
             if (!$(evnt.target).hasClass('mobile-nav-bar') && $('#show-nav').hasClass('open')) {
                 $('#show-nav').trigger('click');
+                $('.blocker').css('display', 'none');
+            }else{
+                $('.blocker').css('display', 'block');
             }
 
         });
+        // $('.blocker').click(function(e) {
+        //     e.preventDefault();
+        // });
 
         $('.hover_category').hover(
             function() {
