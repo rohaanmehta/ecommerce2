@@ -350,6 +350,7 @@
         if (nav.style.left !== '0px') {
             showNavBtn.classList.toggle('open');
             nav.classList.toggle('open');
+            // $('.blocker').css('display', 'none');
             // container.classList.toggle('nav-open');
             document.body.style.overflow = 'hidden';
         } else {

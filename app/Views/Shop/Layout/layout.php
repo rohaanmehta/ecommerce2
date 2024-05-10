@@ -46,9 +46,10 @@ $categories = get_categories_header();
         <link rel="icon" type="image/x-icon" href="<?= base_url('uploads/website/' . $website_images[0]->value_3); ?>">
     <?php } ?>
     <style>
-        #carouselExampleIndicators{
+        #carouselExampleIndicators {
             z-index: 1 !important;
         }
+
         .link-none,
         .link-none:hover {
             text-decoration: none;
@@ -762,6 +763,7 @@ $categories = get_categories_header();
 <body style='position:relative'>
     <!-- blocker -->
     <div class='bg-dark blocker' style='display:none;width:100vw;min-height:100vh;opacity:0.4;position:fixed;margin-top:2px;z-index:2;'></div>
+    <div class='bg-dark mobileblocker' style='display:none;width:100vw;min-height:100vh;opacity:0.4;position:fixed;margin-top:2px;z-index:2;'></div>
     <!-- //topbar   -->
     <!-- //top bar  -->
 
@@ -776,7 +778,7 @@ $categories = get_categories_header();
         <!-- mobile header  -->
         <div class='mobile_Head_Show' style='width:100%;justify-content:space-between'>
             <div style='display:flex;align-items: center;'>
-                <span id="show-nav" class='mobile-nav-bar'><i class="mobile-nav-bar head_Icons fa fa-bars"></i></span>
+                <span id="show-nav" class='show-nav mobile-nav-bar'><i class="show-nav mobile-nav-bar head_Icons fa fa-bars"></i></span>
                 <!-- <a class='btn' onclick="openNav()" id='closebtn'><i id='ic' class='head_Icons fa fa-bars'></i></a> -->
                 <?php if (isset($website_images[0]->value_2) && !empty($website_images[0]->value_2)) { ?>
                     <a href='<?= base_url() ?>'>
@@ -1022,9 +1024,6 @@ $categories = get_categories_header();
                     });
                 }
             });
-
-
-
             // myFunction();
             $('#itemslider').carousel({
                 interval: 3000,
@@ -1065,15 +1064,13 @@ $categories = get_categories_header();
 
             if (!$(evnt.target).hasClass('mobile-nav-bar') && $('#show-nav').hasClass('open')) {
                 $('#show-nav').trigger('click');
-                $('.blocker').css('display', 'none');
-            }else{
-                $('.blocker').css('display', 'block');
+                $('.mobileblocker').css('display', 'none');
             }
-
         });
-        // $('.blocker').click(function(e) {
-        //     e.preventDefault();
-        // });
+
+        $('.show-nav').click(function() {
+            $('.mobileblocker').css('display', 'block');
+        });
 
         $('.hover_category').hover(
             function() {
