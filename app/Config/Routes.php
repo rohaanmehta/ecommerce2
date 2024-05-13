@@ -27,13 +27,15 @@ $routes->group('',['namespace' => 'App\controllers\Admin',"filter" => "Auth"], s
     $routes->post('add_website_settings_product_page', 'Website_settings::add_website_settings_product_page');
     $routes->get('Admin/visual_settings', 'Website_settings::visual_settings');
     $routes->post('add_visual_settings', 'Website_settings::add_visual_settings');
+    $routes->post('add_visual_settings2', 'Website_settings::add_visual_settings2');
     
     // products
     // $routes->get('Admin/product_slider', 'Dashboard::dashboard');
     $routes->get('Admin/slider-view', 'Dashboard::slider_view');
     $routes->post('add_slider_data', 'Dashboard::add_slider_data');
+    $routes->post('get_slider_data', 'Dashboard::get_slider_data');
     $routes->get('delete-slider/?(:any)', 'Dashboard::delete_slider/$1');
-
+    
     
     $routes->get('Admin/banner-view', 'Dashboard::banner_view');
     $routes->post('add_banner_data', 'Dashboard::add_banner_data');

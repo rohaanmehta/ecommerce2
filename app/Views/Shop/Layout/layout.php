@@ -782,7 +782,7 @@ $categories = get_categories_header();
                 <!-- <a class='btn' onclick="openNav()" id='closebtn'><i id='ic' class='head_Icons fa fa-bars'></i></a> -->
                 <?php if (isset($website_images[0]->value_2) && !empty($website_images[0]->value_2)) { ?>
                     <a href='<?= base_url() ?>'>
-                        <img src='<?= base_url('uploads/website/' . $website_images[0]->value_2); ?>' height='55px' class='pl-2 pt-3 pb-3' />
+                        <img src='<?= base_url('uploads/website/' . $website_images[0]->value_2); ?>' height='52px' class='pl-3 pt-3 pb-3' />
                     </a>
                 <?php } ?>
             </div>
@@ -875,7 +875,7 @@ $categories = get_categories_header();
                             <?php } ?>
                             <a href='<?= base_url(); ?>' class='profile-box-links' style='text-decoration:none'> Profile </a><br>
                             <a href='<?= base_url(); ?>' class='profile-box-links' style='text-decoration:none'> Orders </a><br>
-                            <a href='<?= base_url(); ?>' class='profile-box-links' style='text-decoration:none'> Wishlist </a><br>
+                            <a href='<?= base_url('/wishlist'); ?>' class='profile-box-links' style='text-decoration:none'> Wishlist </a><br>
                             <a href='<?= base_url(); ?>' class='profile-box-links' style='text-decoration:none'> Coupons </a>
                         <?php } ?>
                     </div>
@@ -1065,6 +1065,7 @@ $categories = get_categories_header();
             if (!$(evnt.target).hasClass('mobile-nav-bar') && $('#show-nav').hasClass('open')) {
                 $('#show-nav').trigger('click');
                 $('.mobileblocker').css('display', 'none');
+                document.body.style.overflow = 'auto';
             }
         });
 

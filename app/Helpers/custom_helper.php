@@ -92,3 +92,19 @@ function get_sizechart_by_productid($id)
 
     return $sizechart;
 }
+
+
+function sidebar_image()
+{
+    // $CI =& get_instance();
+    $db = \Config\Database::connect();
+
+    $sidebar_image = $db->table('general_settings')->select('*')->where('name', 'website_settings2')->get()->getresult();
+    if (isset($sidebar_image) && !empty($sidebar_image)) {
+        $sidebar_image = $sidebar_image[0];
+    } else {
+        $sidebar_image = '';
+    }
+
+    return $sidebar_image;
+}

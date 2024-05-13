@@ -92,7 +92,7 @@
     #side-nav ul li {
         display: block;
         position: relative;
-        padding: 12px;
+        padding: 11px;
         text-transform: capitalize;
         font-size: 12px;
     }
@@ -289,7 +289,11 @@
 </style>
 <nav id="side-nav" class='mobile-nav-bar'>
     <ul>
-        <img id='side-nav-img' class='mobile-nav-bar' src='<?= base_url('uploads/website/mobile-sidebar-banner.webp'); ?>'>
+        <?php helper('custom_helper');
+        $sidebar_image = sidebar_image();
+        if (isset($sidebar_image) && !empty($sidebar_image)) { ?>
+            <a href='<?= base_url('/' . $sidebar_image->value_3); ?>'><img id='side-nav-img' class='mobile-nav-bar' src='<?= base_url('uploads/website/' . $sidebar_image->value_2); ?>'></a>
+        <?php } ?>
         <?php foreach ($categories as $row) {
             $subcategories = get_categories($row->id);
             if ($row->parent_category == '') { ?>
@@ -320,12 +324,26 @@
                 </ul>
         <?php }
         } ?>
-        <!-- <li class="sub-menu-link"><a href="#">Services</a></li>
-        <ul class="side-nav-sub-menu">
-            <li><a href="#">Print Design</a></li>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Mobile App Development</a></li>
-        </ul> -->
+        <hr class='m-0'>
+        </hr>
+        <?php $session = session();
+            if ($session->get('userid') != '') { ?>
+            <?php if ($session->get('role') == 'admin') { ?>
+                <li><a href="<?= base_url('/Admin/dashboard'); ?>" class='mobile-nav-bar font-weight-normal'>Admin Panel</a></li>
+            <?php } ?>
+
+            <li><a href="<?= base_url(); ?>" class='mobile-nav-bar font-weight-normal'>My Profile</a></li>
+            <li><a href="<?= base_url(); ?>" class='mobile-nav-bar font-weight-normal'>My Orders</a></li>
+        <?php } else { ?>
+            <li><a href="<?= base_url(); ?>" data-toggle="modal" data-target="#loginexampleModal" class='mobile-nav-bar font-weight-normal'>Login </a></li>
+        <?php } ?>
+
+        <li><a href="<?= base_url('/wishlist'); ?>" class='mobile-nav-bar font-weight-normal'> WishList </a></li>
+        <li><a href="<?= base_url(); ?>" class='mobile-nav-bar font-weight-normal'> Coupons </a></li>
+
+        <?php if ($session->get('userid') != '') { ?>
+            <li><a href="<?= base_url('/logout'); ?>" class='mobile-nav-bar font-weight-normal'> Logout </a></li>
+        <?php } ?>
     </ul>
 </nav>
 <script>

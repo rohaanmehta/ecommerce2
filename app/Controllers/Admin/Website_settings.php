@@ -143,9 +143,11 @@ class Website_settings extends BaseController
     public function visual_settings()
     {
         $data['info'] = $this->db->table('general_settings')->where('name', 'website_settings')->get()->getResult();
+        $data['info2'] = $this->db->table('general_settings')->where('name', 'website_settings2')->get()->getResult();
 
         return view('Admin/Views/Settings/visual_settings',$data);
     }
+
     public function add_visual_settings()
     {
         $img1 = $this->request->getFile('image1');
@@ -209,6 +211,78 @@ class Website_settings extends BaseController
             $this->db->table('general_settings')->insert($image_array);
         }else{
             $this->db->table('general_settings')->where('name','website_settings')->update($image_array);
+        }
+        $data['status'] = 200;
+
+        header('Content-Type: application/json');
+        echo json_encode($data);
+    }
+
+
+    public function add_visual_settings2()
+    {
+        $img1 = $this->request->getFile('image1');
+        $img2 = $this->request->getFile('image2');
+        // $img3 = $this->request->getFile('image3');
+
+        $img1name = '1' . date('dmyHis') . '.png';
+        $img2name = '2' . date('dmyHis') . '.png';
+        $img3name = '3' . date('dmyHis') . '.png';
+        $image_array['name'] = 'website_settings2';
+        $image_array['value_3'] = $_POST['link'];
+
+        $info = $this->db->table('general_settings')->where('name', 'website_settings2')->countAllResults();
+        $info2 = $this->db->table('general_settings')->where('name', 'website_settings2')->get()->getResult();
+
+        if ($info == 0) {
+            if (isset($_FILES['image1']['name']) && !empty($_FILES['image1']['name'])) {
+                $img1->move(ROOTPATH . 'uploads/website/', $img1name);
+                $image_array['value_1'] = $img1name;
+            }
+
+            if (isset($_FILES['image2']['name']) && !empty($_FILES['image2']['name'])) {
+                $img2->move(ROOTPATH . 'uploads/website/', $img2name);
+                $image_array['value_2'] = $img2name;
+            }
+
+            // if (isset($_FILES['image3']['name']) && !empty($_FILES['image3']['name'])) {
+            //     $img3->move(ROOTPATH . 'uploads/website/', $img3name);
+            //     $image_array['value_3'] = $img3name;
+            // }
+        } else {
+            if (isset($_FILES['image1']['name']) && !empty($_FILES['image1']['name'])) {
+                if ($info2[0]->value_1 != '') {
+                    if (is_file(ROOTPATH . 'uploads/website/' . $info2[0]->value_1)) {
+                        unlink(ROOTPATH . 'uploads/website/' . $info2[0]->value_1);
+                    }
+                }
+                $img1->move(ROOTPATH . 'uploads/website/', $img1name);
+                $image_array['value_1'] = $img1name;
+            }
+            if (isset($_FILES['image2']['name']) && !empty($_FILES['image2']['name'])) {
+                if ($info2[0]->value_2 != '') {
+                    if (is_file(ROOTPATH . 'uploads/website/' . $info2[0]->value_2)) {
+                        unlink(ROOTPATH . 'uploads/website/' . $info2[0]->value_2);
+                    }
+                }
+                $img2->move(ROOTPATH . 'uploads/website/', $img2name);
+                $image_array['value_2'] = $img2name;
+            }
+            // if (isset($_FILES['image3']['name']) && !empty($_FILES['image3']['name'])) {
+            //     if ($info2[0]->value_3 != '') {
+            //         if (is_file(ROOTPATH . 'uploads/website/' . $info2[0]->value_3)) {
+            //             unlink(ROOTPATH . 'uploads/website/' . $info2[0]->value_3);
+            //         }
+            //     }
+            //     $img3->move(ROOTPATH . 'uploads/website/', $img3name);
+            //     $image_array['value_3'] = $img3name;
+            // }
+        }
+
+        if($info == 0){
+            $this->db->table('general_settings')->insert($image_array);
+        }else{
+            $this->db->table('general_settings')->where('name','website_settings2')->update($image_array);
         }
         $data['status'] = 200;
 

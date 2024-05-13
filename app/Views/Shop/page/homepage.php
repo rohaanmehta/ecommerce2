@@ -2,8 +2,9 @@
 <?= $this->section('content') ?>
 
 <?php $session = session(); ?>
+
 <!-- corousel -->
-<div id="carouselExampleIndicators" class="mb-4 carousel slide" data-ride="carousel">
+<div id="carouselExampleIndicators" class="mb-4 carousel slide mobile_Head_Hide" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -37,6 +38,45 @@
         <span class="sr-only">Previous</span>
     </a>
     <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<div id="carouselExampleIndicators2" class="mb-4 carousel slide mobile_Head_Show" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators2" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators2" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <?php if (isset($slider)) {
+            $i = 0;
+            foreach ($slider as $row) { ?>
+                <div class="carousel-item <?php if ($i == 0) {
+                                                echo 'active';
+                                            } ?>">
+                    <?php if ($row->link != '') { ?>
+                        <a href='<?= base_url($row->link); ?>'>
+                        <?php } ?>
+                        <img class="d-block w-100" src="<?= base_url('uploads/slider/' . $row->mobile_name) ?>" alt="corousel">
+                        <!-- <div class="carousel-caption d-none d-md-block">
+                        <h5>This is heading Caption</h5>
+                        <p>Description small for Images of corousel</p>
+                    </div> -->
+                        <?php if ($row->link != '') { ?>
+                        </a>
+                    <?php } ?>
+                </div>
+        <?php $i++;
+            }
+        } ?>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
     </a>
@@ -103,7 +143,7 @@
         <?php } ?>
         <div class="row m-0 banner4 gap">
             <?php foreach ($banner2 as $row) { ?>
-                <div class="col-6 col-md-4 text-center p-1" style='overflow:hidden'>
+                <div class="col-12 col-md-4 text-center p-1" style='overflow:hidden'>
                     <a href='<?= base_url($row->link); ?>'>
                         <div class='zoom-img-box p-0 w-100'>
                             <img class='galleryimg banner_img_4' src='<?= base_url('uploads/banner/' . $row->name) ?>' />
@@ -172,7 +212,7 @@
     <div class="row m-0 banner4 gap">
 
         <?php foreach ($banner4 as $row) { ?>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center mb-3">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center mb-3 p-1">
                 <a href='<?= base_url($row->link); ?>'>
                     <div class='zoom-img-box p-0 w-100'>
                         <img style='width:100%' class='' src='<?= base_url('uploads/banner/' . $row->name) ?>' />
@@ -284,14 +324,15 @@
         ?> -->
 
 
+
 <script type="text/javascript">
     $(document).ready(function() {
-       setTimeout(function(){
-        load_sliders(); 
-       },1000);
+        setTimeout(function() {
+            load_sliders();
+        }, 1000);
     });
 
-    function load_sliders(){
+    function load_sliders() {
         <?php if (isset($banner1_info) && !empty(($banner1_info) && $banner1_info[0]->value_3 == 'YES')) { ?>
             $('.section1-slider').slick({
                 // dots: true,
