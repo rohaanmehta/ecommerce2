@@ -12,6 +12,14 @@
     <script src="<?= base_url('public/dist/js/j360.js') ?>"></script>
 </head>
 <style>
+    .addtocart {
+        background: #000;
+        min-width: 220px;
+        font-size: 15px;
+        font-weight: 600;
+        padding: 12px 20px 12px 20px;
+    }
+
     .sizechart-modal .table table td {
         font-size: 13px;
         border: 1px solid #dfdfdf;
@@ -58,7 +66,7 @@
         height: 80%;
         width: 100%;
         text-align: center;
-        border: 1px solid #000;
+        border: 1px solid #b9b9b9;
         border-radius: 4px;
         line-height: 40px;
         font-family: 'Poppins', sans-serif;
@@ -66,11 +74,13 @@
         transition-duration: .5s;
         transition-property: transform, box-shadow;
         transform: none;
+        color: #4a4a4a
     }
 
     .selector-item_radio:checked+.selector-item_label {
-        background-color: #000;
-        color: #fff;
+        /* background-color: #000; */
+        border: 2px solid black;
+        color: #000;
     }
 
     /* @media (max-width:480px) {
@@ -240,38 +250,50 @@
     </div>
 </div>
 
-<div class='row'>
-    <div class='col-1 mobile_Head_Hide'>
+<div class='row pl-5'>
+    <!-- thumbnails old design -->
+    <!-- <div class='col-1 mobile_Head_Hide'>
         <div class='row pl-5 justify-content-end'>
-            <?php if (isset($product)) { ?>
-                <?php if ($product[0]->image_name1 != '') { ?>
-                    <img class='product_image_thumbnails rounded' style='filter:brightness(80%);border:1px solid #b5b5b5' src='<?= base_url('uploads/product_images/' . $product[0]->image_name1); ?>' />
-                <?php } ?>
-                <?php if ($product[0]->image_name2 != '') { ?>
-                    <img class='product_image_thumbnails rounded' src='<?= base_url('uploads/product_images/' . $product[0]->image_name2); ?>' />
-                <?php } ?>
-                <?php if ($product[0]->image_name3 != '') { ?>
-                    <img class='product_image_thumbnails rounded' src='<?= base_url('uploads/product_images/' . $product[0]->image_name3); ?>' />
-                <?php } ?>
-                <?php if ($product[0]->image_name4 != '') { ?>
-                    <img class='product_image_thumbnails rounded' src='<?= base_url('uploads/product_images/' . $product[0]->image_name4); ?>' />
-            <?php }
+            <//?php if (isset($product)) { ?>
+                <//?php if ($product[0]->image_name1 != '') { ?>
+                    <img class='product_image_thumbnails rounded' style='filter:brightness(80%);border:1px solid #b5b5b5' src='<//?= base_url('uploads/product_images/' . $product[0]->image_name1); ?>' />
+                <//?php } ?>
+                <//?php if ($product[0]->image_name2 != '') { ?>
+                    <img class='product_image_thumbnails rounded' src='<//?= base_url('uploads/product_images/' . $product[0]->image_name2); ?>' />
+                <//?php } ?>
+                <//?php if ($product[0]->image_name3 != '') { ?>
+                    <img class='product_image_thumbnails rounded' src='<//?= base_url('uploads/product_images/' . $product[0]->image_name3); ?>' />
+                <//?php } ?>
+                <//?php if ($product[0]->image_name4 != '') { ?>
+                    <img class='product_image_thumbnails rounded' src='<//?= base_url('uploads/product_images/' . $product[0]->image_name4); ?>' />
+            <//?php }
             } ?>
         </div>
-    </div>
-    <div class='col-12 col-md-4 pl-0 pr-0'>
-        <div class='d-flex justify-content-center pl-4 pr-4'>
-            <img class='product_image rounded' src='<?= base_url('uploads/product_images/' . $product[0]->image_name1); ?>' />
-        </div>
-        <!-- tap to view 360  -->
-        <!-- <div class='d-flex justify-content-center mt-2 mb-5 mb-md-2'>
+    </div> -->
+    <div class='col-12 col-md-7 p-0'>
+        <div class='row p-0'>
+            <div class='col-6 pr-0'>
+                <img class='product_image round' src='<?= base_url('uploads/product_images/' . $product[0]->image_name1); ?>' />
+            </div>
+            <div class='col-6 pr-0'>
+                <img class='product_image round' src='<?= base_url('uploads/product_images/' . $product[0]->image_name2); ?>' />
+            </div>
+            <div class='col-6 pr-0 pt-3'>
+                <img class='product_image round' src='<?= base_url('uploads/product_images/' . $product[0]->image_name3); ?>' />
+            </div>
+            <div class='col-6 pr-0 pt-3'>
+                <img class='product_image round' src='<?= base_url('uploads/product_images/' . $product[0]->image_name4); ?>' />
+            </div>
+            <!-- tap to view 360  -->
+            <!-- <div class='d-flex justify-content-center mt-2 mb-5 mb-md-2'>
             <button class='btn rounded text-white tap-btn product-360' style='background:#000' data-toggle="modal" data-target="#exampleModalCenter">Tap to view 360
                 <i class="fa-solid fa-rotate"></i>
             </button>
         </div> -->
+        </div>
     </div>
 
-    <div class='col-12 col-md-5'>
+    <div class='col-12 col-md-4 pl-5'>
         <div class='product_heading'>
             <?= $product[0]->title; ?>
         </div>
@@ -356,8 +378,8 @@
         <?php if ($product[0]->purchasable == 1) { ?>
             <div class='col-12 pl-0 mt-0'>
                 <?php if ($product[0]->stock > 0) { ?>
-                    <button class='mt-5 btn btn-lg rounded text-white addtocart' style='background:#000;min-width:220px'>Add to Cart
-                        <i class="fa-solid fa-ta[e"></i>
+                    <button class='mt-3 btn btn-lg rounded text-white addtocart'>
+                        <i class="fa-solid fa-shopping-bag pr-3 font-sm"></i>ADD TO CART
                     </button>
                 <?php } else { ?>
                     <button class='mt-5 btn btn-lg rounded text-white' style='background:#000;min-width:220px'>OUT OF STOCK

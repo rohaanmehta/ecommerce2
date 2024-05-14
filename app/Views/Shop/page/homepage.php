@@ -329,7 +329,7 @@
     $(document).ready(function() {
         setTimeout(function() {
             load_sliders();
-        }, 1000);
+        }, 2000);
     });
 
     function load_sliders() {
