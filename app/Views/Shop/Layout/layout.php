@@ -46,6 +46,22 @@ $categories = get_categories_header();
         <link rel="icon" type="image/x-icon" href="<?= base_url('uploads/website/' . $website_images[0]->value_3); ?>">
     <?php } ?>
     <style>
+        .main-product-slider {
+            display: none;
+        }
+
+        .main-product-slider.slick-initialized {
+            display: block;
+        }
+
+        /* .section1-slider {
+            display: none;
+        }
+
+        .section1-slider.slick-initialized {
+            display: block;
+        } */
+
         #carouselExampleIndicators {
             z-index: 1 !important;
         }
@@ -946,20 +962,9 @@ $categories = get_categories_header();
         // };
 
         $(document).ready(function() {
-
-            $('.single-product-slider').slick({
-                dots: true,
-                autoplay: false,
-                autoplaySpeed: 1000,
-                infinite: true,
-                speed: 300,
-                slidesToShow: 1,
-                // adaptiveHeight: true,
-                prevArrow: "",
-                nextArrow: "",
-                pauseOnHover: false,
-                pauseOnFocus: false,
-            });
+            // setTimeout(function() {
+            load_product_sliders();
+            // }, 500);
 
             $('.main-product-slider').hover(
                 function() {
@@ -1081,6 +1086,23 @@ $categories = get_categories_header();
                 $('.blocker').css('display', 'block');
             }
         );
+
+        function load_product_sliders() {
+            $('.single-product-slider').slick({
+                dots: true,
+                autoplay: false,
+                lazyLoad: 'ondemand',
+                autoplaySpeed: 1000,
+                infinite: true,
+                speed: 300,
+                slidesToShow: 1,
+                // adaptiveHeight: true,
+                prevArrow: "",
+                nextArrow: "",
+                pauseOnHover: false,
+                pauseOnFocus: false,
+            });
+        }
     </script>
 </body>
 

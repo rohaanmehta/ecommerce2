@@ -327,9 +327,9 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        setTimeout(function() {
+        // setTimeout(function() {
             load_sliders();
-        }, 2000);
+        // }, 00);
     });
 
     function load_sliders() {
