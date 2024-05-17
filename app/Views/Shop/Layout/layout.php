@@ -62,6 +62,7 @@ $categories = get_categories_header();
             display: block;
         }
 
+
         /* .section1-slider {
             display: none;
         }
