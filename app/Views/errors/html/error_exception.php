@@ -369,16 +369,12 @@ $errorId = uniqid('error', true);
                         </tr>
                     </tbody>
                 </table>
-
             </div>
-
         </div>  <!-- /tab-content -->
-
     </div> <!-- /container -->
 
     <div class="footer">
         <div class="container">
-
             <p>
                 Displayed at <?= esc(date('H:i:sa')) ?> &mdash;
                 PHP: <?= esc(PHP_VERSION) ?>  &mdash;

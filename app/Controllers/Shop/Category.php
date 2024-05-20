@@ -16,6 +16,12 @@ class Category extends BaseController
         //all categories
         $all_categories = array();
         $categoryid = $this->db->table('categories')->select('id,category_slug')->where('category_slug', $slug)->get()->getresult();
+        
+        //redirect to 404
+        if(isset($categoryid) && empty($categoryid)){
+            echo view('errors/error404');exit;
+        }
+
         array_push($all_categories, $categoryid[0]->id);
 
         //all sub categories 2nd layer

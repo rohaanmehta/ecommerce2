@@ -54,6 +54,37 @@ abstract class BaseController extends Controller
         $this->db = \Config\Database::connect();
         $this->session = \Config\Services::session();
 
+        // print_r($this->input->get_request_header());exit;
         // E.g.: $this->session = \Config\Services::session();
+        $this->image = \Config\Services::image();
+        $this->image = \Config\Services::image('gd');
+    }
+
+    public function image_upload($fileName,$format,$dir,$resize = null)
+    {
+
+        try {
+            $tempname = explode('.',$fileName);
+            $fileNamenew = '1'.$tempname[0].'.webp';
+
+            if($resize == null){
+                $this->image->withFile(ROOTPATH .$dir . $fileName)
+                ->convert($format)
+                ->save(ROOTPATH .$dir . $fileNamenew);
+            }else{
+                $resize = explode('x',$resize);
+                // print_r($resize);
+                $this->image->withFile(ROOTPATH .$dir . $fileName)
+                ->resize($resize[0], $resize[1], false, 'height')
+                ->convert($format)
+                ->save(ROOTPATH .$dir . $fileNamenew);
+            }
+
+            unlink(ROOTPATH .$dir . $fileName);
+            $this->image->clear();
+            return $fileNamenew;
+        } catch (\CodeIgniter\Images\Exceptions\ImageException $e) {
+            echo 'err' . $e->getMessage();
+        }
     }
 }

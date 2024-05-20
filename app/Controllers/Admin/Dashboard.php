@@ -28,7 +28,9 @@ class Dashboard extends BaseController
 
     public function add_slider_data()
     {
+
         if ($_POST['edit-id'] == '') {
+
             $img = $this->request->getFile('slider_image');
             $img2 = $this->request->getFile('mobile_image');
 
@@ -36,8 +38,10 @@ class Dashboard extends BaseController
             $fileName2 = 'mobile' . date('dmyHis') . '.png';
 
             $img2->move(ROOTPATH . 'uploads/slider/', $fileName2);
+            $fileName2 = $this->image_upload($fileName2, IMAGETYPE_WEBP, 'uploads/slider/', '480x457');
 
             if ($img->move(ROOTPATH . 'uploads/slider/', $fileName)) {
+                $fileName = $this->image_upload($fileName, IMAGETYPE_WEBP, 'uploads/slider/', '1920x450');
                 $data['status'] = 200;
                 $array = array(
                     'name' => $fileName,
@@ -52,15 +56,16 @@ class Dashboard extends BaseController
                 $data['status'] = 400;
             }
         } else {
+
             $edit_data = $this->db->table('homepage_slider')->where('id', $_POST['edit-id'])->get()->getresult();
 
-            if ($edit_data[0]->name != '') {
+            if ($edit_data[0]->name != '' && $_FILES['slider_image']['name'] != '') {
                 if (is_file(ROOTPATH . 'uploads/slider/' . $edit_data[0]->name)) {
                     unlink(ROOTPATH . 'uploads/slider/' . $edit_data[0]->name);
                 }
             }
 
-            if ($edit_data[0]->mobile_name != '') {
+            if ($edit_data[0]->mobile_name != '' && $_FILES['mobile_image']['name'] != '') {
                 if (is_file(ROOTPATH . 'uploads/slider/' . $edit_data[0]->mobile_name)) {
                     unlink(ROOTPATH . 'uploads/slider/' . $edit_data[0]->mobile_name);
                 }
@@ -77,6 +82,7 @@ class Dashboard extends BaseController
                 $img = $this->request->getFile('slider_image');
                 $fileName = date('dmyHis') . '.png';
                 $img->move(ROOTPATH . 'uploads/slider/', $fileName);
+                $fileName = $this->image_upload($fileName, IMAGETYPE_WEBP, 'uploads/slider/', '1920x450');
                 $array['name'] = $fileName;
             }
 
@@ -84,8 +90,11 @@ class Dashboard extends BaseController
                 $img2 = $this->request->getFile('mobile_image');
                 $fileName2 = 'mobile' . date('dmyHis') . '.png';
                 $img2->move(ROOTPATH . 'uploads/slider/', $fileName2);
+                $fileName2 = $this->image_upload($fileName2, IMAGETYPE_WEBP, 'uploads/slider/', '480x457');
                 $array['mobile_name'] = $fileName2;
             }
+
+            // echo'<pre>';print_r($array);exit;
 
 
 
@@ -96,7 +105,8 @@ class Dashboard extends BaseController
                 $data['status'] = 400;
             }
         }
-        set_cache('cache','value_1');
+
+        set_cache('cache', 'value_1');
         header('Content-Type: application/json');
         echo json_encode($data);
     }
@@ -112,7 +122,7 @@ class Dashboard extends BaseController
         }
 
         $this->db->table('homepage_slider')->where('id', $id)->delete();
-        set_cache('cache','value_1');
+        set_cache('cache', 'value_1');
         return redirect()->to(base_url('Admin/slider-view'));
     }
 
@@ -134,6 +144,16 @@ class Dashboard extends BaseController
         $fileName = date('dmyHis') . '.png';
 
         if ($img->move(ROOTPATH . 'uploads/banner/', $fileName)) {
+            if ($_POST['type'] == 'banner1') {
+                $fileName = $this->image_upload($fileName, IMAGETYPE_WEBP, 'uploads/banner/', '380x380');
+            } else if ($_POST['type'] == 'banner2') {
+                $fileName = $this->image_upload($fileName, IMAGETYPE_WEBP, 'uploads/banner/', '510x490');
+            } else if ($_POST['type'] == 'banner3') {
+                $fileName = $this->image_upload($fileName, IMAGETYPE_WEBP, 'uploads/banner/', '1553x400');
+            } else if ($_POST['type'] == 'banner4') {
+                $fileName = $this->image_upload($fileName, IMAGETYPE_WEBP, 'uploads/banner/', '770x450');
+            }
+
             $data['status'] = 200;
             $array = array(
                 'name' => $fileName,
@@ -148,7 +168,7 @@ class Dashboard extends BaseController
             $data['status'] = 400;
         }
 
-        set_cache('cache','value_2');
+        set_cache('cache', 'value_2');
         header('Content-Type: application/json');
         echo json_encode($data);
     }
@@ -156,10 +176,12 @@ class Dashboard extends BaseController
     public function delete_banner($id)
     {
         $img = $this->db->table('homepage_banner')->where('id', $id)->get()->getresult();
-        unlink(ROOTPATH . 'uploads/banner/' . $img[0]->name);
+        if (is_file(ROOTPATH . 'uploads/banner/' . $img[0]->name)) {
+            unlink(ROOTPATH . 'uploads/banner/' . $img[0]->name);
+        }
 
         $this->db->table('homepage_banner')->where('id', $id)->delete();
-        set_cache('cache','value_2');
+        set_cache('cache', 'value_2');
         return redirect()->to(base_url('Admin/banner-view'));
     }
 }

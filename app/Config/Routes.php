@@ -14,7 +14,10 @@ $routes->setDefaultNamespace('App\Controllers');
 $routes->setDefaultController('Homepage');
 $routes->setDefaultMethod('homepage');
 $routes->setTranslateURIDashes(false);
-$routes->set404Override();
+$routes->set404Override(function(){
+    echo view('errors/error404');
+});
+
 
 
 $routes->group('',['namespace' => 'App\controllers\Admin',"filter" => "Auth"], static function ($routes) {
