@@ -96,7 +96,7 @@ class Dashboard extends BaseController
                 $data['status'] = 400;
             }
         }
-
+        set_cache('cache','value_1');
         header('Content-Type: application/json');
         echo json_encode($data);
     }
@@ -112,6 +112,7 @@ class Dashboard extends BaseController
         }
 
         $this->db->table('homepage_slider')->where('id', $id)->delete();
+        set_cache('cache','value_1');
         return redirect()->to(base_url('Admin/slider-view'));
     }
 
@@ -147,6 +148,7 @@ class Dashboard extends BaseController
             $data['status'] = 400;
         }
 
+        set_cache('cache','value_2');
         header('Content-Type: application/json');
         echo json_encode($data);
     }
@@ -157,6 +159,7 @@ class Dashboard extends BaseController
         unlink(ROOTPATH . 'uploads/banner/' . $img[0]->name);
 
         $this->db->table('homepage_banner')->where('id', $id)->delete();
+        set_cache('cache','value_2');
         return redirect()->to(base_url('Admin/banner-view'));
     }
 }

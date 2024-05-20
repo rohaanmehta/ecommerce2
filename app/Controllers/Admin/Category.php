@@ -21,7 +21,9 @@ class Category extends BaseController
             'show_on_homepage' => $_POST['show_on_home_page'],
             'category_order' => $_POST['order'],
             'parent_category' => $_POST['parent_category'],
+            'pair_category' => $_POST['pair_category'],
             'category_desc_top' => $_POST['category_desc_top'],
+            'category_desc_bottom' => $_POST['category_desc_bottom'],
             'category_slug' => str_replace([' ',',','/','-','_'],'',$_POST['name']),
         );
 
@@ -53,5 +55,10 @@ class Category extends BaseController
     {
         $this->db->table('categories')->where('id', $id)->delete();
         return redirect()->to(base_url('Admin/category'));
+    }
+    
+    public function export_categories(){
+        $data['csv'] = $this->db->table('categories')->select('*')->get()->getresult();
+        return view('Admin/Views/Category/category_download', $data);
     }
 }

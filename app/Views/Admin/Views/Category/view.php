@@ -24,8 +24,10 @@
         <div class="container-fluid">
             <div class="">
                 <div class="d-flex justify-content-center">
-                    <button class='btn btn-primary edit-category-btn' data-toggle="modal" data-target="#exampleModal">Upload Category <i class='pl-2 nav-icon fas fa-upload'></i></button>
-
+                    <button class='btn btn-primary edit-category-btn mr-2' data-toggle="modal" data-target="#exampleModal">Upload Category <i class='pl-2 nav-icon fas fa-upload'></i></button>
+                    <a href='<?= base_url('/export-categories'); ?>' target='_blank'>
+                        <button class='btn btn-primary'>Export All Category <i class='pl-2 nav-icon fas fa-download'></i></button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -85,11 +87,15 @@
                     </div> -->
                     <div class='mb-2'>
                         <span class='form-label'>Category Name</span>
-                        <input type='text' name='name' required class='form-control w-50 name' placeholder='Category Name' />
+                        <input type='text' name='name' required class='form-control w-100 name' placeholder='Category Name' />
                     </div>
                     <div class='mb-2'>
                         <span class='form-label'>Category Desc Top</span>
-                        <input type='text' name='category_desc_top' required class='form-control w-50 category_desc_top' placeholder='Category Desc Top' />
+                        <textarea name='category_desc_top' class='form-control w-100 category_desc_top'></textarea>
+                    </div>
+                    <div class='mb-2'>
+                        <span class='form-label'>Category Desc Bottom</span>
+                        <textarea name='category_desc_bottom' class='form-control w-100 category_desc_bottom'></textarea>
                     </div>
                     <div class='mb-2'>
                         <span class='form-label'>Show on Home Page</span>
@@ -98,15 +104,31 @@
                             <option value='0'>NO</option>
                         </select>
                     </div>
-                    
+
                     <div class='mb-2'>
                         <span class='form-label'>Parent Category</span>
-                        <select class='form-control w-50 parent_category'  name='parent_category'>
+                        <select class='form-control w-50 parent_category' name='parent_category'>
                             <option value=''></option>
                             <?php if (isset($category)) {
                                 foreach ($category as $cat) { ?>
                                     <option value='<?= $cat->id ?>' <?php if (isset($product[0])) {
                                                                         if ($cat->id == $product[0]->category_id) {
+                                                                            echo 'selected';
+                                                                        }
+                                                                    } ?>><?= $cat->category_name ?></option>
+                            <?php }
+                            } ?>
+                        </select>
+                    </div>
+                    
+                    <div class='mb-2'>
+                        <span class='form-label'>Pair Category</span>
+                        <select class='form-control w-50 pair_category' name='pair_category'>
+                            <option value=''></option>
+                            <?php if (isset($category)) {
+                                foreach ($category as $cat) { ?>
+                                    <option value='<?= $cat->id ?>' <?php if (isset($product[0])) {
+                                                                        if ($cat->id == $product[0]->pair_category) {
                                                                             echo 'selected';
                                                                         }
                                                                     } ?>><?= $cat->category_name ?></option>
@@ -178,7 +200,9 @@
                     $('.order').val(data.data[0]['category_order']);
                     $('.show_on_home_page').val(data.data[0]['show_on_homepage']);
                     $('.parent_category').val(data.data[0]['parent_category']);
+                    $('.pair_category').val(data.data[0]['pair_category']);
                     $('.category_desc_top').val(data.data[0]['category_desc_top']);
+                    $('.category_desc_bottom').val(data.data[0]['category_desc_bottom']);
                     $('.category_id').val(data.data[0]['id']);
                     // console.log(data.data[0]['parent_category']);
 

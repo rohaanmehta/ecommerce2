@@ -20,7 +20,7 @@
                     <?php if ($row->link != '') { ?>
                         <a href='<?= base_url($row->link); ?>'>
                         <?php } ?>
-                        <img class="d-block w-100" src="<?= base_url('uploads/slider/' . $row->name) ?>" alt="corousel">
+                        <img alt='<?= $row->alt_text;?>' class="d-block w-100" <?php if ($i != 0) { ?> loading="lazy" <?php } ?> src="<?= base_url('uploads/slider/' . $row->name) ?>" alt="corousel">
                         <!-- <div class="carousel-caption d-none d-md-block">
                         <h5>This is heading Caption</h5>
                         <p>Description small for Images of corousel</p>
@@ -59,7 +59,7 @@
                     <?php if ($row->link != '') { ?>
                         <a href='<?= base_url($row->link); ?>'>
                         <?php } ?>
-                        <img class="d-block w-100" src="<?= base_url('uploads/slider/' . $row->mobile_name) ?>" alt="corousel">
+                        <img alt='<?= $row->alt_text;?>' <?php if ($i != 0) { ?> loading="lazy" <?php } ?>  class="d-block w-100" src="<?= base_url('uploads/slider/' . $row->mobile_name) ?>" alt="corousel">
                         <!-- <div class="carousel-caption d-none d-md-block">
                         <h5>This is heading Caption</h5>
                         <p>Description small for Images of corousel</p>
@@ -95,7 +95,7 @@
                 <div class="col-6 col-md-3 text-center p-1" style='overflow:hidden'>
                     <a href='<?= base_url($row->link); ?>'>
                         <div class='zoom-img-box p-0 w-100'>
-                            <img class='galleryimg banner_img_4' src='<?= base_url('uploads/banner/' . $row->name) ?>' />
+                            <img alt='<?= $row->alt_text; ?>' class='galleryimg banner_img_4' src='<?= base_url('uploads/banner/' . $row->name) ?>' />
                         </div>
                     </a>
                 </div>
@@ -146,7 +146,7 @@
                 <div class="col-12 col-md-4 text-center p-1" style='overflow:hidden'>
                     <a href='<?= base_url($row->link); ?>'>
                         <div class='zoom-img-box p-0 w-100'>
-                            <img class='galleryimg banner_img_4' src='<?= base_url('uploads/banner/' . $row->name) ?>' />
+                            <img alt='<?= $row->alt_text; ?>' loading="lazy" class='galleryimg banner_img_4' src='<?= base_url('uploads/banner/' . $row->name) ?>' />
                         </div>
                     </a>
                 </div>
@@ -167,7 +167,7 @@
             <?php foreach ($banner3 as $row) { ?>
                 <div class="col-12 text-center p-1">
                     <a href='<?= base_url($row->link); ?>'>
-                        <img style='width:100%' class='mb-4 p-0' src='<?= base_url('uploads/banner/' . $row->name) ?>' />
+                        <img alt='<?= $row->alt_text;?>' loading="lazy" style='width:100%' class='mb-4 p-0' src='<?= base_url('uploads/banner/' . $row->name) ?>' />
                     </a>
                 </div>
             <?php } ?>
@@ -215,7 +215,7 @@
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center mb-3 p-1">
                 <a href='<?= base_url($row->link); ?>'>
                     <div class='zoom-img-box p-0 w-100'>
-                        <img style='width:100%' class='' src='<?= base_url('uploads/banner/' . $row->name) ?>' />
+                        <img style='width:100%' class='' src='<?= base_url('uploads/banner/' . $row->name) ?>' alt='<?= $row->alt_text;?>' loading="lazy" />
                     </div>
                 </a>
             </div>
@@ -328,7 +328,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         // setTimeout(function() {
-            load_sliders();
+        load_sliders();
         // }, 00);
     });
 

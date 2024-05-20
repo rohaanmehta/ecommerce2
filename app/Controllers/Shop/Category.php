@@ -9,7 +9,7 @@ class Category extends BaseController
     public function category_shop_page($slug)
     {
         $pager = service('pager');
-        $perPage = '5';
+        $perPage = '25';
         $page = (@$_GET['page']) ? $_GET['page'] : 1;
         $offset = ($page-1) * $perPage;
 
@@ -56,9 +56,11 @@ class Category extends BaseController
         $total = $this->db->table('products')->select('products.id')->join('product_category as pc', 'pc.product_id = products.id')->join('product_images as pi', 'pi.product_id = products.id')->wherein('category_id', $all_categories)->where('visibility', '1')->where('is_deleted', '0')->groupBy('id')->countAllResults();
         
         $data['products'] = $builder->get($perPage,$offset)->getresult();
-        $data['categoriesinfo'] = $this->db->table('categories')->where('category_slug', $slug)->get()->getresult();
+        $data['categoriesinfo'] = $this->db->table('categories')->select('category_name,category_desc_bottom,category_desc_top,category_slug')->where('category_slug', $slug)->get()->getresult();
         $data['links'] = $pager->makeLinks($page,$perPage,$total);
         
+        $data['category_settings'] = $this->db->table('general_settings')->where('name', 'scrolltotop')->get()->getResult();
+
         // echo '<pre>';
         // print_r($data);
         // // echo $this->db->getLastQuery();

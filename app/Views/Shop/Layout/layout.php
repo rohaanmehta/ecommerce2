@@ -15,38 +15,66 @@ $categories = get_categories_header();
 <html>
 
 <head>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
-
-    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,700&subset=latin-ext" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/a670e6a37e.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <title> <?php if (isset($meta_title)) {
+                echo $meta_title . ' ';
+            }
+            echo  ucfirst(strtolower($_ENV['websitename'])) ?></title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
-    <link rel="stylesheet" href="<?= base_url('assets/mobile_nav.scss'); ?>" crossorigin="anonymous">
-
-    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
+    <meta name=description content="<?php if (isset($meta_desc)) {
+                                        echo $meta_desc . ' ';
+                                    } ?>" id=desc>
+    <meta name=keywords content="<?php if (isset($meta_keywords)) {
+                                        echo $meta_keywords . ' ';
+                                    } ?>" id=keywords>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <script type="text/javascript" src="<?= base_url('assets/js/fontawesome.js'); ?>"></script>
+    <script type="text/javascript" src="<?= base_url('assets/js/jquery.min.js'); ?>"></script>
+    <script type="text/javascript" src="<?= base_url('assets/js/bootsrap.min.js'); ?>"></script>
+    <script type="text/javascript" src="<?= base_url('assets/js/popper.min.js'); ?>"></script>
+    <script type="text/javascript" src="<?= base_url('assets/js/slick.min.js'); ?>"></script>
 
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link rel="stylesheet" href="<?= base_url('assets/css/mobile_nav.scss'); ?>" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="<?= base_url('assets/css/googlefont.css'); ?>" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="<//?= base_url('assets/css/fontawesome.css'); ?>"> -->
+    <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.min.css'); ?>" crossorigin="anonymous">
+    <link rel="stylesheet" href="<?= base_url('assets/css/lato.css'); ?>" crossorigin="anonymous">
+    <link rel="stylesheet" href="<?= base_url('assets/css/slick.css'); ?>" crossorigin="anonymous">
+
+    <!-- used  -->
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://kit.fontawesome.com/a670e6a37e.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+    <!-- <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> -->
+
+
+    <!-- <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,700&subset=latin-ext" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" /> -->
+
+
+
+    <!-- unused -->
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+
+
 
     <!-- favicon -->
     <?php if (isset($website_images[0]->value_3) && !empty($website_images[0]->value_3)) { ?>
         <link rel="icon" type="image/x-icon" href="<?= base_url('uploads/website/' . $website_images[0]->value_3); ?>">
     <?php } ?>
     <style>
-        .section1-slider {
+        <?php if (isset($banner1_info) && !empty(($banner1_info) && $banner1_info[0]->value_3 == 'YES')) { ?>.section1-slider {
             display: none;
         }
 
@@ -54,7 +82,7 @@ $categories = get_categories_header();
             display: block;
         }
 
-        .section2-slider {
+        <?php } ?><?php if (isset($banner2_info) && !empty(($banner2_info) && $banner2_info[0]->value_3 == 'YES')) { ?>.section2-slider {
             display: none;
         }
 
@@ -62,7 +90,7 @@ $categories = get_categories_header();
             display: block;
         }
 
-
+        <?php } ?>
         /* .section1-slider {
             display: none;
         }
@@ -286,7 +314,7 @@ $categories = get_categories_header();
 
         * {
             font-family: "Lato", sans-serif;
-            font-weight: 700;
+            /* font-weight: 700; */
             font-style: normal;
         }
 
@@ -807,7 +835,7 @@ $categories = get_categories_header();
                 <!-- <a class='btn' onclick="openNav()" id='closebtn'><i id='ic' class='head_Icons fa fa-bars'></i></a> -->
                 <?php if (isset($website_images[0]->value_2) && !empty($website_images[0]->value_2)) { ?>
                     <a href='<?= base_url() ?>'>
-                        <img src='<?= base_url('uploads/website/' . $website_images[0]->value_2); ?>' height='52px' class='pl-3 pt-3 pb-3' />
+                        <img alt='logo' src='<?= base_url('uploads/website/' . $website_images[0]->value_2); ?>' height='52px' class='pl-3 pt-3 pb-3' />
                     </a>
                 <?php } ?>
             </div>
@@ -837,7 +865,7 @@ $categories = get_categories_header();
         <div class='d-flex col-lg-7 mobile_Head_Hide pt-3'>
             <?php if (isset($website_images[0]->value_1) && !empty($website_images[0]->value_1)) { ?>
                 <a href='<?= base_url() ?>'>
-                    <img src='<?= base_url('uploads/website/' . $website_images[0]->value_1); ?>' width='120px' class='p-3' />
+                    <img alt='logo' src='<?= base_url('uploads/website/' . $website_images[0]->value_1); ?>' width='120px' class='p-3' />
                 </a>
             <?php } ?>
             <div class='col-lg-12 text-center nav_Categories mobile_Head_Hide pb-1' style='background:#fff;'>
@@ -852,7 +880,6 @@ $categories = get_categories_header();
                 </div>
             </div>
         </div>
-
 
         <!-- search bar  -->
 
@@ -869,7 +896,7 @@ $categories = get_categories_header();
             <div style="display:flex;align-self: center;text-align:end; justify-content:end" class=''>
                 <!-- user     -->
                 <div class='profile-hover' style='text-align:center;display:flex;position:relative'>
-                    <a class='btn mobile_Head_Hide'>
+                    <a href='<?= base_url('/profile');?>' class='btn mobile_Head_Hide'>
                         <i class='head_Icons fa-light fa fa-user'></i>
                         <p style='color:#858585;padding-top:3px;font-size:12px;font-weight:600;margin-bottom:0px'>Profile</p>
                     </a>

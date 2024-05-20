@@ -220,6 +220,7 @@ class Products extends BaseController
             }
         }
 
+        set_cache('cache','value_3');
 
         header('Content-Type: application/json');
         echo json_encode($data);
@@ -246,6 +247,9 @@ class Products extends BaseController
         $this->db->table('products')->where('id', $id)->delete();
         $this->db->table('product_images')->where('product_id', $id)->delete();
         $this->db->table('product_category')->where('product_id', $id)->delete();
+
+        set_cache('cache','value_3');
+
         return redirect()->to(base_url('Admin/products'));
     }
 }

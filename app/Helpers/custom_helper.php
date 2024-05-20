@@ -108,3 +108,23 @@ function sidebar_image()
 
     return $sidebar_image;
 }
+
+function set_cache($name, $key)
+{
+    // $CI =& get_instance();
+    $db = \Config\Database::connect();
+
+    $array = array(
+        $key => strtotime(date('Y-m-d H:i:s')),
+        'name' => $name
+    );
+
+    $count = $db->table('general_settings')->select('id')->where('name', $name)->countAllResults();;
+    if ($count > 0) {
+        $db->table('general_settings')->set($array)->where('name',$name)->update();
+    } else {
+        $db->table('general_settings')->insert($array);
+    }
+
+    return 1;
+}

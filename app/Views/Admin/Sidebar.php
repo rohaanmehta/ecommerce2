@@ -411,6 +411,13 @@
                                 <p>Products Settings</p>
                             </a>
                         </li>
+                        <!-- <li class="nav-item">
+                            <a href="<//?= base_url('Admin/cache_settings') ?>" class="nav-link d-flex align-items-center">
+                                <i class="nav-icon fa fa-circle"></i>
+
+                                <p>Cache Settings</p>
+                            </a>
+                        </li> -->
                         <li class="nav-item">
                             <a href="<?= base_url('Admin/visual_settings') ?>" class="nav-link d-flex align-items-center">
                                 <i class="nav-icon fa fa-circle"></i>

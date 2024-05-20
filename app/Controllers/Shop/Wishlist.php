@@ -8,7 +8,7 @@ class Wishlist extends BaseController
     {
         $pager = service('pager');
 
-        $perPage = '20';
+        $perPage = '25';
         $userid = $this->session->get('userid');
         $data['products'] = '';
         $page = (@$_GET['page']) ? $_GET['page'] : 1;

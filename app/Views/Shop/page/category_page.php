@@ -12,6 +12,54 @@
         font-size: 15px;
         font-weight: 600;
     }
+
+    .category-desc {
+        font-size: 12px;
+        color: #878787;
+    }
+
+    <?php if (isset($category_settings) && !empty($category_settings) && $category_settings[0]->value_1 == '1') { ?>#back-to-top {
+        display: inline-block;
+        background-color: <?= $category_settings[0]->value_2 ?>;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        border-radius: 4px;
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        transition: background-color .3s,
+            opacity .5s, visibility .5s;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 1000;
+    }
+
+    #back-to-top::after {
+        content: "\f077";
+        font-family: FontAwesome;
+        font-weight: normal;
+        font-style: normal;
+        font-size: 12px;
+        line-height: 40px;
+        color: <?= $category_settings[0]->value_3 ?>;
+    }
+
+    #back-to-top:hover {
+        cursor: pointer;
+        /* background-color: #333; */
+    }
+
+    #back-to-top:active {
+        background-color: #555;
+    }
+
+    #back-to-top.show {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    <?php } ?>
 </style>
 <div class=''>
     <div class='card'>
@@ -34,7 +82,7 @@
                                             } ?>>Highest Price</option>
                 </select>
             </div>
-            <div class='col-12 pl-0 pt-4' style='font-size:13px;color:#747474;'>
+            <div class='col-12 pl-0 pt-4 category-desc'>
                 <span>
                     <?= $categoriesinfo[0]->category_desc_top;
                     ?>
@@ -53,13 +101,42 @@
             <?= $links ?>
         </div>
     </div>
+    <div class='row p-4 category-desc'>
+        <span class='col-12'>
+            <?= $categoriesinfo[0]->category_desc_bottom;
+            ?>
+        </span>
+    </div>
 </div>
+
+<?php if (isset($category_settings) && !empty($category_settings) && $category_settings[0]->value_1 == '1') { ?>
+    <!-- back to top button  -->
+    <a id="back-to-top"></a>
+<?php } ?>
+
+
 <script>
     $(document).ready(function() {
         $('.sort').change(function() {
             window.location.href = '<?= base_url('/' . $categoriesinfo[0]->category_slug . '?sort=');
                                     ?>' + $('.sort').val();
         });
+    });
+    var btn = $('#back-to-top');
+
+    $(window).scroll(function() {
+        if ($(window).scrollTop() > 300) {
+            btn.addClass('show');
+        } else {
+            btn.removeClass('show');
+        }
+    });
+
+    btn.on('click', function(e) {
+        e.preventDefault();
+        $('html, body').animate({
+            scrollTop: 0
+        }, '500');
     });
 </script>
 <?= $this->endSection() ?>

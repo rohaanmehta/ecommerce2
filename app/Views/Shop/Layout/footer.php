@@ -1,4 +1,4 @@
-<div style='background-color:#000;' class='pl3 pt-4 pr3'>
+<div style='background-color:#000;' class='pl3 pt-4 pr3 mt-5'>
         <div class='row d-flex m-0 mb-5 mobile_Head_Hide' style='padding:0px 80px 0px 80px'>
             <div class='col-md-3 col-xs-12 mb-4'>
                 <div class='footer_Col'>
@@ -83,7 +83,7 @@
             </div>
             <div class="col-12">
                 <div class="row text-light" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                    <p class='col-10 footer_Tittle mb-2 pb-4'><a style='text-decoration:none'>ONLINE SHOPPING</a></p>
+                    <p class='col-10 footer_Tittle mb-2 pb-4'>ONLINE SHOPPING</p>
                     <i style='text-align: end;' class='col-2 fa fa-angle-down'></i>
                 </div>
                 <div id="collapseOne" class="collapse" data-parent="#accordion">
@@ -100,7 +100,7 @@
             </div>
             <div class="col-12">
                 <div class="row text-light" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    <p class='col-10 footer_Tittle mb-2 pb-4'><a style='text-decoration:none'>CUSTOMER POLICIES</a></p>
+                    <p class='col-10 footer_Tittle mb-2 pb-4'>CUSTOMER POLICIES</p>
                     <i style='text-align: end;' class='col-2 fa fa-angle-down'></i>
                 </div>
                 <div id="collapseTwo" class="collapse" data-parent="#accordion">
@@ -117,7 +117,7 @@
             </div>
             <div class="col-12">
                 <div class="row text-light" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    <p class='col-10 footer_Tittle mb-2 pb-4'><a style='text-decoration:none'>GET TO KNOW US</a></p>
+                    <p class='col-10 footer_Tittle mb-2 pb-4'>GET TO KNOW US</p>
                     <i style='text-align: end;' class='col-2 fa fa-angle-down'></i>
                 </div>
                 <div id="collapseThree" class="collapse" data-parent="#accordion">
@@ -134,7 +134,7 @@
             </div>
             <div class='col-12 mt-3'>
                 <div class='footer_Col'>
-                    <p class='footer_Tittle'><a href='#' style='text-decoration:none'>ANY QUESTIONS?</a></p>
+                    <p class='footer_Tittle'>ANY QUESTIONS?</p>
                     <div class="footer_Opt mb-4">
                         <p><a href='#' style='text-decoration:none'>Call or SMS: +1 (201) 733-3934</a></p>
                         <p><a href='#' style='text-decoration:none'>Email: support @Nykaa.com</a></p>

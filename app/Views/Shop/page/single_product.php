@@ -45,15 +45,15 @@
         </div>
         <a href='<?= base_url($category.'/'. $row->product_slug); ?>' style='display:contents;color:#000'>
             <div class='single-product-slider'>
-                <img class='gallery_img' src='<?= base_url('/uploads/product_images/' . $row->image_name1) ?>' />
+                <img alt='<?= $row->title;?>' class='gallery_img' src='<?= base_url('/uploads/product_images/' . $row->image_name1) ?>' />
                 <?php if ($row->image_name2 != '') { ?>
-                    <img class='gallery_img product-slider-image' src='<?= base_url('/uploads/product_images/' . $row->image_name2) ?>' />
+                    <img alt='<?= $row->title;?>' class='gallery_img product-slider-image' src='<?= base_url('/uploads/product_images/' . $row->image_name2) ?>' />
                 <?php } ?>
                 <?php if ($row->image_name3 != '') { ?>
-                    <img class='gallery_img product-slider-image' src='<?= base_url('/uploads/product_images/' . $row->image_name3) ?>' />
+                    <img alt='<?= $row->title;?>' class='gallery_img product-slider-image' src='<?= base_url('/uploads/product_images/' . $row->image_name3) ?>' />
                 <?php } ?>
                 <?php if ($row->image_name4 != '') { ?>
-                    <img class='gallery_img product-slider-image' src='<?= base_url('/uploads/product_images/' . $row->image_name4) ?>' />
+                    <img alt='<?= $row->title;?>' class='gallery_img product-slider-image' src='<?= base_url('/uploads/product_images/' . $row->image_name4) ?>' />
                 <?php } ?>
             </div>
             <div class='text-left p-2'>

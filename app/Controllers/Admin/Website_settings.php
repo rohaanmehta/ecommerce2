@@ -23,6 +23,13 @@ class Website_settings extends BaseController
         return view('Admin/Views/Settings/Website_settings', $data);
     }
 
+    public function cache_view()
+    {
+        $data['cache'] = $this->db->table('general_settings')->where('name', 'cache')->get()->getResult();
+       
+        return view('Admin/Views/Settings/cache_settings', $data);
+    }
+    
     public function add_website_settings()
     {
         $array = array(
@@ -144,7 +151,8 @@ class Website_settings extends BaseController
     {
         $data['info'] = $this->db->table('general_settings')->where('name', 'website_settings')->get()->getResult();
         $data['info2'] = $this->db->table('general_settings')->where('name', 'website_settings2')->get()->getResult();
-
+        $data['category_settings'] = $this->db->table('general_settings')->where('name', 'scrolltotop')->get()->getResult();
+        
         return view('Admin/Views/Settings/visual_settings',$data);
     }
 
@@ -283,6 +291,27 @@ class Website_settings extends BaseController
             $this->db->table('general_settings')->insert($image_array);
         }else{
             $this->db->table('general_settings')->where('name','website_settings2')->update($image_array);
+        }
+        $data['status'] = 200;
+
+        header('Content-Type: application/json');
+        echo json_encode($data);
+    }
+    public function category_settings()
+    {
+        $info = $this->db->table('general_settings')->where('name', 'scrolltotop')->countAllResults();
+
+        $array = array(
+            'name' => 'scrolltotop',
+            'value_1' => $_POST['scroll-to-top'],
+            'value_2' => $_POST['color'],
+            'value_3' => $_POST['font-color'],
+        );
+
+        if($info == 0){
+            $this->db->table('general_settings')->insert($array);
+        }else{
+            $this->db->table('general_settings')->where('name','scrolltotop')->update($array);
         }
         $data['status'] = 200;
 

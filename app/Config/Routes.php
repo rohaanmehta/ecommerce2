@@ -28,6 +28,11 @@ $routes->group('',['namespace' => 'App\controllers\Admin',"filter" => "Auth"], s
     $routes->get('Admin/visual_settings', 'Website_settings::visual_settings');
     $routes->post('add_visual_settings', 'Website_settings::add_visual_settings');
     $routes->post('add_visual_settings2', 'Website_settings::add_visual_settings2');
+    $routes->post('category-settings', 'Website_settings::category_settings');
+    
+    
+    //cache setting
+    $routes->get('Admin/cache_settings', 'Website_settings::cache_view');
     
     // products
     // $routes->get('Admin/product_slider', 'Dashboard::dashboard');
@@ -45,6 +50,8 @@ $routes->group('',['namespace' => 'App\controllers\Admin',"filter" => "Auth"], s
     $routes->post('add_category_data', 'Category::add_category_data');
     $routes->post('edit_category_data', 'Category::edit_category_data');
     $routes->get('delete-category/?(:any)', 'Category::delete_category/$1');
+    $routes->get('export-categories', 'Category::export_categories');
+    
 
     
     $routes->get('Admin/products', 'Products::products_view');

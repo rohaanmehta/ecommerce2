@@ -12,28 +12,37 @@
     <script src="<?= base_url('public/dist/js/j360.js') ?>"></script>
 </head>
 <style>
-    .share-icons{
+    .share-icons {
         font-size: 22px;
         margin-right: 6px;
     }
 
+    .accordion-desc{
+        font-size: 14px;
+        padding: 10px;
+        padding-left: 17px;
+        color: #5c5c5c;
+        font-weight:400;
+    }
     .accordion-title {
         cursor: pointer;
         font-size: 16px;
         padding: 10px;
         padding-left: 17px;
         color: #5c5c5c;
+        font-weight:700;
         /* background: url(https://cdn0.iconfinder.com/data/icons/entypo/91/arrow56-512.png) no-repeat calc(100% - 10px) center; */
         /* background-size: 15px; */
     }
 
-    .accordion-title::before{
+    .accordion-title::before {
         font-family: FontAwesome;
         content: "\f106";
         font-size: 21px;
         position: absolute;
         right: 20px;
     }
+
     .collapsed::before {
         font-family: FontAwesome;
         content: "\f107";
@@ -93,8 +102,8 @@
 
     .selector-item {
         /* flex-basis: calc(70% / 3); */
-        height: 50px;
-        width: 50px;
+        height: 45px;
+        width: 45px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -108,26 +117,26 @@
 
     .selector-item_label {
         cursor: pointer;
-
+        font-size: 15px;
         position: relative;
-        height: 80%;
+        height: 100%;
         width: 100%;
         text-align: center;
         border: 1px solid #b9b9b9;
         border-radius: 4px;
         line-height: 40px;
-        font-family: 'Poppins', sans-serif;
         font-weight: 700;
         transition-duration: .5s;
         transition-property: transform, box-shadow;
         transform: none;
-        color: #4a4a4a
+        color: #5c5c5c;
+        margin-bottom: 0px;
     }
 
     .selector-item_radio:checked+.selector-item_label {
         /* background-color: #000; */
         border: 2px solid black;
-        color: #000;
+        /* color: #000; */
     }
 
     /* @media (max-width:480px) {
@@ -153,7 +162,7 @@
     }
 
     .product_heading {
-        font-size: 23px;
+        font-size: 21px;
         color: #5c5c5c;
         font-weight: 700;
     }
@@ -171,6 +180,7 @@
         font-weight: 500;
         /* margin-top: 10px; */
     }
+
     .product_category a:hover {
         text-decoration: none;
         color: #7e7e7e;
@@ -299,7 +309,7 @@
 <div class='invisible mobile_Head_Hide'>gap fill</div>
 
 <div class='pl-5'>
-    <div class='row'>
+    <div class='row m-0 p-0'>
         <div class='mobile_Head_Hide breadcrum'>
             <a href='<?= base_url(); ?>'> Home</a>
             <?php foreach ($all_categories as $row) { ?>
@@ -311,7 +321,7 @@
         </div>
     </div>
 
-    <div class='row'>
+    <div class='row m-0 p-0'>
         <!-- thumbnails old design -->
         <!-- <div class='col-1 mobile_Head_Hide'>
         <div class='row pl-5 justify-content-end'>
@@ -332,19 +342,27 @@
         </div>
     </div> -->
         <div class='col-12 col-md-7 p-0'>
-            <div class='row p-0'>
-                <div class='col-6 pr-0'>
-                    <img class='product_image round' src='<?= base_url('uploads/product_images/' . $product[0]->image_name1); ?>' />
-                </div>
-                <div class='col-6 pr-0'>
-                    <img class='product_image round' src='<?= base_url('uploads/product_images/' . $product[0]->image_name2); ?>' />
-                </div>
-                <div class='col-6 pr-0 pt-3'>
-                    <img class='product_image round' src='<?= base_url('uploads/product_images/' . $product[0]->image_name3); ?>' />
-                </div>
-                <div class='col-6 pr-0 pt-3'>
-                    <img class='product_image round' src='<?= base_url('uploads/product_images/' . $product[0]->image_name4); ?>' />
-                </div>
+            <div class='row p-0 m-0'>
+                <?php if (isset($product[0]->image_name1) && !empty($product[0]->image_name1) && is_file(ROOTPATH . 'uploads/product_images/' . $product[0]->image_name1)) { ?>
+                    <div class='col-6 pr-0'>
+                        <img class='product_image round' alt='<?= $product[0]->title ?>' src='<?= base_url('uploads/product_images/' . $product[0]->image_name1); ?>' />
+                    </div>
+                <?php } ?>
+                <?php if (isset($product[0]->image_name2) && !empty($product[0]->image_name2) && is_file(ROOTPATH . 'uploads/product_images/' . $product[0]->image_name2)) { ?>
+                    <div class='col-6 pr-0'>
+                        <img class='product_image round' alt='<?= $product[0]->title ?>' src='<?= base_url('uploads/product_images/' . $product[0]->image_name2); ?>' />
+                    </div>
+                <?php } ?>
+                <?php if (isset($product[0]->image_name3) && !empty($product[0]->image_name3) && is_file(ROOTPATH . 'uploads/product_images/' . $product[0]->image_name3)) { ?>
+                    <div class='col-6 pr-0 pt-3'>
+                        <img class='product_image round' alt='<?= $product[0]->title ?>' src='<?= base_url('uploads/product_images/' . $product[0]->image_name3); ?>' />
+                    </div>
+                <?php } ?>
+                <?php if (isset($product[0]->image_name4) && !empty($product[0]->image_name4) && is_file(ROOTPATH . 'uploads/product_images/' . $product[0]->image_name4)) { ?>
+                    <div class='col-6 pr-0 pt-3'>
+                        <img class='product_image round' alt='<?= $product[0]->title ?>' src='<?= base_url('uploads/product_images/' . $product[0]->image_name4); ?>' />
+                    </div>
+                <?php } ?>
                 <!-- tap to view 360  -->
                 <!-- <div class='d-flex justify-content-center mt-2 mb-5 mb-md-2'>
                         <button class='btn rounded text-white tap-btn product-360' style='background:#000' data-toggle="modal" data-target="#exampleModalCenter">Tap to view 360
@@ -354,12 +372,13 @@
             </div>
         </div>
 
-        <div class='col-12 col-md-4 pl-5'>
+        <div class='col-12 col-md-5 pl-5'>
             <div class='product_heading'>
                 <?= $product[0]->title; ?>
             </div>
             <div class='product_category text-capitalize'>
-                <a class='product_category' href='<?= base_url('/'.$category_slug);?>'><?= $category_name //$product[0]->desc; ?></a>
+                <a class='product_category' href='<?= base_url('/' . $category_slug); ?>'><?= $category_name //$product[0]->desc; 
+                                                                                            ?></a>
             </div>
             <hr>
             <div class='product_shop_tittle'>
@@ -383,7 +402,7 @@
             </div> -->
 
             <!-- variation  -->
-            <div class='row product_info d-flex' style='flex-wrap:wrap'>
+            <div class='row product_info d-flex' style='flex-wrap:wrap;align-items:center;'>
                 <div class='pl-3 d-flex justify-content-between'>
                     <div class='col-12 pl-0'>Please select a size</div>
                 </div>
@@ -392,7 +411,7 @@
                 $sizechart = get_sizechart_by_productid($category_id);
                 if (isset($sizechart) && !empty($sizechart)) { ?>
                     <div class='col-6 pl-0'>
-                        <a style='cursor:pointer;font-size:13px;text-decoration:underline;color:#3947ff' data-toggle="modal" data-target="#exampleModalCenter">SIZE CHART</a>
+                        <p style='cursor:pointer;font-size:13px;color:#000;font-weight:800;' class='m-0' data-toggle="modal" data-target="#exampleModalCenter">SIZE CHART <i class='fa fa-angle-right' style='font-size:14px'></i></p>
                         <!-- <button class='mt-3 btn btn-sm rounded'  style='background:#dfdfdf;color:#2e2e2e;font-weight:600'>
                             <i class="fa fa-sort-amount-asc"></i>
                         </button> -->
@@ -427,7 +446,7 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel"> Sizechart</h5>
+                            <h5 class="modal-title" id="exampleModalLabel"> SIZE CHART</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -465,7 +484,7 @@
             <?php } ?>
             <div class='col-12 pl-0 d-flex mt-3 mb-3' style='align-items:center'>
                 <p class='m-0 mr-2'>Share</p>
-                <a href='https://web.whatsapp.com/send?text=<?= current_url();?>' target="_blank" class='text-decoration-none text-secondary'><i class='share-icons fa fa-whatsapp'></i></a>
+                <a href='https://web.whatsapp.com/send?text=<?= current_url(); ?>' target="_blank" class='text-decoration-none text-secondary'><i class='share-icons fa fa-whatsapp'></i></a>
                 <a href="https://www.facebook.com/sharer/sharer.php?u=https://google.com" target="popup" onclick="window.open('https\:\/\/www.facebook.com/sharer/sharer.php?u=https:\/\/google.com','name','width=600,height=400')" class='text-decoration-none text-secondary'><i class='share-icons fa fa-facebook-square'></i></a>
                 <a href='' target="_blank" class='text-decoration-none text-secondary'><i class='share-icons fa fa-twitter'></i></a>
                 <a href='https://www.instagram.com/TheSouledStore/' target="_blank" class='text-decoration-none text-secondary'><i class='share-icons fa fa-instagram'></i></a>
@@ -480,7 +499,7 @@
                     </div>
 
                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                        <div class="card-body">
+                        <div class="card-body accordion-desc">
                             Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                         </div>
                     </div>
@@ -492,7 +511,7 @@
                         </p>
                     </div>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                        <div class="card-body">
+                        <div class="card-body accordion-desc">
                             Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                         </div>
                     </div>
@@ -504,36 +523,40 @@
 
 
 <!-- you may also like  -->
-<div class="mt-5" style="padding-left:10px;padding-right:10px;">
-    <div class='galler_heading d-flex justify-content-between' style='border-bottom: 1px solid #d5d5d5;height:40px;margin:0px 20px 10px 20px;padding-bottom:45px;'>
-        <p style='font-size:25px;'><?php if (isset($productbanner1[0]) && $productbanner1[0]->value_1 != '') {
-                                        echo $productbanner1[0]->value_1;
-                                    } ?> </p>
+<?php if (isset($section1) && !empty($section1)) { ?>
+    <div class="mt-5" style="padding-left:10px;padding-right:10px;">
+        <div class='galler_heading d-flex justify-content-between' style='border-bottom: 1px solid #d5d5d5;height:40px;margin:0px 20px 10px 20px;padding-bottom:45px;'>
+            <p style='font-size:25px;'><?php if (isset($productbanner1[0]) && $productbanner1[0]->value_1 != '') {
+                                            echo $productbanner1[0]->value_1;
+                                        } ?> </p>
+        </div>
+        <div class="row m-0 gallery gap <?php if(sizeof($section1) > 5 ){ echo 'section1-slider'; }?> products-5">
+            <?php if (isset($section1)) {
+                foreach ($section1 as $row) { ?>
+                    <?php echo view('Shop/page/single_product', ['row' => $row, 'wishlist' =>  $session->get('userid')]); ?>
+            <?php }
+            } ?>
+        </div>
     </div>
-    <div class="row m-0 gallery gap section1-slider products-5">
-        <?php if (isset($section1)) {
-            foreach ($section1 as $row) { ?>
-                <?php echo view('Shop/page/single_product', ['row' => $row, 'wishlist' =>  $session->get('userid')]); ?>
-        <?php }
-        } ?>
-    </div>
-</div>
+<?php } ?>
 
-<!-- you may also like  -->
-<div class="" style="padding-left:10px;padding-right:10px;">
-    <div class='galler_heading d-flex justify-content-between' style='border-bottom: 1px solid #d5d5d5;height:40px;margin:0px 20px 10px 20px;padding-bottom:45px;'>
-        <p style='font-size:25px;'><?php if (isset($productbanner2[0]) && $productbanner2[0]->value_1 != '') {
-                                        echo $productbanner2[0]->value_1;
-                                    } ?> </p>
+<?php if (isset($section2) && !empty($section2)) { ?>
+    <!-- pair category products  -->
+    <div class="" style="padding-left:10px;padding-right:10px;">
+        <div class='galler_heading d-flex justify-content-between' style='border-bottom: 1px solid #d5d5d5;height:40px;margin:0px 20px 10px 20px;padding-bottom:45px;'>
+            <p style='font-size:25px;'><?php if (isset($productbanner2[0]) && $productbanner2[0]->value_1 != '') {
+                                            echo $productbanner2[0]->value_1;
+                                        } ?> </p>
+        </div>
+        <div class="row m-0 gallery gap <?php if(sizeof($section2) > 5 ){ echo 'section2-slider'; }?> products-5">
+            <?php if (isset($section2)) {
+                foreach ($section2 as $row) { ?>
+                    <?php echo view('Shop/page/single_product', ['row' => $row, 'wishlist' =>  $session->get('userid')]); ?>
+            <?php }
+            } ?>
+        </div>
     </div>
-    <div class="row m-0 gallery gap section2-slider products-5">
-        <?php if (isset($section2)) {
-            foreach ($section2 as $row) { ?>
-                <?php echo view('Shop/page/single_product', ['row' => $row, 'wishlist' =>  $session->get('userid')]); ?>
-        <?php }
-        } ?>
-    </div>
-</div>
+<?php } ?>
 
 
 <!-- mobile desc  -->
@@ -663,7 +686,6 @@
     <button class='close-360' style="z-index:1903;top:10px;border:none;background:none;right:10px;position:absolute;"><i style='font-size:x-large' class='fa fa-xmark'></i></button>
 </div>
 <div id='main' class=''>
-
     <div id="product" style="" class='product-360-box'>
         <img src="<?= base_url('public/images/1.png') ?>" />
         <img src="<?= base_url('public/images/2.png') ?>" />
@@ -721,7 +743,7 @@
 
 <!-- malika enquiry modal  -->
 <!-- Modal -->
-<form class='enquiry-form'>
+<!-- <form class='enquiry-form'>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -749,7 +771,7 @@
             </div>
         </div>
     </div>
-</form>
+</form> -->
 
 <!-- Item slider 5 items you may also like-->
 <!-- <div class="container-fluid product-slider gap">

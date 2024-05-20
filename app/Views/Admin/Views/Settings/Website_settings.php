@@ -139,19 +139,19 @@
                 <div class='border border-secondary col-8 rounded p-4 m-4'>
                     <p class='form-label h5 mb-3'> Product Page Section </p>
                     <div class='row'>
-                        <div class='mb-2 col-4'>
+                        <div class='mb-2 col-6'>
                             <span class='form-label'> Section 1 Name </span>
                             <input name='banner1name' class='form-control' value='<?php if (isset($productbanner1) && !empty(($productbanner1))) {
                                                                                         echo $productbanner1[0]->value_1;
                                                                                     } ?>'>
                         </div>
-                        <div class='mb-2 col-6'>
-                            <span class='form-label'> Section 1 Product Count </span>
+                        <div class='mb-2 col-3'>
+                            <span class='form-label'> Max Product Count </span>
                             <input name='banner1count' class='form-control' value='<?php if (isset($productbanner1) && !empty(($productbanner1))) {
                                                                                         echo $productbanner1[0]->value_2;
                                                                                     } ?>'>
                         </div>
-                        <div class='mb-2 col-2'>
+                        <div class='mb-2 col-3'>
                             <span class='form-label'> Is Slider ? </span>
                             <select class='form-control' name='banner1slider'>
                                 <option value='YES' <?php if (isset($productbanner1) && !empty($productbanner1) && $productbanner1[0]->value_3 == 'YES') {
@@ -164,20 +164,20 @@
                         </div>
                     </div>
                     <div class='row'>
-                        <div class='mb-2 col-4'>
-                            <span class='form-label'> Section 2 Name </span>
+                        <div class='mb-2 col-6'>
+                            <span class='form-label'> Section 2 Name </span><span class='text-secondary' style='font-size:12px'>(Product comes from pair category)</span>
                             <input name='banner2name' class='form-control' value='<?php if (isset($productbanner2) && !empty(($productbanner2))) {
                                                                                         echo $productbanner2[0]->value_1;
                                                                                     } ?>'>
                         </div>
-                        <div class='mb-2 col-6'>
-                            <span class='form-label'> Section 1 Product Count </span>
+                        <div class='mb-2 col-3'>
+                            <span class='form-label'> Max Product Count </span>
                             <input name='banner2count' class='form-control' value='<?php if (isset($productbanner2) && !empty(($productbanner2))) {
                                                                                         echo $productbanner2[0]->value_2;
                                                                                     } ?>'>
                         </div>
                         
-                        <div class='mb-2 col-2'>
+                        <div class='mb-2 col-3'>
                             <span class='form-label'> Is Slider ? </span>
                             <select class='form-control' name='banner2slider'>
                                 <option value='YES' <?php if (isset($productbanner2) && !empty($productbanner2) && $productbanner2[0]->value_3 == 'YES') {

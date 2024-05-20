@@ -74,7 +74,9 @@
                             <?php } ?>
                             <div class='mt-2'>
                                 <span class='form-label'> Sidebar Mobile Banner Link</span>
-                                <input type='text' class='form-control mt-2' name='link' value='<?php if (isset($info2[0]) && !empty($info2[0]->value_2)) { echo $info2[0]->value_3; }?>'/>
+                                <input type='text' class='form-control mt-2' name='link' value='<?php if (isset($info2[0]) && !empty($info2[0]->value_2)) {
+                                                                                                    echo $info2[0]->value_3;
+                                                                                                } ?>' />
                             </div>
                         </div>
                     </div>
@@ -87,11 +89,67 @@
                     </div>
                 </div>
             </form>
+            <form class='category-settings-form card p-4'>
+                <div class='row'>
+                    <div class='mb-2 col-4'>
+                        <span class='form-label'> Show Scroll to top btn on category page ? </span>
+                        <select class='form-control mt-2' name='scroll-to-top'>
+                            <option value='1' <?php if (isset($category_settings) && !empty($category_settings) && $category_settings[0]->value_1 == '1') {
+                                                    echo 'selected';
+                                                }; ?>>YES</option>
+                            <option value='0' <?php if (isset($category_settings) && !empty($category_settings) && $category_settings[0]->value_1 == '0') {
+                                                    echo 'selected';
+                                                }; ?>>NO</option>
+                        </select>
+                    </div>
+                    <div class='mb-2 col-4'>
+                        <span class='form-label'> Colour </span>
+                        <input type="color" class='form-control mt-2' id="color" name="color" value="<?php if (isset($category_settings) && !empty($category_settings)){ echo $category_settings[0]->value_2;}?>">
+                    </div>
+                    <div class='mb-2 col-4'>
+                        <span class='form-label'> Font Colour </span>
+                        <input type="color" class='form-control mt-2' id="font-color" name="font-color" value="<?php if (isset($category_settings) && !empty($category_settings)){ echo $category_settings[0]->value_3;}?>">
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='mb-2 col-12'>
+                        <div class="mt-3 d-flex justify-content-center">
+                            <button class='btn btn-primary'> Save </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </section>
 </div>
 <script>
     $(document).ready(function() {
+        $('.category-settings-form').submit(function(e) {
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('category-settings') ?>",
+                data: new FormData(this),
+                contentType: false,
+                cache: false,
+                processData: false,
+                dataType: "json",
+                success: function(data) {
+                    if (data.status == '200') {
+                        alert('uploaded successfully');
+                        setTimeout(function() {
+                            // $('#download').css('display', 'block');
+                            // $('#loader').css('visibility', 'hidden');
+                            window.location.href = '<?= base_url('/Admin/visual_settings'); ?>';
+                        }, 1000);
+                        // alert('registered_successfully');
+                    } else {
+                        alert('something went wrong');
+                    }
+                }
+            });
+        });
+
         $('.setting-form').submit(function(e) {
             e.preventDefault();
             $.ajax({
