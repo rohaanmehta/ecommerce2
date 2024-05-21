@@ -14,11 +14,12 @@ class Login extends BaseController
     {
         $data = array(
             'first_name' => $_POST['first_name'],
-            'password' => $_POST['last_name'],
-            'country' => $_POST['country'],
-            'state' => $_POST['state'],
-            'city' => $_POST['city'],
+            'last_name' => $_POST['last_name'],
+            // 'country' => $_POST['country'],
+            // 'state' => $_POST['state'],
+            // 'city' => $_POST['city'],
             'email' => $_POST['email'],
+            'mobile_no' => $_POST['mobile'],
             'role' => 'customer',
             'password' => md5($_POST['password']),
         );
@@ -38,6 +39,7 @@ class Login extends BaseController
             // $this->db->table('permission')->insert($data2);
             $userid = $this->db->insertID();
             $this->session->set('userid', $userid);
+            $this->session->set('username', $_POST['first_name']);
 
             $data['status'] = 200;
         } else {
@@ -63,10 +65,12 @@ class Login extends BaseController
         
 
         if ($check > 0) {
+            $username = $user[0]->first_name;
             $userid = $user[0]->id;
             $wishlist_total = $this->db->table('wishlist')->where('user_id',$userid)->countAllResults();
             $data['status'] = 200;
             $this->session->set('userid', $userid);
+            $this->session->set('username', $username);
             $this->session->set('role', $user[0]->role);
             $this->session->set('wishlist_total', $wishlist_total);
 

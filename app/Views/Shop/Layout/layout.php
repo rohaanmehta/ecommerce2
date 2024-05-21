@@ -905,15 +905,16 @@ $categories = get_categories_header();
                         <b>
                             <p class='m-0'>Welcome</p>
                         </b>
+                        
                         <?php
                         if ($session->get('userid') == '') { ?>
                             <p style='font-weight:300'>To access account and manage orders</p>
-                            <button class='btn btn-outline-dark' data-toggle="modal" data-target="#loginexampleModal">Login / Signup</button>
+                            <button class='btn btn-outline-dark mb-3' data-toggle="modal" data-target="#loginexampleModal">Login / Signup</button>
                         <?php } else { ?>
-                            <p style='font-weight:300'><?= $session->get('userid') ?></p>
-                            <a href='<?= base_url("logout") ?>'><button class='btn btn-outline-dark'>Logout</button></a>
+                            <p style='font-weight:300' class='mb-2'><?= $session->get('username') ?></p>
                         <?php } ?>
-                        <hr style='width:100%;border-width:1px;margin-top:20px;margin-bottom:20px;'>
+
+                        <hr style='width:100%;border-width:1px;margin-top:0px;margin-bottom:10px;'>
                         </hr>
                         <?php if ($session->get('userid') == '') { ?>
                             <a href='<?= base_url(); ?>' class='profile-box-links' style='text-decoration:none' data-toggle="modal" data-target="#loginexampleModal"> Profile </a><br>
@@ -928,7 +929,8 @@ $categories = get_categories_header();
                             <a href='<?= base_url(); ?>' class='profile-box-links' style='text-decoration:none'> Profile </a><br>
                             <a href='<?= base_url(); ?>' class='profile-box-links' style='text-decoration:none'> Orders </a><br>
                             <a href='<?= base_url('/wishlist'); ?>' class='profile-box-links' style='text-decoration:none'> Wishlist </a><br>
-                            <a href='<?= base_url(); ?>' class='profile-box-links' style='text-decoration:none'> Coupons </a>
+                            <a href='<?= base_url(); ?>' class='profile-box-links' style='text-decoration:none'> Coupons </a><br>
+                            <a href='<?= base_url("logout") ?>' class='profile-box-links' style='text-decoration:none'>Logout</a>
                         <?php } ?>
                     </div>
                 </div>
