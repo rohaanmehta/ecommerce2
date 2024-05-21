@@ -419,10 +419,17 @@
                             </a>
                         </li> -->
                         <li class="nav-item">
-                            <a href="<?= base_url('Admin/visual_settings') ?>" class="nav-link d-flex align-items-center">
+                            <a href="<?= base_url('Admin/footer_settings') ?>" class="nav-link d-flex align-items-center">
                                 <i class="nav-icon fa fa-circle"></i>
 
-                                <p>Visual Settings</p>
+                                <p>Footer Settings</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('Admin/payment-view') ?>" class="nav-link d-flex align-items-center">
+                                <i class="nav-icon fa fa-circle"></i>
+
+                                <p>Footer Settings</p>
                             </a>
                         </li>
                         <li class="nav-item">

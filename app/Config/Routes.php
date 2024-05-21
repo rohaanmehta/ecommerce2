@@ -32,6 +32,7 @@ $routes->group('',['namespace' => 'App\controllers\Admin',"filter" => "Auth"], s
     $routes->post('add_visual_settings', 'Website_settings::add_visual_settings');
     $routes->post('add_visual_settings2', 'Website_settings::add_visual_settings2');
     $routes->post('category-settings', 'Website_settings::category_settings');
+    $routes->post('footer_settings', 'Website_settings::footer_settings');
     
     
     //cache setting
