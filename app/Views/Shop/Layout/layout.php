@@ -1016,7 +1016,7 @@ $categories = get_categories_header();
                 }
             );
 
-            $('.add-to-wishlist').click(function(e) {
+            $('.add-to-wishlist,.addtowishlist').click(function(e) {
                 e.preventDefault();
                 if ($(this).attr('data-target') == '') {
                     if ($(this).children().attr('class') == 'fa fa-heart mr-1') {

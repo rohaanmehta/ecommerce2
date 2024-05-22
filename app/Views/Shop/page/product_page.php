@@ -70,10 +70,10 @@
         background: #fff;
         color: #000;
         border: 1px solid #5e5e5e;
-        min-width: 120px;
+        /* min-width: 120px; */
         font-size: 13px;
         font-weight: 500;
-        padding: 12px 25px 12px 25px;
+        padding: 14px 25px 14px 25px;
     }
 
     .sizechart-modal .table table td {
@@ -473,8 +473,8 @@
                             <i class="fa-solid fa-ta[e"></i>
                         </button>
                     <?php } ?>
-                    <button class='mt-3 btn rounded addtowishlist'><i id='www' style='' class='wishlist-heart fa fa-heart'></i>
-                        <i class="fa-solid fa-ta[e"></i> ADD TO WISHLIST
+                    <button class='mt-3 btn rounded addtowishlist' id="10"><i class='wishlist-heart fa fa-heart'></i>
+                        <i class="fa-solid fa-ta[e"></i>
                     </button>
                 </div>
             <?php } else { ?>

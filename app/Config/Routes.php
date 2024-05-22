@@ -14,16 +14,15 @@ $routes->setDefaultNamespace('App\Controllers');
 $routes->setDefaultController('Homepage');
 $routes->setDefaultMethod('homepage');
 $routes->setTranslateURIDashes(false);
-$routes->set404Override(function(){
+$routes->set404Override(function () {
     echo view('errors/error404');
 });
 
 
-
-$routes->group('',['namespace' => 'App\controllers\Admin',"filter" => "Auth"], static function ($routes) {
+$routes->group('', ['namespace' => 'App\controllers\Admin', "filter" => "Auth"], static function ($routes) {
     //dashboard
     $routes->get('Admin/dashboard', 'Dashboard::dashboard');
-    
+
     $routes->get('Admin/website_settings', 'Website_settings::view');
     $routes->post('add_website_settings', 'Website_settings::add_website_settings');
     $routes->post('add_website_settings_banner', 'Website_settings::add_website_settings_banner');
@@ -32,19 +31,19 @@ $routes->group('',['namespace' => 'App\controllers\Admin',"filter" => "Auth"], s
     $routes->post('add_visual_settings', 'Website_settings::add_visual_settings');
     $routes->post('add_visual_settings2', 'Website_settings::add_visual_settings2');
     $routes->post('category-settings', 'Website_settings::category_settings');
-    
-    
+
+
     //cache setting
     $routes->get('Admin/cache_settings', 'Website_settings::cache_view');
-    
+
     // products
     // $routes->get('Admin/product_slider', 'Dashboard::dashboard');
     $routes->get('Admin/slider-view', 'Dashboard::slider_view');
     $routes->post('add_slider_data', 'Dashboard::add_slider_data');
     $routes->post('get_slider_data', 'Dashboard::get_slider_data');
     $routes->get('delete-slider/?(:any)', 'Dashboard::delete_slider/$1');
-    
-    
+
+
     $routes->get('Admin/banner-view', 'Dashboard::banner_view');
     $routes->post('add_banner_data', 'Dashboard::add_banner_data');
     $routes->get('delete-banner/?(:any)', 'Dashboard::delete_banner/$1');
@@ -54,9 +53,9 @@ $routes->group('',['namespace' => 'App\controllers\Admin',"filter" => "Auth"], s
     $routes->post('edit_category_data', 'Category::edit_category_data');
     $routes->get('delete-category/?(:any)', 'Category::delete_category/$1');
     $routes->get('export-categories', 'Category::export_categories');
-    
 
-    
+
+
     $routes->get('Admin/products', 'Products::products_view');
     $routes->get('add_products/?(:any)', 'Products::add_products/$1');
     $routes->post('add_product_data', 'Products::add_product_data');
@@ -83,20 +82,24 @@ $routes->group('',['namespace' => 'App\controllers\Admin',"filter" => "Auth"], s
     $routes->post('add_user_data', 'Users::add_user_data');
     $routes->get('Admin/users-list', 'Users::users_list');
 
-    
-    
+
+
 
 
 
     $routes->get('job_enquiry', 'Enquiry::job_enquiry');
     $routes->get('product_enquiry', 'Enquiry::product_enquiry');
     $routes->post('add_enquiry', 'Enquiry::add_enquiry');
-
 });
 
 
-$routes->group('',['namespace' => 'App\controllers\Shop'], static function ($routes) {
+$routes->group('', ['namespace' => 'App\controllers\Shop'], static function ($routes) {
     $routes->get('/', 'Homepage::homepage');
+
+    $routes->get('forbidden-access', function () {
+        echo view('errors/forbidden_access');
+    });
+
     $routes->get('login', 'Login::login_view');
     $routes->get('register', 'Register::register_view');
     $routes->get('cart', 'Cart::cart_view');
@@ -114,8 +117,8 @@ $routes->group('',['namespace' => 'App\controllers\Shop'], static function ($rou
     $routes->post('contact_form', 'Page::contact_form');
     $routes->get('story', 'Page::story');
 
-    $routes->post('add_to_cart', 'Cart::add_to_cart');    
-    $routes->post('delete-from-cart', 'Cart::delete_from_cart');    
+    $routes->post('add_to_cart', 'Cart::add_to_cart');
+    $routes->post('delete-from-cart', 'Cart::delete_from_cart');
 
     $routes->get('wishlist', 'Wishlist::view');
 
