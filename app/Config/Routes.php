@@ -33,6 +33,8 @@ $routes->group('', ['namespace' => 'App\controllers\Admin', "filter" => "Auth"],
     $routes->post('category-settings', 'Website_settings::category_settings');
 
 
+    $routes->post('footer_settings', 'Website_settings::footer_settings');
+    
     //cache setting
     $routes->get('Admin/cache_settings', 'Website_settings::cache_view');
 

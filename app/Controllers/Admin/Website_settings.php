@@ -156,6 +156,11 @@ class Website_settings extends BaseController
         return view('Admin/Views/Settings/visual_settings',$data);
     }
 
+    public function footer_settings()
+    {
+        return view('Admin/Views/Settings/footer_settings');
+    }
+
     public function add_visual_settings()
     {
         $img1 = $this->request->getFile('image1');
