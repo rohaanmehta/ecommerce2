@@ -1022,7 +1022,36 @@ $categories = get_categories_header();
                 }
             );
 
-            $('.add-to-wishlist,.addtowishlist').click(function(e) {
+            $('.addtowishlist').click(function(e) {
+                e.preventDefault();
+                if ($(this).attr('data-target') == '') {
+                    if ($(this).children().attr('class') == 'fa fa-heart') {
+                        $(this).children().attr('class', 'fa fa-heart-o');
+                    } else {
+                        $(this).children().attr('class', 'fa fa-heart');
+                    }
+
+                    // console.log($(this).children().attr('class'));
+                    // return false;
+                    $.ajax({
+                        type: "POST",
+                        url: "<?= base_url('add-to-wishlist') ?>",
+                        data: {
+                            productid: $(this).attr('id')
+                        },
+                        dataType: "json",
+                        success: function(data) {
+                            if (data.status == 200) {
+                                alert('product added to wishlist');
+                            } else {
+                                alert('something went wrong');
+                            }
+                        }
+                    });
+                }
+            });
+
+            $('.add-to-wishlist').click(function(e) {
                 e.preventDefault();
                 if ($(this).attr('data-target') == '') {
                     if ($(this).children().attr('class') == 'fa fa-heart mr-1') {

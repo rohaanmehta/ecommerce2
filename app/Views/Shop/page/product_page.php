@@ -17,20 +17,21 @@
         margin-right: 6px;
     }
 
-    .accordion-desc{
+    .accordion-desc {
         font-size: 14px;
         padding: 10px;
         padding-left: 17px;
         color: #5c5c5c;
-        font-weight:400;
+        font-weight: 400;
     }
+
     .accordion-title {
         cursor: pointer;
         font-size: 16px;
         padding: 10px;
         padding-left: 17px;
         color: #5c5c5c;
-        font-weight:700;
+        font-weight: 700;
         /* background: url(https://cdn0.iconfinder.com/data/icons/entypo/91/arrow56-512.png) no-repeat calc(100% - 10px) center; */
         /* background-size: 15px; */
     }
@@ -73,7 +74,7 @@
         /* min-width: 120px; */
         font-size: 13px;
         font-weight: 500;
-        padding: 14px 25px 14px 25px;
+        padding: 15px 25px 15px 25px;
     }
 
     .sizechart-modal .table table td {
@@ -305,6 +306,11 @@
             left: 0%;
         }
     }
+
+    .qty-desc {
+        font-size: 15px;
+        color: #585858;
+    }
 </style>
 <div class='invisible mobile_Head_Hide'>gap fill</div>
 
@@ -441,7 +447,6 @@
                 </div>
             </div>
 
-
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
@@ -463,6 +468,21 @@
             </div>
 
             <?php if ($product[0]->purchasable == 1) { ?>
+                <div class='col-12 pl-0 mt-3 d-flex' style='align-items:center;'>
+                    <span class='qty-desc mr-3'>Quantity</span>
+                    <select class='form-control p-1' style='font-size:14px;width:50px;height:30px'>
+                        <option value='01'>01</option>
+                        <option value='02'>02</option>
+                        <option value='03'>03</option>
+                        <option value='04'>04</option>
+                        <option value='05'>05</option>
+                        <option value='06'>06</option>
+                        <option value='07'>07</option>
+                        <option value='08'>08</option>
+                        <option value='09'>09</option>
+                        <option value='10'>10</option>
+                    </select>
+                </div>
                 <div class='col-12 pl-0 mt-0'>
                     <?php if ($product[0]->stock > 0) { ?>
                         <button class='mt-3 btn btn-lg rounded text-white addtocart'>
@@ -473,8 +493,12 @@
                             <i class="fa-solid fa-ta[e"></i>
                         </button>
                     <?php } ?>
-                    <button class='mt-3 btn rounded addtowishlist' id="10"><i class='wishlist-heart fa fa-heart'></i>
-                        <i class="fa-solid fa-ta[e"></i>
+                    <button class='mt-3 btn rounded addtowishlist' data-target="" id='<?= $product[0]->id; ?>'>
+                        <?php if ($wishlist == 1) { ?>
+                            <i style='font-size:17px' class='fa fa-heart'></i>
+                        <?php } else { ?>
+                            <i style='font-size:17px' class='fa fa-heart-o'></i>
+                        <?php } ?>
                     </button>
                 </div>
             <?php } else { ?>
@@ -530,7 +554,9 @@
                                             echo $productbanner1[0]->value_1;
                                         } ?> </p>
         </div>
-        <div class="row m-0 gallery gap <?php if(sizeof($section1) > 5 ){ echo 'section1-slider'; }?> products-5">
+        <div class="row m-0 gallery gap <?php if (sizeof($section1) > 5) {
+                                            echo 'section1-slider';
+                                        } ?> products-5">
             <?php if (isset($section1)) {
                 foreach ($section1 as $row) { ?>
                     <?php echo view('Shop/page/single_product', ['row' => $row, 'wishlist' =>  $session->get('userid')]); ?>
@@ -548,7 +574,9 @@
                                             echo $productbanner2[0]->value_1;
                                         } ?> </p>
         </div>
-        <div class="row m-0 gallery gap <?php if(sizeof($section2) > 5 ){ echo 'section2-slider'; }?> products-5">
+        <div class="row m-0 gallery gap <?php if (sizeof($section2) > 5) {
+                                            echo 'section2-slider';
+                                        } ?> products-5">
             <?php if (isset($section2)) {
                 foreach ($section2 as $row) { ?>
                     <?php echo view('Shop/page/single_product', ['row' => $row, 'wishlist' =>  $session->get('userid')]); ?>

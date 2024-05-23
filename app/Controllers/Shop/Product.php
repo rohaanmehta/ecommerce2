@@ -22,11 +22,24 @@ class Product extends BaseController
 
         $data['product'] = $this->db->table('products')->select('products.desc,products.id,products.title,pi.image_name1,pi.image_name2,products.stock,products.sku,products.purchasable,products.product_slug,,pi.image_name3,pi.image_name4,products.price')->where('product_slug', $slug)->join('product_images as pi', 'pi.product_id = products.id')->get()->getResult();
 
-
         //redirect to 404
         if (isset($data['product']) && empty($data['product'])) {
-            echo view('errors/error404');exit;
+            echo view('errors/error404');
+            exit;
         }
+
+        //check wishlisted
+        if (!empty($this->session->get('userid')) && $this->session->get('userid') != '') {
+            $check_wishlist =  $this->db->table('wishlist')->where('product_id', $data['product'][0]->id)->countAllResults();
+            if($check_wishlist > 0){
+                $data['wishlist'] = 1;
+            }else{
+                $data['wishlist'] = 0;
+            }
+        }else{
+            $data['wishlist'] = 0;
+        }
+
 
         // $section2 = $this->db->table('products')->select('products.id,products.title,products.price,pi.image_name1,pi.image_name2,pi.image_name3,pi.image_name4,products.product_slug')->where('promote', 'section2');
 
@@ -43,6 +56,7 @@ class Product extends BaseController
 
         $last_category_id = $this->db->table('categories')->where('category_slug', $category)->get()->getresult();
         $data['all_categories'] = $this->all_product_categories($product_category[0]->id, $last_category_id[0]->id);
+
         // echo $category;
         foreach ($data['all_categories'] as $row) {
             $product_last_category_id = $row['id'];
