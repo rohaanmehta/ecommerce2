@@ -58,6 +58,7 @@ abstract class BaseController extends Controller
         // E.g.: $this->session = \Config\Services::session();
         $this->image = \Config\Services::image();
         $this->image = \Config\Services::image('gd');
+        $this->validation = \Config\Services::validation();
     }
 
     public function image_upload($fileName,$format,$dir,$resize = null)

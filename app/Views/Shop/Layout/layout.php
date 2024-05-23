@@ -74,6 +74,11 @@ $categories = get_categories_header();
         <link rel="icon" type="image/x-icon" href="<?= base_url('uploads/website/' . $website_images[0]->value_3); ?>">
     <?php } ?>
     <style>
+        .error-font {
+            font-size: 14px;
+            margin-top: 3px;
+        }
+
         <?php if (isset($banner1_info) && !empty(($banner1_info) && $banner1_info[0]->value_3 == 'YES')) { ?>.section1-slider {
             display: none;
         }
@@ -85,6 +90,7 @@ $categories = get_categories_header();
         <?php } ?><?php if (isset($banner2_info) && !empty(($banner2_info) && $banner2_info[0]->value_3 == 'YES')) { ?>.section2-slider {
             display: none;
         }
+
 
         .section2-slider.slick-initialized {
             display: block;
@@ -896,7 +902,7 @@ $categories = get_categories_header();
             <div style="display:flex;align-self: center;text-align:end; justify-content:end" class=''>
                 <!-- user     -->
                 <div class='profile-hover' style='text-align:center;display:flex;position:relative'>
-                    <a href='<?= base_url('/profile');?>' class='btn mobile_Head_Hide'>
+                    <a href='<?= base_url('/profile'); ?>' class='btn mobile_Head_Hide'>
                         <i class='head_Icons fa-light fa fa-user'></i>
                         <p style='color:#858585;padding-top:3px;font-size:12px;font-weight:600;margin-bottom:0px'>Profile</p>
                     </a>
@@ -905,7 +911,7 @@ $categories = get_categories_header();
                         <b>
                             <p class='m-0'>Welcome</p>
                         </b>
-                        
+
                         <?php
                         if ($session->get('userid') == '') { ?>
                             <p style='font-weight:300'>To access account and manage orders</p>

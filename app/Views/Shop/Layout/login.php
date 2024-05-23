@@ -77,18 +77,18 @@
           </div>
           <div class="m-auto" style='width:90%'>
             <div class="mb-2">
-              <input type='text' class='m-auto login_Input form-control rounded-0' required name='email' placeholder='Email Address' />
+              <input type='text' class='m-auto login_Input form-control rounded-0' name='email' id='email' placeholder='Email Address' />
             </div>
           </div>
           <div class="m-auto" style='width:90%'>
             <div class="mb-2">
-              <input type='password' class='m-auto login_Input form-control rounded-0' required name='password' placeholder='Password ' />
-              <span id='loginmsg' class='text-danger' style='display:none;font-size:12px;'>Username or Password don't match !</span>
+              <input type='password' class='m-auto login_Input form-control rounded-0' name='password' id='password' placeholder='Password ' />
+              <div class="error-font text-danger mb-2 h6" id='loginmsg' style='display:none;'>Wrong username or password !</div>
             </div>
           </div>
           <div class="m-auto" style='width:90%'>
             <div class="mb-2">
-              <button class='login_Input login_Links btn rounded-0 btn-dark'>LOGIN</button>
+              <button class='login_Input login_Input_submit login_Links btn rounded-0 btn-dark'>LOGIN</button>
             </div>
           </div>
           <div class="row text-center justify-content-center">
@@ -105,6 +105,7 @@
   $(document).ready(function() {
     $('.login-form').submit(function(e) {
       e.preventDefault();
+      $('.login_Input_submit').attr('disabled', true);
       $.ajax({
         type: "POST",
         url: "<?= base_url('login-user') ?>",
@@ -114,19 +115,28 @@
         processData: false,
         dataType: "json",
         success: function(data) {
-          $('.login_Input').attr('disabled', true);
-          if (data.status == '200') {
-            $('#loginmsg').css('display', 'none');
+          $('#loginmsg').css('display', 'none');
+          $('.login_Input_submit').attr('disabled', false);
+
+          if (data.error == true) {
+            $.each(data, function(key, value) {
+              if (value) {
+                $("#" + key).addClass("border-danger");
+              } else {
+                $("#" + key).removeClass("border-danger");
+              }
+            });
+            return false;
+          }
+          if (data.loggedin == false) {
+            $('#loginmsg').css('display', 'block');
+            return false;
+          }
+
+          if (data.error == false && data.loggedin == true) {
             setTimeout(function() {
-              // $('#download').css('display', 'block');
-              // $('#loader').css('visibility', 'hidden');
               window.location.href = '<?= base_url(); ?>';
             }, 500);
-            // alert('registered_successfully');
-
-          } else {
-            $('#loginmsg').css('display', 'block');
-            $('.login_Input').attr('disabled', false);
           }
         }
       });
