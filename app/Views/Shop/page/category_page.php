@@ -3,6 +3,18 @@
 <?php $session = session(); ?>
 
 <style>
+    .filters-heading {
+        font-size: 15px;
+        font-weight: 700;
+        color: #606060;
+        margin-bottom: 6px;
+    }
+
+    .filter-box {
+        border-bottom: 2px solid #e7e7e7;
+        padding-bottom:15px !important;
+    }
+
     .category_name {
         font-size: 22px;
         font-weight: 600;
@@ -90,12 +102,27 @@
             </div>
         </div>
 
-        <div class="row m-4 gallery products-5">
-            <?php if (isset($products) && !empty($products)) {
-                foreach ($products as $row) { ?>
-                    <?php echo view('Shop/page/single_product', ['row' => $row, 'wishlist' =>  $session->get('userid')]); ?>
-            <?php }
-            } ?>
+        <div class="row ml-4 mr-4 gallery">
+            <div class='col-md-3 p-0' style='max-width:280px;background:#fff'>
+                <div class='filter-box p-1'>
+                    <div class='filters-heading'>
+                        Price
+                    </div>
+                    <div class='d-flex'>
+                        <input class='form-control mr-2' placeholder="Min Price" />
+                        <input class='form-control mr-2' placeholder="Max Price" />
+                        <button class='btn black-btn'>Go</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class='d-flex col-md-9 products-5' style='flex-wrap:wrap'>
+                <?php if (isset($products) && !empty($products)) {
+                    foreach ($products as $row) { ?>
+                        <?php echo view('Shop/page/single_product', ['row' => $row, 'wishlist' =>  $session->get('userid')]); ?>
+                <?php }
+                } ?>
+            </div>
         </div>
         <div class=''>
             <?= $links ?>
