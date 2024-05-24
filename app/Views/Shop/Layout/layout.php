@@ -875,11 +875,11 @@ $categories = get_categories_header();
                 </a>
             <?php } ?>
             <div class='col-lg-12 text-center nav_Categories mobile_Head_Hide pb-1' style='background:#fff;'>
-                <div class='' style='text-align:left'>
+                <div class='nav_Categories_Btn_out' style='text-align:left;width: fit-content;height:100%;'>
                     <?php if (isset($categories) && !empty($categories)) {
                         foreach ($categories as $row) {
                             if ($row->parent_category == '') { ?>
-                                <a class='link-none text-uppercase' href='<?= base_url('/' . $row->category_slug); ?>'><span class='nav_Categories_Btn hover_category' showid='<?= $row->id; ?>'><?= $row->category_name ?></span></a>
+                                <a class='link-none text-uppercase nav_Categories_Btn_out' href='<?= base_url('/' . $row->category_slug); ?>'><span class='nav_Categories_Btn hover_category ml-0 mt-0 mr-0 pt-2 pl-2 pr-2' showid='<?= $row->id; ?>'><?= $row->category_name ?></span></a>
                     <?php }
                         }
                     } ?>
@@ -960,10 +960,11 @@ $categories = get_categories_header();
     </div>
     <!-- multiple categories pc  -->
     <div class='d-flex justify-content-center' style='position:relative;'>
+        <div class='nav_Categories_Btn_out_box' style='display:none;min-height:300px;z-index:2;width:80%;margin-top:2px;padding: 30px;padding-top:0px;border: 1px solid #e7e7e7;border-top:none;position:fixed;background:#fff;'></div>
         <?php if (isset($categories) && !empty($categories)) {
             foreach ($categories as $row_main) {
                 if ($row_main->parent_category == '') {  ?>
-                    <div id='' showid='<?= $row_main->id; ?>' style='z-index:3;width:80%;margin-top:2px;display:none;padding: 30px;padding-top:0px;border: 1px solid #e7e7e7;border-top:none;position:fixed;background:#fff' class='show<?= $row_main->id ?> pb-3 text-left allcategories allcategories-show'>
+                    <div id='' showid='<?= $row_main->id; ?>' style='max-height:300px;z-index:3;width:80%;margin-top:2px;display:none;padding: 30px;padding-top:0px;border: 1px solid #e7e7e7;border-top:none;position:fixed;background:#fff' class='show<?= $row_main->id ?> pb-3 text-left allcategories allcategories-show'>
                         <div class='nav_Categories_Sub_Menu_Tittle allcategories-show' style='border-right:1px solid #dfdfdf;width:180px;height:300px;display:flex;flex-wrap:wrap;flex-direction:column'>
                             <?php
                             foreach ($categories as $row) {
@@ -1080,7 +1081,6 @@ $categories = get_categories_header();
                 }
             });
 
-
             $('.search-box').keyup(function() {
                 if ($('.search-box').val().length >= 4) {
                     $.ajax({
@@ -1127,10 +1127,17 @@ $categories = get_categories_header();
 
         $('body').mouseover(function(evnt) {
             if (!$(evnt.target).hasClass('hover_category') && !$(evnt.target).hasClass('allcategories') && !$(evnt.target).hasClass('allcategories-show')) {
+                // setTimeout(function() {
                 $('.allcategories').css('display', 'none');
                 $('.hover_category').css('border-bottom', 'none');
-                $('.blocker').css('display', 'none');
+                // }, 1000);
             }
+
+            if (!$(evnt.target).hasClass('nav_Categories_Btn_out') && !$(evnt.target).hasClass('hover_category') && !$(evnt.target).hasClass('allcategories') && !$(evnt.target).hasClass('allcategories-show')) {
+                $('.blocker').css('display', 'none');
+                $('.nav_Categories_Btn_out_box').css('display', 'none');
+            };
+
         });
 
         $('body').click(function(evnt) {
@@ -1153,12 +1160,21 @@ $categories = get_categories_header();
 
         $('.hover_category').hover(
             function() {
+                $('.allcategories').css('display', 'none');
                 var d = '.show' + $(this).attr('showid') + '';
                 $(d).css('display', 'block');
+                $('.hover_category').css('border-bottom', 'none');
                 $(this).css('border-bottom', ' 3px <?= 'solid ' . $category_color ?>');
-                $('.blocker').css('display', 'block');
             }
         );
+
+        $('.nav_Categories_Btn_out').hover(
+            function() {
+                $('.blocker').css('display', 'block');
+                $('.nav_Categories_Btn_out_box').css('display', 'block');
+            }
+        );
+
 
         function load_product_sliders() {
             $('.single-product-slider').slick({
