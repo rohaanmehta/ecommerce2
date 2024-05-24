@@ -55,7 +55,12 @@ $routes->group('', ['namespace' => 'App\controllers\Admin', "filter" => "Auth"],
     $routes->post('edit_category_data', 'Category::edit_category_data');
     $routes->get('delete-category/?(:any)', 'Category::delete_category/$1');
     $routes->get('export-categories', 'Category::export_categories');
+    $routes->get('Admin/category-banner', 'Category::category_banner_view');
+    $routes->post('add_category_banner_data', 'Category::add_category_banner_data');
+    $routes->get('deletecategorybanner/?(:any)', 'Category::delete_category_banner/$1');
+    $routes->post('edit_category_banner', 'Category::edit_category_banner');
 
+    
 
 
     $routes->get('Admin/products', 'Products::products_view');

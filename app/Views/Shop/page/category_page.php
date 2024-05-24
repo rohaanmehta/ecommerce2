@@ -12,7 +12,7 @@
 
     .filter-box {
         border-bottom: 2px solid #e7e7e7;
-        padding-bottom:15px !important;
+        padding-bottom: 15px !important;
     }
 
     .category_name {
@@ -75,6 +75,15 @@
 </style>
 <div class=''>
     <div class='card'>
+        <div class='row'>
+            <?php if (isset($category_banners) && !empty($category_banners)) {
+                foreach ($category_banners as $row) { ?>
+                    <div class='col-6'>
+                        <img class='w-100' src='<?= base_url('uploads/category_banners/' . $row->image); ?>'/>
+                    </div>
+            <?php }
+            } ?>
+        </div>
         <div class="pt-5 pl-5 pr-4 row" style='align-items: center;'>
             <div class='col-4 pl-0 category_name'>
                 <span>

@@ -24,6 +24,11 @@ class Category extends BaseController
 
         array_push($all_categories, $categoryid[0]->id);
 
+        //category banners
+        $category_banners = $this->db->table('category_banner')->select('image')->orderBy('order','asc')->where('category_id', $categoryid[0]->id)->get()->getresult();
+
+        $data['category_banners'] = $category_banners;
+
         //all sub categories 2nd layer
         $sub_array = array();
         $subcategories = $this->db->table('categories')->select('id,category_slug')->where('parent_category', $categoryid[0]->id)->get()->getresult();

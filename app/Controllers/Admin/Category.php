@@ -13,6 +13,62 @@ class Category extends BaseController
         return view('Admin/Views/Category/view', $data);
     }
 
+    public function category_banner_view()
+    {
+        $data['category'] = $this->db->table('category_banner')->select('category_banner.image,category_banner.order,category_banner.id,c.category_name')->join('categories as c', 'c.id = category_banner.category_id')->get()->getResult();
+        $data['all_categories'] = $this->db->table('categories')->get()->getResult();
+
+        return view('Admin/Views/Category/category_banner_view', $data);
+    }
+
+    public function add_category_banner_data()
+    {
+        // print_r($_POST);exit;
+        $array = array(
+            'category_id' => $_POST['category_id'],
+            'order' => $_POST['order'],
+        );
+
+        $img1 = $this->request->getFile('image');
+        $img1name = '1' . date('dmyHis') . '.png';
+
+        if ($_POST['id'] == '') {
+            if (isset($_FILES['image']['name']) && !empty($_FILES['image']['name'])) {
+                $img1->move(ROOTPATH . 'uploads/category_banners/', $img1name);
+                $fileName = $this->image_upload($img1name, IMAGETYPE_WEBP, 'uploads/category_banners/');
+
+                $array['image'] = $fileName;
+            }
+            if ($this->db->table('category_banner')->insert($array)) {
+                $data['status'] = 200;
+            } else {
+                $data['status'] = 400;
+            }
+        } else {
+            $category_info = $this->db->table('category_banner')->where('id', $_POST['id'])->get()->getResult();
+
+            if (isset($category_info[0]) && !empty($category_info[0])) {
+                if (isset($_FILES['image']['name']) && !empty($_FILES['image']['name'])) {
+                    $img1->move(ROOTPATH . 'uploads/category_banners/', $img1name);
+                    $fileName = $this->image_upload($img1name, IMAGETYPE_WEBP, 'uploads/category_banners/');
+                    $array['image'] = $fileName;
+
+                    if (is_file(ROOTPATH . 'uploads/category_banners/' . $category_info[0]->image)) {
+                        unlink(ROOTPATH . 'uploads/category_banners/' . $category_info[0]->image);
+                    }
+                }
+            }
+            if ($this->db->table('category_banner')->where('id', $_POST['id'])->update($array)) {
+                $data['status'] = 200;
+            } else {
+                $data['status'] = 400;
+            }
+        }
+
+        header('Content-Type: application/json');
+        echo json_encode($data);
+    }
+
     public function add_category_data()
     {
         // print_r($_POST);exit;
@@ -24,7 +80,7 @@ class Category extends BaseController
             'pair_category' => $_POST['pair_category'],
             'category_desc_top' => $_POST['category_desc_top'],
             'category_desc_bottom' => $_POST['category_desc_bottom'],
-            'category_slug' => str_replace([' ',',','/','-','_'],'',$_POST['name']),
+            'category_slug' => str_replace([' ', ',', '/', '-', '_'], '', $_POST['name']),
         );
 
         if ($_POST['category_id'] == '') {
@@ -34,7 +90,7 @@ class Category extends BaseController
                 $data['status'] = 400;
             }
         } else {
-            if ($this->db->table('categories')->where('id',$_POST['category_id'])->update($array)) {
+            if ($this->db->table('categories')->where('id', $_POST['category_id'])->update($array)) {
                 $data['status'] = 200;
             } else {
                 $data['status'] = 400;
@@ -44,20 +100,44 @@ class Category extends BaseController
         header('Content-Type: application/json');
         echo json_encode($data);
     }
-    public function edit_category_data(){
+
+    public function edit_category_data()
+    {
         // print_r($_POST);exit;
-        $data['data'] = $this->db->table('categories')->where('id',$_POST['id'])->get()->getResult();
+        $data['data'] = $this->db->table('categories')->where('id', $_POST['id'])->get()->getResult();
         header('Content-Type: application/json');
         echo json_encode($data);
     }
 
+    public function edit_category_banner()
+    {
+        // print_r($_POST);exit;
+        $data['data'] = $this->db->table('category_banner')->where('id', $_POST['id'])->get()->getResult();
+        header('Content-Type: application/json');
+        echo json_encode($data);
+    }
+    
     public function delete_category($id)
     {
         $this->db->table('categories')->where('id', $id)->delete();
         return redirect()->to(base_url('Admin/category'));
     }
-    
-    public function export_categories(){
+
+    public function delete_category_banner($id)
+    {
+        $category_info = $this->db->table('category_banner')->where('id', $id)->get()->getResult();
+
+        if (isset($category_info[0]) && !empty($category_info[0])) {
+            if (is_file(ROOTPATH . 'uploads/category_banners/' . $category_info[0]->image)) {
+                unlink(ROOTPATH . 'uploads/category_banners/' . $category_info[0]->image);
+            }
+        }
+        $this->db->table('category_banner')->where('id', $id)->delete();
+        return redirect()->to(base_url('Admin/category-banner'));
+    }
+
+    public function export_categories()
+    {
         $data['csv'] = $this->db->table('categories')->select('*')->get()->getresult();
         return view('Admin/Views/Category/category_download', $data);
     }

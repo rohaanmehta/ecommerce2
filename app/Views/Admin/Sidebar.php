@@ -119,6 +119,13 @@
                                 <p>Category List</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('Admin/category-banner') ?>" class="nav-link d-flex align-items-center">
+                                <i class="nav-icon fa fa-circle"></i>
+
+                                <p>Category Banners</p>
+                            </a>
+                        </li>
                         <!-- <li class="nav-item">
                             <a href="<?= base_url('Admin/add_category') ?>" class="nav-link">
                                                                 <i class="nav-icon fa fa-circle"></i>
