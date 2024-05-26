@@ -43,6 +43,7 @@
                 </button>
             <?php } ?>
         </div>
+        
         <a href='<?= base_url($category.'/'. $row->product_slug); ?>' style='display:contents;color:#000'>
             <div class='single-product-slider'>
                 <img alt='<?= $row->title;?>' class='gallery_img' src='<?= base_url('/uploads/product_images/' . $row->image_name1) ?>' />
@@ -55,6 +56,9 @@
                 <?php if ($row->image_name4 != '') { ?>
                     <img alt='<?= $row->title;?>' class='gallery_img product-slider-image' src='<?= base_url('/uploads/product_images/' . $row->image_name4) ?>' />
                 <?php } ?>
+            </div>
+            <div class='mobile-product-slider' style='display:none'>
+                <img alt='<?= $row->title;?>' class='gallery_img' src='<?= base_url('/uploads/product_images/' . $row->image_name1) ?>' />
             </div>
             <div class='text-left p-2'>
                 <p class='product_title'><?= $row->title ?></p>

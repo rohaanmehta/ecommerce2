@@ -17,7 +17,9 @@ class App extends BaseConfig
      *
      *    http://example.com/
      */
-    public string $baseURL = 'http://localhost/ecommerce2';
+    // mobile
+    // public string $baseURL = 'http://172.20.10.3/ecommerce';
+    public string $baseURL = 'http://localhost/ecommerce';
 
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.

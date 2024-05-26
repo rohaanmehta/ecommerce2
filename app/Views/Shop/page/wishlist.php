@@ -37,7 +37,7 @@ if ($userid == '') { ?>
         <?php }
         } ?>
     </div>
-    <div class='row justify-content-end pr-4 pl-4'>
+    <div class='row justify-content-center pt-3' style='border-top:1px solid #dfdfdf'>
         <?= $links ?>
     </div>
 <?php } ?>

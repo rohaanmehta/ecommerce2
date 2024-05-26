@@ -72,7 +72,8 @@ class Login extends BaseController
     public function logout()
     {
         $this->session->destroy();
-        return redirect()->to(base_url('/'));
+        return redirect()->to($_SERVER['HTTP_REFERER']);
+        // return redirect()->to(base_url('/'));
     }
 
     public function login_user()

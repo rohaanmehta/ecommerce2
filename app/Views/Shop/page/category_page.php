@@ -30,56 +30,23 @@
         color: #878787;
     }
 
-    <?php if (isset($category_settings) && !empty($category_settings) && $category_settings[0]->value_1 == '1') { ?>#back-to-top {
-        display: inline-block;
-        background-color: <?= $category_settings[0]->value_2 ?>;
-        width: 40px;
-        height: 40px;
-        text-align: center;
-        border-radius: 4px;
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        transition: background-color .3s,
-            opacity .5s, visibility .5s;
-        opacity: 0;
-        visibility: hidden;
-        z-index: 1000;
-    }
-
-    #back-to-top::after {
-        content: "\f077";
-        font-family: FontAwesome;
-        font-weight: normal;
-        font-style: normal;
-        font-size: 12px;
-        line-height: 40px;
-        color: <?= $category_settings[0]->value_3 ?>;
-    }
-
-    #back-to-top:hover {
-        cursor: pointer;
-        /* background-color: #333; */
-    }
-
-    #back-to-top:active {
-        background-color: #555;
-    }
-
-    #back-to-top.show {
-        opacity: 1;
-        visibility: visible;
-    }
-
-    <?php } ?>
 </style>
 <div class=''>
     <div class='card'>
-        <div class='row'>
+        <div class='row mobile_Head_Hide'>
             <?php if (isset($category_banners) && !empty($category_banners)) {
                 foreach ($category_banners as $row) { ?>
-                    <div class='col-6'>
-                        <img class='w-100' src='<?= base_url('uploads/category_banners/' . $row->image); ?>'/>
+                    <div class='col-12'>
+                        <img class='w-100' src='<?= base_url('uploads/category_banners/' . $row->image); ?>' />
+                    </div>
+            <?php }
+            } ?>
+        </div>
+        <div class='row mobile_Head_Show'>
+            <?php if (isset($category_banners) && !empty($category_banners)) {
+                foreach ($category_banners as $row) { ?>
+                    <div class='col-12'>
+                        <img class='w-100' src='<?= base_url('uploads/category_banners/' . $row->mobile_image); ?>' />
                     </div>
             <?php }
             } ?>
@@ -111,8 +78,8 @@
             </div>
         </div>
 
-        <div class="row ml-4 mr-4 gallery">
-            <div class='col-md-3 p-0' style='max-width:280px;background:#fff'>
+        <div class="row ml-4 mr-4 gallery mt-5">
+            <div class='col-md-3 p-0' style='max-width:280px;background:#fff;border-right:1px solid #dfdfdf;'>
                 <div class='filter-box p-1'>
                     <div class='filters-heading'>
                         Price
@@ -133,8 +100,11 @@
                 } ?>
             </div>
         </div>
-        <div class=''>
-            <?= $links ?>
+        <div class='row pt-3' style='border-top:1px solid #dfdfdf'>
+            <div class='col-md-3 p-0' style='max-width:280px;background:#fff'></div>
+            <div class='col-9'>
+                <?= $links ?>
+            </div>
         </div>
     </div>
     <div class='row p-4 category-desc'>
@@ -145,34 +115,12 @@
     </div>
 </div>
 
-<?php if (isset($category_settings) && !empty($category_settings) && $category_settings[0]->value_1 == '1') { ?>
-    <!-- back to top button  -->
-    <a id="back-to-top"></a>
-<?php } ?>
-
-
 <script>
     $(document).ready(function() {
         $('.sort').change(function() {
             window.location.href = '<?= base_url('/' . $categoriesinfo[0]->category_slug . '?sort=');
                                     ?>' + $('.sort').val();
         });
-    });
-    var btn = $('#back-to-top');
-
-    $(window).scroll(function() {
-        if ($(window).scrollTop() > 300) {
-            btn.addClass('show');
-        } else {
-            btn.removeClass('show');
-        }
-    });
-
-    btn.on('click', function(e) {
-        e.preventDefault();
-        $('html, body').animate({
-            scrollTop: 0
-        }, '500');
     });
 </script>
 <?= $this->endSection() ?>

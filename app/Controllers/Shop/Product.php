@@ -55,7 +55,14 @@ class Product extends BaseController
         $product_category = $this->db->table('products')->select('categories.id')->join('product_category', 'product_category.product_id = products.id')->join('categories', 'categories.id = product_category.category_id')->where('parent_category', '')->limit(1)->where('product_slug', $slug)->get()->getResult();
 
         $last_category_id = $this->db->table('categories')->where('category_slug', $category)->get()->getresult();
-        $data['all_categories'] = $this->all_product_categories($product_category[0]->id, $last_category_id[0]->id);
+
+        if(empty($product_category[0]->id)){
+            $main_category = $last_category_id[0]->id;
+        }else{
+            $main_category = $product_category[0]->id;
+        }
+
+        $data['all_categories'] = $this->all_product_categories($main_category, $last_category_id[0]->id);
 
         // echo $category;
         foreach ($data['all_categories'] as $row) {

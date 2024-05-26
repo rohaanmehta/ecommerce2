@@ -107,6 +107,8 @@ $routes->group('', ['namespace' => 'App\controllers\Shop'], static function ($ro
         echo view('errors/forbidden_access');
     });
 
+    $routes->get('search/?(:any)', 'Homepage::search_view/$1');
+
     $routes->get('login', 'Login::login_view');
     $routes->get('register', 'Register::register_view');
     $routes->get('cart', 'Cart::cart_view');
@@ -116,7 +118,6 @@ $routes->group('', ['namespace' => 'App\controllers\Shop'], static function ($ro
     $routes->get('logout', 'Login::logout');
     $routes->post('login-user', 'Login::login_user');
     $routes->get('(:any)/(:any)', 'Product::product_page_view/$1/$2');
-
 
     //static pages
     $routes->get('projects', 'Page::project');

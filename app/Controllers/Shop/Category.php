@@ -9,7 +9,7 @@ class Category extends BaseController
     public function category_shop_page($slug)
     {
         $pager = service('pager');
-        $perPage = '25';
+        $perPage = 25;
         $page = (@$_GET['page']) ? $_GET['page'] : 1;
         $offset = ($page-1) * $perPage;
 
@@ -25,7 +25,7 @@ class Category extends BaseController
         array_push($all_categories, $categoryid[0]->id);
 
         //category banners
-        $category_banners = $this->db->table('category_banner')->select('image')->orderBy('order','asc')->where('category_id', $categoryid[0]->id)->get()->getresult();
+        $category_banners = $this->db->table('category_banner')->select('image,mobile_image')->orderBy('order','asc')->where('category_id', $categoryid[0]->id)->get()->getresult();
 
         $data['category_banners'] = $category_banners;
 
@@ -70,7 +70,7 @@ class Category extends BaseController
         $data['categoriesinfo'] = $this->db->table('categories')->select('category_name,category_desc_bottom,category_desc_top,category_slug')->where('category_slug', $slug)->get()->getresult();
         $data['links'] = $pager->makeLinks($page,$perPage,$total);
         
-        $data['category_settings'] = $this->db->table('general_settings')->where('name', 'scrolltotop')->get()->getResult();
+        // $data['category_settings'] = $this->db->table('general_settings')->where('name', 'scrolltotop')->get()->getResult();
 
         // echo '<pre>';
         // print_r($data);

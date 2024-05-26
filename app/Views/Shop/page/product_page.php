@@ -314,7 +314,7 @@
 </style>
 <div class='invisible mobile_Head_Hide'>gap fill</div>
 
-<div class='pl-5'>
+<div class='pl-md-4 pr-md-4'>
     <div class='row m-0 p-0'>
         <div class='mobile_Head_Hide breadcrum'>
             <a href='<?= base_url(); ?>'> Home</a>
@@ -347,10 +347,10 @@
             } ?>
         </div>
     </div> -->
-        <div class='col-12 col-md-7 p-0'>
+        <div class='col-12 col-md-7 p-0 mobile_Head_Hide'>
             <div class='row p-0 m-0'>
                 <?php if (isset($product[0]->image_name1) && !empty($product[0]->image_name1) && is_file(ROOTPATH . 'uploads/product_images/' . $product[0]->image_name1)) { ?>
-                    <div class='col-6 pr-0'>
+                    <div class='col-6 pr-0 pl-0'>
                         <img class='product_image round' alt='<?= $product[0]->title ?>' src='<?= base_url('uploads/product_images/' . $product[0]->image_name1); ?>' />
                     </div>
                 <?php } ?>
@@ -360,7 +360,7 @@
                     </div>
                 <?php } ?>
                 <?php if (isset($product[0]->image_name3) && !empty($product[0]->image_name3) && is_file(ROOTPATH . 'uploads/product_images/' . $product[0]->image_name3)) { ?>
-                    <div class='col-6 pr-0 pt-3'>
+                    <div class='col-6 pr-0 pl-0 pt-3'>
                         <img class='product_image round' alt='<?= $product[0]->title ?>' src='<?= base_url('uploads/product_images/' . $product[0]->image_name3); ?>' />
                     </div>
                 <?php } ?>
@@ -377,8 +377,17 @@
                     </div> -->
             </div>
         </div>
+        <div class='col-12 col-md-7 p-0 mobile_Head_Show'>
+            <div class='row p-4 m-0'>
+                <?php if (isset($product[0]->image_name1) && !empty($product[0]->image_name1) && is_file(ROOTPATH . 'uploads/product_images/' . $product[0]->image_name1)) { ?>
+                    <div class='col-12 p-0'>
+                        <img class='product_image round' alt='<?= $product[0]->title ?>' src='<?= base_url('uploads/product_images/' . $product[0]->image_name1); ?>' />
+                    </div>
+                <?php } ?>
+            </div>
+        </div>
 
-        <div class='col-12 col-md-5 pl-5'>
+        <div class='col-12 col-md-5 pl-4'>
             <div class='product_heading'>
                 <?= $product[0]->title; ?>
             </div>
@@ -493,20 +502,29 @@
                             <i class="fa-solid fa-ta[e"></i>
                         </button>
                     <?php } ?>
-                    <button class='mt-3 btn rounded addtowishlist' data-target="" id='<?= $product[0]->id; ?>'>
-                        <?php if ($wishlist == 1) { ?>
+
+                    <?php $session = session();
+                    if ($session->get('userid') != '') { ?>
+                        <button class='mt-3 btn rounded addtowishlist' data-target="" id='<?= $product[0]->id; ?>'>
+                            <?php if ($wishlist == 1) { ?>
+                                <i style='font-size:17px' class='fa fa-heart'></i>
+                            <?php } else { ?>
+                                <i style='font-size:17px' class='fa fa-heart-o'></i>
+                            <?php } ?>
+                        </button>
+                    <?php } else { ?>
+                        <button class='mt-3 btn rounded addtowishlist' data-target="#loginexampleModal" data-toggle="modal">
                             <i style='font-size:17px' class='fa fa-heart'></i>
-                        <?php } else { ?>
-                            <i style='font-size:17px' class='fa fa-heart-o'></i>
-                        <?php } ?>
-                    </button>
+                        </button>
+                    <?php } ?>
                 </div>
             <?php } else { ?>
                 <button class='mt-5 btn btn-lg rounded text-white' data-toggle="modal" data-target="#exampleModal" style='background:#000;min-width:220px'>Enquiry
                     <i class="fa-solid fa-ta[e"></i>
                 </button>
             <?php } ?>
-            <div class='col-12 pl-0 d-flex mt-3 mb-3' style='align-items:center'>
+
+            <div class='col-12 pl-0 d-flex mt-3 mb-3 mobile_Head_Hide' style='align-items:center'>
                 <p class='m-0 mr-2'>Share</p>
                 <a href='https://web.whatsapp.com/send?text=<?= current_url(); ?>' target="_blank" class='text-decoration-none text-secondary'><i class='share-icons fa fa-whatsapp'></i></a>
                 <a href="https://www.facebook.com/sharer/sharer.php?u=https://google.com" target="popup" onclick="window.open('https\:\/\/www.facebook.com/sharer/sharer.php?u=https:\/\/google.com','name','width=600,height=400')" class='text-decoration-none text-secondary'><i class='share-icons fa fa-facebook-square'></i></a>
@@ -514,6 +532,9 @@
                 <a href='https://www.instagram.com/TheSouledStore/' target="_blank" class='text-decoration-none text-secondary'><i class='share-icons fa fa-instagram'></i></a>
             </div>
 
+            <div class='col-12 pl-0 d-flex mt-3 mb-3 mobile_Head_Show' style='align-items:center'>
+                <p class='m-0 mr-2' style='cursor:pointer;' id="share">Share <i style='font-size:16px;' class='h6 pl-1 share-icons fa fa-share-alt'></i></p>
+            </div>
             <div class="accordion mt-3" id="accordionExample">
                 <div class="card" style='border-radius:0px !important'>
                     <div class="card-head" id="headingOne">
@@ -995,6 +1016,25 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
+        //share button mobile 
+        const share = e => {
+            if (navigator.share) {
+                navigator
+                    .share({
+                        title: "Share my blog",
+                        text: "Web development tutorial blogs",
+                        url: "<?= base_url();?>"
+                    })
+                    .then(() => console.log("thanks for share"))
+                    .catch(error => console.log("error", error));
+            }
+        };
+        if (!navigator.share) {
+            document.getElementById('tip').className = 'show'
+        }
+        document.getElementById("share").addEventListener("click", share);
+        //end
+
 
         <?php if (isset($productbanner1) && !empty(($productbanner1) && $productbanner1[0]->value_3 == 'YES')) { ?>
             $('.section1-slider').slick({

@@ -15,7 +15,7 @@ class Category extends BaseController
 
     public function category_banner_view()
     {
-        $data['category'] = $this->db->table('category_banner')->select('category_banner.image,category_banner.order,category_banner.id,c.category_name')->join('categories as c', 'c.id = category_banner.category_id')->get()->getResult();
+        $data['category'] = $this->db->table('category_banner')->select('mobile_image,category_banner.image,category_banner.order,category_banner.id,c.category_name')->join('categories as c', 'c.id = category_banner.category_id')->get()->getResult();
         $data['all_categories'] = $this->db->table('categories')->get()->getResult();
 
         return view('Admin/Views/Category/category_banner_view', $data);
@@ -32,13 +32,25 @@ class Category extends BaseController
         $img1 = $this->request->getFile('image');
         $img1name = '1' . date('dmyHis') . '.png';
 
+        
+        $img2 = $this->request->getFile('mobile-image');
+        $img2name = '2' . date('dmyHis') . '.png';
+
         if ($_POST['id'] == '') {
             if (isset($_FILES['image']['name']) && !empty($_FILES['image']['name'])) {
                 $img1->move(ROOTPATH . 'uploads/category_banners/', $img1name);
-                $fileName = $this->image_upload($img1name, IMAGETYPE_WEBP, 'uploads/category_banners/');
+                $fileName = $this->image_upload($img1name, IMAGETYPE_WEBP, 'uploads/category_banners/','1366x350');
 
                 $array['image'] = $fileName;
             }
+
+            if (isset($_FILES['mobile-image']['name']) && !empty($_FILES['mobile-image']['name'])) {
+                $img2->move(ROOTPATH . 'uploads/category_banners/', $img2name);
+                $fileName2 = $this->image_upload($img2name, IMAGETYPE_WEBP, 'uploads/category_banners/','768x600');
+
+                $array['mobile_image'] = $fileName2;
+            }
+
             if ($this->db->table('category_banner')->insert($array)) {
                 $data['status'] = 200;
             } else {
@@ -50,11 +62,20 @@ class Category extends BaseController
             if (isset($category_info[0]) && !empty($category_info[0])) {
                 if (isset($_FILES['image']['name']) && !empty($_FILES['image']['name'])) {
                     $img1->move(ROOTPATH . 'uploads/category_banners/', $img1name);
-                    $fileName = $this->image_upload($img1name, IMAGETYPE_WEBP, 'uploads/category_banners/');
+                    $fileName = $this->image_upload($img1name, IMAGETYPE_WEBP, 'uploads/category_banners/','1366x350');
                     $array['image'] = $fileName;
 
                     if (is_file(ROOTPATH . 'uploads/category_banners/' . $category_info[0]->image)) {
                         unlink(ROOTPATH . 'uploads/category_banners/' . $category_info[0]->image);
+                    }
+                }
+                if (isset($_FILES['mobile-image']['name']) && !empty($_FILES['mobile-image']['name'])) {
+                    $img2->move(ROOTPATH . 'uploads/category_banners/', $img2name);
+                    $fileName2 = $this->image_upload($img2name, IMAGETYPE_WEBP, 'uploads/category_banners/','768x600');
+                    $array['mobile_image'] = $fileName2;
+
+                    if (is_file(ROOTPATH . 'uploads/category_banners/' . $category_info[0]->mobile_image)) {
+                        unlink(ROOTPATH . 'uploads/category_banners/' . $category_info[0]->mobile_image);
                     }
                 }
             }
@@ -131,7 +152,11 @@ class Category extends BaseController
             if (is_file(ROOTPATH . 'uploads/category_banners/' . $category_info[0]->image)) {
                 unlink(ROOTPATH . 'uploads/category_banners/' . $category_info[0]->image);
             }
+            if (is_file(ROOTPATH . 'uploads/category_banners/' . $category_info[0]->mobile_image)) {
+                unlink(ROOTPATH . 'uploads/category_banners/' . $category_info[0]->mobile_image);
+            }
         }
+
         $this->db->table('category_banner')->where('id', $id)->delete();
         return redirect()->to(base_url('Admin/category-banner'));
     }

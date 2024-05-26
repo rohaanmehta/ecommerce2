@@ -135,7 +135,7 @@
 
           if (data.error == false && data.loggedin == true) {
             setTimeout(function() {
-              window.location.href = '<?= base_url(); ?>';
+              window.location.reload();
             }, 500);
           }
         }

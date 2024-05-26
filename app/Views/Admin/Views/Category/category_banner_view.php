@@ -33,6 +33,7 @@
                     <td>ID</td>
                     <td>Category Name</td>
                     <td>Image</td>
+                    <td>Mobile Image</td>
                     <td>Image Order</td>
                     <td>Action</td>
                 </tr>
@@ -43,6 +44,7 @@
                             <td><?= $row->id; ?></td>
                             <td><?= $row->category_name; ?></td>
                             <td><img width='80px' src='<?= base_url('uploads/category_banners/' . $row->image); ?>' /></td>
+                            <td><img width='80px' src='<?= base_url('uploads/category_banners/' . $row->mobile_image); ?>' /></td>
                             <td><?= $row->order; ?></td>
                             <td>
                                 <a href='' id='<?= $row->id ?>' class='edit_category_banner'><button type='button' class='btn btn-info'>Edit</button></a>
@@ -85,6 +87,11 @@
                         <span class='form-label'>Image</span>
                         <input type='file' class='form-control' name='image' placeholder='Select Image' />
                         <img class='image-prev' src='' width='150px' />
+                    </div>
+                    <div class='mb-2'>
+                        <span class='form-label'>Mobile Image</span>
+                        <input type='file' class='form-control' name='mobile-image' placeholder='Select Image' />
+                        <img class='mobile-image-prev' src='' width='150px' />
                     </div>
                     <div class='mb-2'>
                         <span class='form-label'>Order</span>
@@ -146,6 +153,7 @@
                     $('.edit-category-btn').trigger('click');
                     $('.image-prev').css('display', 'block');
                     $('.image-prev').attr('src', '<?= base_url('uploads/category_banners/'); ?>' + data.data[0]['image']);
+                    $('.mobile-image-prev').attr('src', '<?= base_url('uploads/category_banners/'); ?>' + data.data[0]['mobile_image']);
                     // console.log(data);
                     $('.category').val(data.data[0]['category_id']);
                     $('.order').val(data.data[0]['order']);
