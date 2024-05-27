@@ -333,6 +333,36 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-star"></i>
+                        <p>
+                            Reviews
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= base_url('Admin/pending-reviews-list') ?>" class="nav-link d-flex align-items-center">
+                                <i class="nav-icon fa fa-circle"></i>
+
+                                <p>Pending Reviews</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('Admin/reviews-list') ?>" class="nav-link d-flex align-items-center">
+                                <i class="nav-icon fa fa-circle"></i>
+                                <p>Reviews List</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('Admin/deleted-list') ?>" class="nav-link d-flex align-items-center">
+                                <i class="nav-icon fa fa-circle"></i>
+                                <p>Deleted List</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-bell"></i>
                         <p>
                             Sale

@@ -89,8 +89,16 @@ $routes->group('', ['namespace' => 'App\controllers\Admin', "filter" => "Auth"],
     $routes->post('add_user_data', 'Users::add_user_data');
     $routes->get('Admin/users-list', 'Users::users_list');
 
-
-
+    $routes->get('Admin/pending-reviews-list', 'Reviews::pending_reviews_list');
+    $routes->get('Admin/reviews-list', 'Reviews::reviews_list');
+    $routes->get('Admin/deleted-list', 'Reviews::deleted_list');
+    $routes->get('Admin/delete-review/?(:any)', 'Reviews::delete_review/$1');
+    $routes->get('Admin/delete-review2/?(:any)', 'Reviews::delete_review2/$1');
+    $routes->get('Admin/accept-review/?(:any)', 'Reviews::accept_review/$1');
+    $routes->get('Admin/decline-review/?(:any)', 'Reviews::decline_review/$1');
+    $routes->get('Admin/undelete-accept-review/?(:any)', 'Reviews::undelete_accept_review/$1');
+    $routes->get('Admin/undelete-decline-review/?(:any)', 'Reviews::undelete_decline_review/$1');
+    
 
 
 
