@@ -31,12 +31,12 @@ class Product extends BaseController
         //check wishlisted
         if (!empty($this->session->get('userid')) && $this->session->get('userid') != '') {
             $check_wishlist =  $this->db->table('wishlist')->where('product_id', $data['product'][0]->id)->countAllResults();
-            if($check_wishlist > 0){
+            if ($check_wishlist > 0) {
                 $data['wishlist'] = 1;
-            }else{
+            } else {
                 $data['wishlist'] = 0;
             }
-        }else{
+        } else {
             $data['wishlist'] = 0;
         }
 
@@ -56,9 +56,9 @@ class Product extends BaseController
 
         $last_category_id = $this->db->table('categories')->where('category_slug', $category)->get()->getresult();
 
-        if(empty($product_category[0]->id)){
+        if (empty($product_category[0]->id)) {
             $main_category = $last_category_id[0]->id;
-        }else{
+        } else {
             $main_category = $product_category[0]->id;
         }
 
@@ -94,9 +94,9 @@ class Product extends BaseController
         $data['section2'] = $section2->get()->getResult();
 
         //reviews 
-        $data['reviews'] =  $this->db->table('reviews')->where('status','1')->where('product_id',$data['product'][0]->id)->limit(10)->get()->getResult();
-        $data['reviews_total'] =  $this->db->table('reviews')->where('status','1')->where('product_id',$data['product'][0]->id)->countAllResults();
-        
+        $data['reviews'] =  $this->db->table('reviews')->where('status', '1')->where('product_id', $data['product'][0]->id)->limit(10)->get()->getResult();
+        $data['reviews_total'] =  $this->db->table('reviews')->where('status', '1')->where('product_id', $data['product'][0]->id)->countAllResults();
+
 
         // echo '<pre>';print_r($product_pair_category);exit;
 
@@ -181,5 +181,15 @@ class Product extends BaseController
 
         header('Content-Type: application/json');
         echo json_encode($resp);
+    }
+
+    public function product_review($slug)
+    {
+        $data['product'] =  $this->db->table('products')->join('product_images as pi', 'pi.product_id = products.id')->where('product_slug', $slug)->get()->getResult();
+        $data['reviews'] =  $this->db->table('reviews')->where('status', '1')->where('product_id', $data['product'][0]->id)->get()->getResult();
+        $data['reviews_total'] =  $this->db->table('reviews')->where('status', '1')->where('product_id', $data['product'][0]->id)->countAllResults();
+        $data['reviews_average'] =  $this->db->table('reviews')->select('AVG(stars) as average_review')->where('status', '1')->where('product_id', $data['product'][0]->id)->get()->getResult();
+
+        return view('Shop/page/product_review', $data);
     }
 }

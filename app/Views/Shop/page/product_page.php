@@ -602,7 +602,7 @@
                                 }
                                 if ($reviews_total > 10) { ?>
                                     <div class='d-flex justify-content-center mt-3'>
-                                        <a class='text-dark' style='text-decoration:none;font-weight:bold' href='<?= base_url(); ?>'> View all reviews</a>
+                                        <a class='text-dark' style='text-decoration:none;font-weight:bold' href='<?= base_url('review/'.$product[0]->product_slug); ?>'> View all reviews</a>
                                     </div>
                             <?php }
                             } ?>

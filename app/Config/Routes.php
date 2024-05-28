@@ -125,6 +125,7 @@ $routes->group('', ['namespace' => 'App\controllers\Shop'], static function ($ro
     $routes->post('add_register_data', 'Login::add_register_data');
     $routes->get('logout', 'Login::logout');
     $routes->post('login-user', 'Login::login_user');
+    $routes->get('review/(:any)', 'Product::product_review/$1');
     $routes->get('(:any)/(:any)', 'Product::product_page_view/$1/$2');
 
     //static pages
