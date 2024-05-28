@@ -31,20 +31,15 @@ $categories = get_categories_header();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <script type="text/javascript" src="<?= base_url('assets/js/fontawesome.js'); ?>"></script>
-    <script type="text/javascript" src="<?= base_url('assets/js/jquery.min.js'); ?>"></script>
-    <script type="text/javascript" src="<?= base_url('assets/js/bootsrap.min.js'); ?>"></script>
-    <script type="text/javascript" src="<?= base_url('assets/js/popper.min.js'); ?>"></script>
-    <script type="text/javascript" src="<?= base_url('assets/js/slick.min.js'); ?>"></script>
+   
+    <link media="all" rel="stylesheet" href="<?= base_url('assets/css/mobile_nav.scss'); ?>" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="<?= base_url('assets/css/mobile_nav.scss'); ?>" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="<?= base_url('assets/css/googlefont.css'); ?>" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="<//?= base_url('assets/css/fontawesome.css'); ?>"> -->
-    <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.min.css'); ?>" crossorigin="anonymous">
-    <link rel="stylesheet" href="<?= base_url('assets/css/lato.css'); ?>" crossorigin="anonymous">
-    <link rel="stylesheet" href="<?= base_url('assets/css/slick.css'); ?>" crossorigin="anonymous">
-    <link rel="stylesheet" href="<?= base_url('assets/css/mystyle.css'); ?>">
+    <link media="all" rel="stylesheet" href="<?= base_url('assets/css/googlefont.css'); ?>" crossorigin="anonymous">
+    <!-- <link media="all" rel="stylesheet" href="<//?= base_url('assets/css/fontawesome.css'); ?>"> -->
+    <link media="all" rel="stylesheet" href="<?= base_url('assets/css/bootstrap.min.css'); ?>" crossorigin="anonymous">
+    <link media="all" rel="stylesheet" href="<?= base_url('assets/css/lato.css'); ?>" crossorigin="anonymous">
+    <link media="all" rel="stylesheet" href="<?= base_url('assets/css/slick.css'); ?>" crossorigin="anonymous">
+    <link media="all" rel="stylesheet" href="<?= base_url('assets/css/mystyle.css'); ?>">
 
     <!-- used  -->
     <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -54,8 +49,8 @@ $categories = get_categories_header();
     <!-- <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> -->
 
 
-    <!-- <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,700&subset=latin-ext" rel="stylesheet"> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,700&subset=latin-ext" media="all" rel="stylesheet"> -->
+    <link media="all" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
     <!-- <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet"> -->
     <!-- <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" /> -->
@@ -290,6 +285,11 @@ $categories = get_categories_header();
     </button> -->
 
     <?php include('login.php'); ?>
+    <script type="text/javascript" src="<?= base_url('assets/js/jquery.min.js'); ?>"></script>
+    <script async defer type="text/javascript" src="<?= base_url('assets/js/fontawesome.js'); ?>"></script>
+    <script async defer type="text/javascript" src="<?= base_url('assets/js/bootsrap.min.js'); ?>"></script>
+    <script async defer type="text/javascript" src="<?= base_url('assets/js/popper.min.js'); ?>"></script>
+    <script async defer type="text/javascript" src="<?= base_url('assets/js/slick.min.js'); ?>"></script>
 
     <script>
         //top bar 
