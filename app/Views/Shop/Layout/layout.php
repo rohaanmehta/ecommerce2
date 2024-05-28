@@ -31,7 +31,7 @@ $categories = get_categories_header();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-   
+
     <link media="all" rel="stylesheet" href="<?= base_url('assets/css/mobile_nav.scss'); ?>" crossorigin="anonymous">
 
     <link media="all" rel="stylesheet" href="<?= base_url('assets/css/googlefont.css'); ?>" crossorigin="anonymous">
@@ -285,11 +285,13 @@ $categories = get_categories_header();
     </button> -->
 
     <?php include('login.php'); ?>
-    <script type="text/javascript" src="<?= base_url('assets/js/jquery.min.js'); ?>"></script>
+
+    <script async defer type="text/javascript" src="<?= base_url('assets/js/jquery.min.js'); ?>"></script>
+    <script async defer type="text/javascript" src="<?= base_url('assets/js/slick.min.js'); ?>"></script>
+
     <script async defer type="text/javascript" src="<?= base_url('assets/js/fontawesome.js'); ?>"></script>
     <script async defer type="text/javascript" src="<?= base_url('assets/js/bootsrap.min.js'); ?>"></script>
     <script async defer type="text/javascript" src="<?= base_url('assets/js/popper.min.js'); ?>"></script>
-    <script async defer type="text/javascript" src="<?= base_url('assets/js/slick.min.js'); ?>"></script>
 
     <script>
         //top bar 
