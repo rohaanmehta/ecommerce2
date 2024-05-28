@@ -93,8 +93,12 @@ class Product extends BaseController
 
         $data['section2'] = $section2->get()->getResult();
 
-        // echo '<pre>';print_r($product_pair_category);exit;
+        //reviews 
+        $data['reviews'] =  $this->db->table('reviews')->where('status','1')->where('product_id',$data['product'][0]->id)->limit(10)->get()->getResult();
+        $data['reviews_total'] =  $this->db->table('reviews')->where('status','1')->where('product_id',$data['product'][0]->id)->countAllResults();
+        
 
+        // echo '<pre>';print_r($product_pair_category);exit;
 
         return view('Shop/page/product_page', $data);
     }

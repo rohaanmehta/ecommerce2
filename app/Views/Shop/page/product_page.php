@@ -564,12 +564,48 @@
                 <div class="card">
                     <div class="card-head" id="heading3">
                         <p class="mb-0 accordion-title collapsed" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
-                            Reviews
+                            Customer Reviews (<?php if (isset($reviews) && !empty($reviews)) {
+                                                    echo sizeof($reviews);
+                                                } else {
+                                                    echo '0';
+                                                } ?>)
                         </p>
                     </div>
                     <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordionExample">
                         <div class="card-body accordion-desc">
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            <?php if (isset($reviews) && !empty($reviews)) {
+                                $i = 0;
+                                foreach ($reviews as $row) { ?>
+                                    <?php if ($i != 0) {
+                                        echo '<hr>';
+                                    } ?>
+                                    <div class=''>
+                                        <div class='d-flex' style='flex-wrap:nowrap'>
+                                            <div>
+                                                <span class="badge badge-secondary" style='padding:4px;margin-top:5px;'><?= $row->stars; ?> <i class='fa fa-star'></i></span>
+                                            </div>
+                                            <div class='pl-2'>
+                                                <div class=''>
+                                                    <?= $row->review; ?>
+                                                </div>
+                                                <div class='mt-2' style='color:#7e7e7e;font-size:13px;'>
+                                                    <?php if (isset($row->first_name) && $row->first_name != '') { ?>
+                                                        <?= $row->first_name; ?>
+                                                    <?php } else {
+                                                        echo 'Anonymous';
+                                                    } ?> | <?= date('d M Y', strtotime($row->created_at)); ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php $i++;
+                                }
+                                if ($reviews_total > 10) { ?>
+                                    <div class='d-flex justify-content-center mt-3'>
+                                        <a class='text-dark' style='text-decoration:none;font-weight:bold' href='<?= base_url(); ?>'> View all reviews</a>
+                                    </div>
+                            <?php }
+                            } ?>
                         </div>
                     </div>
                 </div>
@@ -1035,7 +1071,7 @@
                     .share({
                         title: "Share my blog",
                         text: "Web development tutorial blogs",
-                        url: "<?= base_url();?>"
+                        url: "<?= base_url(); ?>"
                     })
                     .then(() => console.log("thanks for share"))
                     .catch(error => console.log("error", error));
