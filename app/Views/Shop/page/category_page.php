@@ -114,6 +114,8 @@
         </span>
     </div>
 </div>
+<?= $this->endSection('content') ?>
+
 <?= $this->section('scripts') ?>
 
 <script>
@@ -126,4 +128,3 @@
 </script>
 <?= $this->endSection('scripts') ?>
 
-<?= $this->endSection('content') ?>

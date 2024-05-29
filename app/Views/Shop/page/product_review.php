@@ -46,5 +46,10 @@
     </div>
 </div>
 </div>
+<?= $this->endSection('content') ?>
 
-<?= $this->endSection() ?>
+<?= $this->section('scripts') ?>
+
+<script type="text/javascript">
+</script>
+<?= $this->endSection('scripts') ?>

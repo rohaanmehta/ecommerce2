@@ -87,6 +87,8 @@
         <a href='<//?= base_url()?>' class='mt-4' style='font-size:18px;color:#000;text-decoration:none'>Continue shopping <i class='fa fa-angle-right' style='font-size:15px;color:#000;'></i></a>
     </div> -->
 </div>
+<?= $this->endSection('content') ?>
+
 <?= $this->section('scripts') ?>
 
 <script>
@@ -125,4 +127,3 @@
 </script>
 <?= $this->endSection('scripts') ?>
 
-<?= $this->endSection('content') ?>

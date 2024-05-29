@@ -1061,6 +1061,7 @@
     </div> -->
 <!-- <div class='text-center gap mobile_Head_Show' style='justify-content: center;'><button class='btn rounded-0' style='background:#000;color:#fff;'>View All</button></div> -->
 </div>
+<?= $this->endSection('content') ?>
 
 <?= $this->section('scripts') ?>
 
@@ -1288,5 +1289,3 @@
 </script>
 
 <?= $this->endSection('scripts') ?>
-
-<?= $this->endSection('content') ?>
