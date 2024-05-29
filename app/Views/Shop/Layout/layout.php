@@ -292,8 +292,10 @@ $categories = get_categories_header();
     <script async defer type="text/javascript" src="<?= base_url('assets/js/fontawesome.js'); ?>"></script>
     <script async defer type="text/javascript" src="<?= base_url('assets/js/bootsrap.min.js'); ?>"></script>
     <script async defer type="text/javascript" src="<?= base_url('assets/js/popper.min.js'); ?>"></script>
-
+    <?= $this->renderSection('scripts') ?>
+    
     <script>
+        
         //top bar 
         // window.onscroll = function() {
         //     myFunction()
@@ -316,6 +318,45 @@ $categories = get_categories_header();
         });
 
         $(document).ready(function() {
+            $('.login-form').submit(function(e) {
+                e.preventDefault();
+                $('.login_Input_submit').attr('disabled', true);
+                $.ajax({
+                    type: "POST",
+                    url: "<?= base_url('login-user') ?>",
+                    data: new FormData(this),
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    dataType: "json",
+                    success: function(data) {
+                        $('#loginmsg').css('display', 'none');
+                        $('.login_Input_submit').attr('disabled', false);
+
+                        if (data.error == true) {
+                            $.each(data, function(key, value) {
+                                if (value) {
+                                    $("#" + key).addClass("border-danger");
+                                } else {
+                                    $("#" + key).removeClass("border-danger");
+                                }
+                            });
+                            return false;
+                        }
+                        if (data.loggedin == false) {
+                            $('#loginmsg').css('display', 'block');
+                            return false;
+                        }
+
+                        if (data.error == false && data.loggedin == true) {
+                            setTimeout(function() {
+                                window.location.reload();
+                            }, 500);
+                        }
+                    }
+                });
+            });
+
             // setTimeout(function() {
             if ($(window).width() > 768) {
                 $('.single-product-slider').css('display', 'block');

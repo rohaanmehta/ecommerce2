@@ -324,8 +324,12 @@
         ?> -->
 
 
+<?= $this->endSection('content') ?>
+
+<?= $this->section('scripts') ?>
 
 <script type="text/javascript">
+    
     $(document).ready(function() {
         // setTimeout(function() {
         load_sliders();
@@ -412,4 +416,5 @@
     }
 </script>
 
-<?= $this->endSection() ?>
+<?= $this->endSection('scripts') ?>
+

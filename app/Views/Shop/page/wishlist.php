@@ -3,12 +3,12 @@
 
 <head>
     <!-- 360 degrees -->
-    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <!-- <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css"> -->
 
     <!-- <link href="/3602/main.css" rel="stylesheet" type="text/css"> -->
     <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" type="text/css"> -->
     <!-- <script src="<//?= base_url('public/dist/js/main.js') ?>"></script> -->
-    <script src="<?= base_url('public/dist/js/j360.js') ?>"></script>
+    <!-- <script src="<//?= base_url('public/dist/js/j360.js') ?>"></script> -->
 </head>
 <style>
 

@@ -60,6 +60,8 @@
     </div>
   </form>
 </div>
+<?= $this->section('scripts') ?>
+
 <script>
   $(document).ready(function() {
     $('.register-form').submit(function(e) {
@@ -111,4 +113,6 @@
     });
   });
 </script>
-<?= $this->endSection() ?>
+<?= $this->endSection('scripts') ?>
+
+<?= $this->endSection('content') ?>

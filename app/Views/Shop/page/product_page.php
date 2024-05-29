@@ -602,7 +602,7 @@
                                 }
                                 if ($reviews_total > 10) { ?>
                                     <div class='d-flex justify-content-center mt-3'>
-                                        <a class='text-dark' style='text-decoration:none;font-weight:bold' href='<?= base_url('review/'.$product[0]->product_slug); ?>'> View all reviews</a>
+                                        <a class='text-dark' style='text-decoration:none;font-weight:bold' href='<?= base_url('review/' . $product[0]->product_slug); ?>'> View all reviews</a>
                                     </div>
                             <?php }
                             } ?>
@@ -1062,6 +1062,8 @@
 <!-- <div class='text-center gap mobile_Head_Show' style='justify-content: center;'><button class='btn rounded-0' style='background:#000;color:#fff;'>View All</button></div> -->
 </div>
 
+<?= $this->section('scripts') ?>
+
 <script type="text/javascript">
     $(document).ready(function() {
         //share button mobile 
@@ -1285,4 +1287,6 @@
     });
 </script>
 
-<?= $this->endSection() ?>
+<?= $this->endSection('scripts') ?>
+
+<?= $this->endSection('content') ?>

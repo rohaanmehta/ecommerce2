@@ -105,10 +105,10 @@
           </div>
         </div>
       </div>
-        <div class='col-3 p-3' style='background:#f3f3f3;height:70px;'>
-          <div class='col-12 p-0 text-center'>
-            <button class='btn btn-primary bg-dark'>Proceed to Payment</button>
-          </div>
+      <div class='col-3 p-3' style='background:#f3f3f3;height:70px;'>
+        <div class='col-12 p-0 text-center'>
+          <button class='btn btn-primary bg-dark'>Proceed to Payment</button>
+        </div>
       </div>
     </div>
     <!-- <div class='row mt-4 mb-4'>
@@ -163,6 +163,8 @@
     </div>
   </div>
 </div>
+<?= $this->section('scripts') ?>
+
 <script>
   $(document).ready(function() {
     $('.checkout').submit(function(e) {
@@ -172,4 +174,6 @@
     });
   });
 </script>
-<?= $this->endSection() ?>
+<?= $this->endSection('scripts') ?>
+
+<?= $this->endSection('content') ?>

@@ -79,6 +79,7 @@
     </div>
 <?php } ?>
 </div>
+
 <script>
     $(document).ready(function() {
         $('.search-input').keyup(function() {
