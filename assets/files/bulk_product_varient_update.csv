@@ -1,0 +1,5 @@
+product_id,option_name,option_value,option_price,option_stock,order
+2,Size,S,100,5,1
+2,Size,M,,5,2
+2,Size,L,,5,3
+2,Size,XL,,5,4
