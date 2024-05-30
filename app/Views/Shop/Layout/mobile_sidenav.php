@@ -33,7 +33,7 @@
     } */
 
     :root {
-        --nav-width: 15rem;
+        --nav-width: 18rem;
         --gutter: 1rem;
     }
 
@@ -54,7 +54,7 @@
     }
 
     #side-nav-img {
-        width: 240px;
+        width: 18rem;
     }
 
     #side-nav {
@@ -178,7 +178,7 @@
     }
 
     #side-nav ul.side-nav-sub-menu.active {
-        max-height: 25rem;
+        max-height: 18rem;
         transition: max-height ease 0.5s;
         -webkit-transition: max-height ease 0.5s;
     }
@@ -352,7 +352,7 @@
     const nav = document.getElementById('side-nav');
     const showNavBtn = document.getElementById('show-nav');
     const container = document.getElementById('container');
-    const navWidth = 15; // rems
+    const navWidth = 25; // rems
     const navGutter = 1;
 
     nav.addEventListener('click', (event) => {

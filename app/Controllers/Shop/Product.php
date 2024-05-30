@@ -183,13 +183,28 @@ class Product extends BaseController
         echo json_encode($resp);
     }
 
-    public function product_review($slug)
+    public function product_review($category,$slug)
     {
-        $data['product'] =  $this->db->table('products')->join('product_images as pi', 'pi.product_id = products.id')->where('product_slug', $slug)->get()->getResult();
-        $data['reviews'] =  $this->db->table('reviews')->where('status', '1')->where('product_id', $data['product'][0]->id)->get()->getResult();
+        $data['product'] =  $this->db->table('products')->select('products.id,product_slug,pi.image_name1,title,price')->join('product_images as pi', 'pi.product_id = products.id')->where('product_slug', $slug)->get()->getResult();
         $data['reviews_total'] =  $this->db->table('reviews')->where('status', '1')->where('product_id', $data['product'][0]->id)->countAllResults();
+        $data['category'] = $category;
         $data['reviews_average'] =  $this->db->table('reviews')->select('AVG(stars) as average_review')->where('status', '1')->where('product_id', $data['product'][0]->id)->get()->getResult();
 
         return view('Shop/page/product_review', $data);
     }
+    
+    public function get_product_review()
+    {
+        $id = $_POST['id'];
+        $count = $_POST['count'];
+        // print_r($_POST);
+        $offset = $count;
+        $data['reviews'] =  $this->db->table('reviews')->select('review,created_at,stars,u.first_name')->join('users as u','u.id = reviews.user_id','left')->limit('20')->offset($offset)->where('status', '1')->where('product_id', $id)->orderBy('reviews.id')->get()->getResult();
+        $data['reviews_total'] =  $this->db->table('reviews')->where('status', '1')->where('product_id', $id)->countAllResults();
+
+        $data['status'] =  200;
+        header('Content-Type: application/json');
+        echo json_encode($data);
+    }
+
 }

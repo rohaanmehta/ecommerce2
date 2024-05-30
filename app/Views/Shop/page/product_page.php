@@ -457,15 +457,15 @@
             </div>
 
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel"> SIZE CHART</h5>
+                            <p class="m-0 h6 modal-title" id="exampleModalLabel" style='font-weight:600'> Size Chart</p>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body sizechart-modal">
+                        <div class="modal-body sizechart-modal" style='overflow-x: scroll;margin-right: 17px;'>
                             <?php print_r($sizechart) ?>
                         </div>
                         <!-- <div class="modal-footer">
@@ -564,8 +564,8 @@
                 <div class="card">
                     <div class="card-head" id="heading3">
                         <p class="mb-0 accordion-title collapsed" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
-                            Customer Reviews (<?php if (isset($reviews) && !empty($reviews)) {
-                                                    echo sizeof($reviews);
+                            Customer Reviews (<?php if (isset($reviews_total) && !empty($reviews_total)) {
+                                                    echo $reviews_total;
                                                 } else {
                                                     echo '0';
                                                 } ?>)
@@ -602,10 +602,14 @@
                                 }
                                 if ($reviews_total > 10) { ?>
                                     <div class='d-flex justify-content-center mt-3'>
-                                        <a class='text-dark' style='text-decoration:none;font-weight:bold' href='<?= base_url('review/' . $product[0]->product_slug); ?>'> View all reviews</a>
+                                        <a class='text-dark' style='text-decoration:none;font-weight:bold' href='<?= base_url('review/' . $category_slug . '/' . $product[0]->product_slug); ?>'> View all reviews</a>
                                     </div>
-                            <?php }
-                            } ?>
+                                <?php }
+                            } else { ?>
+                                <div class='d-flex justify-content-center'>
+                                    <a class='text-dark' style='text-decoration:none;font-weight:bold'> No Reviews Yet!</a>
+                                </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>

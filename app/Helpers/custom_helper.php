@@ -121,10 +121,17 @@ function set_cache($name, $key)
 
     $count = $db->table('general_settings')->select('id')->where('name', $name)->countAllResults();;
     if ($count > 0) {
-        $db->table('general_settings')->set($array)->where('name',$name)->update();
+        $db->table('general_settings')->set($array)->where('name', $name)->update();
     } else {
         $db->table('general_settings')->insert($array);
     }
 
     return 1;
+}
+
+
+function create_slug($data)
+{
+    $data = str_replace([' ', ',', '/', '.', '(', ')', '_', '`', '!', '@',], '-', $data);
+    return $data;
 }

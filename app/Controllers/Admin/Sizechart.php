@@ -15,11 +15,12 @@ class Sizechart extends BaseController
     public function add_sizechart()
     {
         // echo '<pre>';print_r($_POST);exit;
-
         $array = array(
             'category_id' => $_POST['id'],
             'sizechart' => $_POST['sizechart'],
         );
+
+        $this->db->table('sizechart')->where('category_id', $_POST['id'])->delete();
 
         if ($this->db->table('sizechart')->insert($array)) {
             $data['status'] = 200;
@@ -30,6 +31,7 @@ class Sizechart extends BaseController
         header('Content-Type: application/json');
         echo json_encode($data);
     }
+
     public function get_sizechart()
     {
         if ($data['sizechart'] = $this->db->table('sizechart')->where('category_id', $_POST['id'])->get()->getResult()) {
@@ -40,6 +42,7 @@ class Sizechart extends BaseController
         header('Content-Type: application/json');
         echo json_encode($data);
     }
+
     public function delete_sizechart($id)
     {
         $this->db->table('sizechart')->where('category_id', $id)->delete();

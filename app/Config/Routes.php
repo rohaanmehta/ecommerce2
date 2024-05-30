@@ -75,6 +75,16 @@ $routes->group('', ['namespace' => 'App\controllers\Admin', "filter" => "Auth"],
     $routes->post('product_badge_delete', 'Products::product_badge_delete');
     $routes->get('product_badge_download', 'Products::product_badge_download');
 
+    
+    $routes->get('product_download', 'Products::product_download');
+    $routes->get('product_varients_download', 'Products::product_varients_download');
+    $routes->post('bulk_product_varient_delete', 'Products::bulk_product_varient_delete');
+    $routes->post('bulk_product_varient_update', 'Products::bulk_product_varient_update');
+    $routes->post('bulk_product_update_data', 'Products::bulk_product_update_data');
+    $routes->post('bulk_product_delete', 'Products::bulk_product_delete');
+
+
+
 
     $routes->get('Admin/sizechart-list', 'Sizechart::view');
     $routes->get('Admin/sizechart-list', 'Sizechart::view');
@@ -125,8 +135,10 @@ $routes->group('', ['namespace' => 'App\controllers\Shop'], static function ($ro
     $routes->post('add_register_data', 'Login::add_register_data');
     $routes->get('logout', 'Login::logout');
     $routes->post('login-user', 'Login::login_user');
-    $routes->get('review/(:any)', 'Product::product_review/$1');
+    $routes->get('review/(:any)/(:any)', 'Product::product_review/$1/$2');
     $routes->get('(:any)/(:any)', 'Product::product_page_view/$1/$2');
+    $routes->post('get_product_review', 'Product::get_product_review');
+    
 
     //static pages
     $routes->get('projects', 'Page::project');

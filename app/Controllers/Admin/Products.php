@@ -6,10 +6,53 @@ use App\Controllers\BaseController;
 
 class Products extends BaseController
 {
-    public function product_badge_download(){
+    public function product_badge_download()
+    {
         $data['data'] = $this->db->table('product_badge')->get()->getresult();
-        return view('Admin/Views/Products/bulk_product_download_data',$data);
+        return view('Admin/Views/Products/bulk_product_download_data', $data);
     }
+
+    public function product_varients_download()
+    {
+        $data['data'] = $this->db->table('product_varient')->get()->getresult();
+        return view('Admin/Views/Products/bulk_product_varient_download_data', $data);
+    }
+
+    public function product_download()
+    {
+        $data['data'] = $this->db->table('products')->get()->getresult();
+
+        if (isset($data) && !empty($data)) {
+            foreach ($data['data'] as $key => $row) {
+                $data['data'][$key]->title = str_replace(',',' ',$data['data'][$key]->title);
+                $data['data'][$key]->desc = str_replace(',',' ',$data['data'][$key]->desc);
+
+                if ($row->visibility == '1') {
+                    $data['data'][$key]->visibility = 'Y';
+                } else {
+                    $data['data'][$key]->visibility = 'N';
+                }
+
+                $category_info = $this->db->table('product_category')->select('id')->where('product_id', $row->id)->get()->getResult();
+
+                if (isset($category_info[0]) && !empty($category_info[0])) {
+                    $category = '';
+                    foreach ($category_info as $row2) {
+                        $category .= '|' . $row2->id;
+                    }
+                    $category = trim($category, '|');
+                    $data['data'][$key]->category = $category;
+                }else{
+                    $data['data'][$key]->category = '';
+                }
+                // echo $key;exit;
+                // echo'<pre>';print_r($data[$key]);
+            }
+        }
+        // echo'<pre>';print_r($data);exit;
+        return view('Admin/Views/Products/bulk_product_details_download', $data);
+    }
+
 
     public function product_badge_delete()
     {
@@ -19,9 +62,74 @@ class Products extends BaseController
         $i = 0;
         foreach ($lines as $key => $value) {
             $csv = str_getcsv($value);
-            $this->db->table('product_badge')->where('product_id',$csv[0])->delete();
+            $this->db->table('product_badge')->where('product_id', $csv[0])->delete();
         }
 
+        $data['status'] = 200;
+        header('Content-Type: application/json');
+        echo json_encode($data);
+    }
+
+    public function bulk_product_varient_delete()
+    {
+        $csv = array();
+        $lines = file($_FILES['file']['tmp_name'], FILE_IGNORE_NEW_LINES);
+
+        $i = 0;
+        foreach ($lines as $key => $value) {
+            if ($i != 0) {
+                $csv = str_getcsv($value);
+                // echo '<pre>';print_r($csv);exit;
+
+                if ($csv[0] != '') {
+                    $this->db->table('product_varient')->where('product_id', $csv[0])->where('option_name', $csv[1])->where('option_value', $csv[2])->delete();
+                }
+            }
+            $i++;
+        }
+        $data['status'] = 200;
+        header('Content-Type: application/json');
+        echo json_encode($data);
+    }
+
+    public function bulk_product_delete()
+    {
+        $csv = array();
+        $lines = file($_FILES['file']['tmp_name'], FILE_IGNORE_NEW_LINES);
+
+        $i = 0;
+        foreach ($lines as $key => $value) {
+            if ($i != 0) {
+                $csv = str_getcsv($value);
+                // echo '<pre>';print_r($csv);exit;
+
+                if ($csv[0] != '') {
+                    $productinfo = $this->db->table('product_images')->where('product_id', $csv[0])->get()->getResult();
+
+                    if (isset($productinfo[0]) && !empty($productinfo[0])) {
+                        if (is_file(ROOTPATH . 'uploads/product_images/' . $productinfo[0]->image_name1)) {
+                            unlink(ROOTPATH . 'uploads/product_images/' . $productinfo[0]->image_name1);
+                        }
+                        if (is_file(ROOTPATH . 'uploads/product_images/' . $productinfo[0]->image_name2)) {
+                            unlink(ROOTPATH . 'uploads/product_images/' . $productinfo[0]->image_name2);
+                        }
+                        if (is_file(ROOTPATH . 'uploads/product_images/' . $productinfo[0]->image_name3)) {
+                            unlink(ROOTPATH . 'uploads/product_images/' . $productinfo[0]->image_name3);
+                        }
+                        if (is_file(ROOTPATH . 'uploads/product_images/' . $productinfo[0]->image_name4)) {
+                            unlink(ROOTPATH . 'uploads/product_images/' . $productinfo[0]->image_name4);
+                        }
+                    }
+
+                    $this->db->table('product_varient')->where('product_id', $csv[0])->delete();
+                    $this->db->table('product_images')->where('product_id', $csv[0])->delete();
+                    $this->db->table('product_category')->where('product_id', $csv[0])->delete();
+                    $this->db->table('product_badge')->where('product_id', $csv[0])->delete();
+                    $this->db->table('products')->where('id', $csv[0])->delete();
+                }
+            }
+            $i++;
+        }
         $data['status'] = 200;
         header('Content-Type: application/json');
         echo json_encode($data);
@@ -61,10 +169,12 @@ class Products extends BaseController
     {
         return view('Admin/Views/Products/bulk_product_download_view');
     }
+
     public function bulk_product_badge_view()
     {
         return view('Admin/Views/Products/bulk_product_badge_view');
     }
+
     public function bulk_product_update_view()
     {
         return view('Admin/Views/Products/bulk_product_update_view');
@@ -100,6 +210,8 @@ class Products extends BaseController
         // print_r($_POST);
         // exit;
 
+        helper('custom');
+
         $img1 = $this->request->getFile('image1');
         $img2 = $this->request->getFile('image2');
         $img3 = $this->request->getFile('image3');
@@ -118,7 +230,7 @@ class Products extends BaseController
             'sku' => $_POST['sku'],
             'promote' => $_POST['promote'],
             'purchasable' => $_POST['purchasable'],
-            'product_slug' => str_replace([' ', ',', '/'], '', $_POST['sku'] . rand(00000, 99999) . Date('dmyhis')),
+            'product_slug' => create_slug($_POST['title']),
         );
 
         $category_array['category_id'] = $_POST['category'];
@@ -220,7 +332,7 @@ class Products extends BaseController
             }
         }
 
-        set_cache('cache','value_3');
+        set_cache('cache', 'value_3');
 
         header('Content-Type: application/json');
         echo json_encode($data);
@@ -248,8 +360,115 @@ class Products extends BaseController
         $this->db->table('product_images')->where('product_id', $id)->delete();
         $this->db->table('product_category')->where('product_id', $id)->delete();
 
-        set_cache('cache','value_3');
+        set_cache('cache', 'value_3');
 
         return redirect()->to(base_url('Admin/products'));
+    }
+
+    public function bulk_product_varient_update()
+    {
+        $csv = array();
+        $lines = file($_FILES['file']['tmp_name'], FILE_IGNORE_NEW_LINES);
+
+        $i = 0;
+        foreach ($lines as $key => $value) {
+            if ($i != 0) {
+                $csv = str_getcsv($value);
+                // echo '<pre>';print_r($csv);exit;
+
+                if ($csv[0] != '') {
+                    $array = array(
+                        'product_id' => $csv[0],
+                        'option_name' => $csv[1],
+                        'option_value' => $csv[2],
+                        'option_price' => $csv[3],
+                        'option_stock' => $csv[4],
+                        'order' => $csv[5],
+                    );
+
+                    $count = $this->db->table('product_varient')->where('product_id', $csv[0])->where('option_name', $csv[1])->where('option_value', $csv[2])->countAllResults();
+                    if ($count == 0) {
+                        $this->db->table('product_varient')->insert($array);
+                    } else {
+                        $this->db->table('product_varient')->where('product_id', $csv[0])->where('option_name', $csv[1])->where('option_value', $csv[2])->update($array);
+                    }
+                }
+            }
+            $i++;
+        }
+
+        $data['status'] = 200;
+        header('Content-Type: application/json');
+        echo json_encode($data);
+    }
+
+    public function bulk_product_update_data()
+    {
+        helper('custom');
+
+        $csv = array();
+        $lines = file($_FILES['file']['tmp_name'], FILE_IGNORE_NEW_LINES);
+
+        $i = 0;
+        foreach ($lines as $key => $value) {
+            if ($i != 0) {
+                $csv = str_getcsv($value);
+                // echo '<pre>';print_r($csv);exit;
+
+                if ($csv[1] != '') {
+                    $array = array(
+                        'title' => $csv[1],
+                        'desc' => $csv[2],
+                        'discount' => $csv[4],
+                        'price' => $csv[5],
+                        'stock' => $csv[6],
+                        'sku' => $csv[7],
+                        'promote' => $csv[8],
+                    );
+
+                    if ($csv[9] == 'Y') {
+                        $array['visibility'] = '1';
+                    } else {
+                        $array['visibility'] = '0';
+                    }
+
+                    if ($csv[0] == '') {
+                        $array['product_slug'] = create_slug($csv[1]);
+
+                        $this->db->table('products')->insert($array);
+                        $productid = $this->db->insertID();
+                        // echo $productid;exit;
+                    } else {
+                        if ($this->db->table('products')->where('id', $csv[0])->update($array)) {
+                            $productid = $csv[0];
+                        } else {
+                            return;
+                        }
+                    }
+
+                    $categories = trim($csv[3], '|');
+                    $categories = explode('|', $csv[3]);
+
+                    if (isset($categories) && !empty($categories)) {
+                        if ($csv[0] != '') {
+                            $this->db->table('product_category')->where('product_id', $csv[0])->delete();
+                        }
+
+                        foreach ($categories as $row) {
+                            $array2 = array(
+                                'product_id' => $productid,
+                                'category_id' => $row,
+                            );
+                            $this->db->table('product_category')->insert($array2);
+                        }
+                    }
+                }
+            }
+            $i++;
+        }
+
+        $data['status'] = 200;
+        header('Content-Type: application/json');
+        echo json_encode($data);
     }
 }
