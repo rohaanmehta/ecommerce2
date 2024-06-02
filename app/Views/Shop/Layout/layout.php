@@ -215,7 +215,7 @@ $categories = get_categories_header();
                             if ($session->get('role') == 'admin') { ?>
                                 <a target='_blank' href='<?= base_url('Admin/dashboard'); ?>' class='profile-box-links' style='text-decoration:none'> Go to Admin </a><br>
                             <?php } ?>
-                            <a href='<?= base_url(); ?>' class='profile-box-links' style='text-decoration:none'> Profile </a><br>
+                            <a href='<?= base_url('/profile'); ?>' class='profile-box-links' style='text-decoration:none'> Profile </a><br>
                             <a href='<?= base_url(); ?>' class='profile-box-links' style='text-decoration:none'> Orders </a><br>
                             <a href='<?= base_url('/wishlist'); ?>' class='profile-box-links' style='text-decoration:none'> Wishlist </a><br>
                             <a href='<?= base_url(); ?>' class='profile-box-links' style='text-decoration:none'> Coupons </a><br>

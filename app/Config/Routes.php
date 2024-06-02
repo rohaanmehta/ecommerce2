@@ -141,6 +141,8 @@ $routes->group('', ['namespace' => 'App\controllers\Shop'], static function ($ro
     
 
     //static pages
+    $routes->get('profile', 'Profile::profile_view');
+
     $routes->get('projects', 'Page::project');
     $routes->get('career', 'Page::career');
     $routes->post('contact_form', 'Page::contact_form');
@@ -154,6 +156,7 @@ $routes->group('', ['namespace' => 'App\controllers\Shop'], static function ($ro
     $routes->post('search-product', 'Product::search_product');
     $routes->post('add-to-wishlist', 'Product::add_to_wishlist');
     $routes->get('/(:any)', 'Category::category_shop_page/$1');
+
 });
 
 
