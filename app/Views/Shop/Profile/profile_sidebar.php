@@ -20,22 +20,27 @@
     .profile-sidebar-value{
         font-size:14px;color:#727272;
     }
+    a:hover{
+        text-decoration: none !important;
+        color:#000;
+    }
 </style>
-<div class="col-2 p-0" style="border-right:1px solid #dfdfdf">
+
+<div class="col-2 p-0 mobile_Head_Hide" style="border-right:1px solid #dfdfdf">
     <div class="col-12 mt-3">
         <p class="mb-2 h5 font-weight-light profile-sidebar-option">Account</p>
     </div>
     <div class="col-12">
-        <a class="mb-2 profile-sidebar-value" href="<?= base_url(); ?>">Profile</a>
+        <a class="mb-2 profile-sidebar-value" href="<?= base_url('profile'); ?>">Profile</a>
     </div>
     <div class="col-12">
-        <a class="mb-2 profile-sidebar-value" href="<?= base_url(); ?>">Addresses</a>
+        <a class="mb-2 profile-sidebar-value" href="<?= base_url('profile/address'); ?>">Addresses</a>
     </div>
     <div class="col-12">
-        <a class="mb-2 profile-sidebar-value" href="<?= base_url(); ?>">Change Password</a>
+        <a class="mb-2 profile-sidebar-value" href="<?= base_url('profile/change_password'); ?>">Change Password</a>
     </div>
     <div class="col-12" style="padding-bottom:15px;border-bottom:1px solid #dfdfdf">
-        <a class="mb-2 profile-sidebar-value" href="<?= base_url(); ?>">Delete Account</a>
+        <a class="mb-2 profile-sidebar-value" href="<?= base_url('profile/delete_account'); ?>">Delete Account</a>
     </div>
 
     <div class="col-12 mt-3">
@@ -51,7 +56,7 @@
     <div class="col-12">
         <a class="mb-2 profile-sidebar-value" href="<?= base_url(); ?>">Coupons</a>
     </div>
-    <div class="col-12">
-        <a class="mb-2 profile-sidebar-value" href="<?= base_url(); ?>">WishList</a>
-    </div>
+    <!-- <div class="col-12">
+        <a class="mb-2 profile-sidebar-value" href="<//?= base_url(); ?>">WishList</a>
+    </div> -->
 </div>

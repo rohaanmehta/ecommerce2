@@ -1,6 +1,11 @@
 <?= $this->extend('Admin/Layouts/Layout') ?>
 
 <?= $this->section('content') ?>
+<style>
+    .ck-editor__editable {
+        min-height: 150px;
+    }
+</style>
 
 <div class="content-wrapper">
     <div class="content-header">
@@ -91,11 +96,11 @@
                     </div>
                     <div class='mb-2'>
                         <span class='form-label'>Category Desc Top</span>
-                        <textarea name='category_desc_top' class='form-control w-100 category_desc_top'></textarea>
+                        <textarea id='editor' name='category_desc_top' class='form-control w-100 category_desc_top'></textarea>
                     </div>
                     <div class='mb-2'>
                         <span class='form-label'>Category Desc Bottom</span>
-                        <textarea name='category_desc_bottom' class='form-control w-100 category_desc_bottom'></textarea>
+                        <textarea id='editor2' name='category_desc_bottom' class='form-control w-100 category_desc_bottom'></textarea>
                     </div>
                     <div class='mb-2'>
                         <span class='form-label'>Show on Home Page</span>
@@ -120,7 +125,7 @@
                             } ?>
                         </select>
                     </div>
-                    
+
                     <div class='mb-2'>
                         <span class='form-label'>Pair Category</span>
                         <select class='form-control w-50 pair_category' name='pair_category'>
@@ -153,9 +158,32 @@
 
 <script>
     $(document).ready(function() {
+
+        let editor;
+
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .then(newEditor => {
+                editor = newEditor;
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
+        let editor2;
+
+        ClassicEditor
+            .create(document.querySelector('#editor2'))
+            .then(newEditor => {
+                editor2 = newEditor;
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
+
         $('.category-form').submit(function(e) {
             e.preventDefault();
-
             $.ajax({
                 type: "POST",
                 url: "<?= base_url('add_category_data') ?>",
@@ -204,7 +232,13 @@
                     $('.category_desc_top').val(data.data[0]['category_desc_top']);
                     $('.category_desc_bottom').val(data.data[0]['category_desc_bottom']);
                     $('.category_id').val(data.data[0]['id']);
+                    editor.setData(data.data[0]['category_desc_top']);
+                    editor2.setData(data.data[0]['category_desc_bottom']);
+
+                    // document.querySelector('#editor').val(data.data[0]['category_desc_top']);
                     // console.log(data.data[0]['parent_category']);
+
+                    
 
                 }
             });
