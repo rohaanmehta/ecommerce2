@@ -27,14 +27,17 @@ $routes->group('', ['namespace' => 'App\controllers\Admin', "filter" => "Auth"],
     $routes->post('add_website_settings', 'Website_settings::add_website_settings');
     $routes->post('add_website_settings_banner', 'Website_settings::add_website_settings_banner');
     $routes->post('add_website_settings_product_page', 'Website_settings::add_website_settings_product_page');
+    $routes->post('add_website_settings_product_share', 'Website_settings::add_website_settings_product_share');
     $routes->get('Admin/visual_settings', 'Website_settings::visual_settings');
     $routes->post('add_visual_settings', 'Website_settings::add_visual_settings');
     $routes->post('add_visual_settings2', 'Website_settings::add_visual_settings2');
     $routes->post('category-settings', 'Website_settings::category_settings');
-
-
-    $routes->post('footer_settings', 'Website_settings::footer_settings');
     
+
+    $routes->get('Admin/footer_settings', 'Website_settings::footer_settings');
+    $routes->post('add_footer_data', 'Website_settings::add_footer_data');
+    
+
     //cache setting
     $routes->get('Admin/cache_settings', 'Website_settings::cache_view');
 
@@ -60,7 +63,7 @@ $routes->group('', ['namespace' => 'App\controllers\Admin', "filter" => "Auth"],
     $routes->get('deletecategorybanner/?(:any)', 'Category::delete_category_banner/$1');
     $routes->post('edit_category_banner', 'Category::edit_category_banner');
 
-    
+
 
 
     $routes->get('Admin/products', 'Products::products_view');
@@ -75,7 +78,7 @@ $routes->group('', ['namespace' => 'App\controllers\Admin', "filter" => "Auth"],
     $routes->post('product_badge_delete', 'Products::product_badge_delete');
     $routes->get('product_badge_download', 'Products::product_badge_download');
 
-    
+
     $routes->get('product_download', 'Products::product_download');
     $routes->get('product_varients_download', 'Products::product_varients_download');
     $routes->post('bulk_product_varient_delete', 'Products::bulk_product_varient_delete');
@@ -108,13 +111,34 @@ $routes->group('', ['namespace' => 'App\controllers\Admin', "filter" => "Auth"],
     $routes->get('Admin/decline-review/?(:any)', 'Reviews::decline_review/$1');
     $routes->get('Admin/undelete-accept-review/?(:any)', 'Reviews::undelete_accept_review/$1');
     $routes->get('Admin/undelete-decline-review/?(:any)', 'Reviews::undelete_decline_review/$1');
-    
 
+
+    $routes->get('Admin/pages', 'Pages::pages_view');
+    $routes->get('Admin/add_page/?(:any)', 'Pages::add_page_view/$1');
+    $routes->post('add_page_data', 'Pages::add_page_data');
+    $routes->get('Admin/delete-page/?(:any)', 'Pages::delete_page/$1');
+    $routes->get('Admin/delete_account', 'Pages::delete_account');
+
+    
 
 
     $routes->get('job_enquiry', 'Enquiry::job_enquiry');
     $routes->get('product_enquiry', 'Enquiry::product_enquiry');
     $routes->post('add_enquiry', 'Enquiry::add_enquiry');
+});
+
+
+$routes->group('', ['namespace' => 'App\controllers\Shop', "filter" => "Profile"], static function ($routes) {
+    //static pages
+    $routes->get('profile', 'Profile::profile_view');
+    $routes->get('profile/edit_profile', 'Profile::edit_profile_view');
+    $routes->post('profile/save_edit_profile', 'Profile::save_edit_profile');
+    $routes->post('profile/save_edit_address', 'Profile::save_edit_address');
+    $routes->get('profile/address', 'Profile::address_view');
+    $routes->get('profile/change_password', 'Profile::change_password_view');
+    $routes->post('change_password_post', 'Profile::change_password_post');
+    $routes->get('profile/delete_account', 'Profile::delete_account_view');
+    //
 });
 
 
@@ -126,6 +150,7 @@ $routes->group('', ['namespace' => 'App\controllers\Shop'], static function ($ro
     });
 
     $routes->get('search/?(:any)', 'Homepage::search_view/$1');
+    $routes->get('pages/?(:any)', 'Pages::page/$1');
 
     $routes->get('login', 'Login::login_view');
     $routes->get('register', 'Register::register_view');
@@ -136,11 +161,8 @@ $routes->group('', ['namespace' => 'App\controllers\Shop'], static function ($ro
     $routes->get('logout', 'Login::logout');
     $routes->post('login-user', 'Login::login_user');
     $routes->get('review/(:any)/(:any)', 'Product::product_review/$1/$2');
-    $routes->get('(:any)/(:any)', 'Product::product_page_view/$1/$2');
     $routes->post('get_product_review', 'Product::get_product_review');
-    
 
-    //static pages
     $routes->get('projects', 'Page::project');
     $routes->get('career', 'Page::career');
     $routes->post('contact_form', 'Page::contact_form');
@@ -153,6 +175,9 @@ $routes->group('', ['namespace' => 'App\controllers\Shop'], static function ($ro
 
     $routes->post('search-product', 'Product::search_product');
     $routes->post('add-to-wishlist', 'Product::add_to_wishlist');
+
+
+    $routes->get('(:any)/(:any)', 'Product::product_page_view/$1/$2');
     $routes->get('/(:any)', 'Category::category_shop_page/$1');
 });
 

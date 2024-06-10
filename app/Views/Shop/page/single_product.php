@@ -13,9 +13,9 @@
         <?php helper('custom');
         $badge = get_product_badge($row->id);
         $category = get_category_by_productid($row->id);
-        
+
         // if(isset($category[0]->category_slug) && !empty($category[0]->category_slug)){
-            $category = $category[0]->category_slug;
+        $category = $category[0]->category_slug;
         // }else{
         //     $category = 'products';
         // }
@@ -43,26 +43,32 @@
                 </button>
             <?php } ?>
         </div>
-        
-        <a href='<?= base_url($category.'/'. $row->product_slug); ?>' style='display:contents;color:#000'>
+
+        <a href='<?= base_url($category . '/' . $row->product_slug); ?>' style='display:contents;color:#000'>
             <div class='single-product-slider'>
-                <img alt='<?= $row->title;?>' class='gallery_img' src='<?= base_url('/uploads/product_images/' . $row->image_name1) ?>' />
+                <img alt='<?= $row->title; ?>' class='gallery_img' src='<?= base_url('/uploads/product_images/' . $row->image_name1) ?>' />
                 <?php if ($row->image_name2 != '') { ?>
-                    <img alt='<?= $row->title;?>' class='gallery_img product-slider-image' src='<?= base_url('/uploads/product_images/' . $row->image_name2) ?>' />
+                    <img alt='<?= $row->title; ?>' class='gallery_img product-slider-image' src='<?= base_url('/uploads/product_images/' . $row->image_name2) ?>' />
                 <?php } ?>
                 <?php if ($row->image_name3 != '') { ?>
-                    <img alt='<?= $row->title;?>' class='gallery_img product-slider-image' src='<?= base_url('/uploads/product_images/' . $row->image_name3) ?>' />
+                    <img alt='<?= $row->title; ?>' class='gallery_img product-slider-image' src='<?= base_url('/uploads/product_images/' . $row->image_name3) ?>' />
                 <?php } ?>
                 <?php if ($row->image_name4 != '') { ?>
-                    <img alt='<?= $row->title;?>' class='gallery_img product-slider-image' src='<?= base_url('/uploads/product_images/' . $row->image_name4) ?>' />
+                    <img alt='<?= $row->title; ?>' class='gallery_img product-slider-image' src='<?= base_url('/uploads/product_images/' . $row->image_name4) ?>' />
                 <?php } ?>
             </div>
             <div class='mobile-product-slider' style='display:none'>
-                <img alt='<?= $row->title;?>' class='gallery_img' src='<?= base_url('/uploads/product_images/' . $row->image_name1) ?>' />
+                <img alt='<?= $row->title; ?>' class='gallery_img' src='<?= base_url('/uploads/product_images/' . $row->image_name1) ?>' />
             </div>
             <div class='text-left p-2'>
                 <p class='product_title'><?= $row->title ?></p>
-                <p class='product_price'>$ <?= $row->price ?></p>
+                <p class='product_price'>
+                    <?php if ($row->discount != '') { ?>
+                        $<?php echo get_product_discount_price($row->price, $row->discount); ?> <span class='single_product_discount_price'>$<?= $row->price; ?></span>
+                    <?php } else { ?>
+                        $<?= $row->price; ?>
+                    <?php } ?>
+                </p>
             </div>
         </a>
     </div>

@@ -10,6 +10,7 @@ $session = session();
 helper('custom_helper');
 $website_images = website_settings();
 $categories = get_categories_header();
+$footersettings = footer_settings();
 ?>
 
 <html>
@@ -215,7 +216,7 @@ $categories = get_categories_header();
                             if ($session->get('role') == 'admin') { ?>
                                 <a target='_blank' href='<?= base_url('Admin/dashboard'); ?>' class='profile-box-links' style='text-decoration:none'> Go to Admin </a><br>
                             <?php } ?>
-                            <a href='<?= base_url(); ?>' class='profile-box-links' style='text-decoration:none'> Profile </a><br>
+                            <a href='<?= base_url('/profile'); ?>' class='profile-box-links' style='text-decoration:none'> Profile </a><br>
                             <a href='<?= base_url(); ?>' class='profile-box-links' style='text-decoration:none'> Orders </a><br>
                             <a href='<?= base_url('/wishlist'); ?>' class='profile-box-links' style='text-decoration:none'> Wishlist </a><br>
                             <a href='<?= base_url(); ?>' class='profile-box-links' style='text-decoration:none'> Coupons </a><br>
@@ -274,7 +275,9 @@ $categories = get_categories_header();
     <?= $this->renderSection('content') ?>
 
     <!-- back to top button  -->
-    <a id="back-to-top"></a>
+    <?php if (isset($footersettings['footer'][0]->backtotop) && !empty($footersettings['footer'][0]->backtotop) && $footersettings['footer'][0]->backtotop == '1') {?>
+        <a id="back-to-top"></a>
+    <?php } ?>
 
     <?php include('footer.php'); ?>
 
@@ -290,8 +293,11 @@ $categories = get_categories_header();
     <script type="text/javascript" src="<?= base_url('assets/js/slick.min.js'); ?>"></script>
 
     <script async defer type="text/javascript" src="<?= base_url('assets/js/fontawesome.js'); ?>"></script>
-    <script async defer type="text/javascript" src="<?= base_url('assets/js/bootsrap.min.js'); ?>"></script>
+    <script type="text/javascript" src="<?= base_url('assets/js/bootsrap.min.js'); ?>"></script>
     <script async defer type="text/javascript" src="<?= base_url('assets/js/popper.min.js'); ?>"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+
     <?= $this->renderSection('scripts') ?>
     
     <script>

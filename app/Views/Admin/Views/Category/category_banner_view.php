@@ -110,6 +110,7 @@
 
 <script>
     $(document).ready(function() {
+        
         $('.category-banner-form').submit(function(e) {
             e.preventDefault();
             $.ajax({

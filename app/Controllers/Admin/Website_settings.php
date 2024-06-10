@@ -20,16 +20,19 @@ class Website_settings extends BaseController
         $data['banner_section3name'] = $this->db->table('general_settings')->where('name', 'banner_section3name')->get()->getResult();
         $data['banner_section4name'] = $this->db->table('general_settings')->where('name', 'banner_section4name')->get()->getResult();
 
+
+        $data['productshare'] = $this->db->table('general_settings')->where('name', 'productshare')->get()->getResult();
+
         return view('Admin/Views/Settings/Website_settings', $data);
     }
 
     public function cache_view()
     {
         $data['cache'] = $this->db->table('general_settings')->where('name', 'cache')->get()->getResult();
-       
+
         return view('Admin/Views/Settings/cache_settings', $data);
     }
-    
+
     public function add_website_settings()
     {
         $array = array(
@@ -147,18 +150,63 @@ class Website_settings extends BaseController
         echo json_encode($data);
     }
 
+    public function add_website_settings_product_share()
+    {
+        $array = array(
+            'name' => 'productshare',
+            'value_1' => $_POST['fb_link'],
+            'value_2' => $_POST['whatsapp_link'],
+            'value_3' => $_POST['insta_link'],
+        );
+
+        $this->db->table('general_settings')->where('name', 'productshare')->delete();
+        $this->db->table('general_settings')->insert($array);
+        $data['status'] = 200;
+
+        header('Content-Type: application/json');
+        echo json_encode($data);
+    }
+
     public function visual_settings()
     {
         $data['info'] = $this->db->table('general_settings')->where('name', 'website_settings')->get()->getResult();
         $data['info2'] = $this->db->table('general_settings')->where('name', 'website_settings2')->get()->getResult();
         $data['category_settings'] = $this->db->table('general_settings')->where('name', 'scrolltotop')->get()->getResult();
-        
-        return view('Admin/Views/Settings/visual_settings',$data);
+
+        return view('Admin/Views/Settings/visual_settings', $data);
     }
 
     public function footer_settings()
     {
-        return view('Admin/Views/Settings/footer_settings');
+        $data['footer'] = $this->db->table('footer')->where('id', '1')->get()->getResult();
+        return view('Admin/Views/Settings/footer_settings', $data);
+    }
+
+    public function add_footer_data()
+    {
+        $array = array(
+            'category_limit' => $_POST['categories'],
+            'call_or_sms' => $_POST['callorsms'],
+            'footer_email' => $_POST['email'],
+            'fb_link' => $_POST['fb'],
+            'instagram_link' => $_POST['insta'],
+            'youtube_link' => $_POST['youtube'],
+            'popular_links' => $_POST['popularlinks'],
+            'backtotop' => $_POST['backtotop'],
+        );
+
+        $info = $this->db->table('footer')->where('id', '1')->countAllResults();
+
+        if ($info > 0) {
+            $this->db->table('footer')->where('id', '1')->update($array);
+        } else {
+            $this->db->table('footer')->insert($array);
+        }
+
+        $data['status'] = 200;
+
+        header('Content-Type: application/json');
+        echo json_encode($data);
     }
 
     public function add_visual_settings()
@@ -220,10 +268,10 @@ class Website_settings extends BaseController
             }
         }
 
-        if($info == 0){
+        if ($info == 0) {
             $this->db->table('general_settings')->insert($image_array);
-        }else{
-            $this->db->table('general_settings')->where('name','website_settings')->update($image_array);
+        } else {
+            $this->db->table('general_settings')->where('name', 'website_settings')->update($image_array);
         }
         $data['status'] = 200;
 
@@ -292,10 +340,10 @@ class Website_settings extends BaseController
             // }
         }
 
-        if($info == 0){
+        if ($info == 0) {
             $this->db->table('general_settings')->insert($image_array);
-        }else{
-            $this->db->table('general_settings')->where('name','website_settings2')->update($image_array);
+        } else {
+            $this->db->table('general_settings')->where('name', 'website_settings2')->update($image_array);
         }
         $data['status'] = 200;
 
@@ -313,10 +361,10 @@ class Website_settings extends BaseController
             'value_3' => $_POST['font-color'],
         );
 
-        if($info == 0){
+        if ($info == 0) {
             $this->db->table('general_settings')->insert($array);
-        }else{
-            $this->db->table('general_settings')->where('name','scrolltotop')->update($array);
+        } else {
+            $this->db->table('general_settings')->where('name', 'scrolltotop')->update($array);
         }
         $data['status'] = 200;
 

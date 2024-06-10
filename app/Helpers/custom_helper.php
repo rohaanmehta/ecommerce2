@@ -135,3 +135,18 @@ function create_slug($data)
     $data = str_replace([' ', ',', '/', '.', '(', ')', '_', '`', '!', '@',], '-', $data);
     return $data;
 }
+
+function footer_settings(){
+    $db = \Config\Database::connect();
+
+    $footer['footer'] = $db->table('footer')->select('*')->where('id', '1')->get()->getresult();
+    $footer['categories'] = $db->table('categories')->select('category_name,category_slug')->limit($footer['footer'][0]->category_limit)->where('parent_category', '')->where('show_on_homepage', '1')->orderBy('category_order','asc')->get()->getresult();
+
+    return $footer;
+}
+
+function get_product_discount_price($price,$discount){
+    $finalprice = $price*$discount/100;
+    $finalprice = $price - $finalprice;
+    return $finalprice;
+}

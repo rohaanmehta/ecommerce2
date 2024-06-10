@@ -10,6 +10,9 @@ class Product extends BaseController
     {
         $data['productbanner1'] = $this->db->table('general_settings')->select('name,value_1,value_2,value_3')->where('name', 'productbannersection1')->get()->getResult();
         $data['productbanner2'] = $this->db->table('general_settings')->select('name,value_1,value_2,value_3')->where('name', 'productbannersection2')->get()->getResult();
+        
+        $data['productshare'] = $this->db->table('general_settings')->where('name', 'productshare')->get()->getResult();
+
         $limit1 = 1;
         $limit2 = 1;
         if (isset($data['productbanner1'][0]) && $data['productbanner1'][0]->value_2 != '') {
@@ -20,7 +23,7 @@ class Product extends BaseController
         }
 
 
-        $data['product'] = $this->db->table('products')->select('products.desc,products.id,products.title,pi.image_name1,pi.image_name2,products.stock,products.sku,products.purchasable,products.product_slug,,pi.image_name3,pi.image_name4,products.price')->where('product_slug', $slug)->join('product_images as pi', 'pi.product_id = products.id')->get()->getResult();
+        $data['product'] = $this->db->table('products')->select('products.desc,products.discount,products.id,products.title,pi.image_name1,pi.image_name2,products.stock,products.sku,products.purchasable,products.product_slug,,pi.image_name3,pi.image_name4,products.price')->where('product_slug', $slug)->join('product_images as pi', 'pi.product_id = products.id')->get()->getResult();
 
         //redirect to 404
         if (isset($data['product']) && empty($data['product'])) {
@@ -71,7 +74,7 @@ class Product extends BaseController
         }
 
 
-        $section1 = $this->db->table('products')->select('products.id,products.title,products.price,pi.image_name1,pi.image_name2,pi.image_name3,pi.image_name4,products.product_slug')->join('product_category', 'product_category.product_id = products.id')->where('visibility', '1')->where('is_deleted', '0')->where('product_slug !=', $slug)->where('category_id', $product_last_category_id);
+        $section1 = $this->db->table('products')->select('products.discount,products.id,products.title,products.price,pi.image_name1,pi.image_name2,pi.image_name3,pi.image_name4,products.product_slug')->join('product_category', 'product_category.product_id = products.id')->where('visibility', '1')->where('is_deleted', '0')->where('product_slug !=', $slug)->where('category_id', $product_last_category_id);
 
         if ($this->session->get('userid') != '') {
             $section1 = $section1->select('wishlist.user_id as wishlist')->join('wishlist', 'wishlist.product_id = products.id AND user_id = ' . $this->session->get('userid') . '', 'left');
@@ -83,7 +86,7 @@ class Product extends BaseController
 
         //pair category
 
-        $section2 = $this->db->table('products')->select('products.id,products.title,products.price,pi.image_name1,pi.image_name2,pi.image_name3,pi.image_name4,products.product_slug')->join('product_category', 'product_category.product_id = products.id')->where('visibility', '1')->where('is_deleted', '0')->where('product_slug !=', $slug)->where('category_id', $product_pair_category);
+        $section2 = $this->db->table('products')->select('products.discount,products.id,products.title,products.price,pi.image_name1,pi.image_name2,pi.image_name3,pi.image_name4,products.product_slug')->join('product_category', 'product_category.product_id = products.id')->where('visibility', '1')->where('is_deleted', '0')->where('product_slug !=', $slug)->where('category_id', $product_pair_category);
 
         if ($this->session->get('userid') != '') {
             $section2 = $section2->select('wishlist.user_id as wishlist')->join('wishlist', 'wishlist.product_id = products.id AND user_id = ' . $this->session->get('userid') . '', 'left');

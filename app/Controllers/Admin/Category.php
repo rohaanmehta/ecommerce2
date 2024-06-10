@@ -32,21 +32,21 @@ class Category extends BaseController
         $img1 = $this->request->getFile('image');
         $img1name = '1' . date('dmyHis') . '.png';
 
-        
+
         $img2 = $this->request->getFile('mobile-image');
         $img2name = '2' . date('dmyHis') . '.png';
 
         if ($_POST['id'] == '') {
             if (isset($_FILES['image']['name']) && !empty($_FILES['image']['name'])) {
                 $img1->move(ROOTPATH . 'uploads/category_banners/', $img1name);
-                $fileName = $this->image_upload($img1name, IMAGETYPE_WEBP, 'uploads/category_banners/','1366x350');
+                $fileName = $this->image_upload($img1name, IMAGETYPE_WEBP, 'uploads/category_banners/', '1366x350');
 
                 $array['image'] = $fileName;
             }
 
             if (isset($_FILES['mobile-image']['name']) && !empty($_FILES['mobile-image']['name'])) {
                 $img2->move(ROOTPATH . 'uploads/category_banners/', $img2name);
-                $fileName2 = $this->image_upload($img2name, IMAGETYPE_WEBP, 'uploads/category_banners/','768x600');
+                $fileName2 = $this->image_upload($img2name, IMAGETYPE_WEBP, 'uploads/category_banners/', '768x600');
 
                 $array['mobile_image'] = $fileName2;
             }
@@ -62,7 +62,7 @@ class Category extends BaseController
             if (isset($category_info[0]) && !empty($category_info[0])) {
                 if (isset($_FILES['image']['name']) && !empty($_FILES['image']['name'])) {
                     $img1->move(ROOTPATH . 'uploads/category_banners/', $img1name);
-                    $fileName = $this->image_upload($img1name, IMAGETYPE_WEBP, 'uploads/category_banners/','1366x350');
+                    $fileName = $this->image_upload($img1name, IMAGETYPE_WEBP, 'uploads/category_banners/', '1366x350');
                     $array['image'] = $fileName;
 
                     if (is_file(ROOTPATH . 'uploads/category_banners/' . $category_info[0]->image)) {
@@ -71,7 +71,7 @@ class Category extends BaseController
                 }
                 if (isset($_FILES['mobile-image']['name']) && !empty($_FILES['mobile-image']['name'])) {
                     $img2->move(ROOTPATH . 'uploads/category_banners/', $img2name);
-                    $fileName2 = $this->image_upload($img2name, IMAGETYPE_WEBP, 'uploads/category_banners/','768x600');
+                    $fileName2 = $this->image_upload($img2name, IMAGETYPE_WEBP, 'uploads/category_banners/', '768x600');
                     $array['mobile_image'] = $fileName2;
 
                     if (is_file(ROOTPATH . 'uploads/category_banners/' . $category_info[0]->mobile_image)) {
@@ -101,7 +101,7 @@ class Category extends BaseController
             'pair_category' => $_POST['pair_category'],
             'category_desc_top' => $_POST['category_desc_top'],
             'category_desc_bottom' => $_POST['category_desc_bottom'],
-            'category_slug' => str_replace([' ', ',', '/', '-', '_'], '', $_POST['name']),
+            'category_slug' => create_slug($_POST['name']),
         );
 
         if ($_POST['category_id'] == '') {
@@ -137,7 +137,7 @@ class Category extends BaseController
         header('Content-Type: application/json');
         echo json_encode($data);
     }
-    
+
     public function delete_category($id)
     {
         $this->db->table('categories')->where('id', $id)->delete();

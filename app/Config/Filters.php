@@ -3,13 +3,13 @@
 namespace Config;
 
 use App\Filters\Auth as FiltersAuth;
+use App\Filters\Profile as FiltersProfile;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
 use CodeIgniter\Filters\Honeypot;
 use CodeIgniter\Filters\InvalidChars;
 use CodeIgniter\Filters\SecureHeaders;
-use CodeIgniter\Filters\Auth;
 
 class Filters extends BaseConfig
 {
@@ -24,6 +24,7 @@ class Filters extends BaseConfig
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
         'Auth' => FiltersAuth::class,
+        'Profile' => FiltersProfile::class,
     ];
 
     /**

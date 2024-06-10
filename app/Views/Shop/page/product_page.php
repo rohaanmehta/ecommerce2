@@ -213,6 +213,15 @@
         margin-top: 24px;
     }
 
+    .product_discount_price {
+        font-size: 18px;
+        color: #707070b3;
+        font-weight: 600;
+        margin-top: 24px;
+        text-decoration: line-through;
+    }
+
+
     .product_info {
         font-size: 16px;
         font-weight: 600;
@@ -401,8 +410,13 @@
             </div>
 
             <div class='product_price_main'>
-                $<?= $product[0]->price; ?>
+                <?php if ($product[0]->discount != '') { ?>
+                    $<?php echo get_product_discount_price($product[0]->price,$product[0]->discount); ?> <span class='product_discount_price'>$<?= $product[0]->price; ?></span>
+                <?php } else { ?>
+                    $<?= $product[0]->price; ?>
+                <?php } ?>
             </div>
+
             <div class='product_price_tax_info'>
                 MRP incl. of all taxes
             </div>
@@ -526,10 +540,19 @@
 
             <div class='col-12 pl-0 d-flex mt-3 mb-3 mobile_Head_Hide' style='align-items:center'>
                 <p class='m-0 mr-2'>Share</p>
-                <a href='https://web.whatsapp.com/send?text=<?= current_url(); ?>' target="_blank" class='text-decoration-none text-secondary'><i class='share-icons fa fa-whatsapp'></i></a>
-                <a href="https://www.facebook.com/sharer/sharer.php?u=https://google.com" target="popup" onclick="window.open('https\:\/\/www.facebook.com/sharer/sharer.php?u=https:\/\/google.com','name','width=600,height=400')" class='text-decoration-none text-secondary'><i class='share-icons fa fa-facebook-square'></i></a>
-                <a href='' target="_blank" class='text-decoration-none text-secondary'><i class='share-icons fa fa-twitter'></i></a>
-                <a href='https://www.instagram.com/TheSouledStore/' target="_blank" class='text-decoration-none text-secondary'><i class='share-icons fa fa-instagram'></i></a>
+                <?php if (isset($productshare[0]->value_1) && !empty($productshare[0]->value_1)) { ?>
+                    <a href="<?= $productshare[0]->value_1; ?>" target="popup" onclick="window.open('https\:\/\/www.facebook.com/sharer/sharer.php?u=https:\/\/google.com','name','width=600,height=400')" class='text-decoration-none text-secondary'><i class='share-icons fa fa-facebook-square'></i></a>
+                <?php } ?>
+                <?php if (isset($productshare[0]->value_2) && !empty($productshare[0]->value_2)) { ?>
+                    <a href='<?= $productshare[0]->value_2; ?><?= current_url(); ?>' target="_blank" class='text-decoration-none text-secondary'><i class='share-icons fa fa-whatsapp'></i></a>
+                <?php } ?>
+                <?php if (isset($productshare[0]->value_3) && !empty($productshare[0]->value_3)) { ?>
+                    <a href='<?= $productshare[0]->value_3; ?>' target="_blank" class='text-decoration-none text-secondary'><i class='share-icons fa fa-instagram'></i></a>
+                <?php } ?>
+                <!-- <a href='https://web.whatsapp.com/send?text=<?= current_url(); ?>' target="_blank" class='text-decoration-none text-secondary'><i class='share-icons fa fa-whatsapp'></i></a> -->
+                <!-- <a href="https://www.facebook.com/sharer/sharer.php?u=https://google.com" target="popup" onclick="window.open('https\:\/\/www.facebook.com/sharer/sharer.php?u=https:\/\/google.com','name','width=600,height=400')" class='text-decoration-none text-secondary'><i class='share-icons fa fa-facebook-square'></i></a> -->
+                <!-- <a href='' target="_blank" class='text-decoration-none text-secondary'><i class='share-icons fa fa-twitter'></i></a> -->
+                <!-- <a href='https://www.instagram.com/TheSouledStore/' target="_blank" class='text-decoration-none text-secondary'><i class='share-icons fa fa-instagram'></i></a> -->
             </div>
 
             <div class='col-12 pl-0 d-flex mt-3 mb-3 mobile_Head_Show' style='align-items:center'>

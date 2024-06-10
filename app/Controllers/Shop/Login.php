@@ -89,7 +89,7 @@ class Login extends BaseController
             $email = $_POST['email'];
             $password = md5($_POST['password']);
 
-            $check = $this->db->table('users')->where('email', $email)->where('password', $password)->countAllResults();
+            $check = $this->db->table('users')->where('email', $email)->where('password', $password)->where('status','1')->countAllResults();
             $user = $this->db->table('users')->where('email', $email)->where('password', $password)->get()->getResult();
 
 

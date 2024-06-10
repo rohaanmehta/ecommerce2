@@ -431,6 +431,33 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-list"></i>
+                        <p>
+                            Pages
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= base_url('Admin/pages') ?>" class="nav-link d-flex align-items-center">
+                                <i class="nav-icon fa fa-circle"></i>
+
+                                <p>Pages</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= base_url('Admin/add_page') ?>" class="nav-link d-flex align-items-center">
+                                <i class="nav-icon fa fa-circle"></i>
+
+                                <p>Add Page</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
                 <li class="nav-item">
                     <a href="#" class="nav-link">
@@ -457,13 +484,6 @@
                         </li> -->
                         <li class="nav-item">
                             <a href="<?= base_url('Admin/footer_settings') ?>" class="nav-link d-flex align-items-center">
-                                <i class="nav-icon fa fa-circle"></i>
-
-                                <p>Footer Settings</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url('Admin/payment-view') ?>" class="nav-link d-flex align-items-center">
                                 <i class="nav-icon fa fa-circle"></i>
 
                                 <p>Footer Settings</p>
