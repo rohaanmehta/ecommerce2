@@ -39,7 +39,12 @@ $footersettings = footer_settings();
     <!-- <link media="all" rel="stylesheet" href="<//?= base_url('assets/css/fontawesome.css'); ?>"> -->
     <link media="all" rel="stylesheet" href="<?= base_url('assets/css/bootstrap.min.css'); ?>" crossorigin="anonymous">
     <link media="all" rel="stylesheet" href="<?= base_url('assets/css/lato.css'); ?>" crossorigin="anonymous">
-    <link media="all" rel="stylesheet" href="<?= base_url('assets/css/slick.css'); ?>" crossorigin="anonymous">
+    <!-- <link media="all" rel="stylesheet" href="<//?= base_url('assets/css/slick.css'); ?>" crossorigin="anonymous"> -->
+
+
+    <link rel="stylesheet" href="https://unpkg.com/blaze-slider@latest/dist/blaze.css" />
+
+
     <link media="all" rel="stylesheet" href="<?= base_url('assets/css/mystyle.css'); ?>">
 
     <!-- used  -->
@@ -71,6 +76,160 @@ $footersettings = footer_settings();
         <link rel="icon" type="image/x-icon" href="<?= base_url('uploads/website/' . $website_images[0]->value_3); ?>">
     <?php } ?>
     <style>
+        .pc-fl {
+            /*display: flex;*/
+        }
+
+        img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .blaze-slider {
+            --slides-to-show: 1;
+            --slide-gap: 10px;
+            direction: ltr;
+        }
+
+        .blaze-container {
+            position: relative;
+        }
+
+        .blaze-track-container {
+            overflow: hidden;
+        }
+
+        .blaze-track {
+            will-change: transform;
+            touch-action: pan-y;
+            display: flex;
+            gap: var(--slide-gap);
+            --slide-width: calc((100% - (var(--slides-to-show) - 1) * var(--slide-gap)) / var(--slides-to-show));
+            box-sizing: border-box;
+        }
+
+        .blaze-track>* {
+            box-sizing: border-box;
+            width: var(--slide-width);
+            flex-shrink: 0;
+        }
+
+        .blaze-slider.dragging .blaze-track {
+            cursor: grabbing;
+        }
+
+        .blaze-track>* {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: width 300ms ease;
+        }
+
+        .blaze-track .pc-slide {
+            width: 100%;
+        }
+
+        .blaze-track .pc-slide-img {
+            width: 66.67%;
+        }
+
+        .blaze-track .pc-slide-content {
+            width: 33.33%;
+        }
+
+        .pc-p1 {
+            padding: 1rem;
+        }
+
+        .pc-btn-row .pc-btn {
+            background: #f4f4f4;
+            padding: 0.5rem 0.8rem;
+        }
+
+        .pc-btn-row .pc-btn:first-child {
+            margin-right: 0.5rem;
+        }
+
+        .blaze-slider-control {
+            /* bottom: 20px;
+            left: 50%;
+            display: flex;
+            justify-content: space-between;
+            position: absolute; */
+            display: flex;
+            position: absolute;
+            justify-content: space-between;
+            bottom: auto;
+            right: 5px;
+            left: 5px;
+            top: 45%;
+        }
+
+        .blaze-slider-control button {
+            cursor: pointer;
+            padding: 0.4rem 0.8rem;
+            background-color: #fff;
+            border: 1px solid #f4f4f4;
+            color: black;
+            font-size: 1rem;
+            border-radius: 80px;
+        }
+
+        .blaze-prev {
+            margin-right: 0.5rem;
+        }
+
+        .blaze-slider.start .blaze-prev,
+        .blaze-slider.end .blaze-next {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        @media only screen and (max-width: 820px) {
+            .pc-slide {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: normal;
+                align-items: normal;
+            }
+
+            .blaze-track .pc-slide-img,
+            .blaze-track .pc-slide-content {
+                width: 100%;
+            }
+
+            /* .blaze-slider-control {
+                bottom: auto;
+                right: 5px;
+                left: 5px;
+                top: 50%;
+            } */
+
+            .blaze-prev {
+                margin-right: 0;
+            }
+        }
+
+        .blaze-pagination button {
+            background-color: #d7d7d7;
+            color: #d7d7d7;
+            content: ' ';
+            width: 17px;
+            margin-right: 3px;
+            border-radius: 50px;
+            height: 17px;
+            border: none;
+        }
+
+        .blaze-pagination .active {
+            background-color: #838383;
+            color: #838383;
+        }
+
+        /* //slider end */
+
+
         <?php if (isset($banner1_info) && !empty(($banner1_info) && $banner1_info[0]->value_3 == 'YES')) { ?>.section1-slider {
             display: none;
         }
@@ -275,7 +434,7 @@ $footersettings = footer_settings();
     <?= $this->renderSection('content') ?>
 
     <!-- back to top button  -->
-    <?php if (isset($footersettings['footer'][0]->backtotop) && !empty($footersettings['footer'][0]->backtotop) && $footersettings['footer'][0]->backtotop == '1') {?>
+    <?php if (isset($footersettings['footer'][0]->backtotop) && !empty($footersettings['footer'][0]->backtotop) && $footersettings['footer'][0]->backtotop == '1') { ?>
         <a id="back-to-top"></a>
     <?php } ?>
 
@@ -289,19 +448,21 @@ $footersettings = footer_settings();
 
     <?php include('login.php'); ?>
 
-    <script  type="text/javascript" src="<?= base_url('assets/js/jquery.min.js'); ?>"></script>
-    <script type="text/javascript" src="<?= base_url('assets/js/slick.min.js'); ?>"></script>
+    <script type="text/javascript" src="<?= base_url('assets/js/jquery.min.js'); ?>"></script>
+    <!-- <script type="text/javascript" src="<//?= base_url('assets/js/slick.min.js'); ?>"></script> -->
 
     <script async defer type="text/javascript" src="<?= base_url('assets/js/fontawesome.js'); ?>"></script>
     <script type="text/javascript" src="<?= base_url('assets/js/bootsrap.min.js'); ?>"></script>
     <script async defer type="text/javascript" src="<?= base_url('assets/js/popper.min.js'); ?>"></script>
+    <!-- //slider -->
+    <Script src='https://unpkg.com/blaze-slider@latest/dist/blaze-slider.min.js'></script>
+    <Script src='https://unpkg.com/blaze-slider@latest/dist/blaze-slider.dev.js'></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 
     <?= $this->renderSection('scripts') ?>
-    
+
     <script>
-        
         //top bar 
         // window.onscroll = function() {
         //     myFunction()
@@ -540,20 +701,20 @@ $footersettings = footer_settings();
 
 
         function load_product_sliders() {
-            $('.single-product-slider').slick({
-                dots: true,
-                autoplay: false,
-                lazyLoad: 'ondemand',
-                autoplaySpeed: 1000,
-                infinite: true,
-                speed: 300,
-                slidesToShow: 1,
-                // adaptiveHeight: true,
-                prevArrow: "",
-                nextArrow: "",
-                pauseOnHover: false,
-                pauseOnFocus: false,
-            });
+            // $('.single-product-slider').slick({
+            //     dots: true,
+            //     autoplay: false,
+            //     lazyLoad: 'ondemand',
+            //     autoplaySpeed: 1000,
+            //     infinite: true,
+            //     speed: 300,
+            //     slidesToShow: 1,
+            //     // adaptiveHeight: true,
+            //     prevArrow: "",
+            //     nextArrow: "",
+            //     pauseOnHover: false,
+            //     pauseOnFocus: false,
+            // });
         }
     </script>
 </body>

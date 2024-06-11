@@ -1,0 +1,293 @@
+INFO - 2024-06-10 06:06:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-10 06:06:37 --> Undefined offset: 0
+in APPPATH\Views\Shop\page\single_product.php on line 18.
+ 1 APPPATH\Views\Shop\page\single_product.php(18): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offset: 0', 'D:\\xampp\\htdocs\\ecommerce2\\app\\Views\\Shop\\page\\single_product.php', 18, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce2\\app\\Views\\Shop\\page\\single_product.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/single_product', [], true)
+ 5 APPPATH\Views\Shop\page\homepage.php(194): view('Shop/page/single_product', [...])
+ 6 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce2\\app\\Views\\Shop\\page\\homepage.php')
+ 7 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/homepage', [], true)
+ 9 APPPATH\Controllers\Shop\Homepage.php(121): view('Shop/page/homepage', [...])
+10 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Shop\Homepage->homepage()
+11 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop\Homepage))
+12 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-10 06:07:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-10 06:07:02 --> Undefined offset: 0
+in APPPATH\Views\Shop\page\single_product.php on line 18.
+ 1 APPPATH\Views\Shop\page\single_product.php(18): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offset: 0', 'D:\\xampp\\htdocs\\ecommerce2\\app\\Views\\Shop\\page\\single_product.php', 18, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce2\\app\\Views\\Shop\\page\\single_product.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/single_product', [], true)
+ 5 APPPATH\Views\Shop\page\homepage.php(194): view('Shop/page/single_product', [...])
+ 6 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce2\\app\\Views\\Shop\\page\\homepage.php')
+ 7 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/homepage', [], true)
+ 9 APPPATH\Controllers\Shop\Homepage.php(121): view('Shop/page/homepage', [...])
+10 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Shop\Homepage->homepage()
+11 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop\Homepage))
+12 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-10 06:09:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-10 06:09:50 --> Undefined offset: 0
+in APPPATH\Views\Shop\page\single_product.php on line 18.
+ 1 APPPATH\Views\Shop\page\single_product.php(18): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offset: 0', 'D:\\xampp\\htdocs\\ecommerce2\\app\\Views\\Shop\\page\\single_product.php', 18, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce2\\app\\Views\\Shop\\page\\single_product.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/single_product', [], true)
+ 5 APPPATH\Views\Shop\page\homepage.php(124): view('Shop/page/single_product', [...])
+ 6 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce2\\app\\Views\\Shop\\page\\homepage.php')
+ 7 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/homepage', [], true)
+ 9 APPPATH\Controllers\Shop\Homepage.php(121): view('Shop/page/homepage', [...])
+10 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Shop\Homepage->homepage()
+11 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop\Homepage))
+12 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-10 06:12:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-10 06:12:12 --> Undefined offset: 0
+in APPPATH\Views\Shop\page\single_product.php on line 18.
+ 1 APPPATH\Views\Shop\page\single_product.php(18): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offset: 0', 'D:\\xampp\\htdocs\\ecommerce2\\app\\Views\\Shop\\page\\single_product.php', 18, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce2\\app\\Views\\Shop\\page\\single_product.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/single_product', [], true)
+ 5 APPPATH\Views\Shop\page\homepage.php(124): view('Shop/page/single_product', [...])
+ 6 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce2\\app\\Views\\Shop\\page\\homepage.php')
+ 7 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/homepage', [], true)
+ 9 APPPATH\Controllers\Shop\Homepage.php(121): view('Shop/page/homepage', [...])
+10 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Shop\Homepage->homepage()
+11 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop\Homepage))
+12 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-10 06:12:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-10 06:12:13 --> Undefined offset: 0
+in APPPATH\Views\Shop\page\single_product.php on line 18.
+ 1 APPPATH\Views\Shop\page\single_product.php(18): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offset: 0', 'D:\\xampp\\htdocs\\ecommerce2\\app\\Views\\Shop\\page\\single_product.php', 18, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce2\\app\\Views\\Shop\\page\\single_product.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/single_product', [], true)
+ 5 APPPATH\Views\Shop\page\homepage.php(124): view('Shop/page/single_product', [...])
+ 6 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce2\\app\\Views\\Shop\\page\\homepage.php')
+ 7 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/homepage', [], true)
+ 9 APPPATH\Controllers\Shop\Homepage.php(121): view('Shop/page/homepage', [...])
+10 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Shop\Homepage->homepage()
+11 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop\Homepage))
+12 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-10 06:12:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-10 06:12:46 --> Undefined offset: 0
+in APPPATH\Views\Shop\page\single_product.php on line 19.
+ 1 APPPATH\Views\Shop\page\single_product.php(19): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offset: 0', 'D:\\xampp\\htdocs\\ecommerce2\\app\\Views\\Shop\\page\\single_product.php', 19, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce2\\app\\Views\\Shop\\page\\single_product.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/single_product', [], true)
+ 5 APPPATH\Views\Shop\page\homepage.php(124): view('Shop/page/single_product', [...])
+ 6 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce2\\app\\Views\\Shop\\page\\homepage.php')
+ 7 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/homepage', [], true)
+ 9 APPPATH\Controllers\Shop\Homepage.php(121): view('Shop/page/homepage', [...])
+10 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Shop\Homepage->homepage()
+11 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop\Homepage))
+12 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-10 06:13:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-10 06:13:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-10 06:13:15 --> Undefined offset: 0
+in APPPATH\Views\Shop\page\single_product.php on line 19.
+ 1 APPPATH\Views\Shop\page\single_product.php(19): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offset: 0', 'D:\\xampp\\htdocs\\ecommerce2\\app\\Views\\Shop\\page\\single_product.php', 19, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce2\\app\\Views\\Shop\\page\\single_product.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/single_product', [], true)
+ 5 APPPATH\Views\Shop\page\homepage.php(124): view('Shop/page/single_product', [...])
+ 6 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce2\\app\\Views\\Shop\\page\\homepage.php')
+ 7 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/homepage', [], true)
+ 9 APPPATH\Controllers\Shop\Homepage.php(121): view('Shop/page/homepage', [...])
+10 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Shop\Homepage->homepage()
+11 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop\Homepage))
+12 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-10 06:16:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-10 06:16:07 --> Undefined offset: 0
+in APPPATH\Views\Shop\page\single_product.php on line 19.
+ 1 APPPATH\Views\Shop\page\single_product.php(19): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offset: 0', 'D:\\xampp\\htdocs\\ecommerce2\\app\\Views\\Shop\\page\\single_product.php', 19, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce2\\app\\Views\\Shop\\page\\single_product.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/single_product', [], true)
+ 5 APPPATH\Views\Shop\page\homepage.php(124): view('Shop/page/single_product', [...])
+ 6 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce2\\app\\Views\\Shop\\page\\homepage.php')
+ 7 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/homepage', [], true)
+ 9 APPPATH\Controllers\Shop\Homepage.php(121): view('Shop/page/homepage', [...])
+10 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Shop\Homepage->homepage()
+11 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop\Homepage))
+12 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-10 06:16:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-10 06:16:10 --> Undefined offset: 0
+in APPPATH\Views\Shop\page\single_product.php on line 19.
+ 1 APPPATH\Views\Shop\page\single_product.php(19): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offset: 0', 'D:\\xampp\\htdocs\\ecommerce2\\app\\Views\\Shop\\page\\single_product.php', 19, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce2\\app\\Views\\Shop\\page\\single_product.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/single_product', [], true)
+ 5 APPPATH\Views\Shop\page\homepage.php(124): view('Shop/page/single_product', [...])
+ 6 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce2\\app\\Views\\Shop\\page\\homepage.php')
+ 7 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/homepage', [], true)
+ 9 APPPATH\Controllers\Shop\Homepage.php(121): view('Shop/page/homepage', [...])
+10 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Shop\Homepage->homepage()
+11 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop\Homepage))
+12 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-10 06:16:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-10 06:16:14 --> Undefined offset: 0
+in APPPATH\Views\Shop\page\single_product.php on line 19.
+ 1 APPPATH\Views\Shop\page\single_product.php(19): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined offset: 0', 'D:\\xampp\\htdocs\\ecommerce2\\app\\Views\\Shop\\page\\single_product.php', 19, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce2\\app\\Views\\Shop\\page\\single_product.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/single_product', [], true)
+ 5 APPPATH\Views\Shop\page\homepage.php(124): view('Shop/page/single_product', [...])
+ 6 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce2\\app\\Views\\Shop\\page\\homepage.php')
+ 7 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/homepage', [], true)
+ 9 APPPATH\Controllers\Shop\Homepage.php(121): view('Shop/page/homepage', [...])
+10 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Shop\Homepage->homepage()
+11 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop\Homepage))
+12 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-10 06:17:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-06-10 06:17:23 --> mysqli_sql_exception: Table 'ecommerce2.footer' doesn't exist in D:\xampp\htdocs\ecommerce2\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 D:\xampp\htdocs\ecommerce2\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *\nFROM `...', 0)
+#1 D:\xampp\htdocs\ecommerce2\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 D:\xampp\htdocs\ecommerce2\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 D:\xampp\htdocs\ecommerce2\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 D:\xampp\htdocs\ecommerce2\app\Helpers\custom_helper.php(142): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\xampp\htdocs\ecommerce2\app\Views\Shop\Layout\layout.php(13): footer_settings()
+#6 D:\xampp\htdocs\ecommerce2\system\View\View.php(213): include('D:\\xampp\\htdocs...')
+#7 D:\xampp\htdocs\ecommerce2\system\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#8 D:\xampp\htdocs\ecommerce2\system\View\View.php(229): CodeIgniter\View\View->render('Shop/Layout/lay...', Array, true)
+#9 D:\xampp\htdocs\ecommerce2\system\Common.php(1184): CodeIgniter\View\View->render('Shop/page/homep...', Array, true)
+#10 D:\xampp\htdocs\ecommerce2\app\Controllers\Shop\Homepage.php(121): view('Shop/page/homep...', Array)
+#11 D:\xampp\htdocs\ecommerce2\system\CodeIgniter.php(934): App\Controllers\Shop\Homepage->homepage()
+#12 D:\xampp\htdocs\ecommerce2\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop\Homepage))
+#13 D:\xampp\htdocs\ecommerce2\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 D:\xampp\htdocs\ecommerce2\index.php(67): CodeIgniter\CodeIgniter->run()
+#15 {main}
+CRITICAL - 2024-06-10 06:17:23 --> Table 'ecommerce2.footer' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *
+FROM `footer`
+WHERE `id` = \'1\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `footer`
+WHERE `id` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `footer`
+WHERE `id` = \'1\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `footer`
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Helpers\custom_helper.php(142): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Views\Shop\Layout\layout.php(13): footer_settings()
+ 7 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce2\\app\\Views\\Shop\\Layout\\layout.php')
+ 8 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 9 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->render('Shop/Layout/layout', [], true)
+10 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/homepage', [], true)
+11 APPPATH\Controllers\Shop\Homepage.php(121): view('Shop/page/homepage', [...])
+12 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Shop\Homepage->homepage()
+13 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop\Homepage))
+14 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+15 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-10 06:17:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-06-10 06:17:38 --> mysqli_sql_exception: Table 'ecommerce2.footer' doesn't exist in D:\xampp\htdocs\ecommerce2\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 D:\xampp\htdocs\ecommerce2\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *\nFROM `...', 0)
+#1 D:\xampp\htdocs\ecommerce2\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 D:\xampp\htdocs\ecommerce2\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 D:\xampp\htdocs\ecommerce2\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 D:\xampp\htdocs\ecommerce2\app\Helpers\custom_helper.php(142): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\xampp\htdocs\ecommerce2\app\Views\Shop\Layout\layout.php(13): footer_settings()
+#6 D:\xampp\htdocs\ecommerce2\system\View\View.php(213): include('D:\\xampp\\htdocs...')
+#7 D:\xampp\htdocs\ecommerce2\system\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#8 D:\xampp\htdocs\ecommerce2\system\View\View.php(229): CodeIgniter\View\View->render('Shop/Layout/lay...', Array, true)
+#9 D:\xampp\htdocs\ecommerce2\system\Common.php(1184): CodeIgniter\View\View->render('Shop/page/homep...', Array, true)
+#10 D:\xampp\htdocs\ecommerce2\app\Controllers\Shop\Homepage.php(121): view('Shop/page/homep...', Array)
+#11 D:\xampp\htdocs\ecommerce2\system\CodeIgniter.php(934): App\Controllers\Shop\Homepage->homepage()
+#12 D:\xampp\htdocs\ecommerce2\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop\Homepage))
+#13 D:\xampp\htdocs\ecommerce2\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 D:\xampp\htdocs\ecommerce2\index.php(67): CodeIgniter\CodeIgniter->run()
+#15 {main}
+CRITICAL - 2024-06-10 06:17:38 --> Table 'ecommerce2.footer' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *
+FROM `footer`
+WHERE `id` = \'1\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `footer`
+WHERE `id` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `footer`
+WHERE `id` = \'1\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `footer`
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Helpers\custom_helper.php(142): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Views\Shop\Layout\layout.php(13): footer_settings()
+ 7 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce2\\app\\Views\\Shop\\Layout\\layout.php')
+ 8 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 9 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->render('Shop/Layout/layout', [], true)
+10 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/homepage', [], true)
+11 APPPATH\Controllers\Shop\Homepage.php(121): view('Shop/page/homepage', [...])
+12 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Shop\Homepage->homepage()
+13 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop\Homepage))
+14 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+15 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-10 08:25:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-06-10 08:25:43 --> mysqli_sql_exception: Table 'ecommerce2.footer' doesn't exist in D:\xampp\htdocs\ecommerce2\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 D:\xampp\htdocs\ecommerce2\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *\nFROM `...', 0)
+#1 D:\xampp\htdocs\ecommerce2\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 D:\xampp\htdocs\ecommerce2\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 D:\xampp\htdocs\ecommerce2\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 D:\xampp\htdocs\ecommerce2\app\Helpers\custom_helper.php(142): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\xampp\htdocs\ecommerce2\app\Views\Shop\Layout\layout.php(13): footer_settings()
+#6 D:\xampp\htdocs\ecommerce2\system\View\View.php(213): include('D:\\xampp\\htdocs...')
+#7 D:\xampp\htdocs\ecommerce2\system\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#8 D:\xampp\htdocs\ecommerce2\system\View\View.php(229): CodeIgniter\View\View->render('Shop/Layout/lay...', Array, true)
+#9 D:\xampp\htdocs\ecommerce2\system\Common.php(1184): CodeIgniter\View\View->render('Shop/page/homep...', Array, true)
+#10 D:\xampp\htdocs\ecommerce2\app\Controllers\Shop\Homepage.php(121): view('Shop/page/homep...', Array)
+#11 D:\xampp\htdocs\ecommerce2\system\CodeIgniter.php(934): App\Controllers\Shop\Homepage->homepage()
+#12 D:\xampp\htdocs\ecommerce2\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop\Homepage))
+#13 D:\xampp\htdocs\ecommerce2\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 D:\xampp\htdocs\ecommerce2\index.php(67): CodeIgniter\CodeIgniter->run()
+#15 {main}
+CRITICAL - 2024-06-10 08:25:43 --> Table 'ecommerce2.footer' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *
+FROM `footer`
+WHERE `id` = \'1\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `footer`
+WHERE `id` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `footer`
+WHERE `id` = \'1\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `footer`
+WHERE `id` = :id:', [...], false)
+ 5 APPPATH\Helpers\custom_helper.php(142): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Views\Shop\Layout\layout.php(13): footer_settings()
+ 7 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce2\\app\\Views\\Shop\\Layout\\layout.php')
+ 8 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 9 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->render('Shop/Layout/layout', [], true)
+10 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/homepage', [], true)
+11 APPPATH\Controllers\Shop\Homepage.php(121): view('Shop/page/homepage', [...])
+12 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Shop\Homepage->homepage()
+13 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop\Homepage))
+14 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+15 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
