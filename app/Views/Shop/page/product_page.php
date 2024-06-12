@@ -411,7 +411,7 @@
 
             <div class='product_price_main'>
                 <?php if ($product[0]->discount != '') { ?>
-                    $<?php echo get_product_discount_price($product[0]->price,$product[0]->discount); ?> <span class='product_discount_price'>$<?= $product[0]->price; ?></span>
+                    $<?php echo get_product_discount_price($product[0]->price, $product[0]->discount); ?> <span class='product_discount_price'>$<?= $product[0]->price; ?></span>
                 <?php } else { ?>
                     $<?= $product[0]->price; ?>
                 <?php } ?>
@@ -650,14 +650,26 @@
                                             echo $productbanner1[0]->value_1;
                                         } ?> </p>
         </div>
-        <div class="row m-0 gallery gap <?php if (sizeof($section1) > 5) {
-                                            echo 'section1-slider';
-                                        } ?> products-5">
-            <?php if (isset($section1)) {
-                foreach ($section1 as $row) { ?>
-                    <?php echo view('Shop/page/single_product', ['row' => $row, 'wishlist' =>  $session->get('userid')]); ?>
-            <?php }
-            } ?>
+        <div class=" <?php if (sizeof($section1) > 5) {
+                            echo  'blaze-slider1';
+                        } ?>">
+            <div class="blaze-container">
+                <div class="blaze-track-container">
+                    <div class="<?php if (isset($productbanner1) && !empty(($productbanner1) && $productbanner1[0]->value_3 == 'YES')) { echo 'blaze-track';} else{ echo 'slider-container';}?> products-5">
+                        <?php if (isset($section1)) {
+                            foreach ($section1 as $row) { ?>
+                                <?php echo view('Shop/page/single_product', ['row' => $row, 'wishlist' =>  $session->get('userid')]); ?>
+                        <?php }
+                        } ?>
+                    </div>
+                    <?php if (isset($productbanner1) && !empty(($productbanner1) && $productbanner1[0]->value_3 == 'YES')) { ?>
+                        <div class="blaze-slider-control pc-abs">
+                            <button class="blaze-prev " aria-label="Go to Previous Slide">&#10094;</button>
+                            <button class="blaze-next" aria-label="Go to Next Slide">&#10095;</button>
+                        </div>
+                    <?php } ?>
+                </div>
+            </div>
         </div>
     </div>
 <?php } ?>
@@ -670,14 +682,26 @@
                                             echo $productbanner2[0]->value_1;
                                         } ?> </p>
         </div>
-        <div class="row m-0 gallery gap <?php if (sizeof($section2) > 5) {
-                                            echo 'section2-slider';
-                                        } ?> products-5">
-            <?php if (isset($section2)) {
-                foreach ($section2 as $row) { ?>
-                    <?php echo view('Shop/page/single_product', ['row' => $row, 'wishlist' =>  $session->get('userid')]); ?>
-            <?php }
-            } ?>
+        <div class="<?php if (sizeof($section2) > 5) {
+                        echo  'blaze-slider2';
+                    } ?>">
+            <div class="blaze-container">
+                <div class="blaze-track-container">
+                    <div class="<?php if (isset($productbanner2) && !empty(($productbanner2) && $productbanner2[0]->value_3 == 'YES')) { echo 'blaze-track';}else {echo 'slider-container';}?> products-5">
+                        <?php if (isset($section2)) {
+                            foreach ($section2 as $row) { ?>
+                                <?php echo view('Shop/page/single_product', ['row' => $row, 'wishlist' =>  $session->get('userid')]); ?>
+                        <?php }
+                        } ?>
+                    </div>
+                    <?php if (isset($productbanner2) && !empty(($productbanner2) && $productbanner2[0]->value_3 == 'YES')) { ?>
+                        <div class="blaze-slider-control pc-abs">
+                            <button class="blaze-prev " aria-label="Go to Previous Slide">&#10094;</button>
+                            <button class="blaze-next" aria-label="Go to Next Slide">&#10095;</button>
+                        </div>
+                    <?php } ?>
+                </div>
+            </div>
         </div>
     </div>
 <?php } ?>
@@ -1115,81 +1139,47 @@
 
 
         <?php if (isset($productbanner1) && !empty(($productbanner1) && $productbanner1[0]->value_3 == 'YES')) { ?>
-            $('.section1-slider').slick({
-                // dots: true,
-                infinite: true,
-                speed: 300,
-                slidesToShow: 5,
-                slidesToScroll: 5,
-                prevArrow: "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
-                nextArrow: "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
-                responsive: [{
-                        breakpoint: 1024,
-                        settings: {
-                            slidesToShow: 5,
-                            slidesToScroll: 5,
-                            infinite: true,
-                            // dots: true
-                        }
-                    },
-                    {
-                        breakpoint: 600,
-                        settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 2
-                        }
-                    },
-                    {
-                        breakpoint: 480,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1
-                        }
-                    }
-                    // You can unslick at a given breakpoint now by adding:
-                    // settings: "unslick"
-                    // instead of a settings object
-                ]
-            });
+            const el2 = document.querySelector('.blaze-slider1')
+            new BlazeSlider(el2, {
+                all: {
+                    draggable: true,
+                    enableAutoplay: false,
+                    autoplayInterval: 2000,
+                    transitionDuration: 300,
+                    slidesToShow: 5,
+                    loop: true,
+                    slideGap: "0px",
+                    enablePagination: false,
+                },
+                '(max-width: 900px)': {
+                    slidesToShow: 3,
+                },
+                '(max-width: 500px)': {
+                    slidesToShow: 2,
+                },
+            })
         <?php } ?>
 
         <?php if (isset($productbanner2) && !empty(($productbanner2) && $productbanner2[0]->value_3 == 'YES')) { ?>
-            $('.section2-slider').slick({
-                // dots: true,
-                infinite: true,
-                speed: 300,
-                slidesToShow: 5,
-                slidesToScroll: 5,
-                prevArrow: "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
-                nextArrow: "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
-                responsive: [{
-                        breakpoint: 1024,
-                        settings: {
-                            slidesToShow: 5,
-                            slidesToScroll: 5,
-                            infinite: true,
-                            // dots: true
-                        }
-                    },
-                    {
-                        breakpoint: 600,
-                        settings: {
-                            slidesToShow: 2,
-                            slidesToScroll: 2
-                        }
-                    },
-                    {
-                        breakpoint: 480,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1
-                        }
-                    }
-                    // You can unslick at a given breakpoint now by adding:
-                    // settings: "unslick"
-                    // instead of a settings object
-                ]
-            });
+            const el = document.querySelector('.blaze-slider2')
+            new BlazeSlider(el, {
+                all: {
+                    draggable: true,
+                    enableAutoplay: false,
+                    autoplayInterval: 2000,
+                    transitionDuration: 300,
+                    slidesToShow: 5,
+                    loop: true,
+                    slideGap: "0px",
+                    enablePagination: false,
+                },
+                '(max-width: 900px)': {
+                    slidesToShow: 3,
+                },
+                '(max-width: 500px)': {
+                    slidesToShow: 2,
+                },
+            })
         <?php } ?>
 
         $('.addtocart').click(function() {

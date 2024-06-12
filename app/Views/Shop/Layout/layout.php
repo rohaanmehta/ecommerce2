@@ -76,6 +76,10 @@ $footersettings = footer_settings();
         <link rel="icon" type="image/x-icon" href="<?= base_url('uploads/website/' . $website_images[0]->value_3); ?>">
     <?php } ?>
     <style>
+        .slider-container{
+            display: flex;
+            flex-wrap: wrap;
+        }
         .pc-fl {
             /*display: flex;*/
         }
@@ -161,9 +165,10 @@ $footersettings = footer_settings();
             position: absolute;
             justify-content: space-between;
             bottom: auto;
-            right: 5px;
-            left: 5px;
+            right: 20px;
+            left: 20px;
             top: 45%;
+            visibility: hidden;
         }
 
         .blaze-slider-control button {
@@ -174,6 +179,7 @@ $footersettings = footer_settings();
             color: black;
             font-size: 1rem;
             border-radius: 80px;
+            visibility: visible;
         }
 
         .blaze-prev {
@@ -211,22 +217,39 @@ $footersettings = footer_settings();
             }
         }
 
+        .blaze-pagination{
+            position: absolute;
+            bottom: 32px;  
+            z-index: 2;  
+            width: 100%;
+            text-align: center;
+        }
+
         .blaze-pagination button {
-            background-color: #d7d7d7;
-            color: #d7d7d7;
+            background-color: #cbcbcb;
+            color: #cbcbcb;
             content: ' ';
-            width: 17px;
-            margin-right: 3px;
+            width: 6px;
+            margin-right: 4px;
             border-radius: 50px;
-            height: 17px;
+            height: 6px;
             border: none;
+            overflow: hidden;
+            font-size: 1px;
+            padding: 0px;
         }
 
         .blaze-pagination .active {
-            background-color: #838383;
-            color: #838383;
+            background-color: #747474;
+            color: #747474;
         }
 
+        .blaze-slider1  .blaze-pagination{
+            display: none !important;
+        }
+        .single-product-slider  .blaze-pagination{
+            display: block !important;
+        }
         /* //slider end */
 
 
@@ -234,18 +257,18 @@ $footersettings = footer_settings();
             display: none;
         }
 
-        .section1-slider.slick-initialized {
+        /* .section1-slider.slick-initialized {
             display: block;
-        }
+        } */
 
         <?php } ?><?php if (isset($banner2_info) && !empty(($banner2_info) && $banner2_info[0]->value_3 == 'YES')) { ?>.section2-slider {
             display: none;
         }
 
 
-        .section2-slider.slick-initialized {
+        /* .section2-slider.slick-initialized {
             display: block;
-        }
+        } */
 
         <?php } ?>
         /* .section1-slider {
@@ -528,22 +551,36 @@ $footersettings = footer_settings();
             if ($(window).width() > 768) {
                 $('.single-product-slider').css('display', 'block');
                 $('.mobile-product-slider').css('display', 'none');
-                load_product_sliders();
+                // load_product_sliders();
             } else {
                 $('.single-product-slider').css('display', 'none');
                 $('.mobile-product-slider').css('display', 'block');
             }
             // }, 500);
+            var productslider;
 
             $('.main-product-slider').hover(
                 function() {
-                    // $('.product-slider-image').css('display','block !important');
-                    $(this).find('.single-product-slider').slick('play')
+                    $(this).find('.product-slider-image').css('display','block')
+                    var index = $('.main-product-slider').index(this);
+
+                    var el3 = document.querySelectorAll('.single-product-slider')[index];
+                    productslider = new BlazeSlider(el3, {
+                        all: {
+                            draggable: false,
+                            enableAutoplay: true,
+                            autoplayInterval: 1500,
+                            transitionDuration: 300,
+                            slidesToShow: 1,
+                            loop: true,
+                            slideGap: "0px",
+                        },
+                    });
                 },
 
                 function() {
-                    $(this).find('.single-product-slider').slick('slickGoTo', '0');
-                    $(this).find('.single-product-slider').slick('pause');
+                    $(this).find('.product-slider-image').css('display','none')
+                    productslider.destroy();
                 }
             );
 
@@ -699,23 +736,44 @@ $footersettings = footer_settings();
             }
         );
 
+        // function load_product_sliders() {
+        //     // $('.single-product-slider').slick({
+        //     //     dots: true,
+        //     //     autoplay: false,
+        //     //     lazyLoad: 'ondemand',
+        //     //     autoplaySpeed: 1000,
+        //     //     infinite: true,
+        //     //     speed: 300,
+        //     //     slidesToShow: 1,
+        //     //     // adaptiveHeight: true,
+        //     //     prevArrow: "",
+        //     //     nextArrow: "",
+        //     //     pauseOnHover: false,
+        //     //     pauseOnFocus: false,
+        //     // });
 
-        function load_product_sliders() {
-            // $('.single-product-slider').slick({
-            //     dots: true,
-            //     autoplay: false,
-            //     lazyLoad: 'ondemand',
-            //     autoplaySpeed: 1000,
-            //     infinite: true,
-            //     speed: 300,
-            //     slidesToShow: 1,
-            //     // adaptiveHeight: true,
-            //     prevArrow: "",
-            //     nextArrow: "",
-            //     pauseOnHover: false,
-            //     pauseOnFocus: false,
-            // });
-        }
+        //     document.querySelectorAll('.single-product-slider').forEach(el3 => {
+        //         new BlazeSlider(el3, {
+        //             // new BlazeSlider(el3, {
+        //             all: {
+        //                 draggable: false,
+        //                 enableAutoplay: true,
+        //                 autoplayInterval: 2000,
+        //                 transitionDuration: 300,
+        //                 slidesToShow: 1,
+        //                 loop: true,
+        //                 slideGap: "0px",
+        //             },
+        //             // '(max-width: 900px)': {
+        //             //     slidesToShow: 3,
+        //             // },
+        //             // '(max-width: 500px)': {
+        //             //     slidesToShow: 2,
+        //             // },
+        //         });
+        //     })
+        //     el3.destroy();
+        // }
     </script>
 </body>
 
