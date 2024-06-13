@@ -365,10 +365,6 @@
       transform: translateY(0);
   }
 
-  .main-product-slider:hover .slick-dots {
-      opacity: 1;
-  }
-
   .add-to-wishlist {
       font-size: 12px;
       font-weight: 600;
@@ -391,45 +387,6 @@
 
   }
 
-  .slick-dots {
-      opacity: 0;
-      display: flex !important;
-      z-index: 2;
-      justify-content: center;
-      position: absolute;
-      transform: translate(-50%, -50%) !important;
-      bottom: 0px;
-      left: 50%;
-      margin: 0;
-      padding: 1rem 0;
-
-      list-style-type: none;
-
-      li {
-          margin: 0 0.25rem;
-      }
-
-      button {
-          display: block;
-          width: 0.3rem;
-          height: 0.3rem;
-          padding: 0;
-          /* position: absolute; */
-          /* padding-right: 6px; */
-          bottom: 0px;
-          border: none;
-          border-radius: 100%;
-          background-color: #dfdfdf;
-
-          text-indent: -9999px;
-      }
-
-      li.slick-active button {
-          background-color: #9b9b9b;
-      }
-
-  }
-
   @media only screen and (min-width: 992px) {
       .products-5 .col-lg-3 {
           flex: 0 0 20%;
@@ -437,42 +394,6 @@
       }
   }
 
-  .slick-slider {
-      display: flex !important;
-  }
-
-  .slick-prev:hover,
-  .slick-next:hover {
-      opacity: 1;
-  }
-
-  .slick-prev {
-      border-radius: 50px !important;
-      opacity: 0.6;
-      width: 40px !important;
-      height: 40px !important;
-      border: 1px solid grey !important;
-      position: absolute !important;
-      z-index: 1 !important;
-      left: 50px !important;
-      top: 45% !important;
-      transform: translate(-50%, -50%) !important;
-      cursor: pointer !important;
-  }
-
-  .slick-next {
-      border-radius: 50px !important;
-      opacity: 0.6;
-      width: 40px !important;
-      height: 40px !important;
-      border: 1px solid grey !important;
-      position: absolute !important;
-      z-index: 1 !important;
-      right: 13px !important;
-      top: 45% !important;
-      transform: translate(-50%, -50%) !important;
-      cursor: pointer !important;
-  }
 
   .mybadge {
       background-color: red;

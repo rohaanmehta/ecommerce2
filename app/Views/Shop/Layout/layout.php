@@ -38,28 +38,27 @@ $footersettings = footer_settings();
     <link media="all" rel="stylesheet" href="<?= base_url('assets/css/googlefont.css'); ?>" crossorigin="anonymous">
     <!-- <link media="all" rel="stylesheet" href="<//?= base_url('assets/css/fontawesome.css'); ?>"> -->
     <link media="all" rel="stylesheet" href="<?= base_url('assets/css/bootstrap.min.css'); ?>" crossorigin="anonymous">
-    <link media="all" rel="stylesheet" href="<?= base_url('assets/css/lato.css'); ?>" crossorigin="anonymous">
-    <!-- <link media="all" rel="stylesheet" href="<//?= base_url('assets/css/slick.css'); ?>" crossorigin="anonymous"> -->
+    <link media="all"  rel="stylesheet" href="<?= base_url('assets/css/lato.css'); ?>" crossorigin="anonymous">
 
 
-    <link rel="stylesheet" href="https://unpkg.com/blaze-slider@latest/dist/blaze.css" />
+    <!-- <link rel="stylesheet" href="https://unpkg.com/blaze-slider@latest/dist/blaze.css" /> -->
 
 
     <link media="all" rel="stylesheet" href="<?= base_url('assets/css/mystyle.css'); ?>">
+
+    <link media="all"  rel="stylesheet" href="<?= base_url('assets/css/blaze_slider.css'); ?>">
 
     <!-- used  -->
     <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://kit.fontawesome.com/a670e6a37e.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
-    <!-- <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> -->
 
 
     <!-- <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,700&subset=latin-ext" media="all" rel="stylesheet"> -->
-    <link media="all" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <!-- <link media="all" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"> -->
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
     <!-- <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet"> -->
-    <!-- <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" /> -->
 
 
 
@@ -75,210 +74,6 @@ $footersettings = footer_settings();
     <?php if (isset($website_images[0]->value_3) && !empty($website_images[0]->value_3)) { ?>
         <link rel="icon" type="image/x-icon" href="<?= base_url('uploads/website/' . $website_images[0]->value_3); ?>">
     <?php } ?>
-    <style>
-        .slider-container{
-            display: flex;
-            flex-wrap: wrap;
-        }
-        .pc-fl {
-            /*display: flex;*/
-        }
-
-        img {
-            width: 100%;
-            max-width: 100%;
-            height: auto;
-        }
-
-        .blaze-slider {
-            --slides-to-show: 1;
-            --slide-gap: 10px;
-            direction: ltr;
-        }
-
-        .blaze-container {
-            position: relative;
-        }
-
-        .blaze-track-container {
-            overflow: hidden;
-        }
-
-        .blaze-track {
-            will-change: transform;
-            touch-action: pan-y;
-            display: flex;
-            gap: var(--slide-gap);
-            --slide-width: calc((100% - (var(--slides-to-show) - 1) * var(--slide-gap)) / var(--slides-to-show));
-            box-sizing: border-box;
-        }
-
-        .blaze-track>* {
-            box-sizing: border-box;
-            width: var(--slide-width);
-            flex-shrink: 0;
-        }
-
-        .blaze-slider.dragging .blaze-track {
-            cursor: grabbing;
-        }
-
-        .blaze-track>* {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: width 300ms ease;
-        }
-
-        .blaze-track .pc-slide {
-            width: 100%;
-        }
-
-        .blaze-track .pc-slide-img {
-            width: 66.67%;
-        }
-
-        .blaze-track .pc-slide-content {
-            width: 33.33%;
-        }
-
-        .pc-p1 {
-            padding: 1rem;
-        }
-
-        .pc-btn-row .pc-btn {
-            background: #f4f4f4;
-            padding: 0.5rem 0.8rem;
-        }
-
-        .pc-btn-row .pc-btn:first-child {
-            margin-right: 0.5rem;
-        }
-
-        .blaze-slider-control {
-            /* bottom: 20px;
-            left: 50%;
-            display: flex;
-            justify-content: space-between;
-            position: absolute; */
-            display: flex;
-            position: absolute;
-            justify-content: space-between;
-            bottom: auto;
-            right: 20px;
-            left: 20px;
-            top: 45%;
-            visibility: hidden;
-        }
-
-        .blaze-slider-control button {
-            cursor: pointer;
-            padding: 0.4rem 0.8rem;
-            background-color: #fff;
-            border: 1px solid #f4f4f4;
-            color: black;
-            font-size: 1rem;
-            border-radius: 80px;
-            visibility: visible;
-        }
-
-        .blaze-prev {
-            margin-right: 0.5rem;
-        }
-
-        .blaze-slider.start .blaze-prev,
-        .blaze-slider.end .blaze-next {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        @media only screen and (max-width: 820px) {
-            .pc-slide {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: normal;
-                align-items: normal;
-            }
-
-            .blaze-track .pc-slide-img,
-            .blaze-track .pc-slide-content {
-                width: 100%;
-            }
-
-            /* .blaze-slider-control {
-                bottom: auto;
-                right: 5px;
-                left: 5px;
-                top: 50%;
-            } */
-
-            .blaze-prev {
-                margin-right: 0;
-            }
-        }
-
-        .blaze-pagination{
-            position: absolute;
-            bottom: 32px;  
-            z-index: 2;  
-            width: 100%;
-            text-align: center;
-        }
-
-        .blaze-pagination button {
-            background-color: #cbcbcb;
-            color: #cbcbcb;
-            content: ' ';
-            width: 6px;
-            margin-right: 4px;
-            border-radius: 50px;
-            height: 6px;
-            border: none;
-            overflow: hidden;
-            font-size: 1px;
-            padding: 0px;
-        }
-
-        .blaze-pagination .active {
-            background-color: #747474;
-            color: #747474;
-        }
-
-        .blaze-slider1  .blaze-pagination{
-            display: none !important;
-        }
-        .single-product-slider  .blaze-pagination{
-            display: block !important;
-        }
-        /* //slider end */
-
-
-        <?php if (isset($banner1_info) && !empty(($banner1_info) && $banner1_info[0]->value_3 == 'YES')) { ?>.section1-slider {
-            display: none;
-        }
-
-        /* .section1-slider.slick-initialized {
-            display: block;
-        } */
-
-        <?php } ?><?php if (isset($banner2_info) && !empty(($banner2_info) && $banner2_info[0]->value_3 == 'YES')) { ?>.section2-slider {
-            display: none;
-        }
-
-
-        /* .section2-slider.slick-initialized {
-            display: block;
-        } */
-
-        <?php } ?>
-        /* .section1-slider {
-            display: none;
-        }
-
-        .section1-slider.slick-initialized {
-            display: block;
-        } */
-    </style>
 </head>
 
 <body style='position:relative'>
@@ -472,14 +267,18 @@ $footersettings = footer_settings();
     <?php include('login.php'); ?>
 
     <script type="text/javascript" src="<?= base_url('assets/js/jquery.min.js'); ?>"></script>
-    <!-- <script type="text/javascript" src="<//?= base_url('assets/js/slick.min.js'); ?>"></script> -->
+
+    <!-- //slider -->
+    <script async defer type="text/javascript" src="<?= base_url('assets/js/blaze.min.js'); ?>"></script>
+    <script  type="text/javascript" src="<?= base_url('assets/js/blaze.js'); ?>"></script>
+
 
     <script async defer type="text/javascript" src="<?= base_url('assets/js/fontawesome.js'); ?>"></script>
     <script type="text/javascript" src="<?= base_url('assets/js/bootsrap.min.js'); ?>"></script>
-    <script async defer type="text/javascript" src="<?= base_url('assets/js/popper.min.js'); ?>"></script>
-    <!-- //slider -->
-    <Script src='https://unpkg.com/blaze-slider@latest/dist/blaze-slider.min.js'></script>
-    <Script src='https://unpkg.com/blaze-slider@latest/dist/blaze-slider.dev.js'></script>
+    <!-- <script async defer type="text/javascript" src="<//?= base_url('assets/js/popper.min.js'); ?>"></script> -->
+
+    <!-- <Script src='https://unpkg.com/blaze-slider@latest/dist/blaze-slider.min.js'></script> -->
+    <!-- <Script src='https://unpkg.com/blaze-slider@latest/dist/blaze-slider.dev.js'></script> -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 
@@ -735,45 +534,6 @@ $footersettings = footer_settings();
                 $('.nav_Categories_Btn_out_box').css('display', 'block');
             }
         );
-
-        // function load_product_sliders() {
-        //     // $('.single-product-slider').slick({
-        //     //     dots: true,
-        //     //     autoplay: false,
-        //     //     lazyLoad: 'ondemand',
-        //     //     autoplaySpeed: 1000,
-        //     //     infinite: true,
-        //     //     speed: 300,
-        //     //     slidesToShow: 1,
-        //     //     // adaptiveHeight: true,
-        //     //     prevArrow: "",
-        //     //     nextArrow: "",
-        //     //     pauseOnHover: false,
-        //     //     pauseOnFocus: false,
-        //     // });
-
-        //     document.querySelectorAll('.single-product-slider').forEach(el3 => {
-        //         new BlazeSlider(el3, {
-        //             // new BlazeSlider(el3, {
-        //             all: {
-        //                 draggable: false,
-        //                 enableAutoplay: true,
-        //                 autoplayInterval: 2000,
-        //                 transitionDuration: 300,
-        //                 slidesToShow: 1,
-        //                 loop: true,
-        //                 slideGap: "0px",
-        //             },
-        //             // '(max-width: 900px)': {
-        //             //     slidesToShow: 3,
-        //             // },
-        //             // '(max-width: 500px)': {
-        //             //     slidesToShow: 2,
-        //             // },
-        //         });
-        //     })
-        //     el3.destroy();
-        // }
     </script>
 </body>
 
