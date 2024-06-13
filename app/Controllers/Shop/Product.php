@@ -150,7 +150,7 @@ class Product extends BaseController
     public function search_product()
     {
         // print_r($_POST);exit;
-        $data['product'] = $this->db->table('products')->select('title,product_slug,image_name1')->like('title', $_POST['search'])->limit(20)->join('product_images as pi', 'pi.product_id = products.id')->get()->getResult();
+        $data['product'] = $this->db->table('products')->select('title,product_slug,image_name1')->like('title', $_POST['search'])->orlike('sku',$_POST['search'])->limit(20)->join('product_images as pi', 'pi.product_id = products.id')->get()->getResult();
         foreach ($data['product'] as $row) {
             $row->title = character_limiter($row->title, 50, '...');
         }
