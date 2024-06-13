@@ -18,7 +18,7 @@ class App extends BaseConfig
      *    http://example.com/
      */
     // mobile
-    // public string $baseURL = 'http://192.168.9.73/ecommerce2';
+    // public string $baseURL = 'http://192.168.1.203/ecommerce2';
     // public string $baseURL = 'http://172.20.10.3/ecommerce';
     public string $baseURL = 'http://localhost/ecommerce2';
 

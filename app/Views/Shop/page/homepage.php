@@ -4,7 +4,7 @@
 <?php $session = session(); ?>
 
 <!-- corousel -->
-<div id="carouselExampleIndicators" class="mb-4 carousel slide mobile_Head_Hide" data-ride="carousel">
+<div id="carouselExampleIndicators" class="mb-4 carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -20,7 +20,14 @@
                     <?php if ($row->link != '') { ?>
                         <a href='<?= base_url($row->link); ?>'>
                         <?php } ?>
-                        <img alt='<?= $row->alt_text; ?>' class="d-block w-100" <?php if ($i != 0) { ?> loading="lazy" <?php } ?> src="<?= base_url('uploads/slider/' . $row->name) ?>" alt="corousel">
+                        <picture>
+                            <source srcset="<?= base_url('uploads/slider/' . $row->mobile_name) ?>" media="(max-width: 768px)">
+                            <img alt='<?= $row->alt_text; ?>' class="d-block w-100" <?php if ($i != 0) {
+                                                                                        echo "loading='lazy'";
+                                                                                    } else {
+                                                                                        echo "loading='eager'";
+                                                                                    }   ?> src="<?= base_url('uploads/slider/' . $row->name) ?>" alt="corousel">
+                        </picture>
                         <!-- <div class="carousel-caption d-none d-md-block">
                         <h5>This is heading Caption</h5>
                         <p>Description small for Images of corousel</p>
@@ -38,45 +45,6 @@
         <span class="sr-only">Previous</span>
     </a>
     <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-</div>
-
-<div id="carouselExampleIndicators2" class="mb-4 carousel slide mobile_Head_Show" data-ride="carousel">
-    <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators2" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators2" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-        <?php if (isset($slider)) {
-            $i = 0;
-            foreach ($slider as $row) { ?>
-                <div class="carousel-item <?php if ($i == 0) {
-                                                echo 'active';
-                                            } ?>">
-                    <?php if ($row->link != '') { ?>
-                        <a href='<?= base_url($row->link); ?>'>
-                        <?php } ?>
-                        <img alt='<?= $row->alt_text; ?>' <?php if ($i != 0) { ?> loading="lazy" <?php } ?> class="d-block w-100" src="<?= base_url('uploads/slider/' . $row->mobile_name) ?>" alt="corousel">
-                        <!-- <div class="carousel-caption d-none d-md-block">
-                        <h5>This is heading Caption</h5>
-                        <p>Description small for Images of corousel</p>
-                    </div> -->
-                        <?php if ($row->link != '') { ?>
-                        </a>
-                    <?php } ?>
-                </div>
-        <?php $i++;
-            }
-        } ?>
-    </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
     </a>
@@ -123,8 +91,12 @@
     <div class="blaze-slider2">
         <div class="blaze-container">
             <div class="blaze-track-container">
-            <div class="<?php if (isset($banner1_info) && !empty(($banner1_info) && $banner1_info[0]->value_3 == 'YES')) { echo 'blaze-track';}else{ echo 'slider-container';}?> products-5">
-            <?php if (isset($section1)) {
+                <div class="<?php if (isset($banner1_info) && !empty(($banner1_info) && $banner1_info[0]->value_3 == 'YES')) {
+                                echo 'blaze-track';
+                            } else {
+                                echo 'slider-container';
+                            } ?> products-5">
+                    <?php if (isset($section1)) {
                         foreach ($section1 as $row) { ?>
                             <?php echo view('Shop/page/single_product', ['row' => $row, 'wishlist' =>  $session->get('userid')]); ?>
                     <?php }
@@ -206,7 +178,11 @@
     <div class="blaze-slider1">
         <div class="blaze-container">
             <div class="blaze-track-container">
-                <div class="<?php if (isset($banner2_info) && !empty(($banner2_info) && $banner2_info[0]->value_3 == 'YES')) { echo 'blaze-track';}else{ echo 'slider-container';}?> products-5">
+                <div class="<?php if (isset($banner2_info) && !empty(($banner2_info) && $banner2_info[0]->value_3 == 'YES')) {
+                                echo 'blaze-track';
+                            } else {
+                                echo 'slider-container';
+                            } ?> products-5">
                     <?php if (isset($section2)) {
                         foreach ($section2 as $row) { ?>
                             <?php echo view('Shop/page/single_product', ['row' => $row, 'wishlist' =>  $session->get('userid')]); ?>
