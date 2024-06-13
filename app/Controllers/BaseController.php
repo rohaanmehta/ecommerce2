@@ -88,4 +88,32 @@ abstract class BaseController extends Controller
             echo 'err' . $e->getMessage();
         }
     }
+
+    public function image_upload_dont_delete($fileName,$format,$dir,$resize = null)
+    {
+
+        try {
+            $tempname = explode('.',$fileName);
+            $fileNamenew = '2'.$tempname[0].'.webp';
+
+            if($resize == null){
+                $this->image->withFile(ROOTPATH .$dir . $fileName)
+                ->convert($format)
+                ->save(ROOTPATH .$dir . $fileNamenew);
+            }else{
+                $resize = explode('x',$resize);
+                // print_r($resize);
+                $this->image->withFile(ROOTPATH .$dir . $fileName)
+                ->resize($resize[0], $resize[1], false, 'height')
+                ->convert($format)
+                ->save(ROOTPATH .$dir . $fileNamenew);
+            }
+
+            // unlink(ROOTPATH .$dir . $fileName);
+            $this->image->clear();
+            return $fileNamenew;
+        } catch (\CodeIgniter\Images\Exceptions\ImageException $e) {
+            echo 'err' . $e->getMessage();
+        }
+    }
 }

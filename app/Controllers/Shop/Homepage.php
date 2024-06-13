@@ -83,7 +83,7 @@ class Homepage extends BaseController
             $data['section2'] = $cache_products['section2'];
         } else {
             //section1
-            $section1 = $this->db->table('products')->select('products.discount,products.id,products.title,products.price,pi.image_name1,pi.image_name2,pi.image_name3,pi.image_name4,products.product_slug')->where('promote', 'section1');
+            $section1 = $this->db->table('products')->select('products.discount,products.id,products.title,products.price,pi.image_name1,pi.image_name2,pi.image_name3,pi.image_name4,pi.small_image_name1,pi.small_image_name2,pi.small_image_name3,pi.small_image_name4,products.product_slug')->where('promote', 'section1');
 
             if ($this->session->get('userid') != '') {
                 $section1 = $section1->select('wishlist.user_id as wishlist')->join('wishlist', 'wishlist.product_id = products.id AND user_id = ' . $this->session->get('userid') . '', 'left');
@@ -94,7 +94,7 @@ class Homepage extends BaseController
             $products['section1'] = $section1->get()->getResult();
 
             //section2
-            $section2 = $this->db->table('products')->select('products.discount,products.id,products.title,products.price,pi.image_name1,pi.image_name2,pi.image_name3,pi.image_name4,products.product_slug')->where('promote', 'section2');
+            $section2 = $this->db->table('products')->select('products.discount,products.id,products.title,products.price,pi.image_name1,pi.image_name2,pi.image_name3,pi.image_name4,pi.small_image_name1,pi.small_image_name2,pi.small_image_name3,pi.small_image_name4,products.product_slug')->where('promote', 'section2');
 
             if ($this->session->get('userid') != '') {
                 $section2 = $section2->select('wishlist.user_id as wishlist')->join('wishlist', 'wishlist.product_id = products.id AND user_id = ' . $this->session->get('userid') . '', 'left');

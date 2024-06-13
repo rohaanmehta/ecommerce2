@@ -221,7 +221,7 @@ $footersettings = footer_settings();
     </div>
     <!-- multiple categories pc  -->
     <div class='d-flex justify-content-center' style='position:relative;'>
-        <div class='nav_Categories_Btn_out_box' style='display:none;min-height:300px;z-index:2;width:80%;margin-top:0px;padding: 30px;padding-top:0px;border: 1px solid #e7e7e7;border-top:none;position:fixed;background:#fff;'></div>
+        <div class='nav_Categories_Btn_out_box' style='display:none;min-height:300px;z-index:1;width:80%;margin-top:0px;padding: 30px;padding-top:0px;border: 1px solid #e7e7e7;border-top:none;position:fixed;background:#fff;'></div>
         <?php if (isset($categories) && !empty($categories)) {
             foreach ($categories as $row_main) {
                 if ($row_main->parent_category == '') {  ?>

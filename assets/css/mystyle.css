@@ -662,6 +662,11 @@
   /* product gallery   */
   .gallery_img {
       width: 100%;
+      height: fit-content;
+  }
+
+  .product-slider-image{
+    display: none;
   }
 
   .gallery_container {

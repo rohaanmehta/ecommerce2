@@ -24,8 +24,8 @@ class Products extends BaseController
 
         if (isset($data) && !empty($data)) {
             foreach ($data['data'] as $key => $row) {
-                $data['data'][$key]->title = str_replace(',',' ',$data['data'][$key]->title);
-                $data['data'][$key]->desc = str_replace(',',' ',$data['data'][$key]->desc);
+                $data['data'][$key]->title = str_replace(',', ' ', $data['data'][$key]->title);
+                $data['data'][$key]->desc = str_replace(',', ' ', $data['data'][$key]->desc);
 
                 if ($row->visibility == '1') {
                     $data['data'][$key]->visibility = 'Y';
@@ -42,7 +42,7 @@ class Products extends BaseController
                     }
                     $category = trim($category, '|');
                     $data['data'][$key]->category = $category;
-                }else{
+                } else {
                     $data['data'][$key]->category = '';
                 }
                 // echo $key;exit;
@@ -250,22 +250,34 @@ class Products extends BaseController
 
                 if (isset($_FILES['image1']['name']) && !empty($_FILES['image1']['name'])) {
                     $img1->move(ROOTPATH . 'uploads/product_images/', $img1name);
-                    $image_array['image_name1'] = $img1name;
+                    $fileName = $this->image_upload_dont_delete($img1name, IMAGETYPE_WEBP, 'uploads/product_images/', '500x667');
+                    $small_fileName = $this->image_upload($img1name, IMAGETYPE_WEBP, 'uploads/product_images/', '300x400');
+                    $image_array['small_image_name1'] = $small_fileName;
+                    $image_array['image_name1'] = $fileName;
                 }
 
                 if (isset($_FILES['image2']['name']) && !empty($_FILES['image2']['name'])) {
                     $img2->move(ROOTPATH . 'uploads/product_images/', $img2name);
-                    $image_array['image_name2'] = $img2name;
+                    $fileName2 = $this->image_upload_dont_delete($img2name, IMAGETYPE_WEBP, 'uploads/product_images/', '500x667');
+                    $small_fileName2 = $this->image_upload($img2name, IMAGETYPE_WEBP, 'uploads/product_images/', '300x400');
+                    $image_array['small_image_name2'] = $small_fileName2;
+                    $image_array['image_name2'] = $fileName2;
                 }
 
                 if (isset($_FILES['image3']['name']) && !empty($_FILES['image3']['name'])) {
                     $img3->move(ROOTPATH . 'uploads/product_images/', $img3name);
-                    $image_array['image_name3'] = $img3name;
+                    $fileName3 = $this->image_upload_dont_delete($img3name, IMAGETYPE_WEBP, 'uploads/product_images/', '500x667');
+                    $small_fileName3 = $this->image_upload($img3name, IMAGETYPE_WEBP, 'uploads/product_images/', '300x400');
+                    $image_array['small_image_name3'] = $small_fileName3;
+                    $image_array['image_name3'] = $fileName3;
                 }
 
                 if (isset($_FILES['image4']['name']) && !empty($_FILES['image4']['name'])) {
                     $img4->move(ROOTPATH . 'uploads/product_images/', $img4name);
-                    $image_array['image_name4'] = $img4name;
+                    $fileName4 = $this->image_upload_dont_delete($img4name, IMAGETYPE_WEBP, 'uploads/product_images/', '500x667');
+                    $small_fileName4 = $this->image_upload($img4name, IMAGETYPE_WEBP, 'uploads/product_images/', '300x400');
+                    $image_array['small_image_name4'] = $small_fileName4;
+                    $image_array['image_name4'] = $fileName4;
                 }
 
                 $this->db->table('product_images')->insert($image_array);
@@ -291,35 +303,62 @@ class Products extends BaseController
                 if (isset($productinfo[0]) && !empty($productinfo[0])) {
                     if (isset($_FILES['image1']['name']) && !empty($_FILES['image1']['name'])) {
                         $img1->move(ROOTPATH . 'uploads/product_images/', $img1name);
-                        $image_array['image_name1'] = $img1name;
+                        $fileName = $this->image_upload_dont_delete($img1name, IMAGETYPE_WEBP, 'uploads/product_images/', '500x667');
+                        $small_fileName = $this->image_upload($img1name, IMAGETYPE_WEBP, 'uploads/product_images/', '300x400');
+                        $image_array['image_name1'] = $fileName;
+                        $image_array['small_image_name1'] = $small_fileName;
 
                         if (is_file(ROOTPATH . 'uploads/product_images/' . $productinfo[0]->image_name1)) {
                             unlink(ROOTPATH . 'uploads/product_images/' . $productinfo[0]->image_name1);
+                        }
+                        if (is_file(ROOTPATH . 'uploads/product_images/' . $productinfo[0]->small_image_name1)) {
+                            unlink(ROOTPATH . 'uploads/product_images/' . $productinfo[0]->small_image_name1);
                         }
                     }
 
                     if (isset($_FILES['image2']['name']) && !empty($_FILES['image2']['name'])) {
                         $img2->move(ROOTPATH . 'uploads/product_images/', $img2name);
-                        $image_array['image_name2'] = $img2name;
+                        $fileName2 = $this->image_upload_dont_delete($img2name, IMAGETYPE_WEBP, 'uploads/product_images/', '500x667');
+                        $small_fileName2 = $this->image_upload($img2name, IMAGETYPE_WEBP, 'uploads/product_images/', '300x400');
+                        $image_array['image_name2'] = $fileName2;
+                        $image_array['small_image_name2'] = $small_fileName2;
 
                         if (is_file(ROOTPATH . 'uploads/product_images/' . $productinfo[0]->image_name2)) {
                             unlink(ROOTPATH . 'uploads/product_images/' . $productinfo[0]->image_name2);
+                        }
+                        if (is_file(ROOTPATH . 'uploads/product_images/' . $productinfo[0]->small_image_name2)) {
+                            unlink(ROOTPATH . 'uploads/product_images/' . $productinfo[0]->small_image_name2);
                         }
                     }
 
                     if (isset($_FILES['image3']['name']) && !empty($_FILES['image3']['name'])) {
                         $img3->move(ROOTPATH . 'uploads/product_images/', $img3name);
-                        $image_array['image_name3'] = $img3name;
+                        $fileName3 = $this->image_upload_dont_delete($img3name, IMAGETYPE_WEBP, 'uploads/product_images/', '500x667');
+                        $small_fileName3 = $this->image_upload($img3name, IMAGETYPE_WEBP, 'uploads/product_images/', '300x400');
+                        $image_array['image_name3'] = $fileName3;
+                        $image_array['small_image_name3'] = $small_fileName3;
+
+
                         if (is_file(ROOTPATH . 'uploads/product_images/' . $productinfo[0]->image_name3)) {
                             unlink(ROOTPATH . 'uploads/product_images/' . $productinfo[0]->image_name3);
+                        }
+                        if (is_file(ROOTPATH . 'uploads/product_images/' . $productinfo[0]->small_image_name3)) {
+                            unlink(ROOTPATH . 'uploads/product_images/' . $productinfo[0]->small_image_name3);
                         }
                     }
 
                     if (isset($_FILES['image4']['name']) && !empty($_FILES['image4']['name'])) {
                         $img4->move(ROOTPATH . 'uploads/product_images/', $img4name);
-                        $image_array['image_name4'] = $img4name;
+                        $fileName4 = $this->image_upload_dont_delete($img4name, IMAGETYPE_WEBP, 'uploads/product_images/', '500x667');
+                        $small_fileName4 = $this->image_upload($img4name, IMAGETYPE_WEBP, 'uploads/product_images/', '300x400');
+                        $image_array['image_name4'] = $fileName4;
+                        $image_array['small_image_name4'] = $small_fileName4;
+
                         if (is_file(ROOTPATH . 'uploads/product_images/' . $productinfo[0]->image_name4)) {
                             unlink(ROOTPATH . 'uploads/product_images/' . $productinfo[0]->image_name4);
+                        }
+                        if (is_file(ROOTPATH . 'uploads/product_images/' . $productinfo[0]->small_image_name4)) {
+                            unlink(ROOTPATH . 'uploads/product_images/' . $productinfo[0]->small_image_name4);
                         }
                     }
                 } else {
@@ -353,6 +392,19 @@ class Products extends BaseController
             }
             if (is_file(ROOTPATH . 'uploads/product_images/' . $productinfo[0]->image_name4)) {
                 unlink(ROOTPATH . 'uploads/product_images/' . $productinfo[0]->image_name4);
+            }
+
+            if (is_file(ROOTPATH . 'uploads/product_images/' . $productinfo[0]->small_image_name1)) {
+                unlink(ROOTPATH . 'uploads/product_images/' . $productinfo[0]->small_image_name1);
+            }
+            if (is_file(ROOTPATH . 'uploads/product_images/' . $productinfo[0]->small_image_name2)) {
+                unlink(ROOTPATH . 'uploads/product_images/' . $productinfo[0]->small_image_name2);
+            }
+            if (is_file(ROOTPATH . 'uploads/product_images/' . $productinfo[0]->small_image_name3)) {
+                unlink(ROOTPATH . 'uploads/product_images/' . $productinfo[0]->small_image_name3);
+            }
+            if (is_file(ROOTPATH . 'uploads/product_images/' . $productinfo[0]->small_image_name4)) {
+                unlink(ROOTPATH . 'uploads/product_images/' . $productinfo[0]->small_image_name4);
             }
         }
 
