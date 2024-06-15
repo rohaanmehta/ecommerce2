@@ -192,6 +192,13 @@
                                 <p>Bulk Product Badge</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url('temp_image_view') ?>" class="nav-link d-flex align-items-center">
+                                <i class="nav-icon fa fa-circle"></i>
+
+                                <p>Product Temp Images</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-item">

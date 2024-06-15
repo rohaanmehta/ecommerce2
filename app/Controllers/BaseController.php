@@ -59,6 +59,9 @@ abstract class BaseController extends Controller
         $this->image = \Config\Services::image();
         $this->image = \Config\Services::image('gd');
         $this->validation = \Config\Services::validation();
+
+
+        // $this->upload = libra;
     }
 
     public function image_upload($fileName,$format,$dir,$resize = null)
@@ -67,6 +70,7 @@ abstract class BaseController extends Controller
         try {
             $tempname = explode('.',$fileName);
             $fileNamenew = '1'.$tempname[0].'.webp';
+            $fileNamenew = create_slug($fileNamenew);
 
             if($resize == null){
                 $this->image->withFile(ROOTPATH .$dir . $fileName)
@@ -95,6 +99,7 @@ abstract class BaseController extends Controller
         try {
             $tempname = explode('.',$fileName);
             $fileNamenew = '2'.$tempname[0].'.webp';
+            $fileNamenew = create_slug($fileNamenew);
 
             if($resize == null){
                 $this->image->withFile(ROOTPATH .$dir . $fileName)
@@ -110,6 +115,34 @@ abstract class BaseController extends Controller
             }
 
             // unlink(ROOTPATH .$dir . $fileName);
+            $this->image->clear();
+            return $fileNamenew;
+        } catch (\CodeIgniter\Images\Exceptions\ImageException $e) {
+            echo 'err' . $e->getMessage();
+        }
+    }
+
+    public function temp_image_upload($fileName,$format,$dir,$resize = null)
+    {
+        $temp_directory = 'uploads/product_images_temp/';
+        try {
+            $tempname = explode('.',$fileName);
+            $fileNamenew = '1'.rand(00000,99999).$tempname[0].'.webp';
+            $fileNamenew = create_slug($fileNamenew);
+
+            if($resize == null){
+                $this->image->withFile(ROOTPATH .$temp_directory . $fileName)
+                ->convert($format)
+                ->save(ROOTPATH .$dir . $fileNamenew);
+            }else{
+                $resize = explode('x',$resize);
+                // print_r($resize);
+                $this->image->withFile(ROOTPATH .$temp_directory . $fileName)
+                ->resize($resize[0], $resize[1], false, 'height')
+                ->convert($format)
+                ->save(ROOTPATH .$dir . $fileNamenew);
+            }
+
             $this->image->clear();
             return $fileNamenew;
         } catch (\CodeIgniter\Images\Exceptions\ImageException $e) {
