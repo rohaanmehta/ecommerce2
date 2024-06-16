@@ -13,6 +13,26 @@
     .filter-box {
         border-bottom: 2px solid #e7e7e7;
         padding-bottom: 15px !important;
+        max-height: 300px;
+        overflow-y: auto;
+        margin-top: 20px;
+    }
+
+    .filter-box::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        background-color: #F5F5F5;
+    }
+
+    .filter-box::-webkit-scrollbar {
+        width: 7px;
+        background-color: #F5F5F5;
+    }
+
+    .filter-box::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+        background-color: #cccccc;
     }
 
     .category_name {
@@ -28,6 +48,56 @@
     .category-desc {
         font-size: 12px;
         color: #878787;
+    }
+
+    .filter_checkbox {
+        cursor: pointer;
+    }
+
+    .filter_value {
+        cursor: pointer;
+        color: #000;
+        text-decoration: none !important;
+    }
+
+    input[type=checkbox] {
+        position: relative;
+        border: 2px solid #000;
+        border-radius: 2px;
+        background: none;
+        cursor: pointer;
+        line-height: 0;
+        margin: 0 .6em 0 0;
+        outline: 0;
+        padding: 0 !important;
+        vertical-align: text-top;
+        height: 20px;
+        width: 20px;
+        -webkit-appearance: none;
+        opacity: .5;
+    }
+
+    input[type=checkbox]:hover {
+        opacity: 1;
+    }
+
+    input[type=checkbox]:checked {
+        background-color: #000;
+        opacity: 1;
+    }
+
+    input[type=checkbox]:before {
+        content: '';
+        position: absolute;
+        right: 50%;
+        top: 50%;
+        width: 4px;
+        height: 10px;
+        border: solid #FFF;
+        border-width: 0 2px 2px 0;
+        margin: -1px -1px 0 -1px;
+        transform: rotate(45deg) translate(-50%, -50%);
+        z-index: 2;
     }
 </style>
 <div class=''>
@@ -51,13 +121,13 @@
             } ?>
         </div>
         <div class="pt-5 pl-5 pr-4 row" style='align-items: center;'>
-            <div class='col-4 pl-0 category_name'>
+            <div class='col-12 col-md-4 pl-0 category_name'>
                 <span>
                     <?= $categoriesinfo[0]->category_name;
                     ?>
                 </span>
             </div>
-            <div class='col-8 text-right' style='display:flex;justify-content:end;align-items: center;'>
+            <div class='col-8 text-right mobile_Head_Hide' style='display:flex;justify-content:end;align-items: center;'>
                 <p class='m-0 sort_by mr-3'>Sort By: </p>
                 <select class='form-control sort' style='max-width:210px;'>
                     <option value=''>Most Recent</option>
@@ -78,8 +148,8 @@
         </div>
         <!-- <//?//php echo '<pre>';print_r($filters);exit;?> -->
 
-        <div class="row ml-4 mr-4 gallery mt-5">
-            <div class='col-md-3 p-0 pr-3' style='max-width:280px;background:#fff;border-right:1px solid #dfdfdf;'>
+        <div class="row ml-4 mr-4 gallery mt-5" style="position:relative;">
+            <div class='col-md-3 p-0 pr-3 mobile_Head_Hide' style='max-width:280px;background:#fff;border-right:1px solid #dfdfdf;'>
                 <?php if (isset($filters) && !empty($filters)) {
                     foreach ($filters as $key => $filter) { ?>
                         <div class='filter-box p-1'>
@@ -87,15 +157,20 @@
                                 <?php print_r($key) ?>
                             </div>
                             <?php
-                            foreach ($filter as $fil) { ?>
-                                <div class='d-flex justify-content-between'>
-                                    <div class='text-capitalize'>
-                                        <?= $fil ?>
+                            foreach ($filter as $key => $fil) { ?>
+                                <a href="<?= $fil['url']; ?>" class="filter_value">
+                                    <div class='d-flex justify-content-between'>
+                                        <div class='text-capitalize filter_value'>
+                                            <?= $fil['value'] ?>
+                                        </div>
+
+                                        <div>
+                                            <input type='checkbox' url='<?= $fil['url']; ?>' class='filter_checkbox ml-2' <?php if ($fil['checked'] == '1') {
+                                                                                                                                echo 'checked';
+                                                                                                                            } ?>>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <input type='checkbox' class=' ml-2 form-control'>
-                                    </div>
-                                </div>
+                                </a>
                             <?php } ?>
                         </div><?php
                             }
@@ -114,7 +189,7 @@
             </div>
             <!-- <//?php echo'<pre>';print_r($products);exit?> -->
 
-            <div class='d-flex col-md-9 products-5' style='flex-wrap:wrap'>
+            <div class='d-flex col-md-9 products-5' style='flex-wrap:wrap;'>
                 <?php if (isset($products) && !empty($products)) {
                     foreach ($products as $row) { ?>
                         <?php echo view('Shop/page/single_product', ['row' => $row, 'wishlist' =>  $session->get('userid')]); ?>
@@ -122,6 +197,17 @@
                 } ?>
             </div>
         </div>
+        <div class="d-flex w-100 bg-light" style="border:1px solid #dbdbdb;position:sticky;bottom:0;z-index:2;">
+            <button style='height:55px;color:#a9a9a9;border:none;border-right:1px solid #a9a9a9;' class="btn bg-light w-50"><i style='color:#a9a9a9;' class="mr-2 fa fa-sort-amount-asc"></i>SORT</button>
+            <button style='height:55px;color:#a9a9a9;border:none;' class="btn bg-light w-50"><i style='color:#a9a9a9;' class="mr-2 fa fa fa-filter"></i>FILTERS</button>
+        </div>
+
+        <div class="w-100 bg-light" style="display:block;position:sticky;bottom:0;z-index:3;">
+            <div class="">What's New</div>
+            <div>Price:Low to High</div>
+            <div>Price:High to Low</div>
+        </div>
+
         <div class='row pt-3' style='border-top:1px solid #dfdfdf'>
             <div class='col-md-3 p-0' style='max-width:280px;background:#fff'></div>
             <div class='col-9'>
@@ -145,6 +231,9 @@
         $('.sort').change(function() {
             window.location.href = '<?= base_url('/' . $categoriesinfo[0]->category_slug . '?sort=');
                                     ?>' + $('.sort').val();
+        });
+        $('.filter_checkbox').click(function() {
+            window.location.href = $(this).attr('url');
         });
     });
 </script>

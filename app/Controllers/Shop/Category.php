@@ -89,6 +89,7 @@ class Category extends BaseController
         $data['filters'] = array();
 
         if (isset($data['filter_names']) && !empty($data['filter_names'])) {
+            $i = 0;
             foreach ($data['filter_names'] as $filter_name) {
                 $filter_info = $this->db->table('product_filters')->select('filter_value')->where('filter_name', $filter_name)->get()->getresult();
                 // print_r($filter_info);
@@ -98,7 +99,12 @@ class Category extends BaseController
                 if (isset($filter_info) && !empty($filter_info)) {
                     // $data['filter_names'][] = $filter_info[0]->filter_name;
                     foreach ($filter_info as $filter_values) {
-                        $data['filters'][$filter_name][] = $filter_values->filter_value;
+                        $filter_url = $this->filter_url($filter_name, $filter_values->filter_value);
+
+                        $data['filters'][$filter_name][$i]['value'] = $filter_values->filter_value;
+                        $data['filters'][$filter_name][$i]['url'] = $filter_url['url'];
+                        $data['filters'][$filter_name][$i]['checked'] = $filter_url['checked'];
+                        $i++;
                     }
                 }
             }
@@ -108,7 +114,8 @@ class Category extends BaseController
         $data['links'] = $pager->makeLinks($page, $perPage, $total);
 
         // $data['category_settings'] = $this->db->table('general_settings')->where('name', 'scrolltotop')->get()->getResult();
-
+        // $url = current_url(true);
+        // echo $url;
         // echo '<pre>';
         // print_r($data['filters']);
         // // echo $this->db->getLastQuery();
@@ -117,5 +124,30 @@ class Category extends BaseController
         // exit;
 
         return view('Shop/page/category_page', $data);
+    }
+
+    public function filter_url($filter_name, $filter_value)
+    {
+        $url = current_url();
+        $params   = $_SERVER['QUERY_STRING'];
+        $url = $url . '?' . $params;
+
+        if (str_contains($url, $filter_value)) {
+            $url = str_replace($filter_value . '%2', '', $url);
+            $checked = 1;
+        } else if (str_contains($url, $filter_name)) {
+            $url = str_replace($filter_name . '=', $filter_name . '=' . $filter_value . '%2', $url);
+            $checked = 0;
+        } else {
+            $url = $url . '%3A' . $filter_name . '=' . $filter_value . '%2';
+            $checked = 0;
+        }
+
+        $array = array(
+            'url' => $url,
+            'checked' => $checked,
+        );
+
+        return $array;
     }
 }
