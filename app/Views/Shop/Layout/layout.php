@@ -38,23 +38,27 @@ $footersettings = footer_settings();
     <link media="all" rel="stylesheet" href="<?= base_url('assets/css/googlefont.css'); ?>" crossorigin="anonymous">
     <!-- <link media="all" rel="stylesheet" href="<//?= base_url('assets/css/fontawesome.css'); ?>"> -->
     <link media="all" rel="stylesheet" href="<?= base_url('assets/css/bootstrap.min.css'); ?>" crossorigin="anonymous">
-    <link media="all" rel="stylesheet" href="<?= base_url('assets/css/lato.css'); ?>" crossorigin="anonymous">
-    <link media="all" rel="stylesheet" href="<?= base_url('assets/css/slick.css'); ?>" crossorigin="anonymous">
+    <link media="all"  rel="stylesheet" href="<?= base_url('assets/css/lato.css'); ?>" crossorigin="anonymous">
+
+
+    <!-- <link rel="stylesheet" href="https://unpkg.com/blaze-slider@latest/dist/blaze.css" /> -->
+
+
     <link media="all" rel="stylesheet" href="<?= base_url('assets/css/mystyle.css'); ?>">
+
+    <link media="all"  rel="stylesheet" href="<?= base_url('assets/css/blaze_slider.css'); ?>">
 
     <!-- used  -->
     <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://kit.fontawesome.com/a670e6a37e.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
-    <!-- <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> -->
 
 
     <!-- <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,700&subset=latin-ext" media="all" rel="stylesheet"> -->
-    <link media="all" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <!-- <link media="all" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"> -->
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
     <!-- <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet"> -->
-    <!-- <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" /> -->
 
 
 
@@ -70,33 +74,6 @@ $footersettings = footer_settings();
     <?php if (isset($website_images[0]->value_3) && !empty($website_images[0]->value_3)) { ?>
         <link rel="icon" type="image/x-icon" href="<?= base_url('uploads/website/' . $website_images[0]->value_3); ?>">
     <?php } ?>
-    <style>
-        <?php if (isset($banner1_info) && !empty(($banner1_info) && $banner1_info[0]->value_3 == 'YES')) { ?>.section1-slider {
-            display: none;
-        }
-
-        .section1-slider.slick-initialized {
-            display: block;
-        }
-
-        <?php } ?><?php if (isset($banner2_info) && !empty(($banner2_info) && $banner2_info[0]->value_3 == 'YES')) { ?>.section2-slider {
-            display: none;
-        }
-
-
-        .section2-slider.slick-initialized {
-            display: block;
-        }
-
-        <?php } ?>
-        /* .section1-slider {
-            display: none;
-        }
-
-        .section1-slider.slick-initialized {
-            display: block;
-        } */
-    </style>
 </head>
 
 <body style='position:relative'>
@@ -244,7 +221,7 @@ $footersettings = footer_settings();
     </div>
     <!-- multiple categories pc  -->
     <div class='d-flex justify-content-center' style='position:relative;'>
-        <div class='nav_Categories_Btn_out_box' style='display:none;min-height:300px;z-index:2;width:80%;margin-top:0px;padding: 30px;padding-top:0px;border: 1px solid #e7e7e7;border-top:none;position:fixed;background:#fff;'></div>
+        <div class='nav_Categories_Btn_out_box' style='display:none;min-height:300px;z-index:1;width:80%;margin-top:0px;padding: 30px;padding-top:0px;border: 1px solid #e7e7e7;border-top:none;position:fixed;background:#fff;'></div>
         <?php if (isset($categories) && !empty($categories)) {
             foreach ($categories as $row_main) {
                 if ($row_main->parent_category == '') {  ?>
@@ -275,7 +252,7 @@ $footersettings = footer_settings();
     <?= $this->renderSection('content') ?>
 
     <!-- back to top button  -->
-    <?php if (isset($footersettings['footer'][0]->backtotop) && !empty($footersettings['footer'][0]->backtotop) && $footersettings['footer'][0]->backtotop == '1') {?>
+    <?php if (isset($footersettings['footer'][0]->backtotop) && !empty($footersettings['footer'][0]->backtotop) && $footersettings['footer'][0]->backtotop == '1') { ?>
         <a id="back-to-top"></a>
     <?php } ?>
 
@@ -289,19 +266,25 @@ $footersettings = footer_settings();
 
     <?php include('login.php'); ?>
 
-    <script  type="text/javascript" src="<?= base_url('assets/js/jquery.min.js'); ?>"></script>
-    <script async defer type="text/javascript" src="<?= base_url('assets/js/slick.min.js'); ?>"></script>
+    <script type="text/javascript" src="<?= base_url('assets/js/jquery.min.js'); ?>"></script>
+
+    <!-- //slider -->
+    <script async defer type="text/javascript" src="<?= base_url('assets/js/blaze.min.js'); ?>"></script>
+    <script  type="text/javascript" src="<?= base_url('assets/js/blaze.js'); ?>"></script>
+
 
     <script async defer type="text/javascript" src="<?= base_url('assets/js/fontawesome.js'); ?>"></script>
     <script type="text/javascript" src="<?= base_url('assets/js/bootsrap.min.js'); ?>"></script>
-    <script async defer type="text/javascript" src="<?= base_url('assets/js/popper.min.js'); ?>"></script>
+    <!-- <script async defer type="text/javascript" src="<//?= base_url('assets/js/popper.min.js'); ?>"></script> -->
+
+    <!-- <Script src='https://unpkg.com/blaze-slider@latest/dist/blaze-slider.min.js'></script> -->
+    <!-- <Script src='https://unpkg.com/blaze-slider@latest/dist/blaze-slider.dev.js'></script> -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 
     <?= $this->renderSection('scripts') ?>
-    
+
     <script>
-        
         //top bar 
         // window.onscroll = function() {
         //     myFunction()
@@ -367,22 +350,36 @@ $footersettings = footer_settings();
             if ($(window).width() > 768) {
                 $('.single-product-slider').css('display', 'block');
                 $('.mobile-product-slider').css('display', 'none');
-                load_product_sliders();
+                // load_product_sliders();
             } else {
                 $('.single-product-slider').css('display', 'none');
                 $('.mobile-product-slider').css('display', 'block');
             }
             // }, 500);
+            var productslider;
 
             $('.main-product-slider').hover(
                 function() {
-                    // $('.product-slider-image').css('display','block !important');
-                    $(this).find('.single-product-slider').slick('play')
+                    $(this).find('.product-slider-image').css('display','block')
+                    var index = $('.main-product-slider').index(this);
+
+                    var el3 = document.querySelectorAll('.single-product-slider')[index];
+                    productslider = new BlazeSlider(el3, {
+                        all: {
+                            draggable: false,
+                            enableAutoplay: true,
+                            autoplayInterval: 1500,
+                            transitionDuration: 300,
+                            slidesToShow: 1,
+                            loop: true,
+                            slideGap: "0px",
+                        },
+                    });
                 },
 
                 function() {
-                    $(this).find('.single-product-slider').slick('slickGoTo', '0');
-                    $(this).find('.single-product-slider').slick('pause');
+                    $(this).find('.product-slider-image').css('display','none')
+                    productslider.destroy();
                 }
             );
 
@@ -537,24 +534,6 @@ $footersettings = footer_settings();
                 $('.nav_Categories_Btn_out_box').css('display', 'block');
             }
         );
-
-
-        function load_product_sliders() {
-            $('.single-product-slider').slick({
-                dots: true,
-                autoplay: false,
-                lazyLoad: 'ondemand',
-                autoplaySpeed: 1000,
-                infinite: true,
-                speed: 300,
-                slidesToShow: 1,
-                // adaptiveHeight: true,
-                prevArrow: "",
-                nextArrow: "",
-                pauseOnHover: false,
-                pauseOnFocus: false,
-            });
-        }
     </script>
 </body>
 

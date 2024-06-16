@@ -39,6 +39,14 @@
                         </div>
                     </div>
                 </div>
+                <div class='col-6'>
+                    <div class='mb-2 col-12 bg-light p-3 border-rounded rounded'>
+                        <p><b>Bulk Product Image Data Download</b></p>
+                        <div class="col-12 d-flex justify-content-center">
+                            <a href='<?= base_url('/product_image_download'); ?>'><button class='btn btn-primary'> Download</button></a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

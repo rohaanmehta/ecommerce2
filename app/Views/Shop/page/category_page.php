@@ -29,7 +29,6 @@
         font-size: 12px;
         color: #878787;
     }
-
 </style>
 <div class=''>
     <div class='card'>
@@ -77,9 +76,31 @@
                 </span>
             </div>
         </div>
+        <!-- <//?//php echo '<pre>';print_r($filters);exit;?> -->
 
         <div class="row ml-4 mr-4 gallery mt-5">
-            <div class='col-md-3 p-0' style='max-width:280px;background:#fff;border-right:1px solid #dfdfdf;'>
+            <div class='col-md-3 p-0 pr-3' style='max-width:280px;background:#fff;border-right:1px solid #dfdfdf;'>
+                <?php if (isset($filters) && !empty($filters)) {
+                    foreach ($filters as $key => $filter) { ?>
+                        <div class='filter-box p-1'>
+                            <div class='filters-heading text-capitalize'>
+                                <?php print_r($key) ?>
+                            </div>
+                            <?php
+                            foreach ($filter as $fil) { ?>
+                                <div class='d-flex justify-content-between'>
+                                    <div class='text-capitalize'>
+                                        <?= $fil ?>
+                                    </div>
+                                    <div>
+                                        <input type='checkbox' class=' ml-2 form-control'>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                        </div><?php
+                            }
+                        } ?>
+
                 <div class='filter-box p-1'>
                     <div class='filters-heading'>
                         Price
@@ -90,8 +111,9 @@
                         <button class='btn black-btn'>Go</button>
                     </div>
                 </div>
-
             </div>
+            <!-- <//?php echo'<pre>';print_r($products);exit?> -->
+
             <div class='d-flex col-md-9 products-5' style='flex-wrap:wrap'>
                 <?php if (isset($products) && !empty($products)) {
                     foreach ($products as $row) { ?>
@@ -127,4 +149,3 @@
     });
 </script>
 <?= $this->endSection('scripts') ?>
-

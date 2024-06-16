@@ -11,21 +11,22 @@ class Category extends BaseController
         $pager = service('pager');
         $perPage = 25;
         $page = (@$_GET['page']) ? $_GET['page'] : 1;
-        $offset = ($page-1) * $perPage;
+        $offset = ($page - 1) * $perPage;
 
         //all categories
         $all_categories = array();
         $categoryid = $this->db->table('categories')->select('id,category_slug')->where('category_slug', $slug)->get()->getresult();
-        
+
         //redirect to 404
-        if(isset($categoryid) && empty($categoryid)){
-            echo view('errors/error404');exit;
+        if (isset($categoryid) && empty($categoryid)) {
+            echo view('errors/error404');
+            exit;
         }
 
         array_push($all_categories, $categoryid[0]->id);
 
         //category banners
-        $category_banners = $this->db->table('category_banner')->select('image,mobile_image')->orderBy('order','asc')->where('category_id', $categoryid[0]->id)->get()->getresult();
+        $category_banners = $this->db->table('category_banner')->select('image,mobile_image')->orderBy('order', 'asc')->where('category_id', $categoryid[0]->id)->get()->getresult();
 
         $data['category_banners'] = $category_banners;
 
@@ -50,7 +51,7 @@ class Category extends BaseController
         }
 
         //all products
-        $builder = $this->db->table('products')->select('product_slug,products.id as id,title,desc,price,stock,image_name1,image_name2,image_name3,image_name4,order')->join('product_category as pc', 'pc.product_id = products.id')->join('product_images as pi', 'pi.product_id = products.id')->wherein('category_id', $all_categories)->where('visibility', '1')->where('is_deleted', '0')->groupBy('id');
+        $builder = $this->db->table('products')->select('products.discount,product_slug,products.id as id,title,desc,price,stock,image_name1,image_name2,image_name3,image_name4,small_image_name1,small_image_name2,small_image_name3,small_image_name4,order')->join('product_category as pc', 'pc.product_id = products.id')->join('product_images as pi', 'pi.product_id = products.id')->wherein('category_id', $all_categories)->where('visibility', '1')->where('is_deleted', '0')->groupBy('id');
 
         if ($this->session->get('userid') != '') {
             $builder = $builder->select('wishlist.user_id as wishlist')->join('wishlist', 'wishlist.product_id = products.id AND user_id = ' . $this->session->get('userid') . '', 'left');
@@ -65,15 +66,51 @@ class Category extends BaseController
         }
 
         $total = $this->db->table('products')->select('products.id')->join('product_category as pc', 'pc.product_id = products.id')->join('product_images as pi', 'pi.product_id = products.id')->wherein('category_id', $all_categories)->where('visibility', '1')->where('is_deleted', '0')->groupBy('id')->countAllResults();
-        
-        $data['products'] = $builder->get($perPage,$offset)->getresult();
+
+
+        $data['products'] = $builder->get($perPage, $offset)->getresult();
+
+        //filter names
+        $data['filter_names'] = array();
+        foreach ($data['products'] as $filters) {
+            $filter_info = $this->db->table('product_filters')->select('filter_name')->where('product_id', $filters->id)->groupBy('filter_name')->get()->getresult();
+            // print_r($filter_info);
+            // exit;
+
+            if (isset($filter_info) && !empty($filter_info)) {
+                // $data['filter_names'][] = $filter_info[0]->filter_name;
+                foreach ($filter_info as $filter) {
+                    array_push($data['filter_names'], $filter->filter_name);
+                }
+            }
+        }
+
+        //filter values
+        $data['filters'] = array();
+
+        if (isset($data['filter_names']) && !empty($data['filter_names'])) {
+            foreach ($data['filter_names'] as $filter_name) {
+                $filter_info = $this->db->table('product_filters')->select('filter_value')->where('filter_name', $filter_name)->get()->getresult();
+                // print_r($filter_info);
+                // exit;
+                // $data['filters'][] = $filter_name;
+
+                if (isset($filter_info) && !empty($filter_info)) {
+                    // $data['filter_names'][] = $filter_info[0]->filter_name;
+                    foreach ($filter_info as $filter_values) {
+                        $data['filters'][$filter_name][] = $filter_values->filter_value;
+                    }
+                }
+            }
+        }
+
         $data['categoriesinfo'] = $this->db->table('categories')->select('category_name,category_desc_bottom,category_desc_top,category_slug')->where('category_slug', $slug)->get()->getresult();
-        $data['links'] = $pager->makeLinks($page,$perPage,$total);
-        
+        $data['links'] = $pager->makeLinks($page, $perPage, $total);
+
         // $data['category_settings'] = $this->db->table('general_settings')->where('name', 'scrolltotop')->get()->getResult();
 
         // echo '<pre>';
-        // print_r($data);
+        // print_r($data['filters']);
         // // echo $this->db->getLastQuery();
         // echo sizeof($data['products']); 
         // echo $total;

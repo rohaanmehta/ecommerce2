@@ -82,6 +82,7 @@
 
 <script>
     $(document).ready(function() {
+        $('.search-btn').attr('href', '<?= base_url(); ?>search/' + $('.search-input').val());
         $('.search-input').keyup(function() {
             $('.search-btn').attr('href', '<?= base_url(); ?>search/' + $('.search-input').val());
         });

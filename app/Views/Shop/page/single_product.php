@@ -45,17 +45,35 @@
         </div>
 
         <a href='<?= base_url($category . '/' . $row->product_slug); ?>' style='display:contents;color:#000'>
-            <div class='single-product-slider'>
-                <img alt='<?= $row->title; ?>' class='gallery_img' src='<?= base_url('/uploads/product_images/' . $row->image_name1) ?>' />
-                <?php if ($row->image_name2 != '') { ?>
-                    <img alt='<?= $row->title; ?>' class='gallery_img product-slider-image' src='<?= base_url('/uploads/product_images/' . $row->image_name2) ?>' />
-                <?php } ?>
-                <?php if ($row->image_name3 != '') { ?>
-                    <img alt='<?= $row->title; ?>' class='gallery_img product-slider-image' src='<?= base_url('/uploads/product_images/' . $row->image_name3) ?>' />
-                <?php } ?>
-                <?php if ($row->image_name4 != '') { ?>
-                    <img alt='<?= $row->title; ?>' class='gallery_img product-slider-image' src='<?= base_url('/uploads/product_images/' . $row->image_name4) ?>' />
-                <?php } ?>
+            <div class="single-product-slider">
+                <div class="blaze-container">
+                    <div class="blaze-track-container">
+                        <div class="blaze-track products-5">
+                            <!-- <div class=''> -->
+                            <img alt='<?= $row->title; ?>' class='gallery_img w-100' src='<?= base_url('/uploads/product_images/' . $row->small_image_name1) ?>' />
+                            <?php if ($row->small_image_name2 != '') { ?>
+                                <picture class='product-slider-image gallery_img'>
+                                    <source srcset="<?= base_url('/uploads/product_images/' . $row->small_image_name2) ?>" media="(min-width: 768px)">
+                                    <img alt='<?= $row->title; ?>' loading='lazy' class='gallery_img product-slider-image' src='data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=' />
+                                </picture>
+                            <?php } ?>
+                            <?php if ($row->small_image_name3 != '') { ?>
+                                <picture class='product-slider-image gallery_img'>
+                                    <source srcset="<?= base_url('/uploads/product_images/' . $row->small_image_name3) ?>" media="(min-width: 768px)">
+                                    <img alt='<?= $row->title; ?>' loading='lazy' class='gallery_img product-slider-image' src='data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=' />
+                                </picture>
+                            <?php } ?>
+                            <?php if ($row->small_image_name4 != '') { ?>
+                                <picture class='product-slider-image gallery_img'>
+                                    <source srcset="<?= base_url('/uploads/product_images/' . $row->small_image_name4) ?>" media="(min-width: 768px)">
+                                    <img alt='<?= $row->title; ?>' loading='lazy' class='gallery_img product-slider-image' src='data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=' />
+                                </picture>
+                            <?php } ?>
+                            <!-- </div> -->
+                        </div>
+                        <div class="blaze-pagination"></div>
+                    </div>
+                </div>
             </div>
             <div class='mobile-product-slider' style='display:none'>
                 <img alt='<?= $row->title; ?>' class='gallery_img' src='<?= base_url('/uploads/product_images/' . $row->image_name1) ?>' />

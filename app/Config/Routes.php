@@ -63,9 +63,6 @@ $routes->group('', ['namespace' => 'App\controllers\Admin', "filter" => "Auth"],
     $routes->get('deletecategorybanner/?(:any)', 'Category::delete_category_banner/$1');
     $routes->post('edit_category_banner', 'Category::edit_category_banner');
 
-
-
-
     $routes->get('Admin/products', 'Products::products_view');
     $routes->get('add_products/?(:any)', 'Products::add_products/$1');
     $routes->post('add_product_data', 'Products::add_product_data');
@@ -74,6 +71,9 @@ $routes->group('', ['namespace' => 'App\controllers\Admin', "filter" => "Auth"],
     $routes->get('bulk-product-delete-view', 'Products::bulk_product_delete_view');
     $routes->get('bulk-product-download-view', 'Products::bulk_product_download_view');
     $routes->get('bulk-product-badge-view', 'Products::bulk_product_badge_view');
+    $routes->get('temp_image_view', 'Products::temp_image_view');
+    $routes->get('delete_temp_image/?(:any)', 'TempImage::delete_temp_image/$1');
+    $routes->post('product_temp_image_upload', 'TempImage::product_temp_image_upload');
     $routes->post('product_badge_update', 'Products::product_badge_update');
     $routes->post('product_badge_delete', 'Products::product_badge_delete');
     $routes->get('product_badge_download', 'Products::product_badge_download');
@@ -81,9 +81,12 @@ $routes->group('', ['namespace' => 'App\controllers\Admin', "filter" => "Auth"],
 
     $routes->get('product_download', 'Products::product_download');
     $routes->get('product_varients_download', 'Products::product_varients_download');
+    $routes->get('product_image_download', 'Products::product_image_download');
     $routes->post('bulk_product_varient_delete', 'Products::bulk_product_varient_delete');
+    $routes->post('bulk_product_image_delete', 'Products::bulk_product_image_delete');
     $routes->post('bulk_product_varient_update', 'Products::bulk_product_varient_update');
     $routes->post('bulk_product_update_data', 'Products::bulk_product_update_data');
+    $routes->post('bulk_product_image_update', 'Products::bulk_product_image_update');
     $routes->post('bulk_product_delete', 'Products::bulk_product_delete');
 
 

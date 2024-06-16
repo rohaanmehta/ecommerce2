@@ -74,7 +74,7 @@ class Product extends BaseController
         }
 
 
-        $section1 = $this->db->table('products')->select('products.discount,products.id,products.title,products.price,pi.image_name1,pi.image_name2,pi.image_name3,pi.image_name4,products.product_slug')->join('product_category', 'product_category.product_id = products.id')->where('visibility', '1')->where('is_deleted', '0')->where('product_slug !=', $slug)->where('category_id', $product_last_category_id);
+        $section1 = $this->db->table('products')->select('products.discount,products.id,products.title,products.price,pi.image_name1,pi.image_name2,pi.image_name3,pi.image_name4,pi.small_image_name1,pi.small_image_name2,pi.small_image_name3,pi.small_image_name4,products.product_slug')->join('product_category', 'product_category.product_id = products.id')->where('visibility', '1')->where('is_deleted', '0')->where('product_slug !=', $slug)->where('category_id', $product_last_category_id);
 
         if ($this->session->get('userid') != '') {
             $section1 = $section1->select('wishlist.user_id as wishlist')->join('wishlist', 'wishlist.product_id = products.id AND user_id = ' . $this->session->get('userid') . '', 'left');
@@ -86,7 +86,7 @@ class Product extends BaseController
 
         //pair category
 
-        $section2 = $this->db->table('products')->select('products.discount,products.id,products.title,products.price,pi.image_name1,pi.image_name2,pi.image_name3,pi.image_name4,products.product_slug')->join('product_category', 'product_category.product_id = products.id')->where('visibility', '1')->where('is_deleted', '0')->where('product_slug !=', $slug)->where('category_id', $product_pair_category);
+        $section2 = $this->db->table('products')->select('products.discount,products.id,products.title,products.price,pi.image_name1,pi.image_name2,pi.image_name3,pi.image_name4,pi.small_image_name1,pi.small_image_name2,pi.small_image_name3,pi.small_image_name4,products.product_slug')->join('product_category', 'product_category.product_id = products.id')->where('visibility', '1')->where('is_deleted', '0')->where('product_slug !=', $slug)->where('category_id', $product_pair_category);
 
         if ($this->session->get('userid') != '') {
             $section2 = $section2->select('wishlist.user_id as wishlist')->join('wishlist', 'wishlist.product_id = products.id AND user_id = ' . $this->session->get('userid') . '', 'left');
@@ -150,7 +150,7 @@ class Product extends BaseController
     public function search_product()
     {
         // print_r($_POST);exit;
-        $data['product'] = $this->db->table('products')->select('title,product_slug,image_name1')->like('title', $_POST['search'])->limit(20)->join('product_images as pi', 'pi.product_id = products.id')->get()->getResult();
+        $data['product'] = $this->db->table('products')->select('title,product_slug,image_name1')->like('title', $_POST['search'])->orlike('sku',$_POST['search'])->limit(20)->join('product_images as pi', 'pi.product_id = products.id')->get()->getResult();
         foreach ($data['product'] as $row) {
             $row->title = character_limiter($row->title, 50, '...');
         }

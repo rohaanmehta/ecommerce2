@@ -8,3 +8,20 @@ WARNING - 2024-06-16 06:24:02 --> [DEPRECATED] Required parameter $slug follows 
  7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
 INFO - 2024-06-16 06:24:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-16 06:31:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-16 06:31:31 --> Undefined property: stdClass::$discount
+in APPPATH\Views\Shop\page\single_product.php on line 66.
+ 1 APPPATH\Views\Shop\page\single_product.php(66): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$discount', 'D:\\xampp\\htdocs\\ecommerce\\app\\Views\\Shop\\page\\single_product.php', 66)
+ 2 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce\\app\\Views\\Shop\\page\\single_product.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/single_product', [], true)
+ 5 APPPATH\Views\Shop\page\category_page.php(98): view('Shop/page/single_product', [...])
+ 6 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce\\app\\Views\\Shop\\page\\category_page.php')
+ 7 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/category_page', [], true)
+ 9 APPPATH\Controllers\Shop\Category.php(82): view('Shop/page/category_page', [...])
+10 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Shop\Category->category_shop_page('mens')
+11 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop\Category))
+12 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-16 06:31:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

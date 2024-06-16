@@ -70,7 +70,7 @@ function get_category_by_productid($id)
     // $CI =& get_instance();
     $db = \Config\Database::connect();
 
-    $data = $db->table('product_category')->select('category_slug')->join('categories', 'categories.id = product_category.category_id')->orderBy('product_category.id', 'DESC')->limit(1)->where('show_on_homepage', '1')->where('product_id', $id)->get()->getResult();
+    $data = $db->table('product_category')->select('category_slug')->join('categories', 'categories.id = product_category.category_id')->orderBy('product_category.id', 'DESC')->limit(1)->where('product_id', $id)->get()->getResult();
     // print_r($data[0]->category_slug);exit;
     return $data;
 
@@ -140,7 +140,12 @@ function footer_settings(){
     $db = \Config\Database::connect();
 
     $footer['footer'] = $db->table('footer')->select('*')->where('id', '1')->get()->getresult();
-    $footer['categories'] = $db->table('categories')->select('category_name,category_slug')->limit($footer['footer'][0]->category_limit)->where('parent_category', '')->where('show_on_homepage', '1')->orderBy('category_order','asc')->get()->getresult();
+    if(empty($footer['footer'])){
+        $category_limit = '5';   
+    }else{
+        $category_limit = $footer['footer'][0]->category_limit;
+    }
+    $footer['categories'] = $db->table('categories')->select('category_name,category_slug')->limit($category_limit)->where('parent_category', '')->where('show_on_homepage', '1')->orderBy('category_order','asc')->get()->getresult();
 
     return $footer;
 }

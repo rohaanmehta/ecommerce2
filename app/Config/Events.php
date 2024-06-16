@@ -24,15 +24,16 @@ use CodeIgniter\Exceptions\FrameworkException;
 
 Events::on('pre_system', static function () {
     if (ENVIRONMENT !== 'testing') {
-        if (ini_get('zlib.output_compression')) {
-            throw FrameworkException::forEnabledZlibOutputCompression();
-        }
+        //comment for text compression zlib
+        // if (ini_get('zlib.output_compression')) {
+        //     throw FrameworkException::forEnabledZlibOutputCompression();
+        // }
 
-        while (ob_get_level() > 0) {
-            ob_end_flush();
-        }
+        // while (ob_get_level() > 0) {
+        //     ob_end_flush();
+        // }
 
-        ob_start(static fn ($buffer) => $buffer);
+        // ob_start(static fn ($buffer) => $buffer);
     }
 
     /*

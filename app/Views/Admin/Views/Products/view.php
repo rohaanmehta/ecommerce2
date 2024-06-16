@@ -32,6 +32,7 @@
         <div class='row p-5'>
             <table class='table table-bordered table-striped'>
                 <tr>
+                    <td>ID</td>
                     <td>Title</td>
                     <td>Category</td>
                     <td>Promote</td>
@@ -44,6 +45,7 @@
                 <?php if (isset($products[0])) {
                     foreach ($products as $row) { ?>
                         <tr>
+                            <td><?= $row->product_id; ?></td>
                             <td><?= $row->title; ?></td>
                             <td><?= $row->category_name; ?></td>
                             <td><?= $row->promote; ?></td>
