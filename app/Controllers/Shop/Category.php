@@ -126,16 +126,18 @@ class Category extends BaseController
         return view('Shop/page/category_page', $data);
     }
 
+
     public function filter_url($filter_name, $filter_value)
     {
         $url = current_url();
         $params   = $_SERVER['QUERY_STRING'];
         $url = $url . '?' . $params;
 
-        if (str_contains($url, $filter_value)) {
+        // if (str_contains($url, $filter_value)) {
+        if (strpos($url, $filter_value) !== false) {
             $url = str_replace($filter_value . '%2', '', $url);
             $checked = 1;
-        } else if (str_contains($url, $filter_name)) {
+        } else if (strpos($url, $filter_name) !== false) {
             $url = str_replace($filter_name . '=', $filter_name . '=' . $filter_value . '%2', $url);
             $checked = 0;
         } else {
