@@ -57,9 +57,15 @@ class Category extends BaseController
             $builder = $builder->select('wishlist.user_id as wishlist')->join('wishlist', 'wishlist.product_id = products.id AND user_id = ' . $this->session->get('userid') . '', 'left');
         }
 
-        if (isset($_GET['sort']) && $_GET['sort'] == 'low') {
+        $url = current_url();
+        $params   = $_SERVER['QUERY_STRING'];
+        $url = $url . '?' . $params;
+
+
+
+        if (strpos($url, '%3Asort=low') == true) {
             $builder =  $builder->orderBy('price', 'asc');
-        } else if (isset($_GET['sort']) && $_GET['sort'] == 'low') {
+        } else if (strpos($url, '%3Asort=high') == true) {
             $builder =  $builder->orderBy('price', 'desc');
         } else {
             $builder =  $builder->orderBy('id', 'desc');
@@ -109,6 +115,103 @@ class Category extends BaseController
                 }
             }
         }
+
+
+        $url = str_replace('%3Asort=low&', '', $url);
+        $url = str_replace('%3Asort=low', '', $url);
+        $url = str_replace('%3Asort=high&', '', $url);
+        $url = str_replace('%3Asort=high', '', $url);
+        $url = str_replace('%3Asort=new&', '', $url);
+        $url = str_replace('%3Asort=new', '', $url);
+
+
+        if (strpos($url, '?') !== false) {
+            $data['new'] = $url . '%3Asort=new';
+            $data['low'] = $url . '%3Asort=low';
+            $data['high'] = $url . '%3Asort=high';
+        } else {
+            $data['new'] = $url . '?%3Asort=new';
+            $data['low'] = $url . '?%3Asort=low';
+            $data['high'] = $url . '?%3Asort=high';
+        }
+
+        $filters_db = ['colour', 'size'];
+
+        //filter query 
+        $filter_url = explode('%3A', $url);
+        unset($filter_url[0]);
+
+        // $filter_url = explode('%2', $url);
+
+        $filters = array();
+
+        if (isset($filter_url) && !empty($filter_url)) {
+            foreach ($filter_url as $each => $key) {
+                $name = trim($key, '%2');
+                $name = explode('=', $name);
+                // print_r($name);exit;
+                $filters[$name[0]] = $name[1];
+            }
+
+            $builder = $this->db->table('products')->select('products.discount,product_slug,products.id as id,title,desc,price,stock,image_name1,image_name2,image_name3,image_name4,small_image_name1,small_image_name2,small_image_name3,small_image_name4,order')->join('product_category as pc', 'pc.product_id = products.id')->join('product_images as pi', 'pi.product_id = products.id')->wherein('category_id', $all_categories)->where('visibility', '1')->where('is_deleted', '0')->groupBy('id');
+
+            $fil = array();
+            if (isset($filters_db) && !empty($filters_db)) {
+                foreach ($filters_db as $each => $key) {
+                    if (isset($filters) && !empty($filters)) {
+                        foreach ($filters as $each1 => $key2) {
+                            if ($key == $each1) {
+                                $each3 = explode('%2', $key2);
+                                // print_r($each3);
+                                foreach ($each3 as $each4 => $key3) {
+                                    // if ($key == $each4) {
+                                    $fil[][$key] = $key3;
+                                    // }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+
+            // $fil = array(
+            //     'colour' => 'black',
+            // );
+                // echo '<pre>';print_r($fil);exit;
+                $builder = $builder->join('product_filters', 'product_filters.product_id = products.id', 'left');
+
+            foreach ($fil as $each => $key) {
+                $values = array_values($key);
+                $k = array_keys($key);
+                // print_r($key);exit;
+                if($k != ''){
+                    // exit;
+                    $builder = $builder->where('filter_name', $k[0])->orwhere('filter_value', $values[0]);
+                }
+            }
+
+            // ->where($fil);
+
+            if ($this->session->get('userid') != '') {
+                $builder = $builder->select('wishlist.user_id as wishlist')->join('wishlist', 'wishlist.product_id = products.id AND user_id = ' . $this->session->get('userid') . '', 'left');
+            }
+
+            $total = $this->db->table('products')->select('products.id')->join('product_category as pc', 'pc.product_id = products.id')->join('product_images as pi', 'pi.product_id = products.id')->wherein('category_id', $all_categories)->where('visibility', '1')->where('is_deleted', '0')->groupBy('id')->countAllResults();
+
+            $data['products'] = $builder->get($perPage, $offset)->getresult();
+
+            // echo '<pre>';
+            // print_r($fil);
+            // exit;
+        }
+
+
+
+        // echo '<pre>';
+        // print_r($fil);
+        // exit;
+
 
         $data['categoriesinfo'] = $this->db->table('categories')->select('category_name,category_desc_bottom,category_desc_top,category_slug')->where('category_slug', $slug)->get()->getresult();
         $data['links'] = $pager->makeLinks($page, $perPage, $total);

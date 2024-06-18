@@ -1,6 +1,10 @@
 <?= $this->extend('Shop/Layout/layout') ?>
 <?= $this->section('content') ?>
-<?php $session = session(); ?>
+<?php $session = session();
+$url = current_url();
+$params = $_SERVER['QUERY_STRING'];
+$url = $url . '?' . $params;
+?>
 
 <style>
     .filters-heading {
@@ -60,6 +64,14 @@
         text-decoration: none !important;
     }
 
+    .filter_value:active {
+        color: #000 !important;
+    }
+
+    .filter_value:hover {
+        color: #000 !important;
+    }
+
     input[type=checkbox] {
         position: relative;
         border: 2px solid #000;
@@ -107,22 +119,39 @@
         border-right: 1px solid #a9a9a9;
     }
 
-    .fiter-filter-btn {
+    .filter-filter-btn {
         height: 55px;
         color: #a9a9a9;
         border: none;
     }
-    .sort-options{
-        margin: 10px;
+
+    .sort-options {
+        margin: 13px;
         font-size: 13px;
         font-weight: 400;
-        cursor:pointer;
+        cursor: pointer;
+        color: #000 !important;
+        text-decoration: none !important;
     }
-    .active-filter{
+
+    .sort-options:active {
+        color: #000 !important;
+    }
+
+    .active-filter {
         font-weight: 700;
     }
-    .filter-filter-box{
+
+    .filter-filter-box,
+    .filter-filter-box2 {
         padding: 10px;
+    }
+
+    .mobile-filter-box {
+        margin: 7px;
+        color: #000;
+        font-size: 13px;
+        text-transform: capitalize;
     }
 </style>
 <div class=''>
@@ -145,7 +174,7 @@
             <?php }
             } ?>
         </div>
-        <div class="pt-5 pl-5 pr-4 row" style='align-items: center;'>
+        <div class="pt-2 pb-0 pt-md-5 pl-5 pr-md-4 row" style='align-items: center;'>
             <div class='col-12 col-md-4 pl-0 category_name'>
                 <span>
                     <?= $categoriesinfo[0]->category_name;
@@ -155,13 +184,13 @@
             <div class='col-8 text-right mobile_Head_Hide' style='display:flex;justify-content:end;align-items: center;'>
                 <p class='m-0 sort_by mr-3'>Sort By: </p>
                 <select class='form-control sort' style='max-width:210px;'>
-                    <option value=''>Most Recent</option>
-                    <option value='low' <?php if (isset($_GET['sort']) && $_GET['sort'] == 'low') {
-                                            echo 'selected';
-                                        } ?>>Lowest Price</option>
-                    <option value='high' <?php if (isset($_GET['sort']) && $_GET['sort'] == 'high') {
-                                                echo 'selected';
-                                            } ?>>Highest Price</option>
+                    <option value='<?= $new; ?>'>What's New</option>
+                    <option value='<?= $low; ?>' <?php if (strpos($url, '%3Asort=low') == true) {
+                                                        echo 'selected';
+                                                    } ?>>Price:Low to High</option>
+                    <option value='<?= $high; ?>' <?php if (strpos($url, '%3Asort=high') == true) {
+                                                        echo 'selected';
+                                                    } ?>>Price:High to Low</option>
                 </select>
             </div>
             <div class='col-12 pl-0 pt-4 category-desc'>
@@ -173,7 +202,7 @@
         </div>
         <!-- <//?//php echo '<pre>';print_r($filters);exit;?> -->
 
-        <div class="row ml-4 mr-4 gallery mt-5" style="position:relative;">
+        <div class="row ml-2 mr-2 mt-2 ml-md-4 mr-md-4 gallery mt-md-2" style="position:relative;">
             <div class='col-md-3 p-0 pr-3 mobile_Head_Hide' style='max-width:280px;background:#fff;border-right:1px solid #dfdfdf;'>
                 <?php if (isset($filters) && !empty($filters)) {
                     foreach ($filters as $key => $filter) { ?>
@@ -184,15 +213,14 @@
                             <?php
                             foreach ($filter as $key => $fil) { ?>
                                 <a href="<?= $fil['url']; ?>" class="filter_value">
-                                    <div class='d-flex justify-content-between'>
-                                        <div class='text-capitalize filter_value'>
-                                            <?= $fil['value'] ?>
-                                        </div>
-
+                                    <div class='d-flex'>
                                         <div>
-                                            <input type='checkbox' url='<?= $fil['url']; ?>' class='filter_checkbox ml-2' <?php if ($fil['checked'] == '1') {
+                                            <input type='checkbox' url='<?= $fil['url']; ?>' class='filter_checkbox mr-2' <?php if ($fil['checked'] == '1') {
                                                                                                                                 echo 'checked';
                                                                                                                             } ?>>
+                                        </div>
+                                        <div class='text-capitalize filter_value'>
+                                            <?= $fil['value'] ?>
                                         </div>
                                     </div>
                                 </a>
@@ -222,32 +250,72 @@
                 } ?>
             </div>
         </div>
-        <div class="d-flex w-100 bg-light" style="border:1px solid #dbdbdb;position:sticky;bottom:0;z-index:2;">
+        <div class="d-flex w-100 bg-light mobile_Head_Show" style="border:1px solid #dbdbdb;position:sticky;bottom:0;z-index:2;">
             <button style='' class="filter-sort-btn btn bg-light w-50"><i style='color:#a9a9a9;' class="mr-2 fa fa-sort-amount-asc"></i>SORT</button>
-            <button style='' class="fiter-filter-btn btn bg-light w-50"><i style='color:#a9a9a9;' class="mr-2 fa fa fa-filter"></i>FILTERS</button>
+            <button style='' class="filter-filter-btn btn bg-light w-50"><i style='color:#a9a9a9;' class="mr-2 fa fa fa-filter"></i>FILTERS</button>
         </div>
 
-        <div class="filter-filter-box w-100 bg-light" style="display:none;position:sticky;bottom:0;z-index:3;">
+        <div class="filter-filter-box w-100 bg-light" style="display:none;position:sticky;bottom:0;z-index:3;height:300px;">
             <div class='d-flex justify-content-end close-sort-filter'><i class='fa fa-times'></i></div>
-            <div style="padding:10px;font-size:15px;font-weight:600;border-bottom:1px solid #000">SORT BY</div>
-            <div class="sort-options active-filter">What's New</div>
-            <div class="sort-options">Price:Low to High</div>
-            <div class="sort-options">Price:High to Low</div>
+            <div style="color:#4e4e4e;padding:10px;font-size:13px;font-weight:700;border-bottom:1px solid #c5c5c5">SORT BY</div>
+            <a class='sort-options' href='<?= $new; ?>'>
+                <div class="sort-options <?php if (strpos($url, '%3Asort=new') == true){ echo 'active-filter';}?>">What's New</div>
+            </a>
+            <a class='sort-options' href='<?= $low; ?>'>
+                <div class="sort-options <?php if (strpos($url, '%3Asort=low') == true){ echo 'active-filter';}?>">Price:Low to High</div>
+            </a>
+            <a class='sort-options' href='<?= $high; ?>'>
+                <div class="sort-options <?php if (strpos($url, '%3Asort=high') == true){ echo 'active-filter';}?>">Price:High to Low</div>
+            </a>
         </div>
 
-        <div class='filter-filter-box row pt-3' style='border-top:1px solid #dfdfdf'>
-            <div class='col-md-3 p-0' style='max-width:280px;background:#fff'></div>
-            <div class='col-9'>
-                <?= $links ?>
+        <div class="filter-filter-box2 w-100 bg-light" style="display:none;position:sticky;bottom:0;z-index:3;height:300px;">
+            <div class='d-flex justify-content-end close-filter-filter'><i class='fa fa-times'></i></div>
+            <div style="color:#4e4e4e;padding:10px;font-size:13px;font-weight:700;border-bottom:1px solid #c5c5c5">FILTERS</div>
+            <div class='row'>
+                <div class='col-6 p-0 pl-3'>
+                    <div class=''>
+                        <?php if (isset($filters) && !empty($filters)) {
+                            foreach ($filters as $key => $filter) { ?>
+                                <div class='mobile-filter-box' id='<?= $key; ?>' style='border-right: 1px solid #dfdfdf;height:20px'><?= $key; ?></div>
+                        <?php }
+                        } ?>
+                    </div>
+                </div>
+                <div class='col-6 p-0 pl-2 pt-2'>
+                    <?php if (isset($filters) && !empty($filters)) {
+                        foreach ($filters as $key => $filter) { ?>
+                            <div class='mobile-filter-options <?= $key; ?>' style="display:none;max-height:300px;overflow-y:auto;">
+                                <?php foreach ($filter as $key => $fil) { ?>
+                                    <a href="<?= $fil['url']; ?>" class="filter_value">
+                                        <div class='text-capitalize'><input type='checkbox' url='<?= $fil['url']; ?>' class='filter_checkbox mr-2' <?php if ($fil['checked'] == '1') {
+                                                                                                                                                        echo 'checked';
+                                                                                                                                                    } ?>> <?= $fil['value'] ?>
+                                        </div>
+                                    </a>
+                                    <!-- </div> -->
+                                <?php } ?>
+                            </div> <?php
+                                }
+                            } ?>
+                </div>
             </div>
         </div>
     </div>
-    <div class='row p-4 category-desc'>
-        <span class='col-12'>
-            <?= $categoriesinfo[0]->category_desc_bottom;
-            ?>
-        </span>
+
+    <div class='filter-filter-box row pt-3' style='border-top:1px solid #dfdfdf'>
+        <div class='col-md-3 p-0' style='max-width:280px;background:#fff'></div>
+        <div class='col-9'>
+            <?= $links ?>
+        </div>
     </div>
+</div>
+<div class='row p-4 category-desc'>
+    <span class='col-12'>
+        <?= $categoriesinfo[0]->category_desc_bottom;
+        ?>
+    </span>
+</div>
 </div>
 <?= $this->endSection('content') ?>
 
@@ -256,8 +324,7 @@
 <script>
     $(document).ready(function() {
         $('.sort').change(function() {
-            window.location.href = '<?= base_url('/' . $categoriesinfo[0]->category_slug . '?sort=');
-                                    ?>' + $('.sort').val();
+            window.location.href = $('.sort').val();
         });
 
         $('.filter_checkbox').click(function() {
@@ -272,8 +339,20 @@
             $('.filter-filter-box').css('display', 'none');
         });
 
+        $('.close-filter-filter').click(function() {
+            $('.filter-filter-box2').css('display', 'none');
+        });
+
         $('.filter-filter-btn').click(function() {
-            $('.filter-filter-box').css('display', 'none');
+            $('.filter-filter-box2').css('display', 'block');
+        });
+
+        $('.mobile-filter-box').click(function() {
+            $('.mobile-filter-options').css('display', 'none');
+            var id = $(this).attr('id');
+            console.log(id);
+
+            $('.' + id).css('display', 'block');
         });
     });
 </script>
