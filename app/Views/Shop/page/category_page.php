@@ -242,7 +242,7 @@ $url = $url . '?' . $params;
             </div>
             <!-- <//?php echo'<pre>';print_r($products);exit?> -->
 
-            <div class='d-flex col-md-9 products-5' style='flex-wrap:wrap;'>
+            <div class='d-flex col-md-9' style='flex-wrap:wrap;'>
                 <?php if (isset($products) && !empty($products)) {
                     foreach ($products as $row) { ?>
                         <?php echo view('Shop/page/single_product', ['row' => $row, 'wishlist' =>  $session->get('userid')]); ?>

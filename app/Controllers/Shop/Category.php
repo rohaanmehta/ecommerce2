@@ -3,6 +3,7 @@
 namespace App\Controllers\Shop;
 
 use App\Controllers\BaseController;
+use CodeIgniter\Database\RawSql;
 
 class Category extends BaseController
 {
@@ -90,6 +91,8 @@ class Category extends BaseController
                 }
             }
         }
+        $data['filter_names'] = array_unique($data['filter_names']);
+        // echo '<pre>';print_r($data['filter_names']);exit;
 
         //filter values
         $data['filters'] = array();
@@ -107,9 +110,11 @@ class Category extends BaseController
                     foreach ($filter_info as $filter_values) {
                         $filter_url = $this->filter_url($filter_name, $filter_values->filter_value);
 
-                        $data['filters'][$filter_name][$i]['value'] = $filter_values->filter_value;
-                        $data['filters'][$filter_name][$i]['url'] = $filter_url['url'];
-                        $data['filters'][$filter_name][$i]['checked'] = $filter_url['checked'];
+                        $data['filters'][$filter_name][$filter_values->filter_value]['value'] = $filter_values->filter_value;
+                        $data['filters'][$filter_name][$filter_values->filter_value]['url'] = $filter_url['url'];
+                        $data['filters'][$filter_name][$filter_values->filter_value]['checked'] = $filter_url['checked'];
+                        // echo '<pre>';print_r($data['filters'][$filter_name][$filter_values->filter_value]);exit; 
+                        $data['filters'][$filter_name][$filter_values->filter_value] = array_unique($data['filters'][$filter_name][$filter_values->filter_value]);
                         $i++;
                     }
                 }
@@ -145,6 +150,7 @@ class Category extends BaseController
 
         $filters = array();
 
+
         if (isset($filter_url) && !empty($filter_url)) {
             foreach ($filter_url as $each => $key) {
                 $name = trim($key, '%2');
@@ -152,6 +158,8 @@ class Category extends BaseController
                 // print_r($name);exit;
                 $filters[$name[0]] = $name[1];
             }
+
+
 
             $builder = $this->db->table('products')->select('products.discount,product_slug,products.id as id,title,desc,price,stock,image_name1,image_name2,image_name3,image_name4,small_image_name1,small_image_name2,small_image_name3,small_image_name4,order')->join('product_category as pc', 'pc.product_id = products.id')->join('product_images as pi', 'pi.product_id = products.id')->wherein('category_id', $all_categories)->where('visibility', '1')->where('is_deleted', '0')->groupBy('id');
 
@@ -162,10 +170,12 @@ class Category extends BaseController
                         foreach ($filters as $each1 => $key2) {
                             if ($key == $each1) {
                                 $each3 = explode('%2', $key2);
-                                // print_r($each3);
                                 foreach ($each3 as $each4 => $key3) {
                                     // if ($key == $each4) {
-                                    $fil[][$key] = $key3;
+                                    // echo $key3.'/';
+                                    if ($key3 != '') {
+                                        $fil[][$key] = $key3;
+                                    }
                                     // }
                                 }
                             }
@@ -174,23 +184,39 @@ class Category extends BaseController
                 }
             }
 
-
             // $fil = array(
             //     'colour' => 'black',
             // );
-                // echo '<pre>';print_r($fil);exit;
-                $builder = $builder->join('product_filters', 'product_filters.product_id = products.id', 'left');
+            // echo '<pre>';print_r($fil);exit;
+            if(isset($fil) && !empty($fil)){
 
+            $builder = $builder->join('product_filters', 'product_filters.product_id = products.id', 'left');
+
+            $i = 0;
+            $sql = '';
             foreach ($fil as $each => $key) {
                 $values = array_values($key);
                 $k = array_keys($key);
-                // print_r($key);exit;
-                if($k != ''){
+                // print_r($values[0]);
+                if ($values[0] != '') {
                     // exit;
-                    $builder = $builder->where('filter_name', $k[0])->orwhere('filter_value', $values[0]);
+                    // $array = array('filter_name' => $k[0], 'filter_value' => $values[0]);
+                    // echo '<pre>';print_r($array);exit;
+                    if ($i == 0) {
+                        // $builder = $builder->where($array);
+                        $sql = 'filter_name = "' . $k[0] . '" AND filter_value = "' . $values[0] . '"';
+                        // AND filter_value = '."$values[0]".'';
+                    } else {
+                        $sql = $sql . ' OR filter_name = "' . $k[0] . '" AND filter_value = "' . $values[0] . '"';
+                    }
+                    $i++;
                 }
             }
-
+            // echo $sql;exit;
+            // $sql = 'filter_name = "colour" AND filter_value = "black" OR filter_name = "colour" AND filter_value = "white"';
+            $builder->where(new RawSql($sql));
+        }
+            // exit;
             // ->where($fil);
 
             if ($this->session->get('userid') != '') {
@@ -202,7 +228,7 @@ class Category extends BaseController
             $data['products'] = $builder->get($perPage, $offset)->getresult();
 
             // echo '<pre>';
-            // print_r($fil);
+            // print_r($this->db->getLastQuery());
             // exit;
         }
 
