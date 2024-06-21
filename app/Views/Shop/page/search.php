@@ -55,19 +55,21 @@
             }
         } ?>
         <input type='text' value='<?php if (isset($key) && !empty($key)) {
-                                        echo $key;
+                                        echo urldecode($key);
                                     } ?>' class='form-control border-0 search-input' name='search' Placeholder='Search for Products ?' />
         <a href='<?= base_url(); ?>' class='text-dark' style='position:absolute;top:15px;left:15px;'><i class='fa fa-arrow-left'></i></a>
         <a href='<?= base_url('search/'); ?>' class='text-dark search-btn' style='position:absolute;top:15px;right:25px;'><i class='fa fa-search'></i></a>
     </div>
     <!-- </form> -->
 
-    <div class='row m-0 mt-4 gallery products-5 pr-4 pl-4'>
+    <div class='row m-0 mt-3 gallery products-5 pr-4 pl-4'>
         <?php if (isset($products) && !empty($products)) {
             foreach ($products as $row) { ?>
                 <?php echo view('Shop/page/single_product', ['row' => $row, 'wishlist' =>  $session->get('userid')]); ?>
         <?php }
-        } ?>
+        } else { ?>
+            <div class='text-dark w-100 d-flex justify-content-center' style='font-size:14px;font-weight:500;'>No Products Found !</div>
+        <?php } ?>
     </div>
 </div>
 <?php if (isset($products) && !empty($products)) { ?>

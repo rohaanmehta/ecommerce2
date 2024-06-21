@@ -92,7 +92,21 @@ class Category extends BaseController
             }
         }
         $data['filter_names'] = array_unique($data['filter_names']);
-        // echo '<pre>';print_r($data['filter_names']);exit;
+
+        //all subcategories
+        $data['subcategories'] = array();
+        $i = 0;
+        if (isset($all_categories) && !empty($all_categories)) {
+            foreach ($all_categories as $row) {
+                if ($i != '0') {
+                    $categoryinfo = $this->db->table('categories')->select('category_name,category_slug')->where('id', $row)->get()->getresult();
+                    $data['subcategories'][$i]['name'] = $categoryinfo[0]->category_name;
+                    $data['subcategories'][$i]['url'] = $categoryinfo[0]->category_slug;
+                }
+                $i++;
+            }
+        }
+        // echo '<pre>';print_r($data['subcategories']);exit;
 
         //filter values
         $data['filters'] = array();
@@ -188,34 +202,34 @@ class Category extends BaseController
             //     'colour' => 'black',
             // );
             // echo '<pre>';print_r($fil);exit;
-            if(isset($fil) && !empty($fil)){
+            if (isset($fil) && !empty($fil)) {
 
-            $builder = $builder->join('product_filters', 'product_filters.product_id = products.id', 'left');
+                $builder = $builder->join('product_filters', 'product_filters.product_id = products.id', 'left');
 
-            $i = 0;
-            $sql = '';
-            foreach ($fil as $each => $key) {
-                $values = array_values($key);
-                $k = array_keys($key);
-                // print_r($values[0]);
-                if ($values[0] != '') {
-                    // exit;
-                    // $array = array('filter_name' => $k[0], 'filter_value' => $values[0]);
-                    // echo '<pre>';print_r($array);exit;
-                    if ($i == 0) {
-                        // $builder = $builder->where($array);
-                        $sql = 'filter_name = "' . $k[0] . '" AND filter_value = "' . $values[0] . '"';
-                        // AND filter_value = '."$values[0]".'';
-                    } else {
-                        $sql = $sql . ' OR filter_name = "' . $k[0] . '" AND filter_value = "' . $values[0] . '"';
+                $i = 0;
+                $sql = '';
+                foreach ($fil as $each => $key) {
+                    $values = array_values($key);
+                    $k = array_keys($key);
+                    // print_r($values[0]);
+                    if ($values[0] != '') {
+                        // exit;
+                        // $array = array('filter_name' => $k[0], 'filter_value' => $values[0]);
+                        // echo '<pre>';print_r($array);exit;
+                        if ($i == 0) {
+                            // $builder = $builder->where($array);
+                            $sql = 'filter_name = "' . $k[0] . '" AND filter_value = "' . $values[0] . '"';
+                            // AND filter_value = '."$values[0]".'';
+                        } else {
+                            $sql = $sql . ' OR filter_name = "' . $k[0] . '" AND filter_value = "' . $values[0] . '"';
+                        }
+                        $i++;
                     }
-                    $i++;
                 }
+                // echo $sql;exit;
+                // $sql = 'filter_name = "colour" AND filter_value = "black" OR filter_name = "colour" AND filter_value = "white"';
+                $builder->where(new RawSql($sql));
             }
-            // echo $sql;exit;
-            // $sql = 'filter_name = "colour" AND filter_value = "black" OR filter_name = "colour" AND filter_value = "white"';
-            $builder->where(new RawSql($sql));
-        }
             // exit;
             // ->where($fil);
 

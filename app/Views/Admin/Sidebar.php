@@ -323,14 +323,14 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="<?= base_url('Admin/add-coupons') ?>" class="nav-link d-flex align-items-center">
+                            <a href="<?= base_url('Admin/add_coupons') ?>" class="nav-link d-flex align-items-center">
                                 <i class="nav-icon fa fa-circle"></i>
 
                                 <p>Add Coupons</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= base_url('Admin/coupons-list') ?>" class="nav-link d-flex align-items-center">
+                            <a href="<?= base_url('Admin/coupons_list') ?>" class="nav-link d-flex align-items-center">
                                 <i class="nav-icon fa fa-circle"></i>
 
                                 <p>Coupons List</p>

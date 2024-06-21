@@ -98,4 +98,9 @@ class Profile extends BaseController
         $data['page'] = $this->db->table('pages')->where('page_name', 'delete-page')->get()->getResult();
         return view('Shop/Profile/delete_account_view', $data);
     }
+    public function coupons()
+    {
+        $data['coupons'] = $this->db->table('coupons')->where('start_date <=',date('Y-m-d'))->where('end_date >=',date('Y-m-d'))->where('status', '1')->get()->getResult();
+        return view('Shop/Profile/coupons', $data);
+    }
 }

@@ -47,14 +47,14 @@
         <p class="mb-2 h5 font-weight-light profile-sidebar-option">Orders</p>
     </div>
     <div class="col-12" style="padding-bottom:15px;border-bottom:1px solid #dfdfdf">
-        <a class="mb-2 profile-sidebar-value" href="<?= base_url(); ?>">My Orders</a>
+        <a class="mb-2 profile-sidebar-value" href="<?= base_url('profile/myorders'); ?>">My Orders</a>
     </div>
 
     <div class="col-12 mt-3">
         <p class="mb-2 h5 font-weight-light profile-sidebar-option">Credits</p>
     </div>
     <div class="col-12">
-        <a class="mb-2 profile-sidebar-value" href="<?= base_url(); ?>">Coupons</a>
+        <a class="mb-2 profile-sidebar-value" href="<?= base_url('profile/coupons'); ?>">Coupons</a>
     </div>
     <!-- <div class="col-12">
         <a class="mb-2 profile-sidebar-value" href="<//?= base_url(); ?>">WishList</a>

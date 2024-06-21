@@ -32,14 +32,19 @@ $routes->group('', ['namespace' => 'App\controllers\Admin', "filter" => "Auth"],
     $routes->post('add_visual_settings', 'Website_settings::add_visual_settings');
     $routes->post('add_visual_settings2', 'Website_settings::add_visual_settings2');
     $routes->post('category-settings', 'Website_settings::category_settings');
-    
+
 
     $routes->get('Admin/footer_settings', 'Website_settings::footer_settings');
     $routes->post('add_footer_data', 'Website_settings::add_footer_data');
-    
 
     //cache setting
     $routes->get('Admin/cache_settings', 'Website_settings::cache_view');
+
+    //coupons
+    $routes->get('Admin/add_coupons/?(:any)', 'Coupons::view/$1');
+    $routes->get('Admin/coupon_list', 'Coupons::coupon_list');
+    $routes->post('add_coupon_data', 'Coupons::add_coupon_data');
+    $routes->get('deletecoupon/?(:any)', 'Coupons::deletecoupon/$1');
 
     // products
     // $routes->get('Admin/product_slider', 'Dashboard::dashboard');
@@ -122,7 +127,7 @@ $routes->group('', ['namespace' => 'App\controllers\Admin', "filter" => "Auth"],
     $routes->get('Admin/delete-page/?(:any)', 'Pages::delete_page/$1');
     $routes->get('Admin/delete_account', 'Pages::delete_account');
 
-    
+
 
 
     $routes->get('job_enquiry', 'Enquiry::job_enquiry');
@@ -146,6 +151,8 @@ $routes->group('', ['namespace' => 'App\controllers\Shop', "filter" => "Profile"
 
 
 $routes->group('', ['namespace' => 'App\controllers\Shop'], static function ($routes) {
+    $routes->get('profile/coupons', 'Profile::coupons');
+
     $routes->get('/', 'Homepage::homepage');
 
     $routes->get('forbidden-access', function () {

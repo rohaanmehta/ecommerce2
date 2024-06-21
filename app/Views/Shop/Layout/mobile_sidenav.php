@@ -339,7 +339,7 @@
         <?php } ?>
 
         <li><a href="<?= base_url('/wishlist'); ?>" class='mobile-nav-bar font-weight-normal'> WishList </a></li>
-        <li><a href="<?= base_url(); ?>" class='mobile-nav-bar font-weight-normal'> Coupons </a></li>
+        <li><a href="<?= base_url('profile/coupons'); ?>" class='mobile-nav-bar font-weight-normal'> Coupons </a></li>
 
         <?php if ($session->get('userid') != '') { ?>
             <li><a href="<?= base_url('/logout'); ?>" class='mobile-nav-bar font-weight-normal'> Logout </a></li>

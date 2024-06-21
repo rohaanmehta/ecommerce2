@@ -187,7 +187,7 @@ $footersettings = footer_settings();
                             <a href='<?= base_url(); ?>' class='profile-box-links' style='text-decoration:none' data-toggle="modal" data-target="#loginexampleModal"> Profile </a><br>
                             <a href='<?= base_url(); ?>' class='profile-box-links' style='text-decoration:none' data-toggle="modal" data-target="#loginexampleModal"> Orders </a><br>
                             <a href='<?= base_url(); ?>' class='profile-box-links' style='text-decoration:none' data-toggle="modal" data-target="#loginexampleModal"> Wishlist </a><br>
-                            <a href='<?= base_url(); ?>' class='profile-box-links' style='text-decoration:none' data-toggle="modal" data-target="#loginexampleModal"> Coupons </a>
+                            <a href='<?= base_url('profile/coupons'); ?>' class='profile-box-links' style='text-decoration:none'> Coupons </a>
                         <?php } else { ?>
                             <?php
                             if ($session->get('role') == 'admin') { ?>
@@ -196,7 +196,7 @@ $footersettings = footer_settings();
                             <a href='<?= base_url('/profile'); ?>' class='profile-box-links' style='text-decoration:none'> Profile </a><br>
                             <a href='<?= base_url(); ?>' class='profile-box-links' style='text-decoration:none'> Orders </a><br>
                             <a href='<?= base_url('/wishlist'); ?>' class='profile-box-links' style='text-decoration:none'> Wishlist </a><br>
-                            <a href='<?= base_url(); ?>' class='profile-box-links' style='text-decoration:none'> Coupons </a><br>
+                            <a href='<?= base_url('profile/coupons'); ?>' class='profile-box-links' style='text-decoration:none'> Coupons </a><br>
                             <a href='<?= base_url("logout") ?>' class='profile-box-links' style='text-decoration:none'>Logout</a>
                         <?php } ?>
                     </div>
