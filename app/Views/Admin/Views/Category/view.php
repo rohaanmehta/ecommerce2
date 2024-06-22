@@ -37,6 +37,11 @@
             </div>
         </div>
         <div class='row p-5'>
+            <div class="mb-2 w-100 d-flex justify-content-end">
+                <input type="text" value="<?php if(isset($_GET['search'])){ echo $_GET['search'];}?>" name="search" placeholder='Search Name' class="search-input form-control rounded-0" style="max-width:200px;" />
+                <button class="search-btn btn btn-dark rounded-0">GO</button>
+            </div>
+
             <table class='table table-bordered table-striped'>
                 <tr>
                     <td>ID</td>
@@ -58,8 +63,8 @@
                                 } ?></td>
                             <td><?= $row->category_order; ?></td>
                             <td>
-                                <a href='' id='<?= $row->id ?>' class='edit_category'><button type='button' class='btn btn-info'>Edit</button></a>
-                                <a href='<?= base_url('/delete-category' . '/' . $row->id); ?>'><button class='btn btn-danger'>Delete</button></a>
+                                <a href='' id='<?= $row->id ?>' class='edit_category'><button type='button' class='btn-sm btn btn-info'>Edit</button></a>
+                                <a href='<?= base_url('/delete-category' . '/' . $row->id); ?>'><button class='btn-sm btn btn-danger'>Delete</button></a>
                             </td>
                         </tr>
                     <?php  }
@@ -69,6 +74,11 @@
                     </tr>
                 <?php } ?>
             </table>
+            <div class='w-100 row justify-content-end pt-2'>
+                <div class='text-center'>
+                    <?= $links ?>
+                </div>
+            </div>
         </div>
 
     </section>
@@ -158,7 +168,10 @@
 
 <script>
     $(document).ready(function() {
-
+        $('.search-btn').click(function(){
+            window.location.href = '<?= base_url('Admin/category/?search=');?>'+$('.search-input').val();
+        });
+        
         let editor;
 
         ClassicEditor
@@ -238,7 +251,7 @@
                     // document.querySelector('#editor').val(data.data[0]['category_desc_top']);
                     // console.log(data.data[0]['parent_category']);
 
-                    
+
 
                 }
             });

@@ -264,7 +264,22 @@ class Products extends BaseController
 
     public function products_view()
     {
-        $data['products'] = $this->db->table('products')->join('product_category as pc', 'pc.product_id = products.id')->join('categories as c', 'c.id = pc.category_id')->get()->getResult();
+        $pager = service('pager');
+        $perPage = 10;
+        $page = (@$_GET['page']) ? $_GET['page'] : 1;
+        $offset = ($page - 1) * $perPage;
+
+        if (isset($_GET['search']) && !empty($_GET['search'])) {
+            $data['products'] = $this->db->table('products')->join('product_category as pc', 'pc.product_id = products.id')->join('categories as c', 'c.id = pc.category_id')->like('title', $_GET['search'])->orlike('category_name', $_GET['search'])->orlike('sku', $_GET['search'])->orlike('promote', $_GET['search'])->groupby('pc.product_id')->get($perPage, $offset)->getResult();
+            $total = count($data['products']);
+        } else {
+            $data['products'] = $this->db->table('products')->join('product_category as pc', 'pc.product_id = products.id')->join('categories as c', 'c.id = pc.category_id')->groupby('pc.product_id')->get($perPage, $offset)->getResult();
+
+            $total = count($data['products']);
+        }
+        $data['links'] = $pager->makeLinks($page, $perPage, $total);
+
+
         return view('Admin/Views/Products/view', $data);
     }
 
@@ -453,7 +468,7 @@ class Products extends BaseController
         header('Content-Type: application/json');
         echo json_encode($data);
     }
-    
+
     public function delete_product($id)
     {
         $productinfo = $this->db->table('product_images')->where('product_id', $id)->get()->getResult();

@@ -30,6 +30,12 @@
             </div>
         </div> -->
         <div class='row p-5'>
+        <div class="mb-2 w-100 d-flex justify-content-end">
+                <input type="text" value="<?php if (isset($_GET['search'])) {
+                                                echo $_GET['search'];
+                                            } ?>" name="search" placeholder='Search Name' class="search-input form-control rounded-0" style="max-width:200px;" />
+                <button class="search-btn btn btn-dark rounded-0">GO</button>
+            </div>
             <table class='table table-bordered table-striped'>
                 <tr>
                     <td>ID</td>
@@ -53,8 +59,20 @@
                     </tr>
                 <?php } ?>
             </table>
+            <div class='w-100 row justify-content-end pt-2'>
+                <div class='text-center'>
+                    <?= $links ?>
+                </div>
+            </div>
         </div>
 
     </section>
 </div>
+<script>
+    $(document).ready(function() {
+        $('.search-btn').click(function() {
+            window.location.href = '<?= base_url('Admin/users-list/?search='); ?>' + $('.search-input').val();
+        });
+    });
+</script>
 <?= $this->endSection() ?>

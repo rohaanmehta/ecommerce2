@@ -8,16 +8,44 @@ class Category extends BaseController
 {
     public function category_view()
     {
-        $data['category'] = $this->db->table('categories')->get()->getResult();
+        $pager = service('pager');
+        $perPage = 10;
+        $page = (@$_GET['page']) ? $_GET['page'] : 1;
+        $offset = ($page - 1) * $perPage;
+
+        if (isset($_GET['search']) && !empty($_GET['search'])) {
+            $data['category'] = $this->db->table('categories')->like('category_name', $_GET['search'])->get($perPage, $offset)->getResult();
+            $total = $this->db->table('categories')->like('category_name', $_GET['search'])->countAllResults();
+        } else {
+            $data['category'] = $this->db->table('categories')->get($perPage, $offset)->getResult();
+            $total = $this->db->table('categories')->countAllResults();
+        }
+        $data['links'] = $pager->makeLinks($page, $perPage, $total);
+
 
         return view('Admin/Views/Category/view', $data);
     }
 
     public function category_banner_view()
     {
-        $data['category'] = $this->db->table('category_banner')->select('mobile_image,category_banner.image,category_banner.order,category_banner.id,c.category_name')->join('categories as c', 'c.id = category_banner.category_id')->get()->getResult();
-        $data['all_categories'] = $this->db->table('categories')->get()->getResult();
+        $pager = service('pager');
+        $perPage = 10;
+        $page = (@$_GET['page']) ? $_GET['page'] : 1;
+        $offset = ($page - 1) * $perPage;
 
+        if (isset($_GET['search']) && !empty($_GET['search'])) {
+            $data['category'] = $this->db->table('category_banner')->select('mobile_image,category_banner.image,category_banner.order,category_banner.id,c.category_name')->join('categories as c', 'c.id = category_banner.category_id')->like('category_name', $_GET['search'])->get($perPage, $offset)->getResult();
+
+            $total = $this->db->table('category_banner')->select('mobile_image,category_banner.image,category_banner.order,category_banner.id,c.category_name')->join('categories as c', 'c.id = category_banner.category_id')->like('category_name', $_GET['search'])->countAllResults();
+
+        } else {
+            $data['category'] = $this->db->table('category_banner')->select('mobile_image,category_banner.image,category_banner.order,category_banner.id,c.category_name')->join('categories as c', 'c.id = category_banner.category_id')->get($perPage, $offset)->getResult();
+
+            $total = $this->db->table('category_banner')->select('mobile_image,category_banner.image,category_banner.order,category_banner.id,c.category_name')->join('categories as c', 'c.id = category_banner.category_id')->countAllResults();
+        }
+        $data['links'] = $pager->makeLinks($page, $perPage, $total);
+
+        $data['all_categories'] = $this->db->table('categories')->get()->getResult();
         return view('Admin/Views/Category/category_banner_view', $data);
     }
 

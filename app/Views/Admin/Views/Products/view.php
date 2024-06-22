@@ -30,6 +30,12 @@
             </div>
         </div> -->
         <div class='row p-5'>
+            <div class="mb-2 w-100 d-flex justify-content-end">
+                <input type="text" value="<?php if (isset($_GET['search'])) {
+                                                echo $_GET['search'];
+                                            } ?>" name="search" placeholder='Search Name' class="search-input form-control rounded-0" style="max-width:200px;" />
+                <button class="search-btn btn btn-dark rounded-0">GO</button>
+            </div>
             <table class='table table-bordered table-striped'>
                 <tr>
                     <td>ID</td>
@@ -52,7 +58,7 @@
                             <td><?= $row->sku; ?></td>
                             <td><?= $row->price; ?></td>
                             <td><?= $row->stock; ?></td>
-                            <td><a class='mr-2' href='<?= base_url('/add_products' . '/' . $row->product_id); ?>'><button class='btn btn-info'>Edit</button></a><a href='<?= base_url('/delete-product' . '/' . $row->product_id); ?>'><button class='btn btn-danger'>Delete</button></a></td>
+                            <td width="150px"><a class='mr-2' href='<?= base_url('/add_products' . '/' . $row->product_id); ?>'><button class='btn-sm btn btn-info'>Edit</button></a><a href='<?= base_url('/delete-product' . '/' . $row->product_id); ?>'><button class='btn-sm btn btn-danger'>Delete</button></a></td>
                         </tr>
                     <?php  }
                 } else {  ?>
@@ -61,40 +67,49 @@
                     </tr>
                 <?php } ?>
             </table>
+            <div class='w-100 row justify-content-end pt-2'>
+                <div class='text-center'>
+                    <?= $links ?>
+                </div>
+            </div>
         </div>
 
     </section>
 </div>
 
 <script>
-//   $(document).ready(function() {
-//     $('.slider-form').submit(function(e) {
-//       e.preventDefault();
-//       $.ajax({
-//         type: "POST",
-//         url: "<//?= base_url('add_slider_data') ?>",
-//         data: new FormData(this),
-//         contentType: false,
-//         cache: false,
-//         processData: false,
-//         dataType: "json",
-//         success: function(data) {
-//           if (data.status == '200') {
-//             alert('uploaded successfully');
-//             setTimeout(function() {
-//               // $('#download').css('display', 'block');
-//               // $('#loader').css('visibility', 'hidden');
-//               window.location.href = '<//?= base_url('/Admin/slider-view');?>';
-//             }, 1000);
-//             // alert('registered_successfully');
+    $(document).ready(function() {
+        $('.search-btn').click(function() {
+            window.location.href = '<?= base_url('Admin/products/?search='); ?>' + $('.search-input').val();
+        });
+    });
+    //     $('.slider-form').submit(function(e) {
+    //       e.preventDefault();
+    //       $.ajax({
+    //         type: "POST",
+    //         url: "<//?= base_url('add_slider_data') ?>",
+    //         data: new FormData(this),
+    //         contentType: false,
+    //         cache: false,
+    //         processData: false,
+    //         dataType: "json",
+    //         success: function(data) {
+    //           if (data.status == '200') {
+    //             alert('uploaded successfully');
+    //             setTimeout(function() {
+    //               // $('#download').css('display', 'block');
+    //               // $('#loader').css('visibility', 'hidden');
+    //               window.location.href = '<//?= base_url('/Admin/slider-view');?>';
+    //             }, 1000);
+    //             // alert('registered_successfully');
 
-//           }else{
-//             alert('something went wrong');
-//           }
-//         }
-//       });
-//     });
-//   });
+    //           }else{
+    //             alert('something went wrong');
+    //           }
+    //         }
+    //       });
+    //     });
+    //   });
 </script>
 
 <?= $this->endSection() ?>

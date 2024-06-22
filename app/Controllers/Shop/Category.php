@@ -142,7 +142,7 @@ class Category extends BaseController
         $url = str_replace('%3Asort=high', '', $url);
         $url = str_replace('%3Asort=new&', '', $url);
         $url = str_replace('%3Asort=new', '', $url);
-
+        $url = str_replace('index.php/','',$url);
 
         if (strpos($url, '?') !== false) {
             $data['new'] = $url . '%3Asort=new';
@@ -275,6 +275,7 @@ class Category extends BaseController
         $url = current_url();
         $params   = $_SERVER['QUERY_STRING'];
         $url = $url . '?' . $params;
+        $url = str_replace('index.php/','',$url);
 
         // if (str_contains($url, $filter_value)) {
         if (strpos($url, $filter_value) !== false) {

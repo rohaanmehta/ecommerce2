@@ -13,8 +13,21 @@ class Users extends BaseController
 
     public function users_list()
     {
-        $data['users'] = $this->db->table('users')->get()->getResult();
-        return view('Admin/Views/Users/users_list',$data);
+        $pager = service('pager');
+        $perPage = 10;
+        $page = (@$_GET['page']) ? $_GET['page'] : 1;
+        $offset = ($page - 1) * $perPage;
+
+        if (isset($_GET['search']) && !empty($_GET['search'])) {
+            $data['users'] = $this->db->table('users')->like('first_name', $_GET['search'])->orlike('last_name', $_GET['search'])->orlike('email', $_GET['search'])->get($perPage, $offset)->getResult();
+        } else {
+            $data['users'] = $this->db->table('users')->get()->getResult();
+        }
+        $total = count($data['users']);
+
+        $data['links'] = $pager->makeLinks($page, $perPage, $total);
+
+        return view('Admin/Views/Users/users_list', $data);
     }
 
     public function add_user_data()
