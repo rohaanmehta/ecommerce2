@@ -33,7 +33,7 @@
         <div class="mb-2 w-100 d-flex justify-content-end">
                 <input type="text" value="<?php if (isset($_GET['search'])) {
                                                 echo $_GET['search'];
-                                            } ?>" name="search" placeholder='Search Name' class="search-input form-control rounded-0" style="max-width:200px;" />
+                                            } ?>" name="search" placeholder='Search FirstName, LastName,Email' class="search-input form-control rounded-0" style="max-width:200px;" />
                 <button class="search-btn btn btn-dark rounded-0">GO</button>
             </div>
             <table class='table table-bordered table-striped'>

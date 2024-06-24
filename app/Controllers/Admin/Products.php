@@ -271,11 +271,11 @@ class Products extends BaseController
 
         if (isset($_GET['search']) && !empty($_GET['search'])) {
             $data['products'] = $this->db->table('products')->join('product_category as pc', 'pc.product_id = products.id')->join('categories as c', 'c.id = pc.category_id')->like('title', $_GET['search'])->orlike('category_name', $_GET['search'])->orlike('sku', $_GET['search'])->orlike('promote', $_GET['search'])->groupby('pc.product_id')->get($perPage, $offset)->getResult();
-            $total = count($data['products']);
+            $total = $this->db->table('products')->select('products.id')->join('product_category as pc', 'pc.product_id = products.id')->join('categories as c', 'c.id = pc.category_id')->like('title', $_GET['search'])->orlike('category_name', $_GET['search'])->orlike('sku', $_GET['search'])->orlike('promote', $_GET['search'])->groupby('pc.product_id')->countAllResults();
         } else {
             $data['products'] = $this->db->table('products')->join('product_category as pc', 'pc.product_id = products.id')->join('categories as c', 'c.id = pc.category_id')->groupby('pc.product_id')->get($perPage, $offset)->getResult();
 
-            $total = count($data['products']);
+            $total = $this->db->table('products')->select('products.id')->join('product_category as pc', 'pc.product_id = products.id')->join('categories as c', 'c.id = pc.category_id')->groupby('pc.product_id')->countAllResults();
         }
         $data['links'] = $pager->makeLinks($page, $perPage, $total);
 
@@ -288,9 +288,10 @@ class Products extends BaseController
         $data = array();
 
         if ($id != '') {
-            $data['product'] =  $this->db->table('products')->join('product_category as pc', 'pc.product_id = products.id')->join('product_images as pi', 'pi.product_id = products.id')->where('products.id', $id)->get()->getresult();
+            $data['product'] =  $this->db->table('products')->select('products.*,pc.*,pi.*,pb.badge_text')->join('product_category as pc', 'pc.product_id = products.id')->join('product_images as pi', 'pi.product_id = products.id')->join('product_badge as pb', 'pb.product_id = products.id', 'left')->where('products.id', $id)->get()->getresult();
+            $data['product_categories'] = $this->db->table('product_category')->where('product_id', $id)->get()->getresult();
         }
-
+        // echo'<pre>';print_r($data['product']);exit;
         $data['categories'] = $this->db->table('categories')->get()->getresult();
         return view('Admin/Views/Products/add_product', $data);
     }
@@ -325,15 +326,12 @@ class Products extends BaseController
             'product_slug' => create_slug($_POST['title']),
         );
 
-        $category_array['category_id'] = $_POST['category'];
 
         if ($_POST['productid'] == '') {
             if ($this->db->table('products')->insert($array)) {
                 $data['status'] = 200;
                 $productid = $this->db->insertID();
 
-                $category_array['product_id'] = $productid;
-                $this->db->table('product_category')->insert($category_array);
 
                 $image_array = array(
                     'product_id' => $productid,
@@ -382,8 +380,6 @@ class Products extends BaseController
                 $data['status'] = 200;
                 $productid = $_POST['productid'];
 
-                $category_array['product_id'] = $productid;
-                $this->db->table('product_category')->where('product_id', $productid)->update($category_array);
 
                 $image_array = array(
                     'product_id' => $productid,
@@ -462,6 +458,37 @@ class Products extends BaseController
                 $data['status'] = 400;
             }
         }
+
+        // $category_array['product_id'] = $productid;
+        // $this->db->table('product_category')->insert($category_array);
+        $category_array = $_POST['category'];
+
+        if (isset($category_array) && !empty($category_array)) {
+            $this->db->table('product_category')->where('product_id', $productid)->delete();
+            foreach ($category_array as $row) {
+                $cat  = array(
+                    'product_id' => $productid,
+                    'category_id' => $row,
+                );
+                $this->db->table('product_category')->insert($cat);
+            }
+        }
+
+        $this->db->table('product_badge')->where('product_id', $productid)->delete();
+
+        if ($_POST['badge'] != '') {
+            $product_badge_array = array(
+                'badge_text' => $_POST['badge'],
+                'product_id' => $productid,
+            );
+
+            $this->db->table('product_badge')->insert($product_badge_array);
+        }
+
+        // echo '<pre>';
+        // print_r($category_array);
+        // exit;
+
 
         set_cache('cache', 'value_3');
 

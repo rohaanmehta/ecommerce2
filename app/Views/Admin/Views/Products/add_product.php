@@ -91,17 +91,30 @@
                         <option value='section2' <?php if(isset($product[0])){if($product[0]->promote == 'section2'){ echo 'selected';}}?>>Section 2</option>
                     </select>
                 </div>
+
                 <div class='mb-2'>
                     <span class='form-label'> Category </span>
-                    <select name='category' class='form-control'>
+                    <select name='category[]' class='form-control' multiple style="height:250px;">
                         <?php if (isset($categories)) {
-                            foreach ($categories as $cat) { ?>
+                            foreach ($categories as $cat) {
+                                $selected = 0;
+
+                                foreach($product_categories as $single){
+                                    if($cat->id == $single->category_id){
+                                        $selected = 1;
+                                    }
+                                }
+                                    ?>
                                 <option value='<?= $cat->id ?>' <?php if(isset($product[0])){
-                                    if($cat->id == $product[0]->category_id){ echo 'selected';}
+                                    if($selected == '1'){ echo 'selected';}
                                 }?>><?= $cat->category_name ?></option>
                         <?php }
                         } ?>
                     </select>
+                </div>
+                <div class='mb-2'>
+                    <span class='form-label'> Product Badge </span>
+                    <input name='badge' class='form-control' placeholder="Product Badge" value='<?php if(isset($product[0])){ echo $product[0]->badge_text;}?>'>
                 </div>
                 <div class="d-flex justify-content-center">
                     <button class='btn btn-primary'> Save Product</button>

@@ -20,10 +20,12 @@ class Users extends BaseController
 
         if (isset($_GET['search']) && !empty($_GET['search'])) {
             $data['users'] = $this->db->table('users')->like('first_name', $_GET['search'])->orlike('last_name', $_GET['search'])->orlike('email', $_GET['search'])->get($perPage, $offset)->getResult();
+            $total = $this->db->table('users')->like('first_name', $_GET['search'])->orlike('last_name', $_GET['search'])->orlike('email', $_GET['search'])->countAllResults();
+
         } else {
-            $data['users'] = $this->db->table('users')->get()->getResult();
+            $data['users'] = $this->db->table('users')->get($perPage, $offset)->getResult();
+            $total = $this->db->table('users')->countAllResults();
         }
-        $total = count($data['users']);
 
         $data['links'] = $pager->makeLinks($page, $perPage, $total);
 

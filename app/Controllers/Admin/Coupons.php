@@ -45,7 +45,22 @@ class Coupons extends BaseController
 
     public function coupon_list()
     {
-        $data['coupons'] = $this->db->table('coupons')->get()->getResult();
+
+        $pager = service('pager');
+        $perPage = 10;
+        $page = (@$_GET['page']) ? $_GET['page'] : 1;
+        $offset = ($page - 1) * $perPage;
+
+        if (isset($_GET['search']) && !empty($_GET['search'])) {
+            $data['coupons'] = $this->db->table('coupons')->like('code', $_GET['search'])->orlike('type', $_GET['search'])->orlike('min_cart_value', $_GET['search'])->get($perPage, $offset)->getResult();
+            
+            $total = $this->db->table('coupons')->like('code', $_GET['search'])->orlike('type', $_GET['search'])->orlike('min_cart_value', $_GET['search'])->countAllResults();
+        } else {
+            $data['coupons'] = $this->db->table('coupons')->get($perPage, $offset)->getResult();
+            $total = $this->db->table('coupons')->countAllResults();
+        }
+
+        $data['links'] = $pager->makeLinks($page, $perPage, $total);
 
         return view('Admin/Views/Coupons/list', $data);
     }
