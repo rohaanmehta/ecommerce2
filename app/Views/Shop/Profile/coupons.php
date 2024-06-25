@@ -39,7 +39,9 @@
                                     </div>
                                 </div>
                         <?php }
-                        } ?>
+                        } else {?>
+                            <div class="w-100 text-center" style="font-size:13px;font-weight:600;"> No Coupons Available</div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>

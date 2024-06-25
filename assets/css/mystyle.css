@@ -1,3 +1,150 @@
+  .filters-heading {
+      font-size: 15px;
+      font-weight: 700;
+      color: #606060;
+      margin-bottom: 6px;
+  }
+
+  .filter-box {
+      border-bottom: 2px solid #e7e7e7;
+      padding-bottom: 15px !important;
+      max-height: 300px;
+      overflow-y: auto;
+      margin-top: 20px;
+  }
+
+  .filter-box::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      background-color: #F5F5F5;
+  }
+
+  .filter-box::-webkit-scrollbar {
+      width: 7px;
+      background-color: #F5F5F5;
+  }
+
+  .filter-box::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+      background-color: #cccccc;
+  }
+
+  .category_name {
+      font-size: 22px;
+      font-weight: 600;
+  }
+
+  .sort_by {
+      font-size: 15px;
+      font-weight: 600;
+  }
+
+  .category-desc {
+      font-size: 12px;
+      color: #878787;
+  }
+
+  .filter_checkbox {
+      cursor: pointer;
+  }
+
+  .filter_value {
+      cursor: pointer;
+      color: #000;
+      text-decoration: none !important;
+  }
+
+  .filter_value:active {
+      color: #000 !important;
+  }
+
+  .filter_value:hover {
+      color: #000 !important;
+  }
+
+  input[type=checkbox] {
+      position: relative;
+      border: 2px solid #000;
+      border-radius: 2px;
+      background: none;
+      cursor: pointer;
+      line-height: 0;
+      margin: 0 .6em 0 0;
+      outline: 0;
+      padding: 0 !important;
+      vertical-align: text-top;
+      height: 20px;
+      width: 20px;
+      -webkit-appearance: none;
+      opacity: .5;
+  }
+
+  input[type=checkbox]:hover {
+      opacity: 1;
+  }
+
+  input[type=checkbox]:checked {
+      background-color: #000;
+      opacity: 1;
+  }
+
+  input[type=checkbox]:before {
+      content: '';
+      position: absolute;
+      right: 50%;
+      top: 50%;
+      width: 4px;
+      height: 10px;
+      border: solid #FFF;
+      border-width: 0 2px 2px 0;
+      margin: -1px -1px 0 -1px;
+      transform: rotate(45deg) translate(-50%, -50%);
+      z-index: 2;
+  }
+
+  .filter-sort-btn {
+      height: 55px;
+      color: #a9a9a9;
+      border: none;
+      border-right: 1px solid #a9a9a9;
+  }
+
+  .filter-filter-btn {
+      height: 55px;
+      color: #a9a9a9;
+      border: none;
+  }
+
+  .sort-options {
+      margin: 13px;
+      font-size: 13px;
+      font-weight: 400;
+      cursor: pointer;
+      color: #000 !important;
+      text-decoration: none !important;
+  }
+
+  .sort-options:active {
+      color: #000 !important;
+  }
+
+  .active-filter {
+      font-weight: 700;
+  }
+
+  .filter-filter-box,
+  .filter-filter-box2 {
+      padding: 10px;
+  }
+
+  .mobile-filter-box {
+      margin: 7px;
+      color: #000;
+      font-size: 13px;
+      text-transform: capitalize;
+  }
+
   .single_product_discount_price {
       font-size: 15px;
       color: #707070b3;
@@ -665,8 +812,8 @@
       height: fit-content;
   }
 
-  .product-slider-image{
-    display: none;
+  .product-slider-image {
+      display: none;
   }
 
   .gallery_container {

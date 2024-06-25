@@ -330,7 +330,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= base_url('Admin/coupons_list') ?>" class="nav-link d-flex align-items-center">
+                            <a href="<?= base_url('Admin/coupon_list') ?>" class="nav-link d-flex align-items-center">
                                 <i class="nav-icon fa fa-circle"></i>
 
                                 <p>Coupons List</p>
@@ -393,7 +393,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-star"></i>
                         <p>
@@ -410,7 +410,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> -->
 
                 <li class="nav-item">
                     <a href="#" class="nav-link">

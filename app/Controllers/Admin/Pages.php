@@ -8,8 +8,20 @@ class Pages extends BaseController
 {
     public function pages_view()
     {
-        $data['pages'] = $this->db->table('pages')->get()->getResult();
+        $pager = service('pager');
+        $perPage = 10;
+        $page = (@$_GET['page']) ? $_GET['page'] : 1;
+        $offset = ($page - 1) * $perPage;
 
+        if (isset($_GET['search']) && !empty($_GET['search'])) {
+            $data['pages'] = $this->db->table('pages')->like('page_name', $_GET['search'])->get($perPage, $offset)->getResult();
+            $total =  $this->db->table('pages')->like('page_name', $_GET['search'])->countAllResults();
+        } else {
+            $data['pages'] = $this->db->table('pages')->get($perPage, $offset)->getResult();
+            $total = $this->db->table('pages')->countAllResults();
+        }
+
+        $data['links'] = $pager->makeLinks($page, $perPage, $total);
         return view('Admin/Views/Pages/list', $data);
     }
     public function add_page_view($id)

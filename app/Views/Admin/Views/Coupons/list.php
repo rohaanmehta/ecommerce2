@@ -21,6 +21,12 @@
 
     <section class="content">
         <div class='row p-5'>
+            <div class="mb-2 w-100 d-flex justify-content-end">
+                <input type="text" value="<?php if (isset($_GET['search'])) {
+                                                echo $_GET['search'];
+                                            } ?>" name="search" placeholder='Search Code , Discount , Minimum cart value' class="search-input form-control rounded-0" style="max-width:200px;" />
+                <button class="search-btn btn btn-dark rounded-0">GO</button>
+            </div>
             <table class='table table-bordered table-striped'>
                 <tr>
                     <td>Code</td>
@@ -35,17 +41,23 @@
 
                 <?php if (isset($coupons[0])) {
                     foreach ($coupons as $row) { ?>
-                        <tr style='<?php if(strtotime($row->end_date) < strtotime(date('Y-m-d'))){echo 'background:#ff7070';}?>'>
+                        <tr style='<?php if (strtotime($row->end_date) < strtotime(date('Y-m-d'))) {
+                                        echo 'background:#ff7070';
+                                    } ?>'>
                             <td><?= $row->code; ?></td>
                             <td><?= $row->min_cart_value; ?></td>
                             <td><?= $row->discount; ?></td>
                             <td><?= $row->type; ?></td>
                             <td><?= date('d-m-Y', strtotime($row->start_date)); ?></td>
                             <td><?= date('d-m-Y', strtotime($row->end_date)); ?></td>
-                            <td><?php if($row->status == '1'){ echo 'Active';}else{ echo 'Not Active';} ?></td>
+                            <td><?php if ($row->status == '1') {
+                                    echo 'Active';
+                                } else {
+                                    echo 'Not Active';
+                                } ?></td>
                             <td>
-                                <a href='<?= base_url('Admin/add_coupons/' . $row->id); ?>' class='edit_coupon'><button type='button' class='btn btn-info'>Edit</button></a>
-                                <a href='<?= base_url('deletecoupon/' . $row->id); ?>'><button class='btn btn-danger'>Delete</button></a>
+                                <a href='<?= base_url('Admin/add_coupons/' . $row->id); ?>' class='edit_coupon'><button type='button' class='btn-sm btn btn-info'>Edit</button></a>
+                                <a href='<?= base_url('deletecoupon/' . $row->id); ?>'><button class='btn-sm btn btn-danger'>Delete</button></a>
                             </td>
                         </tr>
                     <?php  }
@@ -55,6 +67,11 @@
                     </tr>
                 <?php } ?>
             </table>
+            <div class='w-100 row justify-content-end pt-2'>
+                <div class='text-center'>
+                    <?= $links ?>
+                </div>
+            </div>
         </div>
 
     </section>
@@ -62,6 +79,9 @@
 
 <script>
     $(document).ready(function() {
+        $('.search-btn').click(function() {
+            window.location.href = '<?= base_url('Admin/coupon_list/?search='); ?>' + $('.search-input').val();
+        });
 
         $('.category-banner-form').submit(function(e) {
             e.preventDefault();
