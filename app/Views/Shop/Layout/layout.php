@@ -38,7 +38,7 @@ $footersettings = footer_settings();
     <link media="all" rel="stylesheet" href="<?= base_url('assets/css/googlefont.css'); ?>" crossorigin="anonymous">
     <!-- <link media="all" rel="stylesheet" href="<//?= base_url('assets/css/fontawesome.css'); ?>"> -->
     <link media="all" rel="stylesheet" href="<?= base_url('assets/css/bootstrap.min.css'); ?>" crossorigin="anonymous">
-    <link media="all"  rel="stylesheet" href="<?= base_url('assets/css/lato.css'); ?>" crossorigin="anonymous">
+    <link media="all" rel="stylesheet" href="<?= base_url('assets/css/lato.css'); ?>" crossorigin="anonymous">
 
 
     <!-- <link rel="stylesheet" href="https://unpkg.com/blaze-slider@latest/dist/blaze.css" /> -->
@@ -46,7 +46,8 @@ $footersettings = footer_settings();
 
     <link media="all" rel="stylesheet" href="<?= base_url('assets/css/mystyle.css'); ?>">
 
-    <link media="all"  rel="stylesheet" href="<?= base_url('assets/css/blaze_slider.css'); ?>">
+    <link media="all" rel="stylesheet" href="<?= base_url('assets/css/blaze_slider.css'); ?>">
+    <link media="all" rel="stylesheet" href="<?= base_url('assets/css/toastify.min.css'); ?>">
 
     <!-- used  -->
     <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -75,6 +76,8 @@ $footersettings = footer_settings();
         <link rel="icon" type="image/x-icon" href="<?= base_url('uploads/website/' . $website_images[0]->value_3); ?>">
     <?php } ?>
 </head>
+<style>
+</style>
 
 <body style='position:relative'>
     <!-- blocker -->
@@ -107,14 +110,6 @@ $footersettings = footer_settings();
                     <a class='btn' href='<?= base_url("search") ?>'><i class='head_Icons fa fa-search'></i>
                     </a>
                 </div>
-                <?php
-                if ($session->get('userid') == '') { ?>
-                    <div style='text-align:center;display:flex;'>
-                        <a class='btn' href='<?= base_url("login") ?>'>
-                            <i class='head_Icons fa-light fa fa-user'></i>
-                        </a>
-                    </div>
-                <?php } ?>
                 <div style='text-align:center;display:flex;'>
                     <a class='btn' href='<?= base_url("wishlist") ?>'><i class='head_Icons fa fa-heart'></i>
                     </a>
@@ -270,17 +265,19 @@ $footersettings = footer_settings();
 
     <!-- //slider -->
     <script async defer type="text/javascript" src="<?= base_url('assets/js/blaze.min.js'); ?>"></script>
-    <script  type="text/javascript" src="<?= base_url('assets/js/blaze.js'); ?>"></script>
+    <script type="text/javascript" src="<?= base_url('assets/js/blaze.js'); ?>"></script>
 
 
     <script async defer type="text/javascript" src="<?= base_url('assets/js/fontawesome.js'); ?>"></script>
     <script type="text/javascript" src="<?= base_url('assets/js/bootsrap.min.js'); ?>"></script>
+
     <!-- <script async defer type="text/javascript" src="<//?= base_url('assets/js/popper.min.js'); ?>"></script> -->
 
     <!-- <Script src='https://unpkg.com/blaze-slider@latest/dist/blaze-slider.min.js'></script> -->
     <!-- <Script src='https://unpkg.com/blaze-slider@latest/dist/blaze-slider.dev.js'></script> -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+    <script async defer type="text/javascript" src="<?= base_url('assets/js/toastify.js'); ?>"></script>
 
     <?= $this->renderSection('scripts') ?>
 
@@ -360,7 +357,7 @@ $footersettings = footer_settings();
 
             $('.main-product-slider').hover(
                 function() {
-                    $(this).find('.product-slider-image').css('display','block')
+                    $(this).find('.product-slider-image').css('display', 'block')
                     var index = $('.main-product-slider').index(this);
 
                     var el3 = document.querySelectorAll('.single-product-slider')[index];
@@ -378,7 +375,7 @@ $footersettings = footer_settings();
                 },
 
                 function() {
-                    $(this).find('.product-slider-image').css('display','none')
+                    $(this).find('.product-slider-image').css('display', 'none')
                     productslider.destroy();
                 }
             );
@@ -403,9 +400,13 @@ $footersettings = footer_settings();
                         dataType: "json",
                         success: function(data) {
                             if (data.status == 200) {
-                                alert('product added to wishlist');
+                                Toastify({
+                                    text: data.msg,
+                                    duration: 3000,
+                                    destination: "<?= base_url('/wishlist'); ?>",
+                                }).showToast();
                             } else {
-                                alert('something went wrong');
+                                // alert('something went wrong');
                             }
                         }
                     });
@@ -432,9 +433,15 @@ $footersettings = footer_settings();
                         dataType: "json",
                         success: function(data) {
                             if (data.status == 200) {
-                                alert('product added to wishlist');
+                                // alert('product added to wishlist');
+                                Toastify({
+                                    text: data.msg,
+                                    duration: 3000,
+                                    destination: "<?= base_url('/wishlist'); ?>",
+                                }).showToast();
+
                             } else {
-                                alert('something went wrong');
+                                // alert('something went wrong');
                             }
                         }
                     });

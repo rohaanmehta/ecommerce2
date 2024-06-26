@@ -4,12 +4,12 @@
 
 <head>
     <!-- 360 degrees -->
-    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <!-- <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css"> 360 -->
 
     <!-- <link href="/3602/main.css" rel="stylesheet" type="text/css"> -->
     <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" type="text/css"> -->
     <!-- <script src="<//?= base_url('public/dist/js/main.js') ?>"></script> -->
-    <script src="<?= base_url('public/dist/js/j360.js') ?>"></script>
+    <!-- <script src="<//?= base_url('public/dist/js/j360.js') ?>"></script>  360 -->
 </head>
 <style>
     .share-icons {
@@ -25,7 +25,7 @@
         font-weight: 400;
     }
 
-    .accordion-title {
+    .accordion-titlee {
         cursor: pointer;
         font-size: 16px;
         padding: 10px;
@@ -36,7 +36,7 @@
         /* background-size: 15px; */
     }
 
-    .accordion-title::before {
+    .accordion-titlee::before {
         font-family: FontAwesome;
         content: "\f106";
         font-size: 21px;
@@ -44,7 +44,7 @@
         right: 20px;
     }
 
-    .collapsed::before {
+    .myaccordion > .collapsed::before {
         font-family: FontAwesome;
         content: "\f107";
         font-size: 21px;
@@ -558,35 +558,35 @@
             <div class='col-12 pl-0 d-flex mt-3 mb-3 mobile_Head_Show' style='align-items:center'>
                 <p class='m-0 mr-2' style='cursor:pointer;' id="share">Share <i style='font-size:16px;' class='h6 pl-1 share-icons fa fa-share-alt'></i></p>
             </div>
-            <div class="accordion mt-3" id="accordionExample">
+            <div class="accordion mt-3" id="accordionExample2">
                 <div class="card" style='border-radius:0px !important'>
-                    <div class="card-head" id="headingOne">
-                        <p class="mb-0 accordion-title" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <div class="card-head myaccordion" id="headingOne2">
+                        <p class="mb-0 accordion-titlee" data-toggle="collapse" data-target="#collapseOne2" aria-expanded="true" aria-controls="collapseOne2">
                             Product Details
                         </p>
                     </div>
 
-                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div id="collapseOne2" class="collapse show" aria-labelledby="headingOne2" data-parent="#accordionExample2">
                         <div class="card-body accordion-desc">
                             Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                         </div>
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-head" id="headingTwo">
-                        <p class="mb-0 accordion-title collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <div class="card-head myaccordion" id="headingTwo2">
+                        <p class="mb-0 accordion-titlee collapsed" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo2">
                             Product Description
                         </p>
                     </div>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo2" data-parent="#accordionExample2">
                         <div class="card-body accordion-desc">
                             Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                         </div>
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-head" id="heading3">
-                        <p class="mb-0 accordion-title collapsed" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                    <div class="card-head myaccordion" id="heading33">
+                        <p class="mb-0 accordion-titlee collapsed" data-toggle="collapse" data-target="#collapse33" aria-expanded="false" aria-controls="collapse33">
                             Customer Reviews (<?php if (isset($reviews_total) && !empty($reviews_total)) {
                                                     echo $reviews_total;
                                                 } else {
@@ -594,7 +594,7 @@
                                                 } ?>)
                         </p>
                     </div>
-                    <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordionExample">
+                    <div id="collapse33" class="collapse" aria-labelledby="heading33" data-parent="#accordionExample2">
                         <div class="card-body accordion-desc">
                             <?php if (isset($reviews) && !empty($reviews)) {
                                 $i = 0;
@@ -655,7 +655,11 @@
                         } ?>">
             <div class="blaze-container">
                 <div class="blaze-track-container">
-                    <div class="<?php if (isset($productbanner1) && !empty(($productbanner1) && $productbanner1[0]->value_3 == 'YES')) { echo 'blaze-track';} else{ echo 'slider-container';}?> products-5">
+                    <div class="<?php if (isset($productbanner1) && !empty(($productbanner1) && $productbanner1[0]->value_3 == 'YES')) {
+                                    echo 'blaze-track';
+                                } else {
+                                    echo 'slider-container';
+                                } ?> products-5">
                         <?php if (isset($section1)) {
                             foreach ($section1 as $row) { ?>
                                 <?php echo view('Shop/page/single_product', ['row' => $row, 'wishlist' =>  $session->get('userid')]); ?>
@@ -687,7 +691,11 @@
                     } ?>">
             <div class="blaze-container">
                 <div class="blaze-track-container">
-                    <div class="<?php if (isset($productbanner2) && !empty(($productbanner2) && $productbanner2[0]->value_3 == 'YES')) { echo 'blaze-track';}else {echo 'slider-container';}?> products-5">
+                    <div class="<?php if (isset($productbanner2) && !empty(($productbanner2) && $productbanner2[0]->value_3 == 'YES')) {
+                                    echo 'blaze-track';
+                                } else {
+                                    echo 'slider-container';
+                                } ?> products-5">
                         <?php if (isset($section2)) {
                             foreach ($section2 as $row) { ?>
                                 <?php echo view('Shop/page/single_product', ['row' => $row, 'wishlist' =>  $session->get('userid')]); ?>
@@ -1138,49 +1146,7 @@
         //end
 
 
-        <?php if (isset($productbanner1) && !empty(($productbanner1) && $productbanner1[0]->value_3 == 'YES')) { ?>
-            const el2 = document.querySelector('.blaze-slider1')
-            new BlazeSlider(el2, {
-                all: {
-                    draggable: true,
-                    enableAutoplay: false,
-                    autoplayInterval: 2000,
-                    transitionDuration: 300,
-                    slidesToShow: 5,
-                    loop: true,
-                    slideGap: "0px",
-                    enablePagination: false,
-                },
-                '(max-width: 900px)': {
-                    slidesToShow: 3,
-                },
-                '(max-width: 500px)': {
-                    slidesToShow: 2,
-                },
-            })
-        <?php } ?>
-
-        <?php if (isset($productbanner2) && !empty(($productbanner2) && $productbanner2[0]->value_3 == 'YES')) { ?>
-            const el = document.querySelector('.blaze-slider2')
-            new BlazeSlider(el, {
-                all: {
-                    draggable: true,
-                    enableAutoplay: false,
-                    autoplayInterval: 2000,
-                    transitionDuration: 300,
-                    slidesToShow: 5,
-                    loop: true,
-                    slideGap: "0px",
-                    enablePagination: false,
-                },
-                '(max-width: 900px)': {
-                    slidesToShow: 3,
-                },
-                '(max-width: 500px)': {
-                    slidesToShow: 2,
-                },
-            })
-        <?php } ?>
+       
 
         $('.addtocart').click(function() {
             $.ajax({
@@ -1196,14 +1162,24 @@
                 dataType: "json",
                 success: function(data) {
                     if (data.status == '100') {
-                        alert('Login to add product in your cart !');
+                        Toastify({
+                            text: data.msg,
+                            duration: 3000,
+                        }).showToast();
+                        // alert('Login to add product in your cart !');
                     } else if (data.status == '200') {
-                        alert('Added to Cart !');
+                        Toastify({
+                            text: data.msg,
+                            duration: 3000,
+                            destination: "<?= base_url('/cart'); ?>",
+                        }).showToast();
+
+                        // alert('Added to Cart !');
                         setTimeout(function() {
                             // $('#download').css('display', 'block');
                             // $('#loader').css('visibility', 'hidden');
                             window.location.reload();
-                        }, 1000);
+                        }, 3000);
                         // alert('registered_successfully');
 
                     } else {
@@ -1302,6 +1278,50 @@
 
             $('body').css('position', 'initial');
         });
+
+        <?php if (isset($productbanner1) && !empty(($productbanner1) && $productbanner1[0]->value_3 == 'YES')) { ?>
+            const el2 = document.querySelector('.blaze-slider1')
+            new BlazeSlider(el2, {
+                all: {
+                    draggable: true,
+                    enableAutoplay: false,
+                    autoplayInterval: 2000,
+                    transitionDuration: 300,
+                    slidesToShow: 5,
+                    loop: true,
+                    slideGap: "0px",
+                    enablePagination: false,
+                },
+                '(max-width: 900px)': {
+                    slidesToShow: 3,
+                },
+                '(max-width: 500px)': {
+                    slidesToShow: 2,
+                },
+            })
+        <?php } ?>
+
+        <?php if (isset($productbanner2) && !empty(($productbanner2) && $productbanner2[0]->value_3 == 'YES')) { ?>
+            const el = document.querySelector('.blaze-slider2')
+            new BlazeSlider(el, {
+                all: {
+                    draggable: true,
+                    enableAutoplay: false,
+                    autoplayInterval: 2000,
+                    transitionDuration: 300,
+                    slidesToShow: 5,
+                    loop: true,
+                    slideGap: "0px",
+                    enablePagination: false,
+                },
+                '(max-width: 900px)': {
+                    slidesToShow: 3,
+                },
+                '(max-width: 500px)': {
+                    slidesToShow: 2,
+                },
+            })
+        <?php } ?>
     });
 </script>
 

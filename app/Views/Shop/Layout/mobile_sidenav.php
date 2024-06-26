@@ -327,13 +327,20 @@
         <hr class='m-0'>
         </hr>
         <?php $session = session();
-            if ($session->get('userid') != '') { ?>
+        if ($session->get('userid') != '') { ?>
             <?php if ($session->get('role') == 'admin') { ?>
                 <li><a href="<?= base_url('/Admin/dashboard'); ?>" class='mobile-nav-bar font-weight-normal'>Admin Panel</a></li>
             <?php } ?>
 
-            <li><a href="<?= base_url(); ?>" class='mobile-nav-bar font-weight-normal'>My Profile</a></li>
-            <li><a href="<?= base_url(); ?>" class='mobile-nav-bar font-weight-normal'>My Orders</a></li>
+            <li class="sub-menu-link mobile-nav-bar sidebar-subcategories">My Profile</li>
+            <ul class="side-nav-sub-menu mobile-nav-bar">
+                <li><a href="<?= base_url('profile'); ?>" class='sub-menu-link mobile-nav-bar '>Edit Profile</a></li>
+                <li><a href="<?= base_url('profile/address'); ?>" class='sub-menu-link mobile-nav-bar '>Addresses</a></li>
+                <li><a href="<?= base_url('profile/change_password'); ?>" class='sub-menu-link mobile-nav-bar '>Change Password</a></li>
+                <li><a href="<?= base_url('profile/delete_account'); ?>" class='sub-menu-link mobile-nav-bar '>Delete Account</a></li>
+            </ul>
+
+            <li><a href="<?= base_url('orders'); ?>" class='mobile-nav-bar font-weight-normal'>My Orders</a></li>
         <?php } else { ?>
             <li><a href="<?= base_url(); ?>" data-toggle="modal" data-target="#loginexampleModal" class='mobile-nav-bar font-weight-normal'>Login </a></li>
         <?php } ?>

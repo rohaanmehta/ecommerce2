@@ -4,7 +4,7 @@
 <?php $session = session(); ?>
 
 <!-- corousel -->
-<div id="carouselExampleIndicators" class="mb-4 carousel slide" data-ride="carousel">
+<div id="carouselExampleIndicators" class="mb-4 carousel slide"  data-ride="carousel" >
     <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>

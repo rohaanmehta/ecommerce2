@@ -150,13 +150,14 @@ class Product extends BaseController
     public function search_product()
     {
         // print_r($_POST);exit;
-        $data['product'] = $this->db->table('products')->select('title,product_slug,image_name1')->like('title', $_POST['search'])->orlike('sku',$_POST['search'])->limit(20)->join('product_images as pi', 'pi.product_id = products.id')->get()->getResult();
+        $data['product'] = $this->db->table('products')->select('title,product_slug,image_name1,small_image_name1')->like('title', $_POST['search'])->orlike('sku',$_POST['search'])->limit(20)->join('product_images as pi', 'pi.product_id = products.id')->get()->getResult();
         foreach ($data['product'] as $row) {
             $row->title = character_limiter($row->title, 50, '...');
         }
         header('Content-Type: application/json');
         echo json_encode($data);
     }
+
     public function add_to_wishlist()
     {
         $array = array(
@@ -171,10 +172,12 @@ class Product extends BaseController
         if ($count == 0) {
             if ($this->db->table('wishlist')->insert($array)) {
                 $resp['status'] = 200;
+                $resp['msg'] = 'Added to wishlist !';
             }
         } else {
             if ($this->db->table('wishlist')->delete($array)) {
                 $resp['status'] = 200;
+                $resp['msg'] = 'Removed to wishlist !';
             }
         }
 
@@ -202,8 +205,8 @@ class Product extends BaseController
         $count = $_POST['count'];
         // print_r($_POST);
         $offset = $count;
-        $data['reviews'] =  $this->db->table('reviews')->select('review,created_at,stars,u.first_name')->join('users as u','u.id = reviews.user_id','left')->limit('20')->offset($offset)->where('status', '1')->where('product_id', $id)->orderBy('reviews.id')->get()->getResult();
-        $data['reviews_total'] =  $this->db->table('reviews')->where('status', '1')->where('product_id', $id)->countAllResults();
+        $data['reviews'] =  $this->db->table('reviews')->select('review,created_at,stars,u.first_name')->join('users as u','u.id = reviews.user_id','left')->limit('20')->offset($offset)->where('reviews.status', '1')->where('product_id', $id)->orderBy('reviews.id')->get()->getResult();
+        $data['reviews_total'] =  $this->db->table('reviews')->where('reviews.status', '1')->where('product_id', $id)->countAllResults();
 
         $data['status'] =  200;
         header('Content-Type: application/json');

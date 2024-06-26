@@ -35,18 +35,20 @@ $url = $url . '?' . $params;
                     ?>
                 </span>
             </div>
-            <div class='col-8 text-right mobile_Head_Hide' style='display:flex;justify-content:end;align-items: center;'>
-                <p class='m-0 sort_by mr-3'>Sort By: </p>
-                <select class='form-control sort' style='max-width:210px;'>
-                    <option value='<?= $new; ?>'>What's New</option>
-                    <option value='<?= $low; ?>' <?php if (strpos($url, '%3Asort=low') == true) {
-                                                        echo 'selected';
-                                                    } ?>>Price:Low to High</option>
-                    <option value='<?= $high; ?>' <?php if (strpos($url, '%3Asort=high') == true) {
-                                                        echo 'selected';
-                                                    } ?>>Price:High to Low</option>
-                </select>
-            </div>
+            <?php if (isset($products) && !empty($products)) { ?>
+                <div class='col-8 text-right mobile_Head_Hide' style='display:flex;justify-content:end;align-items: center;'>
+                    <p class='m-0 sort_by mr-3'>Sort By: </p>
+                    <select class='form-control sort' style='max-width:210px;'>
+                        <option value='<?= $new; ?>'>What's New</option>
+                        <option value='<?= $low; ?>' <?php if (strpos($url, '%3Asort=low') == true) {
+                                                            echo 'selected';
+                                                        } ?>>Price:Low to High</option>
+                        <option value='<?= $high; ?>' <?php if (strpos($url, '%3Asort=high') == true) {
+                                                            echo 'selected';
+                                                        } ?>>Price:High to Low</option>
+                    </select>
+                </div>
+            <?php } ?>
             <div class='col-12 pl-0 pt-4 category-desc'>
                 <span>
                     <?= $categoriesinfo[0]->category_desc_top;
@@ -76,7 +78,7 @@ $url = $url . '?' . $params;
                     foreach ($filters as $key => $filter) { ?>
                         <div class='filter-box p-1'>
                             <div class='filters-heading text-capitalize'>
-                                <?php 
+                                <?php
                                 $keyy = print_r($key);
                                 if ($key == 'colour') {
                                     $showcolor = '1';
@@ -106,16 +108,18 @@ $url = $url . '?' . $params;
                             }
                         } ?>
 
-                <div class='filter-box p-1'>
-                    <div class='filters-heading'>
-                        Price
+                <?php if (isset($products) && !empty($products)) { ?>
+                    <div class='filter-box p-1'>
+                        <div class='filters-heading'>
+                            Price
+                        </div>
+                        <div class='d-flex'>
+                            <input class='form-control mr-2' placeholder="Min Price" />
+                            <input class='form-control mr-2' placeholder="Max Price" />
+                            <button class='btn black-btn'>Go</button>
+                        </div>
                     </div>
-                    <div class='d-flex'>
-                        <input class='form-control mr-2' placeholder="Min Price" />
-                        <input class='form-control mr-2' placeholder="Max Price" />
-                        <button class='btn black-btn'>Go</button>
-                    </div>
-                </div>
+                <?php } ?>
             </div>
             <!-- <//?php echo'<pre>';print_r($products);exit?> -->
 
@@ -124,7 +128,9 @@ $url = $url . '?' . $params;
                     foreach ($products as $row) { ?>
                         <?php echo view('Shop/page/single_product', ['row' => $row, 'wishlist' =>  $session->get('userid')]); ?>
                 <?php }
-                } ?>
+                } else { ?>
+                <div class='w-100 text-center h6' style='font-weight:600'>No Products Found !</div>
+                <?php } ?>
             </div>
         </div>
         <div class="d-flex w-100 bg-light mobile_Head_Show" style="border:1px solid #dbdbdb;position:sticky;bottom:0;z-index:2;">
@@ -152,57 +158,60 @@ $url = $url . '?' . $params;
             </a>
         </div>
 
-        <div class="filter-filter-box2 w-100 bg-light" style="display:none;position:sticky;bottom:0;z-index:3;height:300px;">
-            <div class='d-flex justify-content-end close-filter-filter'><i class='fa fa-times'></i></div>
-            <div style="color:#4e4e4e;padding:10px;font-size:13px;font-weight:700;border-bottom:1px solid #c5c5c5">FILTERS</div>
-            <div class='row'>
-                <div class='col-6 p-0 pl-3'>
-                    <div class=''>
+        <?php if (isset($products) && !empty($products)) { ?>
+            <div class="filter-filter-box2 w-100 bg-light" style="display:none;position:sticky;bottom:0;z-index:3;height:300px;">
+                <div class='d-flex justify-content-end close-filter-filter'><i class='fa fa-times'></i></div>
+                <div style="color:#4e4e4e;padding:10px;font-size:13px;font-weight:700;border-bottom:1px solid #c5c5c5">FILTERS</div>
+                <div class='row'>
+                    <div class='col-6 p-0 pl-3'>
+                        <div class=''>
+                            <?php if (isset($subcategories) && !empty($subcategories)) { ?>
+                                <div class='mobile-filter-box' id='categories' style='border-right: 1px solid #dfdfdf;height:20px'> Categories</div>
+                            <?php } ?>
+                            <?php if (isset($filters) && !empty($filters)) {
+                                foreach ($filters as $key => $filter) { ?>
+                                    <div class='mobile-filter-box' id='<?= $key; ?>' style='border-right: 1px solid #dfdfdf;height:20px'><?= $key; ?></div>
+                            <?php }
+                            } ?>
+                        </div>
+                    </div>
+                    <div class='col-6 p-0 pl-2 pt-2'>
                         <?php if (isset($subcategories) && !empty($subcategories)) { ?>
-                            <div class='mobile-filter-box' id='categories' style='border-right: 1px solid #dfdfdf;height:20px'> Categories</div>
+                            <div class='mobile-filter-options categories' style="display:none;max-height:300px;overflow-y:auto;">
+                                <?php foreach ($subcategories as $filter) { ?>
+                                    <a class="filter_value text-capitalize" href='<?= base_url($filter['url']); ?>'><?= $filter['name']; ?> </a><br>
+                                <?php } ?>
+                            </div>
                         <?php } ?>
+
                         <?php if (isset($filters) && !empty($filters)) {
                             foreach ($filters as $key => $filter) { ?>
-                                <div class='mobile-filter-box' id='<?= $key; ?>' style='border-right: 1px solid #dfdfdf;height:20px'><?= $key; ?></div>
-                        <?php }
-                        } ?>
+                                <div class='mobile-filter-options <?= $key; ?>' style="display:none;max-height:300px;overflow-y:auto;">
+                                    <?php foreach ($filter as $key => $fil) { ?>
+                                        <a href="<?= $fil['url']; ?>" class="filter_value">
+                                            <div class='text-capitalize'><input type='checkbox' url='<?= $fil['url']; ?>' class='filter_checkbox mr-2' <?php if ($fil['checked'] == '1') {
+                                                                                                                                                            echo 'checked';
+                                                                                                                                                        } ?>> <?= $fil['value'] ?>
+                                            </div>
+                                        </a>
+                                        <!-- </div> -->
+                                    <?php } ?>
+                                </div> <?php
+                                    }
+                                } ?>
                     </div>
                 </div>
-                <div class='col-6 p-0 pl-2 pt-2'>
-                    <?php if (isset($subcategories) && !empty($subcategories)) { ?>
-                        <div class='mobile-filter-options categories' style="display:none;max-height:300px;overflow-y:auto;">
-                            <?php foreach ($subcategories as $filter) { ?>
-                                <a class="filter_value text-capitalize" href='<?= base_url($filter['url']); ?>'><?= $filter['name']; ?> </a><br>
-                            <?php } ?>
-                        </div>
-                    <?php } ?>
-
-                    <?php if (isset($filters) && !empty($filters)) {
-                        foreach ($filters as $key => $filter) { ?>
-                            <div class='mobile-filter-options <?= $key; ?>' style="display:none;max-height:300px;overflow-y:auto;">
-                                <?php foreach ($filter as $key => $fil) { ?>
-                                    <a href="<?= $fil['url']; ?>" class="filter_value">
-                                        <div class='text-capitalize'><input type='checkbox' url='<?= $fil['url']; ?>' class='filter_checkbox mr-2' <?php if ($fil['checked'] == '1') {
-                                                                                                                                                        echo 'checked';
-                                                                                                                                                    } ?>> <?= $fil['value'] ?>
-                                        </div>
-                                    </a>
-                                    <!-- </div> -->
-                                <?php } ?>
-                            </div> <?php
-                                }
-                            } ?>
-                </div>
+            </div>
+        <?php } ?>
+    </div>
+    <?php if (isset($products) && !empty($products)) { ?>
+        <div class='filter-filter-box row pt-3' style='border-top:1px solid #dfdfdf'>
+            <div class='col-md-3 p-0' style='max-width:280px;background:#fff'></div>
+            <div class='col-9'>
+                <?= $links ?>
             </div>
         </div>
-    </div>
-
-    <div class='filter-filter-box row pt-3' style='border-top:1px solid #dfdfdf'>
-        <div class='col-md-3 p-0' style='max-width:280px;background:#fff'></div>
-        <div class='col-9'>
-            <?= $links ?>
-        </div>
-    </div>
+    <?php } ?>
 </div>
 <div class='row p-4 category-desc'>
     <span class='col-12'>

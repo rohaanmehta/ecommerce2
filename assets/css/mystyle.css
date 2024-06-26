@@ -1,3 +1,22 @@
+  .toastify {
+      background: #000 !important;
+      color: #fff !important;
+      border-radius: 5px !important;
+      font-weight: 600 !important;
+      margin-top: 50px !important;
+      margin-right: 2px !important;
+      font-size: 13px !important;
+      cursor: pointer !important;
+  }
+
+  @media screen and (min-width: 768px) {
+      .toastify {
+          font-size: 15px !important;
+          margin-top: 90px !important;
+          margin-right: 10px !important;
+      }
+  }
+
   .filters-heading {
       font-size: 15px;
       font-weight: 700;
@@ -809,7 +828,7 @@
   /* product gallery   */
   .gallery_img {
       width: 100%;
-      height: fit-content;
+      height: auto !important;
   }
 
   .product-slider-image {
