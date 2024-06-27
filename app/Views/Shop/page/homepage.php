@@ -3,51 +3,42 @@
 
 <?php $session = session(); ?>
 
-<!-- corousel -->
-<div id="carouselExampleIndicators" class="mb-4 carousel slide"  data-ride="carousel" >
-    <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-        <?php if (isset($slider)) {
-            $i = 0;
-            foreach ($slider as $row) { ?>
-                <div class="carousel-item <?php if ($i == 0) {
-                                                echo 'active';
-                                            } ?>">
-                    <?php if ($row->link != '') { ?>
-                        <a href='<?= base_url($row->link); ?>'>
-                        <?php } ?>
-                        <picture>
-                            <source srcset="<?= base_url('uploads/slider/' . $row->mobile_name) ?>" media="(max-width: 768px)">
-                            <img alt='<?= $row->alt_text; ?>' class="d-block w-100" <?php if ($i != 0) {
-                                                                                        echo "loading='lazy'";
-                                                                                    } else {
-                                                                                        echo "loading='eager'";
-                                                                                    }   ?> src="<?= base_url('uploads/slider/' . $row->name) ?>" alt="corousel">
-                        </picture>
-                        <!-- <div class="carousel-caption d-none d-md-block">
+<div class='row p-0 m-0 main-slider'>
+    <div class="blaze-container">
+        <div class="blaze-track-container">
+            <div class="blaze-track">
+                <?php if (isset($slider)) {
+                    $i = 0;
+                    foreach ($slider as $row) { ?>
+                        <div class="carousel-item <?php if ($i == 0) {
+                                                        echo 'active';
+                                                    } ?>">
+                            <?php if ($row->link != '') { ?>
+                                <a href='<?= base_url($row->link); ?>'>
+                                <?php } ?>
+                                <picture>
+                                    <source srcset="<?= base_url('uploads/slider/' . $row->mobile_name) ?>" media="(max-width: 768px)">
+                                    <img alt='<?= $row->alt_text; ?>' class="d-block w-100" <?php if ($i != 0) {
+                                                                                                echo "loading='lazy'";
+                                                                                            } else {
+                                                                                                echo "loading='eager'";
+                                                                                            }   ?> src="<?= base_url('uploads/slider/' . $row->name) ?>" alt="corousel">
+                                </picture>
+                                <!-- <div class="carousel-caption d-none d-md-block">
                         <h5>This is heading Caption</h5>
                         <p>Description small for Images of corousel</p>
                     </div> -->
-                        <?php if ($row->link != '') { ?>
-                        </a>
-                    <?php } ?>
-                </div>
-        <?php $i++;
-            }
-        } ?>
+                                <?php if ($row->link != '') { ?>
+                                </a>
+                            <?php } ?>
+                        </div>
+                <?php $i++;
+                    }
+                } ?>
+            </div>
+            <div class="blaze-pagination"></div>
+        </div>
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
 </div>
 
 <!-- banner  for 4 images -->
@@ -334,6 +325,26 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
+        const mainslider = document.querySelector('.main-slider')
+        new BlazeSlider(mainslider, {
+            all: {
+                draggable: true,
+                enableAutoplay: true,
+                autoplayInterval: 4000,
+                transitionDuration: 500,
+                slidesToShow: 1,
+                loop: true,
+                slideGap: "0px",
+                enablePagination: true,
+            },
+            '(max-width: 900px)': {
+                slidesToShow: 1,
+            },
+            '(max-width: 500px)': {
+                slidesToShow: 1,
+            },
+        })
+
         // setTimeout(function() {
         load_sliders();
         // }, 00);

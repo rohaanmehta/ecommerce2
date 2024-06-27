@@ -550,7 +550,20 @@
       transition: 0.5s ease;
       height: 50px;
       z-index: 2;
+      display: none;
 
+  }
+
+
+  .add-to-wishlist-mobile {
+      display: block !important;
+      width: 20px;
+  }
+
+  @media screen and (min-width: 768px) {
+      .add-to-wishlist-mobile {
+          display: none !important;;
+      }
   }
 
   @media only screen and (min-width: 992px) {
@@ -887,6 +900,10 @@
           display: none !important;
       }
 
+      .wishlist-box {
+          display: none !important;
+      }
+
       .shop_Name {
           font-size: 25px;
       }
@@ -898,6 +915,8 @@
       #navbar-right {
           display: none;
       }
+
+
   }
 
   /* footeer   \ */

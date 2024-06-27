@@ -1,7 +1,8 @@
-.slider-container{
+.slider-container {
     display: flex;
     flex-wrap: wrap;
 }
+
 .pc-fl {
     /*display: flex;*/
 }
@@ -139,14 +140,28 @@ img {
     }
 }
 
-.blaze-pagination{
+.blaze-pagination {
     position: absolute;
-    bottom: 32px;  
-    z-index: 2;  
+    bottom: 32px;
+    z-index: 2;
     width: 100%;
     text-align: center;
 }
 
+.product-slider-mobile .blaze-pagination {
+    position: relative;
+    padding-top: 43px;
+    z-index: 1;
+    width: 100%;
+    text-align: center;
+}
+.main-slider .blaze-pagination {
+    position: relative;
+    padding-top: 10px;
+    z-index: 1;
+    width: 100%;
+    text-align: center;
+}
 .blaze-pagination button {
     background-color: #cbcbcb;
     color: #cbcbcb;
@@ -161,21 +176,69 @@ img {
     padding: 0px;
 }
 
+.main-slider .blaze-pagination button {
+    background-color: #d1d1d1db ;
+    color: #d1d1d1db ;
+    content: ' ';
+    width: 33px;
+    height:3px !important;
+    margin-right: 4px;
+    /* margin-top: 54px !important; */
+    border-radius: 0px;
+    height: 6px;
+    border: none;
+    overflow: hidden;
+    font-size: 1px;
+    padding: 0px;
+}
+
+
 .blaze-pagination .active {
     background-color: #747474;
     color: #747474;
 }
 
-.blaze-slider1  .blaze-pagination{
+.main-slider .blaze-pagination .active {
+    background-color: #fff;
+    color: #747474;
+}
+
+.blaze-slider1 .blaze-pagination {
     display: none !important;
 }
-.single-product-slider  .blaze-pagination{
+
+.single-product-slider .blaze-pagination {
     display: block !important;
 }
+
 /* //slider end */
 
 
-.blaze-slider{--slides-to-show:1;--slide-gap:20px;direction:ltr}.blaze-container{position:relative}.blaze-track-container{overflow:hidden}.blaze-track{will-change:transform;touch-action:pan-y;display:flex;gap:var(--slide-gap);--slide-width:calc(
-    (100% - (var(--slides-to-show) - 1) * var(--slide-gap)) /
-      var(--slides-to-show)
-  );box-sizing:border-box}.blaze-track>*{box-sizing:border-box;width:var(--slide-width);flex-shrink:0}
+.blaze-slider {
+    --slides-to-show: 1;
+    --slide-gap: 20px;
+    direction: ltr
+}
+
+.blaze-container {
+    position: relative
+}
+
+.blaze-track-container {
+    overflow: hidden
+}
+
+.blaze-track {
+    will-change: transform;
+    touch-action: pan-y;
+    display: flex;
+    gap: var(--slide-gap);
+    --slide-width: calc((100% - (var(--slides-to-show) - 1) * var(--slide-gap)) / var(--slides-to-show));
+    box-sizing: border-box
+}
+
+.blaze-track>* {
+    box-sizing: border-box;
+    width: var(--slide-width);
+    flex-shrink: 0
+}

@@ -54,9 +54,8 @@ class Category extends BaseController
         //all products
         $builder = $this->db->table('products')->select('products.discount,product_slug,products.id as id,title,desc,price,stock,image_name1,image_name2,image_name3,image_name4,small_image_name1,small_image_name2,small_image_name3,small_image_name4,order')->join('product_category as pc', 'pc.product_id = products.id')->join('product_images as pi', 'pi.product_id = products.id')->wherein('category_id', $all_categories)->where('visibility', '1')->where('is_deleted', '0')->groupBy('id');
 
-        if ($this->session->get('userid') != '') {
-            $builder = $builder->select('wishlist.user_id as wishlist')->join('wishlist', 'wishlist.product_id = products.id AND user_id = ' . $this->session->get('userid') . '', 'left');
-        }
+        $data['wishlist'] = $this->session->get('userid') != '';
+
 
         $url = current_url();
         $params   = $_SERVER['QUERY_STRING'];

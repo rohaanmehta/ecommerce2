@@ -127,16 +127,18 @@ $url = $url . '?' . $params;
                 <?php if (isset($products) && !empty($products)) {
                     foreach ($products as $row) { ?>
                         <?php echo view('Shop/page/single_product', ['row' => $row, 'wishlist' =>  $session->get('userid')]); ?>
-                <?php }
+                    <?php }
                 } else { ?>
-                <div class='w-100 text-center h6' style='font-weight:600'>No Products Found !</div>
+                    <div class='w-100 text-center h6' style='font-weight:600'>No Products Found !</div>
                 <?php } ?>
             </div>
         </div>
-        <div class="d-flex w-100 bg-light mobile_Head_Show" style="border:1px solid #dbdbdb;position:sticky;bottom:0;z-index:2;">
-            <button style='' class="filter-sort-btn btn bg-light w-50"><i style='color:#a9a9a9;' class="mr-2 fa fa-sort-amount-asc"></i>SORT</button>
-            <button style='' class="filter-filter-btn btn bg-light w-50"><i style='color:#a9a9a9;' class="mr-2 fa fa fa-filter"></i>FILTERS</button>
-        </div>
+        <?php if (isset($products) && !empty($products)) { ?>
+            <div class="d-flex w-100 bg-light mobile_Head_Show" style="border:1px solid #dbdbdb;position:sticky;bottom:0;z-index:1;">
+                <button style='' class="filter-sort-btn btn bg-light w-50"><i style='color:#a9a9a9;' class="mr-2 fa fa-sort-amount-asc"></i>SORT</button>
+                <button style='' class="filter-filter-btn btn bg-light w-50"><i style='color:#a9a9a9;' class="mr-2 fa fa fa-filter"></i>FILTERS</button>
+            </div>
+        <?php } ?>
 
         <div class="filter-filter-box w-100 bg-light" style="display:none;position:sticky;bottom:0;z-index:3;height:300px;">
             <div class='d-flex justify-content-end close-sort-filter'><i class='fa fa-times'></i></div>

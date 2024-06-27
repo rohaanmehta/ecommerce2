@@ -448,6 +448,42 @@ $footersettings = footer_settings();
                 }
             });
 
+            $('.add-to-wishlist-mobile').click(function(e) {
+                e.preventDefault();
+                if ($(this).attr('data-target') == '') {
+                    if ($(this).attr('class') == 'fa fa-heart mr-1 add-to-wishlist-mobile') {
+                        $(this).attr('class', 'fa fa-heart-o mr-1 add-to-wishlist-mobile');
+                    } else {
+                        $(this).attr('class', 'fa fa-heart mr-1 add-to-wishlist-mobile');
+                    }
+
+                    // console.log($(this).children().attr('class'));
+                    // return false;
+                    $.ajax({
+                        type: "POST",
+                        url: "<?= base_url('add-to-wishlist') ?>",
+                        data: {
+                            productid: $(this).attr('id')
+                        },
+                        dataType: "json",
+                        success: function(data) {
+                            if (data.status == 200) {
+                                // alert('product added to wishlist');
+                                Toastify({
+                                    text: data.msg,
+                                    duration: 3000,
+                                    destination: "<?= base_url('/wishlist'); ?>",
+                                }).showToast();
+
+                            } else {
+                                // alert('something went wrong');
+                            }
+                        }
+                    });
+                }
+            });
+            
+
             $('.search-box').keyup(function() {
                 if ($('.search-box').val().length >= 4) {
                     $.ajax({

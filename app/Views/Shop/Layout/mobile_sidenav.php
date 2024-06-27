@@ -107,8 +107,6 @@
         background-color: #bfbfbf;
         opacity: 0.25;
         color: #fff;
-        transition: left 0.25s;
-        -webkit-transition: left 0.25s;
     }
 
     #side-nav ul li:hover {
@@ -304,6 +302,11 @@
             <?php }
             if (isset($subcategories) && !empty($subcategories)) { ?>
                 <ul class="side-nav-sub-menu mobile-nav-bar">
+                    <?php if (count($subcategories) > 1) { ?>
+                        <a href="<?= base_url($row->category_slug); ?>">
+                            <li class="sub-menu-link mobile-nav-bar sidebar-subcategories">All Categories</li>
+                        </a>
+                    <?php } ?>
                     <?php foreach ($subcategories as $row2) {
                         $subcategories2 = get_categories($row2->id); ?>
                         <?php if (empty($subcategories2)) { ?><a href="<?= base_url($row->category_slug); ?>"> <?php } ?> <li class='sub-menu-link mobile-nav-bar <?php if (isset($subcategories2) && !empty($subcategories2)) {
@@ -313,6 +316,11 @@
                         <?php
                         if (isset($subcategories2) && !empty($subcategories2)) { ?>
                             <ul class="side-nav-sub-menu mobile-nav-bar">
+                                <?php if (count($subcategories2) > 1) { ?>
+                                    <a href="<?= base_url($row2->category_slug); ?>">
+                                        <li class="sub-menu-link mobile-nav-bar sidebar-subcategories">All Categories</li>
+                                    </a>
+                                <?php } ?>
                                 <?php foreach ($subcategories2 as $row3) { ?>
                                     <?php if (empty($subcategories2)) { ?> <?php } ?><a href="<?= base_url($row3->category_slug); ?>">
                                         <li class='sub-menu-link mobile-nav-bar'><?= $row3->category_name; ?></li>
@@ -329,27 +337,45 @@
         <?php $session = session();
         if ($session->get('userid') != '') { ?>
             <?php if ($session->get('role') == 'admin') { ?>
-                <li><a href="<?= base_url('/Admin/dashboard'); ?>" class='mobile-nav-bar font-weight-normal'>Admin Panel</a></li>
+                <a href="<?= base_url('/Admin/dashboard'); ?>">
+                    <li class='mobile-nav-bar font-weight-normal'>Admin Panel</li>
+                </a>
             <?php } ?>
 
             <li class="sub-menu-link mobile-nav-bar sidebar-subcategories">My Profile</li>
             <ul class="side-nav-sub-menu mobile-nav-bar">
-                <li><a href="<?= base_url('profile'); ?>" class='sub-menu-link mobile-nav-bar '>Edit Profile</a></li>
-                <li><a href="<?= base_url('profile/address'); ?>" class='sub-menu-link mobile-nav-bar '>Addresses</a></li>
-                <li><a href="<?= base_url('profile/change_password'); ?>" class='sub-menu-link mobile-nav-bar '>Change Password</a></li>
-                <li><a href="<?= base_url('profile/delete_account'); ?>" class='sub-menu-link mobile-nav-bar '>Delete Account</a></li>
+                <a href="<?= base_url('profile'); ?>">
+                    <li class='sub-menu-link mobile-nav-bar '>Edit Profile</li>
+                </a>
+                <a href="<?= base_url('profile/address'); ?>">
+                    <li class='sub-menu-link mobile-nav-bar '>Addresses</li>
+                </a>
+                <a href="<?= base_url('profile/change_password'); ?>">
+                    <li class='sub-menu-link mobile-nav-bar '>Change Password</li>
+                </a>
+                <a href="<?= base_url('profile/delete_account'); ?>">
+                    <li class='sub-menu-link mobile-nav-bar '>Delete Account</li>
+                </a>
             </ul>
 
-            <li><a href="<?= base_url('orders'); ?>" class='mobile-nav-bar font-weight-normal'>My Orders</a></li>
+            <a href="<?= base_url('orders'); ?>">
+                <li class='mobile-nav-bar font-weight-normal'>My Orders</li>
+            </a>
         <?php } else { ?>
-            <li><a href="<?= base_url(); ?>" data-toggle="modal" data-target="#loginexampleModal" class='mobile-nav-bar font-weight-normal'>Login </a></li>
+                <li data-toggle="modal" data-target="#loginexampleModal" class='mobile-nav-bar font-weight-normal'>Login </li>
         <?php } ?>
 
-        <li><a href="<?= base_url('/wishlist'); ?>" class='mobile-nav-bar font-weight-normal'> WishList </a></li>
-        <li><a href="<?= base_url('profile/coupons'); ?>" class='mobile-nav-bar font-weight-normal'> Coupons </a></li>
+        <a href="<?= base_url('/wishlist'); ?>">
+            <li class='mobile-nav-bar font-weight-normal'> WishList </li>
+        </a>
+        <a href="<?= base_url('profile/coupons'); ?>">
+            <li class='mobile-nav-bar font-weight-normal'> Coupons </li>
+        </a>
 
         <?php if ($session->get('userid') != '') { ?>
-            <li><a href="<?= base_url('/logout'); ?>" class='mobile-nav-bar font-weight-normal'> Logout </a></li>
+            <a href="<?= base_url('/logout'); ?>">
+                <li class='mobile-nav-bar font-weight-normal'> Logout </li>
+            </a>
         <?php } ?>
     </ul>
 </nav>

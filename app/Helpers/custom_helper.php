@@ -155,3 +155,10 @@ function get_product_discount_price($price,$discount){
     $finalprice = $price - $finalprice;
     return $finalprice;
 }
+
+function is_wishlist($userid,$productid){
+    $db = \Config\Database::connect();
+
+    $count = $db->table('wishlist')->where('user_id', $userid)->where('product_id', $productid)->countAllResults();
+    return $count;
+}

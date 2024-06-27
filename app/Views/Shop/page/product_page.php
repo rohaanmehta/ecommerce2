@@ -2,15 +2,15 @@
 <?= $this->section('content') ?>
 <?php $session = session(); ?>
 
-<head>
-    <!-- 360 degrees -->
-    <!-- <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css"> 360 -->
+<!-- <head> -->
+<!-- 360 degrees -->
+<!-- <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css"> 360 -->
 
-    <!-- <link href="/3602/main.css" rel="stylesheet" type="text/css"> -->
-    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" type="text/css"> -->
-    <!-- <script src="<//?= base_url('public/dist/js/main.js') ?>"></script> -->
-    <!-- <script src="<//?= base_url('public/dist/js/j360.js') ?>"></script>  360 -->
-</head>
+<!-- <link href="/3602/main.css" rel="stylesheet" type="text/css"> -->
+<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" type="text/css"> -->
+<!-- <script src="<//?= base_url('public/dist/js/main.js') ?>"></script> -->
+<!-- <script src="<//?= base_url('public/dist/js/j360.js') ?>"></script>  360 -->
+<!-- </head> -->
 <style>
     .share-icons {
         font-size: 22px;
@@ -44,7 +44,7 @@
         right: 20px;
     }
 
-    .myaccordion > .collapsed::before {
+    .myaccordion>.collapsed::before {
         font-family: FontAwesome;
         content: "\f107";
         font-size: 21px;
@@ -65,6 +65,18 @@
         font-size: 15px;
         font-weight: 600;
         padding: 12px 25px 12px 25px;
+    }
+    
+    .gotocart {
+        background: #000;
+        min-width: 240px;
+        font-size: 15px;
+        font-weight: 600;
+        padding: 12px 25px 12px 25px;
+    }
+
+    .gotocartbtn:hover{
+        text-decoration: none !important;
     }
 
     .addtowishlist {
@@ -387,12 +399,26 @@
             </div>
         </div>
         <div class='col-12 col-md-7 p-0 mobile_Head_Show'>
-            <div class='row p-4 m-0'>
-                <?php if (isset($product[0]->image_name1) && !empty($product[0]->image_name1) && is_file(ROOTPATH . 'uploads/product_images/' . $product[0]->image_name1)) { ?>
-                    <div class='col-12 p-0'>
-                        <img class='product_image round' alt='<?= $product[0]->title ?>' src='<?= base_url('uploads/product_images/' . $product[0]->image_name1); ?>' />
+            <div class='row p-0 m-0 product-slider-mobile'>
+                <div class="blaze-container">
+                    <div class="blaze-track-container">
+                        <div class="blaze-track">
+                            <?php if (isset($product[0]->image_name1) && !empty($product[0]->image_name1) && is_file(ROOTPATH . 'uploads/product_images/' . $product[0]->image_name1)) { ?>
+                                <img class='product_image round' alt='<?= $product[0]->title ?>' src='<?= base_url('uploads/product_images/' . $product[0]->image_name1); ?>' />
+                            <?php } ?>
+                            <?php if (isset($product[0]->image_name2) && !empty($product[0]->image_name2) && is_file(ROOTPATH . 'uploads/product_images/' . $product[0]->image_name2)) { ?>
+                                <img class='product_image round' alt='<?= $product[0]->title ?>' src='<?= base_url('uploads/product_images/' . $product[0]->image_name2); ?>' />
+                            <?php } ?>
+                            <?php if (isset($product[0]->image_name3) && !empty($product[0]->image_name3) && is_file(ROOTPATH . 'uploads/product_images/' . $product[0]->image_name3)) { ?>
+                                <img class='product_image round' alt='<?= $product[0]->title ?>' src='<?= base_url('uploads/product_images/' . $product[0]->image_name3); ?>' />
+                            <?php } ?>
+                            <?php if (isset($product[0]->image_name4) && !empty($product[0]->image_name4) && is_file(ROOTPATH . 'uploads/product_images/' . $product[0]->image_name4)) { ?>
+                                <img class='product_image round' alt='<?= $product[0]->title ?>' src='<?= base_url('uploads/product_images/' . $product[0]->image_name4); ?>' />
+                            <?php } ?>
+                        </div>
+                        <div class="blaze-pagination"></div>
                     </div>
-                <?php } ?>
+                </div>
             </div>
         </div>
 
@@ -509,8 +535,13 @@
                 <div class='col-12 pl-0 mt-0'>
                     <?php if ($product[0]->stock > 0) { ?>
                         <button class='mt-3 btn btn-lg rounded text-white addtocart'>
-                            <i class="fa-solid fa-shopping-bag pr-3 font-sm"></i>ADD TO CART
+                            <i class="fa-solid fa-shopping-bag pr-3 font-sm"></i>ADD TO BAG
                         </button>
+                        <a href='<?= base_url('/cart'); ?>' class='gotocartbtn' style='display:none;'>
+                            <button class='mt-3 btn btn-lg rounded text-white gotocart'>
+                                GO TO BAG<i class="fa-solid fa-arrow-right pl-3 font-sm"></i>
+                            </button>
+                        </a>
                     <?php } else { ?>
                         <button class='mt-5 btn btn-lg rounded text-white' style='background:#000;min-width:220px'>OUT OF STOCK
                             <i class="fa-solid fa-ta[e"></i>
@@ -1126,6 +1157,26 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
+        const ee = document.querySelector('.product-slider-mobile')
+        new BlazeSlider(ee, {
+            all: {
+                draggable: true,
+                enableAutoplay: false,
+                // autoplayInterval: 2000,
+                // transitionDuration: 300,
+                slidesToShow: 1,
+                loop: true,
+                slideGap: "0px",
+                enablePagination: true,
+            },
+            '(max-width: 900px)': {
+                slidesToShow: 1,
+            },
+            '(max-width: 500px)': {
+                slidesToShow: 1,
+            },
+        })
+
         //share button mobile 
         const share = e => {
             if (navigator.share) {
@@ -1139,14 +1190,14 @@
                     .catch(error => console.log("error", error));
             }
         };
-        if (!navigator.share) {
-            document.getElementById('tip').className = 'show'
-        }
+        // if (!navigator.share) {
+        //     document.getElementById('tip').className = 'show'
+        // }
         document.getElementById("share").addEventListener("click", share);
         //end
 
 
-       
+
 
         $('.addtocart').click(function() {
             $.ajax({
@@ -1174,14 +1225,15 @@
                             destination: "<?= base_url('/cart'); ?>",
                         }).showToast();
 
+                        $('.addtocart').css('display', 'none');
+                        $('.gotocartbtn').css('display', 'inline');
                         // alert('Added to Cart !');
-                        setTimeout(function() {
-                            // $('#download').css('display', 'block');
-                            // $('#loader').css('visibility', 'hidden');
-                            window.location.reload();
-                        }, 3000);
+                        // setTimeout(function() {
+                        // $('#download').css('display', 'block');
+                        // $('#loader').css('visibility', 'hidden');
+                        //     window.location.reload();
+                        // }, 3000);
                         // alert('registered_successfully');
-
                     } else {
                         alert('something went wrong');
                     }

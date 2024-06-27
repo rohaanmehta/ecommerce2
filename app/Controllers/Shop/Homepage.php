@@ -127,14 +127,12 @@ class Homepage extends BaseController
             $pager = service('pager');
             $perPage = 25;
             $page = (@$_GET['page']) ? $_GET['page'] : 1;
-            $offset = ($page-1) * $perPage;
+            $offset = ($page - 1) * $perPage;
 
             //all products
-            $builder = $this->db->table('products')->select('products.discount,product_slug,products.id as id,title,desc,price,stock,image_name1,image_name2,image_name3,image_name4,small_image_name1,small_image_name2,small_image_name3,small_image_name4,order')->join('product_category as pc', 'pc.product_id = products.id')->join('product_images as pi', 'pi.product_id = products.id')->like('title',$search)->orlike('sku',$search)->where('visibility', '1')->where('is_deleted', '0')->groupBy('id');
+            $builder = $this->db->table('products')->select('products.discount,product_slug,products.id as id,title,desc,price,stock,image_name1,image_name2,image_name3,image_name4,small_image_name1,small_image_name2,small_image_name3,small_image_name4,order')->join('product_category as pc', 'pc.product_id = products.id')->join('product_images as pi', 'pi.product_id = products.id')->like('title', $search)->orlike('sku', $search)->where('visibility', '1')->where('is_deleted', '0')->groupBy('id');
 
-            if ($this->session->get('userid') != '') {
-                $builder = $builder->select('wishlist.user_id as wishlist')->join('wishlist', 'wishlist.product_id = products.id AND user_id = ' . $this->session->get('userid') . '', 'left');
-            }
+            $data['wishlist'] = $this->session->get('userid') != '';
 
             if (isset($_GET['sort']) && $_GET['sort'] == 'low') {
                 $builder =  $builder->orderBy('price', 'asc');
@@ -144,13 +142,13 @@ class Homepage extends BaseController
                 $builder =  $builder->orderBy('id', 'desc');
             }
 
-            $total = $this->db->table('products')->select('products.id')->join('product_category as pc', 'pc.product_id = products.id')->join('product_images as pi', 'pi.product_id = products.id')->like('title',$search)->where('visibility', '1')->where('is_deleted', '0')->groupBy('id')->countAllResults();
+            $total = $this->db->table('products')->select('products.id')->join('product_category as pc', 'pc.product_id = products.id')->join('product_images as pi', 'pi.product_id = products.id')->like('title', $search)->where('visibility', '1')->where('is_deleted', '0')->groupBy('id')->countAllResults();
 
             $data['products'] = $builder->get($perPage, $offset)->getresult();
-            $data['links'] = $pager->makeLinks($page,$perPage,$total);
-        }else{
+            $data['links'] = $pager->makeLinks($page, $perPage, $total);
+        } else {
             $data = array();
         }
-        return view('Shop/page/search',$data);
+        return view('Shop/page/search', $data);
     }
 }

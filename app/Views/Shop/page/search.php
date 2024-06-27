@@ -77,9 +77,9 @@
             foreach ($products as $row) { ?>
                 <?php echo view('Shop/page/single_product', ['row' => $row, 'wishlist' =>  $session->get('userid')]); ?>
             <?php }
-        } else { ?>
+        } else { if (isset($key) && !empty($key)) { ?>
             <div class='text-dark w-100 d-flex justify-content-center' style='font-size:14px;font-weight:500;'>No Products Found !</div>
-        <?php } ?>
+        <?php } }?>
     </div>
 </div>
 <?php if (isset($products) && !empty($products)) { ?>
