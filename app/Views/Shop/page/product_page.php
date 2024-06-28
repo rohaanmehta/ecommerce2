@@ -66,7 +66,7 @@
         font-weight: 600;
         padding: 12px 25px 12px 25px;
     }
-    
+
     .gotocart {
         background: #000;
         min-width: 240px;
@@ -75,7 +75,7 @@
         padding: 12px 25px 12px 25px;
     }
 
-    .gotocartbtn:hover{
+    .gotocartbtn:hover {
         text-decoration: none !important;
     }
 
@@ -115,8 +115,8 @@
 
     .selector-item {
         /* flex-basis: calc(70% / 3); */
-        height: 45px;
-        width: 45px;
+        /* height: 45px; */
+        min-width: 45px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -134,10 +134,11 @@
         position: relative;
         height: 100%;
         width: 100%;
+        padding: 10px;
         text-align: center;
         border: 1px solid #b9b9b9;
         border-radius: 4px;
-        line-height: 40px;
+        /* line-height: 40px; */
         font-weight: 700;
         transition-duration: .5s;
         transition-property: transform, box-shadow;
@@ -456,45 +457,91 @@
             <span class='text-secondary' style='min-width:100px'> SKU : </span><span class='text-secondary'> <?= $product[0]->sku ?> </span>
             </div> -->
 
-            <!-- variation  -->
-            <div class='row product_info d-flex' style='flex-wrap:wrap;align-items:center;'>
-                <div class='pl-3 d-flex justify-content-between'>
-                    <div class='col-12 pl-0'>Please select a size</div>
-                </div>
-                <!-- sizeguide -->
-                <?php helper('custom');
-                $sizechart = get_sizechart_by_productid($category_id);
-                if (isset($sizechart) && !empty($sizechart)) { ?>
-                    <div class='col-6 pl-0'>
-                        <p style='cursor:pointer;font-size:13px;color:#000;font-weight:800;' class='m-0' data-toggle="modal" data-target="#exampleModalCenter">SIZE CHART <i class='fa fa-angle-right' style='font-size:14px'></i></p>
-                        <!-- <button class='mt-3 btn btn-sm rounded'  style='background:#dfdfdf;color:#2e2e2e;font-weight:600'>
+
+            <!-- sizeguide -->
+            <?php helper('custom');
+            $sizechart = get_sizechart_by_productid($category_id);
+            if (isset($sizechart) && !empty($sizechart)) { ?>
+                <div class='mt-3 col-6 pl-0'>
+                    <p style='cursor:pointer;font-size:13px;color:#000;font-weight:800;' class='m-0' data-toggle="modal" data-target="#exampleModalCenter">SIZE CHART <i class='fa fa-angle-right' style='font-size:14px'></i></p>
+                    <!-- <button class='mt-3 btn btn-sm rounded'  style='background:#dfdfdf;color:#2e2e2e;font-weight:600'>
                             <i class="fa fa-sort-amount-asc"></i>
                         </button> -->
-                    </div>
-                <?php } ?>
-                <div class='col-12 d-flex mt-2'>
-                    <div class="selector-item">
-                        <input type="radio" id="radio1" name="selector" class="selector-item_radio" checked>
-                        <label for="radio1" class="selector-item_label">S</label>
-                    </div>
-                    <div class="selector-item">
-                        <input type="radio" id="radio2" name="selector" class="selector-item_radio">
-                        <label for="radio2" class="selector-item_label">M</label>
-                    </div>
-                    <div class="selector-item">
-                        <input type="radio" id="radio3" name="selector" class="selector-item_radio">
-                        <label for="radio3" class="selector-item_label">L</label>
-                    </div>
-                    <div class="selector-item">
-                        <input type="radio" id="radio4" name="selector" class="selector-item_radio">
-                        <label for="radio4" class="selector-item_label">XL</label>
-                    </div>
-                    <div class="selector-item">
-                        <input type="radio" id="radio5" name="selector" class="selector-item_radio">
-                        <label for="radio5" class="selector-item_label">XXL</label>
-                    </div>
                 </div>
+            <?php } ?>
+
+            <!-- variation  -->
+            <div class='row product_info d-flex mt-2' style='flex-wrap:wrap;align-items:center;'>
+                <form class='addtocartform m-0'>
+                    <?php if (isset($variation) && !empty($variation)) {
+                        foreach ($variation as $key => $var) {  ?>
+                            <div class='pl-3 col-12 mt-2'>
+                                <div class='col-12 pl-0 text-capitalize'>Select <?= $key ?></div>
+                            </div>
+                            <div class='col-12 d-flex mt-2 variation-box select_variation' id='variation_<?= $key; ?>' msg='variation_msg_<?= $key; ?>'>
+                                <?php foreach ($variation[$key] as $var2) {  ?>
+                                    <div class="selector-item">
+                                        <input type="radio" id="<?= $var2->option_value; ?>" name="variation_<?= $key; ?>" class="selector-item_radio">
+                                        <label for="<?= $var2->option_value; ?>" class="selector-item_label"><?= $var2->option_value; ?></label>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                            <div class='mt-2 col-12 variationmsg variation_msg_<?= $key; ?>' style='display:none;'>
+                                <p class='h6 text-danger h6' style='font-size:13px;'>Please select a <?= $key ?> </p>
+                            </div>
+                    <?php }
+                    } ?>
             </div>
+
+            <div class='col-12 pl-0 mt-3 d-flex' style='align-items:center;'>
+                <span class='qty-desc mr-3'>Quantity</span>
+                <select class='form-control p-1' style='font-size:14px;width:50px;height:30px'>
+                    <option value='01'>01</option>
+                    <option value='02'>02</option>
+                    <option value='03'>03</option>
+                    <option value='04'>04</option>
+                    <option value='05'>05</option>
+                    <option value='06'>06</option>
+                    <option value='07'>07</option>
+                    <option value='08'>08</option>
+                    <option value='09'>09</option>
+                    <option value='10'>10</option>
+                </select>
+            </div>
+            <div class='col-12 pl-0 mt-0'>
+                <?php if ($product[0]->stock > 0) { ?>
+                    <button class='mt-3 btn btn-lg rounded text-white addtocart'>
+                        <i class="fa-solid fa-shopping-bag pr-3 font-sm"></i>ADD TO BAG
+                    </button>
+                    <a href='<?= base_url('/cart'); ?>' class='gotocartbtn' style='display:none;'>
+                        <button class='mt-3 btn btn-lg rounded text-white gotocart'>
+                            GO TO BAG<i class="fa-solid fa-arrow-right pl-3 font-sm"></i>
+                        </button>
+                    </a>
+                <?php } else { ?>
+                    <button class='mt-5 btn btn-lg rounded text-white' style='background:#000;min-width:220px'>OUT OF STOCK
+                        <i class="fa-solid fa-ta[e"></i>
+                    </button>
+                <?php } ?>
+
+                <?php $session = session();
+                if ($session->get('userid') != '') { ?>
+                    <button class='mt-3 btn rounded addtowishlist' data-target="" id='<?= $product[0]->id; ?>'>
+                        <?php if ($wishlist == 1) { ?>
+                            <i style='font-size:17px' class='fa fa-heart'></i>
+                        <?php } else { ?>
+                            <i style='font-size:17px' class='fa fa-heart-o'></i>
+                        <?php } ?>
+                    </button>
+                <?php } else { ?>
+                    <button class='mt-3 btn rounded addtowishlist' data-target="#loginexampleModal" data-toggle="modal">
+                        <i style='font-size:17px' class='fa fa-heart'></i>
+                    </button>
+                <?php } ?>
+            </div>
+            </form>
+
+
 
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -515,59 +562,6 @@
                     </div>
                 </div>
             </div>
-
-            <?php if ($product[0]->purchasable == 1) { ?>
-                <div class='col-12 pl-0 mt-3 d-flex' style='align-items:center;'>
-                    <span class='qty-desc mr-3'>Quantity</span>
-                    <select class='form-control p-1' style='font-size:14px;width:50px;height:30px'>
-                        <option value='01'>01</option>
-                        <option value='02'>02</option>
-                        <option value='03'>03</option>
-                        <option value='04'>04</option>
-                        <option value='05'>05</option>
-                        <option value='06'>06</option>
-                        <option value='07'>07</option>
-                        <option value='08'>08</option>
-                        <option value='09'>09</option>
-                        <option value='10'>10</option>
-                    </select>
-                </div>
-                <div class='col-12 pl-0 mt-0'>
-                    <?php if ($product[0]->stock > 0) { ?>
-                        <button class='mt-3 btn btn-lg rounded text-white addtocart'>
-                            <i class="fa-solid fa-shopping-bag pr-3 font-sm"></i>ADD TO BAG
-                        </button>
-                        <a href='<?= base_url('/cart'); ?>' class='gotocartbtn' style='display:none;'>
-                            <button class='mt-3 btn btn-lg rounded text-white gotocart'>
-                                GO TO BAG<i class="fa-solid fa-arrow-right pl-3 font-sm"></i>
-                            </button>
-                        </a>
-                    <?php } else { ?>
-                        <button class='mt-5 btn btn-lg rounded text-white' style='background:#000;min-width:220px'>OUT OF STOCK
-                            <i class="fa-solid fa-ta[e"></i>
-                        </button>
-                    <?php } ?>
-
-                    <?php $session = session();
-                    if ($session->get('userid') != '') { ?>
-                        <button class='mt-3 btn rounded addtowishlist' data-target="" id='<?= $product[0]->id; ?>'>
-                            <?php if ($wishlist == 1) { ?>
-                                <i style='font-size:17px' class='fa fa-heart'></i>
-                            <?php } else { ?>
-                                <i style='font-size:17px' class='fa fa-heart-o'></i>
-                            <?php } ?>
-                        </button>
-                    <?php } else { ?>
-                        <button class='mt-3 btn rounded addtowishlist' data-target="#loginexampleModal" data-toggle="modal">
-                            <i style='font-size:17px' class='fa fa-heart'></i>
-                        </button>
-                    <?php } ?>
-                </div>
-            <?php } else { ?>
-                <button class='mt-5 btn btn-lg rounded text-white' data-toggle="modal" data-target="#exampleModal" style='background:#000;min-width:220px'>Enquiry
-                    <i class="fa-solid fa-ta[e"></i>
-                </button>
-            <?php } ?>
 
             <div class='col-12 pl-0 d-flex mt-3 mb-3 mobile_Head_Hide' style='align-items:center'>
                 <p class='m-0 mr-2'>Share</p>
@@ -1198,14 +1192,43 @@
 
 
 
+        $('.addtocartform').submit(function(e) {
+            e.preventDefault();
 
-        $('.addtocart').click(function() {
+            $('.variationmsg').css('display', 'none');
+            var collection = $(".select_variation");
+            var radio_validation = 0;
+
+            collection.each(function() {
+                var checked = 0;
+                var radios = document.getElementsByName($(this).attr('id'));
+
+                for (var i = 0; i < radios.length; i++) {
+                    if (radios[i].checked) {
+                        checked = 1;
+                        break;
+                    }
+                }
+
+                if (checked == 0) {
+                    $("." + $(this).attr('msg')).css('display', 'block');
+                    radio_validation = 1;
+                } else {
+                    $("." + $(this).attr('msg')).css('display', 'none');
+                }
+            });
+
+            if (radio_validation == 1) {
+                return true;
+            }
+
             $.ajax({
                 type: "POST",
                 url: "<?= base_url('add_to_cart') ?>",
                 data: {
                     product_id: '<?= $product[0]->id; ?>',
-                    price: '<?= $product[0]->price; ?>'
+                    price: '<?= $product[0]->price; ?>',
+                    qty: '1'
                 },
                 // contentType: false,
                 // cache: false,

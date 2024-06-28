@@ -15,13 +15,14 @@ class Product extends BaseController
 
         $limit1 = 1;
         $limit2 = 1;
+        
         if (isset($data['productbanner1'][0]) && $data['productbanner1'][0]->value_2 != '') {
             $limit1 = $data['productbanner1'][0]->value_2;
         }
+
         if (isset($data['productbanner2'][0]) && $data['productbanner2'][0]->value_2 != '') {
             $limit2 = $data['productbanner2'][0]->value_2;
         }
-
 
         $data['product'] = $this->db->table('products')->select('products.desc,products.discount,products.id,products.title,pi.image_name1,pi.image_name2,products.stock,products.sku,products.purchasable,products.product_slug,,pi.image_name3,pi.image_name4,products.price')->where('product_slug', $slug)->join('product_images as pi', 'pi.product_id = products.id')->get()->getResult();
 
@@ -31,6 +32,17 @@ class Product extends BaseController
             exit;
         }
 
+        //get product variations 
+         $variations = $this->db->table('product_varient')->select('option_name')->where('product_id',$data['product'][0]->id)->groupBy('option_name')->get()->getResult();
+
+         $varient = array();
+         if(isset($variations) && !empty($variations)){
+            foreach($variations as $variation){
+                $varient[$variation->option_name] = $this->db->table('product_varient')->select('option_value,option_price,option_stock')->where('product_id',$data['product'][0]->id)->where('option_name',$variation->option_name)->orderBy('order')->get()->getResult();
+            }
+         }
+
+         $data['variation'] = $varient;
         //check wishlisted
         if (!empty($this->session->get('userid')) && $this->session->get('userid') != '') {
             $check_wishlist =  $this->db->table('wishlist')->where('product_id', $data['product'][0]->id)->countAllResults();
