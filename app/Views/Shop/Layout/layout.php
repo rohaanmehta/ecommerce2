@@ -317,7 +317,6 @@ $footersettings = footer_settings();
                     dataType: "json",
                     success: function(data) {
                         $('#loginmsg').css('display', 'none');
-                        $('.login_Input_submit').attr('disabled', false);
 
                         if (data.error == true) {
                             $.each(data, function(key, value) {
@@ -327,17 +326,19 @@ $footersettings = footer_settings();
                                     $("#" + key).removeClass("border-danger");
                                 }
                             });
+                            $('.login_Input_submit').attr('disabled', false);
                             return false;
                         }
                         if (data.loggedin == false) {
                             $('#loginmsg').css('display', 'block');
+                            $('.login_Input_submit').attr('disabled', false);
                             return false;
                         }
 
                         if (data.error == false && data.loggedin == true) {
-                            setTimeout(function() {
+                            // setTimeout(function() {
                                 window.location.reload();
-                            }, 500);
+                            // }, 500);
                         }
                     }
                 });
@@ -482,7 +483,7 @@ $footersettings = footer_settings();
                     });
                 }
             });
-            
+
 
             $('.search-box').keyup(function() {
                 if ($('.search-box').val().length >= 4) {
