@@ -2,15 +2,15 @@
 <?= $this->section('content') ?>
 <?php $session = session(); ?>
 
-<head>
-    <!-- 360 degrees -->
-    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+<!-- <head> -->
+<!-- 360 degrees -->
+<!-- <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css"> 360 -->
 
-    <!-- <link href="/3602/main.css" rel="stylesheet" type="text/css"> -->
-    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" type="text/css"> -->
-    <!-- <script src="<//?= base_url('public/dist/js/main.js') ?>"></script> -->
-    <script src="<?= base_url('public/dist/js/j360.js') ?>"></script>
-</head>
+<!-- <link href="/3602/main.css" rel="stylesheet" type="text/css"> -->
+<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" type="text/css"> -->
+<!-- <script src="<//?= base_url('public/dist/js/main.js') ?>"></script> -->
+<!-- <script src="<//?= base_url('public/dist/js/j360.js') ?>"></script>  360 -->
+<!-- </head> -->
 <style>
     .share-icons {
         font-size: 22px;
@@ -25,7 +25,7 @@
         font-weight: 400;
     }
 
-    .accordion-title {
+    .accordion-titlee {
         cursor: pointer;
         font-size: 16px;
         padding: 10px;
@@ -36,7 +36,7 @@
         /* background-size: 15px; */
     }
 
-    .accordion-title::before {
+    .accordion-titlee::before {
         font-family: FontAwesome;
         content: "\f106";
         font-size: 21px;
@@ -44,7 +44,7 @@
         right: 20px;
     }
 
-    .collapsed::before {
+    .myaccordion>.collapsed::before {
         font-family: FontAwesome;
         content: "\f107";
         font-size: 21px;
@@ -65,6 +65,18 @@
         font-size: 15px;
         font-weight: 600;
         padding: 12px 25px 12px 25px;
+    }
+
+    .gotocart {
+        background: #000;
+        min-width: 240px;
+        font-size: 15px;
+        font-weight: 600;
+        padding: 12px 25px 12px 25px;
+    }
+
+    .gotocartbtn:hover {
+        text-decoration: none !important;
     }
 
     .addtowishlist {
@@ -103,8 +115,8 @@
 
     .selector-item {
         /* flex-basis: calc(70% / 3); */
-        height: 45px;
-        width: 45px;
+        /* height: 45px; */
+        min-width: 45px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -122,10 +134,11 @@
         position: relative;
         height: 100%;
         width: 100%;
+        padding: 10px;
         text-align: center;
         border: 1px solid #b9b9b9;
         border-radius: 4px;
-        line-height: 40px;
+        /* line-height: 40px; */
         font-weight: 700;
         transition-duration: .5s;
         transition-property: transform, box-shadow;
@@ -387,12 +400,26 @@
             </div>
         </div>
         <div class='col-12 col-md-7 p-0 mobile_Head_Show'>
-            <div class='row p-4 m-0'>
-                <?php if (isset($product[0]->image_name1) && !empty($product[0]->image_name1) && is_file(ROOTPATH . 'uploads/product_images/' . $product[0]->image_name1)) { ?>
-                    <div class='col-12 p-0'>
-                        <img class='product_image round' alt='<?= $product[0]->title ?>' src='<?= base_url('uploads/product_images/' . $product[0]->image_name1); ?>' />
+            <div class='row p-0 m-0 product-slider-mobile'>
+                <div class="blaze-container">
+                    <div class="blaze-track-container">
+                        <div class="blaze-track">
+                            <?php if (isset($product[0]->image_name1) && !empty($product[0]->image_name1) && is_file(ROOTPATH . 'uploads/product_images/' . $product[0]->image_name1)) { ?>
+                                <img class='product_image round' alt='<?= $product[0]->title ?>' src='<?= base_url('uploads/product_images/' . $product[0]->image_name1); ?>' />
+                            <?php } ?>
+                            <?php if (isset($product[0]->image_name2) && !empty($product[0]->image_name2) && is_file(ROOTPATH . 'uploads/product_images/' . $product[0]->image_name2)) { ?>
+                                <img class='product_image round' alt='<?= $product[0]->title ?>' src='<?= base_url('uploads/product_images/' . $product[0]->image_name2); ?>' />
+                            <?php } ?>
+                            <?php if (isset($product[0]->image_name3) && !empty($product[0]->image_name3) && is_file(ROOTPATH . 'uploads/product_images/' . $product[0]->image_name3)) { ?>
+                                <img class='product_image round' alt='<?= $product[0]->title ?>' src='<?= base_url('uploads/product_images/' . $product[0]->image_name3); ?>' />
+                            <?php } ?>
+                            <?php if (isset($product[0]->image_name4) && !empty($product[0]->image_name4) && is_file(ROOTPATH . 'uploads/product_images/' . $product[0]->image_name4)) { ?>
+                                <img class='product_image round' alt='<?= $product[0]->title ?>' src='<?= base_url('uploads/product_images/' . $product[0]->image_name4); ?>' />
+                            <?php } ?>
+                        </div>
+                        <div class="blaze-pagination"></div>
                     </div>
-                <?php } ?>
+                </div>
             </div>
         </div>
 
@@ -430,45 +457,91 @@
             <span class='text-secondary' style='min-width:100px'> SKU : </span><span class='text-secondary'> <?= $product[0]->sku ?> </span>
             </div> -->
 
-            <!-- variation  -->
-            <div class='row product_info d-flex' style='flex-wrap:wrap;align-items:center;'>
-                <div class='pl-3 d-flex justify-content-between'>
-                    <div class='col-12 pl-0'>Please select a size</div>
-                </div>
-                <!-- sizeguide -->
-                <?php helper('custom');
-                $sizechart = get_sizechart_by_productid($category_id);
-                if (isset($sizechart) && !empty($sizechart)) { ?>
-                    <div class='col-6 pl-0'>
-                        <p style='cursor:pointer;font-size:13px;color:#000;font-weight:800;' class='m-0' data-toggle="modal" data-target="#exampleModalCenter">SIZE CHART <i class='fa fa-angle-right' style='font-size:14px'></i></p>
-                        <!-- <button class='mt-3 btn btn-sm rounded'  style='background:#dfdfdf;color:#2e2e2e;font-weight:600'>
+
+            <!-- sizeguide -->
+            <?php helper('custom');
+            $sizechart = get_sizechart_by_productid($category_id);
+            if (isset($sizechart) && !empty($sizechart)) { ?>
+                <div class='mt-3 col-6 pl-0'>
+                    <p style='cursor:pointer;font-size:13px;color:#000;font-weight:800;' class='m-0' data-toggle="modal" data-target="#exampleModalCenter">SIZE CHART <i class='fa fa-angle-right' style='font-size:14px'></i></p>
+                    <!-- <button class='mt-3 btn btn-sm rounded'  style='background:#dfdfdf;color:#2e2e2e;font-weight:600'>
                             <i class="fa fa-sort-amount-asc"></i>
                         </button> -->
-                    </div>
-                <?php } ?>
-                <div class='col-12 d-flex mt-2'>
-                    <div class="selector-item">
-                        <input type="radio" id="radio1" name="selector" class="selector-item_radio" checked>
-                        <label for="radio1" class="selector-item_label">S</label>
-                    </div>
-                    <div class="selector-item">
-                        <input type="radio" id="radio2" name="selector" class="selector-item_radio">
-                        <label for="radio2" class="selector-item_label">M</label>
-                    </div>
-                    <div class="selector-item">
-                        <input type="radio" id="radio3" name="selector" class="selector-item_radio">
-                        <label for="radio3" class="selector-item_label">L</label>
-                    </div>
-                    <div class="selector-item">
-                        <input type="radio" id="radio4" name="selector" class="selector-item_radio">
-                        <label for="radio4" class="selector-item_label">XL</label>
-                    </div>
-                    <div class="selector-item">
-                        <input type="radio" id="radio5" name="selector" class="selector-item_radio">
-                        <label for="radio5" class="selector-item_label">XXL</label>
-                    </div>
                 </div>
+            <?php } ?>
+
+            <!-- variation  -->
+            <div class='row product_info d-flex mt-2' style='flex-wrap:wrap;align-items:center;'>
+                <form class='addtocartform m-0'>
+                    <?php if (isset($variation) && !empty($variation)) {
+                        foreach ($variation as $key => $var) {  ?>
+                            <div class='pl-3 col-12 mt-2'>
+                                <div class='col-12 pl-0 text-capitalize'>Select <?= $key ?></div>
+                            </div>
+                            <div class='col-12 d-flex mt-2 variation-box select_variation' id='variation_<?= $key; ?>' msg='variation_msg_<?= $key; ?>'>
+                                <?php foreach ($variation[$key] as $var2) {  ?>
+                                    <div class="selector-item">
+                                        <input type="radio" id="<?= $var2->option_value; ?>" name="variation_<?= $key; ?>" class="selector-item_radio">
+                                        <label for="<?= $var2->option_value; ?>" class="selector-item_label"><?= $var2->option_value; ?></label>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                            <div class='mt-2 col-12 variationmsg variation_msg_<?= $key; ?>' style='display:none;'>
+                                <p class='h6 text-danger h6' style='font-size:13px;'>Please select a <?= $key ?> </p>
+                            </div>
+                    <?php }
+                    } ?>
             </div>
+
+            <div class='col-12 pl-0 mt-3 d-flex' style='align-items:center;'>
+                <span class='qty-desc mr-3'>Quantity</span>
+                <select class='form-control p-1' style='font-size:14px;width:50px;height:30px'>
+                    <option value='01'>01</option>
+                    <option value='02'>02</option>
+                    <option value='03'>03</option>
+                    <option value='04'>04</option>
+                    <option value='05'>05</option>
+                    <option value='06'>06</option>
+                    <option value='07'>07</option>
+                    <option value='08'>08</option>
+                    <option value='09'>09</option>
+                    <option value='10'>10</option>
+                </select>
+            </div>
+            <div class='col-12 pl-0 mt-0'>
+                <?php if ($product[0]->stock > 0) { ?>
+                    <button class='mt-3 btn btn-lg rounded text-white addtocart'>
+                        <i class="fa-solid fa-shopping-bag pr-3 font-sm"></i>ADD TO BAG
+                    </button>
+                    <a href='<?= base_url('/cart'); ?>' class='gotocartbtn' style='display:none;'>
+                        <button class='mt-3 btn btn-lg rounded text-white gotocart'>
+                            GO TO BAG<i class="fa-solid fa-arrow-right pl-3 font-sm"></i>
+                        </button>
+                    </a>
+                <?php } else { ?>
+                    <button class='mt-5 btn btn-lg rounded text-white' style='background:#000;min-width:220px'>OUT OF STOCK
+                        <i class="fa-solid fa-ta[e"></i>
+                    </button>
+                <?php } ?>
+
+                <?php $session = session();
+                if ($session->get('userid') != '') { ?>
+                    <button class='mt-3 btn rounded addtowishlist' data-target="" id='<?= $product[0]->id; ?>'>
+                        <?php if ($wishlist == 1) { ?>
+                            <i style='font-size:17px' class='fa fa-heart'></i>
+                        <?php } else { ?>
+                            <i style='font-size:17px' class='fa fa-heart-o'></i>
+                        <?php } ?>
+                    </button>
+                <?php } else { ?>
+                    <button class='mt-3 btn rounded addtowishlist' data-target="#loginexampleModal" data-toggle="modal">
+                        <i style='font-size:17px' class='fa fa-heart'></i>
+                    </button>
+                <?php } ?>
+            </div>
+            </form>
+
+
 
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -490,54 +563,6 @@
                 </div>
             </div>
 
-            <?php if ($product[0]->purchasable == 1) { ?>
-                <div class='col-12 pl-0 mt-3 d-flex' style='align-items:center;'>
-                    <span class='qty-desc mr-3'>Quantity</span>
-                    <select class='form-control p-1' style='font-size:14px;width:50px;height:30px'>
-                        <option value='01'>01</option>
-                        <option value='02'>02</option>
-                        <option value='03'>03</option>
-                        <option value='04'>04</option>
-                        <option value='05'>05</option>
-                        <option value='06'>06</option>
-                        <option value='07'>07</option>
-                        <option value='08'>08</option>
-                        <option value='09'>09</option>
-                        <option value='10'>10</option>
-                    </select>
-                </div>
-                <div class='col-12 pl-0 mt-0'>
-                    <?php if ($product[0]->stock > 0) { ?>
-                        <button class='mt-3 btn btn-lg rounded text-white addtocart'>
-                            <i class="fa-solid fa-shopping-bag pr-3 font-sm"></i>ADD TO CART
-                        </button>
-                    <?php } else { ?>
-                        <button class='mt-5 btn btn-lg rounded text-white' style='background:#000;min-width:220px'>OUT OF STOCK
-                            <i class="fa-solid fa-ta[e"></i>
-                        </button>
-                    <?php } ?>
-
-                    <?php $session = session();
-                    if ($session->get('userid') != '') { ?>
-                        <button class='mt-3 btn rounded addtowishlist' data-target="" id='<?= $product[0]->id; ?>'>
-                            <?php if ($wishlist == 1) { ?>
-                                <i style='font-size:17px' class='fa fa-heart'></i>
-                            <?php } else { ?>
-                                <i style='font-size:17px' class='fa fa-heart-o'></i>
-                            <?php } ?>
-                        </button>
-                    <?php } else { ?>
-                        <button class='mt-3 btn rounded addtowishlist' data-target="#loginexampleModal" data-toggle="modal">
-                            <i style='font-size:17px' class='fa fa-heart'></i>
-                        </button>
-                    <?php } ?>
-                </div>
-            <?php } else { ?>
-                <button class='mt-5 btn btn-lg rounded text-white' data-toggle="modal" data-target="#exampleModal" style='background:#000;min-width:220px'>Enquiry
-                    <i class="fa-solid fa-ta[e"></i>
-                </button>
-            <?php } ?>
-
             <div class='col-12 pl-0 d-flex mt-3 mb-3 mobile_Head_Hide' style='align-items:center'>
                 <p class='m-0 mr-2'>Share</p>
                 <?php if (isset($productshare[0]->value_1) && !empty($productshare[0]->value_1)) { ?>
@@ -558,35 +583,35 @@
             <div class='col-12 pl-0 d-flex mt-3 mb-3 mobile_Head_Show' style='align-items:center'>
                 <p class='m-0 mr-2' style='cursor:pointer;' id="share">Share <i style='font-size:16px;' class='h6 pl-1 share-icons fa fa-share-alt'></i></p>
             </div>
-            <div class="accordion mt-3" id="accordionExample">
+            <div class="accordion mt-3" id="accordionExample2">
                 <div class="card" style='border-radius:0px !important'>
-                    <div class="card-head" id="headingOne">
-                        <p class="mb-0 accordion-title" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <div class="card-head myaccordion" id="headingOne2">
+                        <p class="mb-0 accordion-titlee" data-toggle="collapse" data-target="#collapseOne2" aria-expanded="true" aria-controls="collapseOne2">
                             Product Details
                         </p>
                     </div>
 
-                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div id="collapseOne2" class="collapse show" aria-labelledby="headingOne2" data-parent="#accordionExample2">
                         <div class="card-body accordion-desc">
                             Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                         </div>
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-head" id="headingTwo">
-                        <p class="mb-0 accordion-title collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <div class="card-head myaccordion" id="headingTwo2">
+                        <p class="mb-0 accordion-titlee collapsed" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo2">
                             Product Description
                         </p>
                     </div>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo2" data-parent="#accordionExample2">
                         <div class="card-body accordion-desc">
                             Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                         </div>
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-head" id="heading3">
-                        <p class="mb-0 accordion-title collapsed" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                    <div class="card-head myaccordion" id="heading33">
+                        <p class="mb-0 accordion-titlee collapsed" data-toggle="collapse" data-target="#collapse33" aria-expanded="false" aria-controls="collapse33">
                             Customer Reviews (<?php if (isset($reviews_total) && !empty($reviews_total)) {
                                                     echo $reviews_total;
                                                 } else {
@@ -594,7 +619,7 @@
                                                 } ?>)
                         </p>
                     </div>
-                    <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordionExample">
+                    <div id="collapse33" class="collapse" aria-labelledby="heading33" data-parent="#accordionExample2">
                         <div class="card-body accordion-desc">
                             <?php if (isset($reviews) && !empty($reviews)) {
                                 $i = 0;
@@ -655,7 +680,11 @@
                         } ?>">
             <div class="blaze-container">
                 <div class="blaze-track-container">
-                    <div class="<?php if (isset($productbanner1) && !empty(($productbanner1) && $productbanner1[0]->value_3 == 'YES')) { echo 'blaze-track';} else{ echo 'slider-container';}?> products-5">
+                    <div class="<?php if (isset($productbanner1) && !empty(($productbanner1) && $productbanner1[0]->value_3 == 'YES')) {
+                                    echo 'blaze-track';
+                                } else {
+                                    echo 'slider-container';
+                                } ?> products-5">
                         <?php if (isset($section1)) {
                             foreach ($section1 as $row) { ?>
                                 <?php echo view('Shop/page/single_product', ['row' => $row, 'wishlist' =>  $session->get('userid')]); ?>
@@ -687,7 +716,11 @@
                     } ?>">
             <div class="blaze-container">
                 <div class="blaze-track-container">
-                    <div class="<?php if (isset($productbanner2) && !empty(($productbanner2) && $productbanner2[0]->value_3 == 'YES')) { echo 'blaze-track';}else {echo 'slider-container';}?> products-5">
+                    <div class="<?php if (isset($productbanner2) && !empty(($productbanner2) && $productbanner2[0]->value_3 == 'YES')) {
+                                    echo 'blaze-track';
+                                } else {
+                                    echo 'slider-container';
+                                } ?> products-5">
                         <?php if (isset($section2)) {
                             foreach ($section2 as $row) { ?>
                                 <?php echo view('Shop/page/single_product', ['row' => $row, 'wishlist' =>  $session->get('userid')]); ?>
@@ -1118,6 +1151,26 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
+        const ee = document.querySelector('.product-slider-mobile')
+        new BlazeSlider(ee, {
+            all: {
+                draggable: true,
+                enableAutoplay: false,
+                // autoplayInterval: 2000,
+                // transitionDuration: 300,
+                slidesToShow: 1,
+                loop: true,
+                slideGap: "0px",
+                enablePagination: true,
+            },
+            '(max-width: 900px)': {
+                slidesToShow: 1,
+            },
+            '(max-width: 500px)': {
+                slidesToShow: 1,
+            },
+        })
+
         //share button mobile 
         const share = e => {
             if (navigator.share) {
@@ -1131,64 +1184,51 @@
                     .catch(error => console.log("error", error));
             }
         };
-        if (!navigator.share) {
-            document.getElementById('tip').className = 'show'
-        }
+        // if (!navigator.share) {
+        //     document.getElementById('tip').className = 'show'
+        // }
         document.getElementById("share").addEventListener("click", share);
         //end
 
 
-        <?php if (isset($productbanner1) && !empty(($productbanner1) && $productbanner1[0]->value_3 == 'YES')) { ?>
-            const el2 = document.querySelector('.blaze-slider1')
-            new BlazeSlider(el2, {
-                all: {
-                    draggable: true,
-                    enableAutoplay: false,
-                    autoplayInterval: 2000,
-                    transitionDuration: 300,
-                    slidesToShow: 5,
-                    loop: true,
-                    slideGap: "0px",
-                    enablePagination: false,
-                },
-                '(max-width: 900px)': {
-                    slidesToShow: 3,
-                },
-                '(max-width: 500px)': {
-                    slidesToShow: 2,
-                },
-            })
-        <?php } ?>
 
-        <?php if (isset($productbanner2) && !empty(($productbanner2) && $productbanner2[0]->value_3 == 'YES')) { ?>
-            const el = document.querySelector('.blaze-slider2')
-            new BlazeSlider(el, {
-                all: {
-                    draggable: true,
-                    enableAutoplay: false,
-                    autoplayInterval: 2000,
-                    transitionDuration: 300,
-                    slidesToShow: 5,
-                    loop: true,
-                    slideGap: "0px",
-                    enablePagination: false,
-                },
-                '(max-width: 900px)': {
-                    slidesToShow: 3,
-                },
-                '(max-width: 500px)': {
-                    slidesToShow: 2,
-                },
-            })
-        <?php } ?>
+        $('.addtocartform').submit(function(e) {
+            e.preventDefault();
 
-        $('.addtocart').click(function() {
+            $('.variationmsg').css('display', 'none');
+            var collection = $(".select_variation");
+            var radio_validation = 0;
+
+            collection.each(function() {
+                var checked = 0;
+                var radios = document.getElementsByName($(this).attr('id'));
+
+                for (var i = 0; i < radios.length; i++) {
+                    if (radios[i].checked) {
+                        checked = 1;
+                        break;
+                    }
+                }
+
+                if (checked == 0) {
+                    $("." + $(this).attr('msg')).css('display', 'block');
+                    radio_validation = 1;
+                } else {
+                    $("." + $(this).attr('msg')).css('display', 'none');
+                }
+            });
+
+            if (radio_validation == 1) {
+                return true;
+            }
+
             $.ajax({
                 type: "POST",
                 url: "<?= base_url('add_to_cart') ?>",
                 data: {
                     product_id: '<?= $product[0]->id; ?>',
-                    price: '<?= $product[0]->price; ?>'
+                    price: '<?= $product[0]->price; ?>',
+                    qty: '1'
                 },
                 // contentType: false,
                 // cache: false,
@@ -1196,16 +1236,27 @@
                 dataType: "json",
                 success: function(data) {
                     if (data.status == '100') {
-                        alert('Login to add product in your cart !');
+                        Toastify({
+                            text: data.msg,
+                            duration: 3000,
+                        }).showToast();
+                        // alert('Login to add product in your cart !');
                     } else if (data.status == '200') {
-                        alert('Added to Cart !');
-                        setTimeout(function() {
-                            // $('#download').css('display', 'block');
-                            // $('#loader').css('visibility', 'hidden');
-                            window.location.reload();
-                        }, 1000);
-                        // alert('registered_successfully');
+                        Toastify({
+                            text: data.msg,
+                            duration: 3000,
+                            destination: "<?= base_url('/cart'); ?>",
+                        }).showToast();
 
+                        $('.addtocart').css('display', 'none');
+                        $('.gotocartbtn').css('display', 'inline');
+                        // alert('Added to Cart !');
+                        // setTimeout(function() {
+                        // $('#download').css('display', 'block');
+                        // $('#loader').css('visibility', 'hidden');
+                        //     window.location.reload();
+                        // }, 3000);
+                        // alert('registered_successfully');
                     } else {
                         alert('something went wrong');
                     }
@@ -1302,6 +1353,50 @@
 
             $('body').css('position', 'initial');
         });
+
+        <?php if (isset($productbanner1) && !empty(($productbanner1) && $productbanner1[0]->value_3 == 'YES')) { ?>
+            const el2 = document.querySelector('.blaze-slider1')
+            new BlazeSlider(el2, {
+                all: {
+                    draggable: true,
+                    enableAutoplay: false,
+                    autoplayInterval: 2000,
+                    transitionDuration: 300,
+                    slidesToShow: 5,
+                    loop: true,
+                    slideGap: "0px",
+                    enablePagination: false,
+                },
+                '(max-width: 900px)': {
+                    slidesToShow: 3,
+                },
+                '(max-width: 500px)': {
+                    slidesToShow: 2,
+                },
+            })
+        <?php } ?>
+
+        <?php if (isset($productbanner2) && !empty(($productbanner2) && $productbanner2[0]->value_3 == 'YES')) { ?>
+            const el = document.querySelector('.blaze-slider2')
+            new BlazeSlider(el, {
+                all: {
+                    draggable: true,
+                    enableAutoplay: false,
+                    autoplayInterval: 2000,
+                    transitionDuration: 300,
+                    slidesToShow: 5,
+                    loop: true,
+                    slideGap: "0px",
+                    enablePagination: false,
+                },
+                '(max-width: 900px)': {
+                    slidesToShow: 3,
+                },
+                '(max-width: 500px)': {
+                    slidesToShow: 2,
+                },
+            })
+        <?php } ?>
     });
 </script>
 

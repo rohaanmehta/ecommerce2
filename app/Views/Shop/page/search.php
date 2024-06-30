@@ -3,6 +3,14 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://unpkg.com/blaze-slider@latest/dist/blaze.css" /> -->
+
+
+    <link media="all" rel="stylesheet" href="<?= base_url('assets/css/mystyle.css'); ?>">
+
+    <link media="all" rel="stylesheet" href="<?= base_url('assets/css/blaze_slider.css'); ?>">
+
+
     <title> <?php if (isset($meta_title)) {
                 echo $meta_title . ' ';
             }
@@ -22,6 +30,7 @@
     <script type="text/javascript" src="<?= base_url('assets/js/jquery.min.js'); ?>"></script>
     <script type="text/javascript" src="<?= base_url('assets/js/bootsrap.min.js'); ?>"></script>
     <script type="text/javascript" src="<?= base_url('assets/js/popper.min.js'); ?>"></script>
+    <!-- <script async defer type="text/javascript" src="<//?= base_url('assets/js/toastify.js'); ?>"></script> -->
     <link rel="stylesheet" href="<?= base_url('assets/css/mystyle.css'); ?>">
 
 
@@ -31,6 +40,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 
+    <!-- <link media="all" rel="stylesheet" href="<//?//= base_url('assets/css/toastify.min.css'); ?>"> -->
     <style>
         .search-input {
             box-shadow: 0px -4px 4px 4px grey;
@@ -66,10 +76,10 @@
         <?php if (isset($products) && !empty($products)) {
             foreach ($products as $row) { ?>
                 <?php echo view('Shop/page/single_product', ['row' => $row, 'wishlist' =>  $session->get('userid')]); ?>
-        <?php }
-        } else { ?>
+            <?php }
+        } else { if (isset($key) && !empty($key)) { ?>
             <div class='text-dark w-100 d-flex justify-content-center' style='font-size:14px;font-weight:500;'>No Products Found !</div>
-        <?php } ?>
+        <?php } }?>
     </div>
 </div>
 <?php if (isset($products) && !empty($products)) { ?>
@@ -89,9 +99,44 @@
             $('.search-btn').attr('href', '<?= base_url(); ?>search/' + $('.search-input').val());
         });
         if ($(window).width() < 768) {
-            $('.single-product-slider').css('display','none');
-            $('.mobile-product-slider').css('display','block');
+            $('.single-product-slider').css('display', 'none');
+            $('.mobile-product-slider').css('display', 'block');
         }
+
+        $('.add-to-wishlist').click(function(e) {
+            e.preventDefault();
+            if ($(this).attr('data-target') == '') {
+                if ($(this).children().attr('class') == 'fa fa-heart mr-1') {
+                    $(this).children().attr('class', 'fa fa-heart-o mr-1');
+                } else {
+                    $(this).children().attr('class', 'fa fa-heart mr-1');
+                }
+
+                // console.log($(this).children().attr('class'));
+                // return false;
+                $.ajax({
+                    type: "POST",
+                    url: "<?= base_url('add-to-wishlist') ?>",
+                    data: {
+                        productid: $(this).attr('id')
+                    },
+                    dataType: "json",
+                    success: function(data) {
+                        if (data.status == 200) {
+                            // alert('product added to wishlist');
+                            Toastify({
+                                text: data.msg,
+                                duration: 3000,
+                                destination: "<?= base_url('/wishlist'); ?>",
+                            }).showToast();
+
+                        } else {
+                            // alert('something went wrong');
+                        }
+                    }
+                });
+            }
+        });
     });
 </script>
 

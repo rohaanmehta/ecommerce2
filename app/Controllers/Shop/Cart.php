@@ -27,22 +27,24 @@ class Cart extends BaseController
         // echo '<pre>';print_r($_POST);exit;
 
         $userid = $this->session->get('userid');
-        if ($userid == '') {
-            $data['status'] = 100;
+        // if ($userid == '') {
+        //     $data['status'] = 100;
+        //     $data['msg'] = 'Login to add product in cart !';
+        // } else {
+        $array = array(
+            'product_id' => $_POST['product_id'],
+            'user_id' => $userid,
+            'price' => $_POST['price'],
+        );
+
+
+        if ($this->db->table('cart')->insert($array)) {
+            $data['status'] = 200;
+            $data['msg'] = 'Added to Cart !';
         } else {
-            $array = array(
-                'product_id' => $_POST['product_id'],
-                'user_id' => $userid,
-                'price' => $_POST['price'],
-            );
-
-
-            if ($this->db->table('cart')->insert($array)) {
-                $data['status'] = 200;
-            } else {
-                $data['status'] = 400;
-            }
+            $data['status'] = 400;
         }
+        // }
         // echo $check;exit;
         // return response(json_encode($data));
         header('Content-Type: application/json');

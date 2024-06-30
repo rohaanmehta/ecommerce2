@@ -1,14 +1,4 @@
 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 text-center p-1 mb-4 main-product-slider">
-    <?php
-    if ($wishlist != '') { ?>
-        <!-- <div class='product-items-icon add-to-wishlist' id='<?= $row->id ?>'>
-            <?php if ($row->wishlist == '') { ?>
-                <i class='fa fa-heart-o'></i>
-            <?php } else { ?>
-                <i class='fa fa-heart'></i>
-            <?php } ?>
-        </div> -->
-    <?php } ?>
     <div class='gallery_container'>
         <?php helper('custom');
         $badge = get_product_badge($row->id);
@@ -27,9 +17,9 @@
         <?php } ?>
 
         <div class='wishlist-box'>
-            <?php if ($wishlist != '') { ?>
+            <?php if ($wishlist != '') { $iswishlist = is_wishlist($wishlist,$row->id); ?>
                 <button class='border-0 btn btn-sm btn-light add-to-wishlist' data-target='' id='<?= $row->id ?>'>
-                    <?php if ($row->wishlist == '') { ?>
+                    <?php if ($iswishlist != '') { ?>
                         <i class='fa fa-heart-o mr-1'></i>
                     <?php } else { ?>
                         <i class='fa fa-heart mr-1'></i>
@@ -79,7 +69,18 @@
                 <img alt='<?= $row->title; ?>' class='gallery_img' src='<?= base_url('/uploads/product_images/' . $row->image_name1) ?>' />
             </div>
             <div class='text-left p-2'>
-                <p class='product_title'><?= $row->title ?></p>
+                <div class='d-flex justify-content-between'>
+                    <p class='product_title'><?= $row->title ?></p>
+                    <?php if ($wishlist != '') { $iswishlist = is_wishlist($wishlist,$row->id); ?>
+                        <?php if ($iswishlist != '') { ?>
+                            <i class='fa fa-heart mr-1 add-to-wishlist-mobile' data-target='' id='<?= $row->id ?>'></i>
+                        <?php } else { ?>
+                            <i class='fa fa-heart-o mr-1 add-to-wishlist-mobile' data-target='' id='<?= $row->id ?>'></i>
+                        <?php } ?>
+                    <?php } else { ?>
+                        <i class='fa fa-heart-o mr-1' data-target="#loginexampleModal" data-toggle="modal"></i>
+                    <?php } ?>
+                </div>
                 <p class='product_price'>
                     <?php if ($row->discount != '') { ?>
                         $<?php echo get_product_discount_price($row->price, $row->discount); ?> <span class='single_product_discount_price'>$<?= $row->price; ?></span>

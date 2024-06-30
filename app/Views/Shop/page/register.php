@@ -51,7 +51,7 @@
           <div class="error-font text-danger mb-2 h6" id="error-confirm-password"></div>
         </div>
         <div class="form-group mb-0">
-          <button class='login_Input login_Links btn rounded-0 btn-dark'>SIGN UP</button>
+          <button class='login_Input login_Links btn rounded-0 btn-dark register-btn'>SIGN UP</button>
         </div>
       </div>
     </div>
@@ -70,6 +70,7 @@
       e.preventDefault();
       $('#msg').css('display', 'none');
       $('#msg2').css('display', 'none');
+      $('.register-btn').attr('disabled', true);
 
       // if ($('#password').val().length < 6) {
       //   $('#msg').css('display', 'block');
@@ -92,12 +93,13 @@
         success: function(data) {
           // console.log(data.error);
           if (data.error == false) {
-            setTimeout(function() {
+            // setTimeout(function() {
               // $('#download').css('display', 'block');
               // $('#loader').css('visibility', 'hidden');
               window.location.href = '<?= base_url(); ?>';
-            }, 500);
+            // }, 500);
           } else {
+            $('.register-btn').attr('disabled', false);
             $.each(data, function(key, value) {
               // alert();
               if (value) {
