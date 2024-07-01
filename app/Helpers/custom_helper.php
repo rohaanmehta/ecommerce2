@@ -162,3 +162,12 @@ function is_wishlist($userid,$productid){
     $count = $db->table('wishlist')->where('user_id', $userid)->where('product_id', $productid)->countAllResults();
     return $count;
 }
+
+function cartdetails($productid){
+    $db = \Config\Database::connect();
+
+    $data = $db->table('products')->select('products.title,pi.image_name1')->join('product_images as pi', 'pi.product_id = products.id')->where('product_id', $productid)->get()->getresult();;
+    return $data;
+}
+
+

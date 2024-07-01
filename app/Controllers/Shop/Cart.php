@@ -11,12 +11,21 @@ class Cart extends BaseController
 
         $userid = $this->session->get('userid');
 
-        if ($userid !== '') {
-            $data['cart_items'] = $this->db->table('cart')->select('cart.product_id,cart.id as cartid,p.id,cart.price,p.title,pi.image_name1')->join('products as p', 'p.id = cart.product_id')->join('product_images as pi', 'pi.product_id = p.id')->where('user_id', $userid)->get()->getresult();
+        // if ($userid !== '') {
+        //     $data['cart_items'] = $this->db->table('cart')->select('cart.product_id,cart.id as cartid,p.id,cart.price,p.title,pi.image_name1')->join('products as p', 'p.id = cart.product_id')->join('product_images as pi', 'pi.product_id = p.id')->where('user_id', $userid)->get()->getresult();
 
-            $data['cart_item_total'] = $this->db->table('cart')->select('SUM(price) as total')->where('user_id', $userid)->get()->getResult();
+        //     $data['cart_item_total'] = $this->db->table('cart')->select('SUM(price) as total')->where('user_id', $userid)->get()->getResult();
+        // }
+        $data['cart_items'] = $this->session->get('cart');
+        $total_price = 0;
+        if(isset($data['cart_items']) && !empty($data['cart_items'])){
+            foreach($data['cart_items'] as $row){
+                $total_price = $total_price + $row['price'];
+            }
         }
 
+        $data['total_cart_value'] = $total_price;
+        $data['shipping'] = $this->db->table('general_settings')->where('name','shipping_settings')->get()->getResult();
         // echo'<pre>';print_r($data['cart_items']);exit;
 
         return view('Shop/page/cart', $data);
@@ -24,40 +33,90 @@ class Cart extends BaseController
 
     public function add_to_cart()
     {
-        // echo '<pre>';print_r($_POST);exit;
-
         $userid = $this->session->get('userid');
-        // if ($userid == '') {
-        //     $data['status'] = 100;
-        //     $data['msg'] = 'Login to add product in cart !';
-        // } else {
-        $array = array(
-            'product_id' => $_POST['product_id'],
+        // $this->session->set('cart','');exit; 
+        if (!empty($this->session->get('cart'))) {
+            $cart = $this->session->get('cart');
+        } else {
+            $cart = array();
+        }
+
+        $product_price = $this->db->table('products')->where('id', $_POST['productid'])->get()->getResult();
+
+        $item = array(
+            'product_id' => $_POST['productid'],
+            'cartid' => date('dmYHis'),
             'user_id' => $userid,
-            'price' => $_POST['price'],
+            'quantity' => $_POST['quantity'],
+            'price' => $product_price[0]->price * $_POST['quantity'],
         );
 
-
-        if ($this->db->table('cart')->insert($array)) {
-            $data['status'] = 200;
-            $data['msg'] = 'Added to Cart !';
-        } else {
-            $data['status'] = 400;
+        if (isset($_POST) && !empty($_POST)) {
+            foreach ($_POST as $key => $single) {
+                if ($key != 'productid' && $key != 'user_id' && $key != 'quantity') {
+                    $item[$key] = $single;
+                }
+            }
         }
-        // }
-        // echo $check;exit;
-        // return response(json_encode($data));
+
+        $cart[] = $item;
+
+        $this->session->set('cart', $cart);
+
+        // echo '<pre>';print_r($this->session->get('cart'));exit;
+
+        $data['msg'] = 'Added to Cart !';
+        $data['status'] = 200;
         header('Content-Type: application/json');
         echo json_encode($data);
     }
 
     public function delete_from_cart()
     {
-        if ($this->db->table('cart')->where('id', $_POST['id'])->delete()) {
-            $data['status'] = 200;
-        } else {
-            $data['status'] = 400;
+        if (!empty($this->session->get('cart'))) {
+            $cart = $this->session->get('cart');
+            foreach ($cart as $key => $item) {
+                if ($item['cartid'] == $_POST['id']) {
+                    unset($cart[$key]);
+                    break;
+                }
+            }
         }
+
+        $this->session->set('cart', $cart);
+        $data['status'] = 200;
+        
+        header('Content-Type: application/json');
+        echo json_encode($data);
+    }
+
+    public function delete_from_cart_wishlist()
+    {
+        $product_id = '';
+        if (!empty($this->session->get('cart'))) {
+            $cart = $this->session->get('cart');
+            foreach ($cart as $key => $item) {
+                if ($item['cartid'] == $_POST['id']) {
+                    $product_id = $item['product_id'];
+                    unset($cart[$key]);
+                    break;
+                }
+            }
+        }
+
+        $this->session->set('cart', $cart);
+
+        $array = array(
+            'product_id' => $product_id,
+            'user_id' => $this->session->get('userid')
+
+        );
+
+        $count = $this->db->table('wishlist')->where($array)->countAllResults();
+        if ($count == 0) {
+            $this->db->table('wishlist')->insert($array);
+        }
+        $data['status'] = 200;
 
         header('Content-Type: application/json');
         echo json_encode($data);

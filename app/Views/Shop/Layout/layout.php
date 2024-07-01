@@ -201,10 +201,12 @@ $footersettings = footer_settings();
                     <a class='btn mobile_Head_Hide' href='<?= base_url("wishlist") ?>'><i class='head_Icons fa-light fa fa-heart'></i>
                         <p style='color:#858585;padding-top:3px;font-size:12px;font-weight:600;margin-bottom:0px'>Wishlist</p>
                     </a>
+                    
                     <?php
                     if ($session->get('userid') != '' && $session->get('wishlist_total') > 0) { ?>
                         <span class="mybadge"><?= $session->get('wishlist_total') ?></span>
                     <?php } ?>
+
                 </div>
                 <div style='text-align:center;display:flex;'>
                     <a class='btn mobile_Head_Hide' href='<?= base_url("cart") ?>'><i class='head_Icons fa fa-shopping-bag'></i>

@@ -481,7 +481,7 @@
                             <div class='col-12 d-flex mt-2 variation-box select_variation' id='variation_<?= $key; ?>' msg='variation_msg_<?= $key; ?>'>
                                 <?php foreach ($variation[$key] as $var2) {  ?>
                                     <div class="selector-item">
-                                        <input type="radio" id="<?= $var2->option_value; ?>" name="variation_<?= $key; ?>" class="selector-item_radio">
+                                        <input type="radio" id="<?= $var2->option_value; ?>" value="<?= $var2->option_value; ?>" name="variation_<?= $key; ?>" class="selector-item_radio">
                                         <label for="<?= $var2->option_value; ?>" class="selector-item_label"><?= $var2->option_value; ?></label>
                                     </div>
                                 <?php } ?>
@@ -495,7 +495,7 @@
 
             <div class='col-12 pl-0 mt-3 d-flex' style='align-items:center;'>
                 <span class='qty-desc mr-3'>Quantity</span>
-                <select class='form-control p-1' style='font-size:14px;width:50px;height:30px'>
+                <select name='quantity' class='form-control p-1' style='font-size:14px;width:50px;height:30px'>
                     <option value='01'>01</option>
                     <option value='02'>02</option>
                     <option value='03'>03</option>
@@ -1191,7 +1191,6 @@
         //end
 
 
-
         $('.addtocartform').submit(function(e) {
             e.preventDefault();
 
@@ -1222,14 +1221,20 @@
                 return true;
             }
 
+            var formData = new FormData(this);
+            formData.append("productid", "<?= $product[0]->id; ?>");
+
             $.ajax({
                 type: "POST",
                 url: "<?= base_url('add_to_cart') ?>",
-                data: {
-                    product_id: '<?= $product[0]->id; ?>',
-                    price: '<?= $product[0]->price; ?>',
-                    qty: '1'
-                },
+                data: formData,
+                contentType: false,
+                cache: false,
+                processData: false,
+                 // product_id: '<?= $product[0]->id; ?>',
+                // price: '<?= $product[0]->price; ?>',
+                // qty: '1'
+                // },
                 // contentType: false,
                 // cache: false,
                 // processData: false,
