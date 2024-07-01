@@ -514,7 +514,7 @@
                         <i class="fa-solid fa-shopping-bag pr-3 font-sm"></i>ADD TO BAG
                     </button>
                     <a href='<?= base_url('/cart'); ?>' class='gotocartbtn' style='display:none;'>
-                        <button class='mt-3 btn btn-lg rounded text-white gotocart'>
+                        <button type='button' class='mt-3 btn btn-lg rounded text-white gotocart'>
                             GO TO BAG<i class="fa-solid fa-arrow-right pl-3 font-sm"></i>
                         </button>
                     </a>
