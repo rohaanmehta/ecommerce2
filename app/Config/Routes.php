@@ -170,6 +170,11 @@ $routes->group('', ['namespace' => 'App\controllers\Shop'], static function ($ro
     $routes->get('register', 'Register::register_view');
     $routes->get('cart', 'Cart::cart_view');
     $routes->get('checkout', 'Checkout::checkout_view');
+
+    $routes->post('coupon-validate', 'Coupon::coupon_validate');
+    $routes->post('change-cart-qty', 'Cart::change_cart_qty');
+    
+    
     // $routes->get('product_page', 'Product::product_page_view');
     $routes->post('add_register_data', 'Login::add_register_data');
     $routes->get('logout', 'Login::logout');

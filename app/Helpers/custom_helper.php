@@ -166,8 +166,9 @@ function is_wishlist($userid,$productid){
 function cartdetails($productid){
     $db = \Config\Database::connect();
 
-    $data = $db->table('products')->select('products.title,pi.image_name1')->join('product_images as pi', 'pi.product_id = products.id')->where('product_id', $productid)->get()->getresult();;
+    $data = $db->table('products')->select('category_slug,products.product_slug,products.title,pi.image_name1')->join('product_images as pi', 'pi.product_id = products.id')->join('product_category as pc', 'pc.product_id = products.id')->join('categories as c', 'c.id = pc.category_id')->where('pi.product_id', $productid)->groupBy('products.id')->get()->getresult();
     return $data;
 }
+
 
 
