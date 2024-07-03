@@ -6,10 +6,60 @@ use App\Controllers\BaseController;
 
 class Cart extends BaseController
 {
+    public function checkcoupon()
+    {
+        $data['cart_items'] = $this->session->get('cart');
+
+        //validate existing coupon
+        if (isset($data['cart_items']['couponcode']) && !empty($data['cart_items']['couponcode'] && $data['cart_items']['couponcode'] != '')) {
+            $couponcode = $data['cart_items']['couponcode'];
+            $coupondata = $this->db->table('coupons')->where('code', $couponcode)->get()->getResult();
+            $result = 400;
+            if (isset($coupondata[0]) && !empty($coupondata[0])) {
+                if ($coupondata[0]->start_date <= date('Y-m-d') && $coupondata[0]->end_date >= date('Y-m-d')) {
+                    $cart_items = $this->session->get('cart');
+                    $total_price = 0;
+                    if (isset($cart_items['items']) && !empty($cart_items['items'])) {
+                        foreach ($cart_items['items'] as $row) {
+                            $total_price = $total_price + $row['price'];
+                        }
+                    }
+
+                    if ($total_price >= $coupondata[0]->min_cart_value) {
+                        if ($coupondata[0]->type == 'Fixed') {
+                            $cart_items['discount'] = $coupondata[0]->discount;
+                            $this->session->set('cart', $cart_items);
+                            $result = 200;
+                        } else {
+                            $discount_percentage = $total_price * $coupondata[0]->discount / 100;
+                            $cart_items['discount'] = $discount_percentage;
+                            // echo $discount_percentage;exit;
+                            $this->session->set('cart', $cart_items);
+                            $result = 200;
+                        }
+                    } else {
+                        $result = 400;
+                    }
+                } else {
+                    $result = 400;
+                }
+            }
+            
+            if ($result == '400') {
+                $updatecoupon = $this->session->get('cart');
+                $updatecoupon['couponcode'] = '';
+                $updatecoupon['discount'] = '';
+                $this->session->set('cart', $updatecoupon);
+                $data['cart_items'] = $this->session->get('cart');
+            }
+        }
+    }
+
     public function cart_view()
     {
 
         $userid = $this->session->get('userid');
+        $this->checkcoupon();
 
         // if ($userid !== '') {
         //     $data['cart_items'] = $this->db->table('cart')->select('cart.product_id,cart.id as cartid,p.id,cart.price,p.title,pi.image_name1')->join('products as p', 'p.id = cart.product_id')->join('product_images as pi', 'pi.product_id = p.id')->where('user_id', $userid)->get()->getresult();
@@ -27,62 +77,18 @@ class Cart extends BaseController
             }
         }
 
-        //validate existing coupon
-        if (isset($data['cart_items']['couponcode']) && !empty($data['cart_items']['couponcode'] && $data['cart_items']['couponcode'] != '')) {
-            $couponcode = $data['cart_items']['couponcode'];
-            $coupondata = $this->db->table('coupons')->where('code', $couponcode)->get()->getResult();
-            $result = 400;
-
-            if (isset($coupondata[0]) && !empty($coupondata[0])) {
-                if ($coupondata[0]->start_date <= date('Y-m-d') && $coupondata[0]->end_date >= date('Y-m-d')) {
-
-                    $cart_items = $this->session->get('cart');
-                    $total_price = 0;
-                    if (isset($cart_items['items']) && !empty($cart_items['items'])) {
-                        foreach ($cart_items['items'] as $row) {
-                            $total_price = $total_price + $row['price'];
-                        }
-                    }
-
-                    if ($total_price >= $coupondata[0]->min_cart_value) {
-                        if ($coupondata[0]->type == 'Fixed') {
-                            $cart_items['discount'] = $coupondata[0]->discount;
-                            $this->session->set('cart', $cart_items);
-                            $result = 200;
-                        } else {
-                            $discount_percentage = $total_price * $coupondata[0]->discount / 100;
-                            $cart_items['discount'] = $discount_percentage;
-                            $this->session->set('cart', $cart_items);
-                            $result = 200;
-                        }
-                    } else {
-                        $result = 400;
-                    }
-                } else {
-                    $result = 400;
-                }
-            }
-            if($result == '400'){
-                $updatecoupon = $this->session->get('cart');
-                $updatecoupon['couponcode'] = '';
-                $updatecoupon['discount'] = '';
-                $this->session->set('cart',$updatecoupon);
-                $data['cart_items'] = $this->session->get('cart');
-            }
-        }
-
         //set coupon discount to 0 
         // $data['cart_items']['discount'] = '';
         // $this->session->set('cart',$data['cart_items']);
 
-        if(isset($data['cart_items']['discount']) && !empty($data['cart_items']['discount'])){
+        if (isset($data['cart_items']['discount']) && !empty($data['cart_items']['discount'])) {
             $data['final_cart_value'] = $total_price - $data['cart_items']['discount'];
-        }else{
+        } else {
             $data['final_cart_value'] = $total_price;
         }
-        
+
         $data['total_cart_value'] = $total_price;
-        
+
         $data['shipping'] = $this->db->table('general_settings')->where('name', 'shipping_settings')->get()->getResult();
         $data['coupons'] = $this->db->table('coupons')->where('start_date <=', date('Y-m-d'))->where('end_date >=', date('Y-m-d'))->where('status', '1')->get()->getResult();
 
@@ -118,9 +124,55 @@ class Cart extends BaseController
             }
         }
 
-        $cart['items'][] = $item;
+        //check if product already exist
+        $duplicate_product = 0;
+        $existing_cart = $this->session->get('cart');
+        // echo '<pre>'; print_r($existing_cart);
 
-        $this->session->set('cart', $cart);
+        if (isset($existing_cart) && !empty($existing_cart)) {
+            foreach ($existing_cart['items'] as $key => $single_item) {
+                // if( $duplicate_product == 1){
+                //     break;
+                // }
+
+                if ($single_item['product_id'] == $item['product_id'] && $duplicate_product == 0) {
+
+                    if (sizeof($item) > 6) {
+                        foreach ($item as $key2 => $variation) {
+                            if ($key2 != 'product_id' && $key2 != 'user_id' && $key2 != 'quantity' && $key2 != 'cartid'  && $key2 != 'unit_price'  && $key2 != 'price') {
+                                // echo '<pre>'; print_r($item);exit;
+                                $duplicate_product = 1;
+                                $existing_cart['items'][$key]['quantity'] = $single_item['quantity'] + $_POST['quantity'];
+
+                                if (isset($single_item[$key2]) && $item[$key2] != $single_item[$key2]) {
+                                    $duplicate_product = 0;
+                                    // echo '<pre>'; print_r($single_item);
+
+                                    // echo '<pre>'; print_r($item);
+                                    $existing_cart['items'][$key]['quantity'] = $single_item['quantity'];
+                                    break;
+                                } else {
+                                    // $duplicate_product = 0;
+                                }
+                            }
+                        }
+                    } else {
+                        $existing_cart['items'][$key]['quantity'] = $single_item['quantity'] + $_POST['quantity'];
+                        $duplicate_product = 1;
+                        break;
+                    }
+                } else {
+                    // $duplicate_product = 0;
+                }
+            }
+        }
+        // exit;
+        if ($duplicate_product == 1) {
+            $this->session->set('cart', $existing_cart);
+        } else {
+            $cart['items'][] = $item;
+            $this->session->set('cart', $cart);
+        }
 
         // echo '<pre>';print_r($this->session->get('cart'));exit;
 

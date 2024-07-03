@@ -75,7 +75,7 @@
                                 <div class="mt-2 text-left" style='font-size:14px;font-weight:600;'><?= $cart_details[0]->title ?>
                                     <!-- <p class="m-0" style='font-size:12px;color:#858585;font-weight:500;'> Color · Size S· Sleeves Half Sleeves· SKU 01-1058110</p> -->
                                     <p class="m-0" style='font-size:12px;color:#858585;font-weight:500;'> <?php foreach ($row as $key => $variation) {
-                                                                                                                if ($key != 'cartid' && $key != 'product_id' && $key != 'user_id'  && $key != 'quantity' && $key != 'price') {
+                                                                                                                if ($key != 'cartid' && $key != 'unit_price' &&  $key != 'product_id' && $key != 'user_id'  && $key != 'quantity' && $key != 'price') {
                                                                                                                     echo str_replace('variation_', '', $key) . ' - ' . $variation . ', ';
                                                                                                                 }
                                                                                                             } ?></p>
@@ -119,7 +119,7 @@
                                     <a href="" id='<?= $row['cartid'] ?>' class="wishlist-btn-cart ml-0 mt-3 mr-3 mb-3">MOVE TO WISHLIST</a>
                                 </div>
                             </div>
-                            <div class="mt-2" style='font-size:16px;font-weight:600;'>$<?= $row['price'] ?></div>
+                            <div class="mt-2" style='font-size:16px;font-weight:600;'><?= price_format($row['price']) ?></div>
                             <!-- <div class="col-lg-1"><a href="javascript:void(0)" id='<? //= $row->cartid 
                                                                                         ?>' class="delete-from-cart" style='font-size:40px;text-decoration:none;color:#000' id='closebtn'>&times;</a></div> -->
                         </div>
@@ -137,7 +137,7 @@
                         <p class='mb-2' style='font-size:15px;font-weight:500'> Total MRP</p>
                     </div>
                     <div class='col-6'>
-                        <p class='mb-2' style='font-size:15px;font-weight:500'> $<?= $total_cart_value ?></p>
+                        <p class='mb-2' style='font-size:15px;font-weight:500'> <?= price_format($total_cart_value) ?></p>
                     </div>
                 </div>
                 <?php if (isset($cart_items['discount']) && !empty($cart_items['discount'])) { ?>
@@ -146,7 +146,7 @@
                             <p class='mb-2' style='font-size:15px;font-weight:500'> Discount</p>
                         </div>
                         <div class='col-6'>
-                            <p class='mb-2' style='font-size:15px;font-weight:500'> $<?= $cart_items['discount'] ?></p>
+                            <p class='mb-2' style='font-size:15px;font-weight:500'> <?= price_format($cart_items['discount']) ?></p>
                         </div>
                     </div>
                 <?php } ?>
@@ -158,14 +158,14 @@
 
                     <?php if ($final_cart_value >= $shipping[0]->value_2) { ?>
                         <div class='col-6'>
-                            <p class='m-0' style='font-size:15px;font-weight:500'> <span style='text-decoration:line-through !important;color:#6a6a6a !important;'> $<?= $shipping[0]->value_1 ?> </span>Free Delivery</p>
+                            <p class='m-0' style='font-size:15px;font-weight:500'> <span style='text-decoration:line-through !important;color:#6a6a6a !important;'> <?= price_format($shipping[0]->value_1) ?> </span>Free Delivery</p>
                         </div>
                     <?php } else { ?>
                         <div class='col-6'>
-                            <p class='m-0' style='font-size:15px;font-weight:500'> $<?= $shipping[0]->value_1 ?></p>
+                            <p class='m-0' style='font-size:15px;font-weight:500'> <?= price_format($shipping[0]->value_1) ?></p>
                         </div>
                         <div class='col-12 p-2' style='background:#e9e9e9'>
-                            <p class='m-0' style='font-size:15px;font-weight:500'> <i class='fa fa-truck mr-2'></i><span style='font-weight:600;'>Free Delivery </span>Shop for more $<?= $shipping[0]->value_2 - $final_cart_value ?> </p>
+                            <p class='m-0' style='font-size:15px;font-weight:500'> <i class='fa fa-truck mr-2'></i><span style='font-weight:600;'>Free Delivery </span>Shop for more <?= price_format($shipping[0]->value_2 - $final_cart_value) ?> </p>
                         </div>
                     <?php } ?>
                 </div>
@@ -182,9 +182,9 @@
                     </div>
                     <div class='col-6'>
                         <?php if ($final_cart_value >= $shipping[0]->value_2) { ?>
-                            <p style='font-size:17px;font-weight:600'> $<?= $final_cart_value ?> </p>
+                            <p style='font-size:17px;font-weight:600'> <?= price_format($final_cart_value) ?> </p>
                         <?php } else {?>
-                            <p style='font-size:17px;font-weight:600'> $<?= $final_cart_value + $shipping[0]->value_1?> </p>
+                            <p style='font-size:17px;font-weight:600'> <?= price_format($final_cart_value + $shipping[0]->value_1)?> </p>
                         <?php }?>
                     </div>
                     <div class='col-12'>

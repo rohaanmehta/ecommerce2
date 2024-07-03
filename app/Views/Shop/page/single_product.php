@@ -19,10 +19,10 @@
         <div class='wishlist-box'>
             <?php if ($wishlist != '') { $iswishlist = is_wishlist($wishlist,$row->id); ?>
                 <button class='border-0 btn btn-sm btn-light add-to-wishlist' data-target='' id='<?= $row->id ?>'>
-                    <?php if ($iswishlist != '') { ?>
-                        <i class='fa fa-heart-o mr-1'></i>
-                    <?php } else { ?>
+                    <?php if ($iswishlist != '0') { ?>
                         <i class='fa fa-heart mr-1'></i>
+                    <?php } else { ?>
+                        <i class='fa fa-heart-o mr-1'></i>
                     <?php } ?>
                     WISHLIST
                 </button>
@@ -83,9 +83,9 @@
                 </div>
                 <p class='product_price'>
                     <?php if ($row->discount != '') { ?>
-                        $<?php echo get_product_discount_price($row->price, $row->discount); ?> <span class='single_product_discount_price'>$<?= $row->price; ?></span>
+                        <?php echo price_format(get_product_discount_price($row->price, $row->discount)); ?> <span class='single_product_discount_price'>$<?= $row->price; ?></span>
                     <?php } else { ?>
-                        $<?= $row->price; ?>
+                        <?= price_format($row->price); ?>
                     <?php } ?>
                 </p>
             </div>

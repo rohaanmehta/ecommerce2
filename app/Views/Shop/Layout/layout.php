@@ -203,15 +203,22 @@ $footersettings = footer_settings();
                     </a>
                     
                     <?php
-                    if ($session->get('userid') != '' && $session->get('wishlist_total') > 0) { ?>
-                        <span class="mybadge"><?= $session->get('wishlist_total') ?></span>
-                    <?php } ?>
+                    if ($session->get('userid') != '') { 
+                        $wishlist_total = get_wishlist_count($session->get('userid'));
+                        if($wishlist_total > 0 ){?>
+                        <span class="mybadge"><?= $wishlist_total ?></span>
+                    <?php } } ?>
 
                 </div>
-                <div style='text-align:center;display:flex;'>
+                <div style='text-align:center;display:flex;position:relative'>
                     <a class='btn mobile_Head_Hide' href='<?= base_url("cart") ?>'><i class='head_Icons fa fa-shopping-bag'></i>
                         <p style='color:#858585;padding-top:3px;font-size:12px;font-weight:600;margin-bottom:0px'>Cart</p>
                     </a>
+                    <?php
+                        $cart_total = get_cart_count();
+                        if($cart_total > 0 ){?>
+                        <span class="mybadgecart"><?= $cart_total ?></span>
+                    <?php }  ?>
                 </div>
             </div>
         </div>

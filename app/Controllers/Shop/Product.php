@@ -195,7 +195,7 @@ class Product extends BaseController
 
 
         $wishlist_total = $this->db->table('wishlist')->where('user_id', $this->session->get('userid'))->countAllResults();
-        $this->session->set('wishlist_total', $wishlist_total);
+        // $this->session->set('wishlist_total', $wishlist_total);
 
         header('Content-Type: application/json');
         echo json_encode($resp);

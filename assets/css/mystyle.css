@@ -562,7 +562,8 @@
 
   @media screen and (min-width: 768px) {
       .add-to-wishlist-mobile {
-          display: none !important;;
+          display: none !important;
+          ;
       }
   }
 
@@ -583,6 +584,18 @@
       position: absolute;
       top: 0px;
       right: 13px;
+      color: #fff;
+  }
+
+  .mybadgecart {
+      background-color: red;
+      height: 16px;
+      width: 16px;
+      border-radius: 50px;
+      font-size: 10px;
+      position: absolute;
+      top: 0px;
+      right: 8px;
       color: #fff;
   }
 
