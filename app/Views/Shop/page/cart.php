@@ -1,54 +1,6 @@
 <?= $this->extend('Shop/Layout/layout') ?>
 <?= $this->section('content') ?>
 
-<style>
-    .coupon-box {
-        border: 1px solid black;
-        padding: 10px 15px 10px 15px;
-        border-style: dashed;
-        margin-top: 15px;
-    }
-
-    .shipping-offer {
-        border: 1px solid #dfdfdf;
-        border-radius: 3px;
-        display: flex;
-        align-items: center;
-        align-content: center;
-        padding: 6px;
-        color: #424242;
-        width: 100%;
-    }
-
-    .remove-btn-cart {
-        text-decoration: none !important;
-        color: #464646;
-        font-size: 14px;
-        font-weight: 600;
-    }
-
-    .wishlist-btn-cart {
-        text-decoration: none !important;
-        color: #d63242;
-        font-size: 14px;
-        font-weight: 600;
-    }
-
-    .remove-btn-cart:hover {
-        text-decoration: none;
-        color: #464646;
-    }
-
-    .wishlist-btn-cart:hover {
-        text-decoration: none;
-        color: #d63242;
-    }
-
-    .btn-coupon {
-        background: #ffffff;
-        color: #7f7f7f;
-    }
-</style>
 <!-- <div class='invisible'>gap fill</div> -->
 <div class="container">
     <div class="row mb-5">
@@ -119,7 +71,7 @@
                                     <a href="" id='<?= $row['cartid'] ?>' class="wishlist-btn-cart ml-0 mt-3 mr-3 mb-3">MOVE TO WISHLIST</a>
                                 </div>
                             </div>
-                            <div class="mt-2" style='font-size:16px;font-weight:600;'><?= price_format($row['price']) ?></div>
+                            <div class="mt-2 mr-2" style='font-size:16px;font-weight:600;min-width: 90px;text-align:end;'><?= price_format($row['price']) ?></div>
                             <!-- <div class="col-lg-1"><a href="javascript:void(0)" id='<? //= $row->cartid 
                                                                                         ?>' class="delete-from-cart" style='font-size:40px;text-decoration:none;color:#000' id='closebtn'>&times;</a></div> -->
                         </div>
@@ -188,7 +140,7 @@
                         <?php }?>
                     </div>
                     <div class='col-12'>
-                        <button class="btn black-btn w-100">CHECKOUT</button>
+                        <a href='<?= base_url('/checkout');?>'><button class="btn black-btn w-100">CHECKOUT</button></a>
                     </div>
                 </div>
             </div>
@@ -314,6 +266,7 @@
                         }, 1500);
                     } else {
                         $('.coupon-msg2').html(data.msg);
+                        $('#coupon').val('');
                     }
                 }
             });

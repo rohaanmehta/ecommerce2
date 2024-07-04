@@ -44,6 +44,8 @@ class Coupon extends BaseController
             // echo '<pre>';
             // print_r($coupondata[0]);
             // exit;
+        }else{
+            $json['msg'] = 'Coupon is not valid';
         }
         header('Content-Type: application/json');
         echo json_encode($json);

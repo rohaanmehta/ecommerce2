@@ -6,55 +6,6 @@ use App\Controllers\BaseController;
 
 class Cart extends BaseController
 {
-    public function checkcoupon()
-    {
-        $data['cart_items'] = $this->session->get('cart');
-
-        //validate existing coupon
-        if (isset($data['cart_items']['couponcode']) && !empty($data['cart_items']['couponcode'] && $data['cart_items']['couponcode'] != '')) {
-            $couponcode = $data['cart_items']['couponcode'];
-            $coupondata = $this->db->table('coupons')->where('code', $couponcode)->get()->getResult();
-            $result = 400;
-            if (isset($coupondata[0]) && !empty($coupondata[0])) {
-                if ($coupondata[0]->start_date <= date('Y-m-d') && $coupondata[0]->end_date >= date('Y-m-d')) {
-                    $cart_items = $this->session->get('cart');
-                    $total_price = 0;
-                    if (isset($cart_items['items']) && !empty($cart_items['items'])) {
-                        foreach ($cart_items['items'] as $row) {
-                            $total_price = $total_price + $row['price'];
-                        }
-                    }
-
-                    if ($total_price >= $coupondata[0]->min_cart_value) {
-                        if ($coupondata[0]->type == 'Fixed') {
-                            $cart_items['discount'] = $coupondata[0]->discount;
-                            $this->session->set('cart', $cart_items);
-                            $result = 200;
-                        } else {
-                            $discount_percentage = $total_price * $coupondata[0]->discount / 100;
-                            $cart_items['discount'] = $discount_percentage;
-                            // echo $discount_percentage;exit;
-                            $this->session->set('cart', $cart_items);
-                            $result = 200;
-                        }
-                    } else {
-                        $result = 400;
-                    }
-                } else {
-                    $result = 400;
-                }
-            }
-            
-            if ($result == '400') {
-                $updatecoupon = $this->session->get('cart');
-                $updatecoupon['couponcode'] = '';
-                $updatecoupon['discount'] = '';
-                $this->session->set('cart', $updatecoupon);
-                $data['cart_items'] = $this->session->get('cart');
-            }
-        }
-    }
-
     public function cart_view()
     {
 

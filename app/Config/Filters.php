@@ -4,6 +4,7 @@ namespace Config;
 
 use App\Filters\Auth as FiltersAuth;
 use App\Filters\Profile as FiltersProfile;
+use App\Filters\Cart as Filtercart;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
@@ -25,6 +26,7 @@ class Filters extends BaseConfig
         'secureheaders' => SecureHeaders::class,
         'Auth' => FiltersAuth::class,
         'Profile' => FiltersProfile::class,
+        'Cart' => Filtercart::class,
     ];
 
     /**

@@ -186,10 +186,15 @@ function get_cart_count()
 {
     $session = \Config\Services::session();
     $existing_cart = $session->get('cart');
-    return sizeof($existing_cart['items']);
+    if (isset($existing_cart['items'])) {
+        return sizeof($existing_cart['items']);
+    } else {
+        return 0;
+    }
 }
 
-function price_format($price){
-    $price = '<i class="fa fa-inr" style="font-size:13px;color:#525252;"></i> '.number_format(round($price,2), 2); ;
+function price_format($price)
+{
+    $price = '<i class="fa fa-inr mr-1" style="font-size:13px;color:#525252;"></i>' . number_format(round($price, 2), 2);;
     return $price;
 }

@@ -1,3 +1,50 @@
+  .coupon-box {
+      border: 1px solid black;
+      padding: 10px 15px 10px 15px;
+      border-style: dashed;
+      margin-top: 15px;
+  }
+
+  .shipping-offer {
+      border: 1px solid #dfdfdf;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      align-content: center;
+      padding: 6px;
+      color: #424242;
+      width: 100%;
+  }
+
+  .remove-btn-cart {
+      text-decoration: none !important;
+      color: #464646;
+      font-size: 14px;
+      font-weight: 600;
+  }
+
+  .wishlist-btn-cart {
+      text-decoration: none !important;
+      color: #d63242;
+      font-size: 14px;
+      font-weight: 600;
+  }
+
+  .remove-btn-cart:hover {
+      text-decoration: none;
+      color: #464646;
+  }
+
+  .wishlist-btn-cart:hover {
+      text-decoration: none;
+      color: #d63242;
+  }
+
+  .btn-coupon {
+      background: #ffffff;
+      color: #7f7f7f;
+  }
+
   .toastify {
       background: #000 !important;
       color: #fff !important;

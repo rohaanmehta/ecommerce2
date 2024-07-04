@@ -37,7 +37,7 @@ $routes->group('', ['namespace' => 'App\controllers\Admin', "filter" => "Auth"],
     $routes->get('Admin/shipping-view', 'Website_settings::shipping_view');
     $routes->post('add_shipping_settings', 'Website_settings::add_shipping_settings');
 
-    
+
     $routes->get('Admin/footer_settings', 'Website_settings::footer_settings');
     $routes->post('add_footer_data', 'Website_settings::add_footer_data');
 
@@ -153,6 +153,9 @@ $routes->group('', ['namespace' => 'App\controllers\Shop', "filter" => "Profile"
     //
 });
 
+$routes->group('', ['namespace' => 'App\controllers\Shop', "filter" => "Cart"], static function ($routes) {
+    $routes->get('checkout', 'Checkout::checkout_view');
+});
 
 $routes->group('', ['namespace' => 'App\controllers\Shop'], static function ($routes) {
     $routes->get('profile/coupons', 'Profile::coupons');
@@ -173,8 +176,8 @@ $routes->group('', ['namespace' => 'App\controllers\Shop'], static function ($ro
 
     $routes->post('coupon-validate', 'Coupon::coupon_validate');
     $routes->post('change-cart-qty', 'Cart::change_cart_qty');
-    
-    
+
+
     // $routes->get('product_page', 'Product::product_page_view');
     $routes->post('add_register_data', 'Login::add_register_data');
     $routes->get('logout', 'Login::logout');
@@ -190,7 +193,7 @@ $routes->group('', ['namespace' => 'App\controllers\Shop'], static function ($ro
     $routes->post('add_to_cart', 'Cart::add_to_cart');
     $routes->post('delete-from-cart', 'Cart::delete_from_cart');
     $routes->post('delete-from-cart-wishlist', 'Cart::delete_from_cart_wishlist');
-    
+
     $routes->get('wishlist', 'Wishlist::view');
 
     $routes->post('search-product', 'Product::search_product');
