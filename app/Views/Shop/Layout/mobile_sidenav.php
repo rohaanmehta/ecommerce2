@@ -304,7 +304,7 @@
                 <ul class="side-nav-sub-menu mobile-nav-bar">
                     <?php if (count($subcategories) > 1) { ?>
                         <a href="<?= base_url($row->category_slug); ?>">
-                            <li class="sub-menu-link mobile-nav-bar sidebar-subcategories">All Categories</li>
+                            <li class="sub-menu-link mobile-nav-bar">All Categories</li>
                         </a>
                     <?php } ?>
                     <?php foreach ($subcategories as $row2) {
@@ -318,7 +318,7 @@
                             <ul class="side-nav-sub-menu mobile-nav-bar">
                                 <?php if (count($subcategories2) > 1) { ?>
                                     <a href="<?= base_url($row2->category_slug); ?>">
-                                        <li class="sub-menu-link mobile-nav-bar sidebar-subcategories">All Categories</li>
+                                        <li class="sub-menu-link mobile-nav-bar">All Categories</li>
                                     </a>
                                 <?php } ?>
                                 <?php foreach ($subcategories2 as $row3) { ?>
@@ -353,9 +353,9 @@
                 <a href="<?= base_url('profile/change_password'); ?>">
                     <li class='sub-menu-link mobile-nav-bar '>Change Password</li>
                 </a>
-                <a href="<?= base_url('profile/delete_account'); ?>">
+                <!-- <a href="<//?= base_url('profile/delete_account'); ?>">
                     <li class='sub-menu-link mobile-nav-bar '>Delete Account</li>
-                </a>
+                </a> -->
             </ul>
 
             <a href="<?= base_url('orders'); ?>">

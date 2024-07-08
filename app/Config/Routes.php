@@ -145,6 +145,8 @@ $routes->group('', ['namespace' => 'App\controllers\Shop', "filter" => "Profile"
     $routes->get('profile', 'Profile::profile_view');
     $routes->get('profile/edit_profile', 'Profile::edit_profile_view');
     $routes->post('profile/save_edit_profile', 'Profile::save_edit_profile');
+    $routes->post('profile/get_address', 'Profile::get_address');
+    $routes->post('profile/delete_address', 'Profile::delete_address');
     $routes->post('profile/save_edit_address', 'Profile::save_edit_address');
     $routes->get('profile/address', 'Profile::address_view');
     $routes->get('profile/change_password', 'Profile::change_password_view');

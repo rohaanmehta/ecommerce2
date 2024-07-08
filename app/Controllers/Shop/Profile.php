@@ -47,24 +47,57 @@ class Profile extends BaseController
 
     public function save_edit_address()
     {
-        $array = array(
-            'address1' => $_POST['address1'],
-            'address2' => $_POST['address2'],
-            'address3' => $_POST['address3'],
-        );
-        // print_r($_POST);exit;
         $userid = $this->session->get('userid');
-        $this->db->table('users')->where('id', $userid)->update($array);
-        $this->session->setFlashdata('message', 'Your address has been updated !');
+
+        $array = array(
+            'user_id' => $userid,
+            'first_name' => $_POST['first_name'],
+            'last_name' => $_POST['last_name'],
+            'mobile_no' => $_POST['mobile_no'],
+            'postal_code' => $_POST['postal_code'],
+            'state' => $_POST['state'],
+            'city' => $_POST['city'],
+            'address_1' => $_POST['address'],
+            'landmark' => $_POST['landmark'],
+            'instructions' => $_POST['instructions'],
+            // 'is_default' => $_POST['instructions'],
+        );
+
+        if ($_POST['address_id'] == '') {
+            $this->db->table('user_address')->insert($array);
+        } else {
+            $this->db->table('user_address')->where('id', $_POST['address_id'])->update($array);
+        }
+
+        $this->session->setFlashdata('message', 'Your address has been saved !');
         return redirect()->to(base_url('profile/address'));
     }
 
     public function address_view()
     {
         $userid = $this->session->get('userid');
-        $data['user'] = $this->db->table('users')->select('address1,address2,address3')->where('id', $userid)->get()->getResult();
+        $data['user'] = $this->db->table('user_address')->select('*')->where('user_id', $userid)->get()->getResult();
         return view('Shop/Profile/profile_address', $data);
     }
+
+    public function get_address()
+    {
+        $data['user'] = $this->db->table('user_address')->select('*')->where('id', $_POST['id'])->get()->getResult();
+        $data['status'] = 200;
+        header('Content-Type: application/json');
+        echo json_encode($data);
+    }
+
+    public function delete_address()
+    {
+        $this->db->table('user_address')->where('id', $_POST['id'])->delete();
+        $this->session->setFlashdata('message', 'Your address has been deleted !');
+
+        $data['status'] = 200;
+        header('Content-Type: application/json');
+        echo json_encode($data);
+    }
+
 
     public function change_password_view()
     {
@@ -100,7 +133,7 @@ class Profile extends BaseController
     }
     public function coupons()
     {
-        $data['coupons'] = $this->db->table('coupons')->where('start_date <=',date('Y-m-d'))->where('end_date >=',date('Y-m-d'))->where('status', '1')->get()->getResult();
+        $data['coupons'] = $this->db->table('coupons')->where('start_date <=', date('Y-m-d'))->where('end_date >=', date('Y-m-d'))->where('status', '1')->get()->getResult();
         return view('Shop/Profile/coupons', $data);
     }
 }

@@ -23,8 +23,8 @@
 <div class="container">
   <div class="row mb-5">
     <?php if (isset($cart_items['items']) && !empty($cart_items['items'])) { ?>
-      <div class="col-12 col-md-8 p-4">
-        <?php if ($final_cart_value >= $shipping[0]->value_2) { ?>
+      <div class="col-12 col-md-8 pt-3 pr-3 pl-3 pb-0 p-md-4">
+      <?php if ($final_cart_value >= $shipping[0]->value_2) { ?>
           <div class="shipping-offer">
             <i class='fa fa-truck mr-1' style="font-size:20px;"></i>
             <p class="m-0"> Hurray! <span style="font-weight:600;color:#d63242">Free Shipping!</span> on this order.</p>
@@ -139,73 +139,12 @@
             </div>
           <?php } ?>
         </div>
-        <div class='checkout-detail-box'>
-          <div class='w-100 d-flex justify-content-between pl-2 pr-2'>
-            <div class='w-50 p-0 mt-1'>
-              <p class='m-0 mb-1' style='font-size:16px;font-weight:600'> PAYMENT OPTIONS</p>
-            </div>
-          </div>
-          <div class="w-100">
-            <button class="btn black-btn payment-btn" style="color:#fff !important;">Payment <?= $final_amount; ?> </button>
-          </div>
-        </div>
       </div>
-      <div class="col-12 col-md-4 p-4" style="border-left:1px solid #dfdfdf">
+      <div class="col-12 col-md-4 pt-0 pr-3 pl-3 pb-0 p-md-4" style="border-left:1px solid #dfdfdf">
+      <?php include ('order_summary.php');?>
         <div class='row'>
-          <div class='col-6'>
-            <p style='font-size:17px;font-weight:600'> Price Detail</p>
-          </div>
-        </div>
-        <div class='row'>
-          <div class='col-6'>
-            <p class='mb-2' style='font-size:15px;font-weight:500'> Total MRP</p>
-          </div>
-          <div class='col-6'>
-            <p class='mb-2' style='font-size:15px;font-weight:500'> <?= price_format($total_cart_value) ?></p>
-          </div>
-        </div>
-        <?php if (isset($cart_items['discount']) && !empty($cart_items['discount'])) { ?>
-          <div class='row'>
-            <div class='col-6'>
-              <p class='mb-2' style='font-size:15px;font-weight:500'> Discount</p>
-            </div>
-            <div class='col-6'>
-              <p class='mb-2' style='font-size:15px;font-weight:500'> <?= price_format($cart_items['discount']) ?></p>
-            </div>
-          </div>
-        <?php } ?>
-
-        <div class='row'>
-          <div class='col-6'>
-            <p class='mb-2' style='font-size:15px;font-weight:500'> Delivery</p>
-          </div>
-
-          <?php if ($final_cart_value >= $shipping[0]->value_2) { ?>
-            <div class='col-6'>
-              <p class='m-0' style='font-size:15px;font-weight:500'> <span style='text-decoration:line-through !important;color:#6a6a6a !important;'> <?= price_format($shipping[0]->value_1) ?> </span>Free Delivery</p>
-            </div>
-          <?php } else { ?>
-            <div class='col-6'>
-              <p class='m-0' style='font-size:15px;font-weight:500'> <?= price_format($shipping[0]->value_1) ?></p>
-            </div>
-            <div class='col-12 p-2' style='background:#e9e9e9'>
-              <p class='m-0' style='font-size:15px;font-weight:500'> <i class='fa fa-truck mr-2'></i><span style='font-weight:600;'>Free Delivery </span>Shop for more <?= price_format($shipping[0]->value_2 - $final_cart_value) ?> </p>
-            </div>
-          <?php } ?>
-        </div>
-        <div class='row'>
-          <div class='col-12'>
-            <hr>
-            <button class="btn btn-coupon w-100" data-toggle="modal" data-target="#couponModal"> Apply Coupon <i class=' ml-3 fa fa-angle-right'></i></button>
-            <hr>
-          </div>
-        </div>
-        <div class='row'>
-          <div class='col-6'>
-            <p style='font-size:17px;font-weight:600'> Total Amount</p>
-          </div>
-          <div class='col-6'>
-            <p style='font-size:17px;font-weight:600'> <?= price_format($final_amount); ?> </p>
+          <div class="col-12">
+            <button class="w-100 btn black-btn payment-btn" style="color:#fff !important;">Continue to Payment </button>
           </div>
         </div>
       </div>
@@ -328,6 +267,9 @@
     });
 
     $('.apply-coupon').click(function() {
+      $('.coupon-msg2').html('');
+      $('.coupon-msg').html('');
+
       $.ajax({
         type: "POST",
         url: "<?= base_url('coupon-validate') ?>",

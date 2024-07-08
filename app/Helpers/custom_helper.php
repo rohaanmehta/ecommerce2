@@ -195,6 +195,6 @@ function get_cart_count()
 
 function price_format($price)
 {
-    $price = '<i class="fa fa-inr mr-1" style="font-size:13px;color:#525252;"></i>' . number_format(round($price, 2), 2);;
+    $price = '<i class="fa fa-inr" style="margin-right:1px;font-size:12px;color:#525252;"></i>' . number_format(round($price, 2), 2);;
     return $price;
 }
