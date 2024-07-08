@@ -182,6 +182,29 @@ class Website_settings extends BaseController
         return view('Admin/Views/Settings/footer_settings', $data);
     }
 
+    public function shipping_view()
+    {
+        $data['shipping'] = $this->db->table('general_settings')->where('name', 'shipping_settings')->get()->getResult();
+        return view('Admin/Views/Settings/shipping_settings', $data);
+    }
+
+    public function add_shipping_settings()
+    {
+        $array = array(
+            'name' => 'shipping_settings',
+            'value_1' => $_POST['shipping_fees'],
+            'value_2' => $_POST['free_shipping'],
+        );
+
+        $this->db->table('general_settings')->where('name', 'shipping_settings')->delete();
+        $this->db->table('general_settings')->insert($array);
+        $data['status'] = 200;
+
+        header('Content-Type: application/json');
+        echo json_encode($data);
+    }
+    
+
     public function add_footer_data()
     {
         $array = array(

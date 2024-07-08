@@ -136,29 +136,65 @@ function create_slug($data)
     return $data;
 }
 
-function footer_settings(){
+function footer_settings()
+{
     $db = \Config\Database::connect();
 
     $footer['footer'] = $db->table('footer')->select('*')->where('id', '1')->get()->getresult();
-    if(empty($footer['footer'])){
-        $category_limit = '5';   
-    }else{
+    if (empty($footer['footer'])) {
+        $category_limit = '5';
+    } else {
         $category_limit = $footer['footer'][0]->category_limit;
     }
-    $footer['categories'] = $db->table('categories')->select('category_name,category_slug')->limit($category_limit)->where('parent_category', '')->where('show_on_homepage', '1')->orderBy('category_order','asc')->get()->getresult();
+    $footer['categories'] = $db->table('categories')->select('category_name,category_slug')->limit($category_limit)->where('parent_category', '')->where('show_on_homepage', '1')->orderBy('category_order', 'asc')->get()->getresult();
 
     return $footer;
 }
 
-function get_product_discount_price($price,$discount){
-    $finalprice = $price*$discount/100;
+function get_product_discount_price($price, $discount)
+{
+    $finalprice = $price * $discount / 100;
     $finalprice = $price - $finalprice;
     return $finalprice;
 }
 
-function is_wishlist($userid,$productid){
+function is_wishlist($userid, $productid)
+{
     $db = \Config\Database::connect();
 
     $count = $db->table('wishlist')->where('user_id', $userid)->where('product_id', $productid)->countAllResults();
     return $count;
+}
+
+function cartdetails($productid)
+{
+    $db = \Config\Database::connect();
+
+    $data = $db->table('products')->select('category_slug,products.product_slug,products.title,pi.image_name1')->join('product_images as pi', 'pi.product_id = products.id')->join('product_category as pc', 'pc.product_id = products.id')->join('categories as c', 'c.id = pc.category_id')->where('pi.product_id', $productid)->groupBy('products.id')->get()->getresult();
+    return $data;
+}
+
+function get_wishlist_count($userid)
+{
+    $db = \Config\Database::connect();
+
+    $data = $db->table('wishlist')->where('user_id', $userid)->countAllResults();
+    return $data;
+}
+
+function get_cart_count()
+{
+    $session = \Config\Services::session();
+    $existing_cart = $session->get('cart');
+    if (isset($existing_cart['items'])) {
+        return sizeof($existing_cart['items']);
+    } else {
+        return 0;
+    }
+}
+
+function price_format($price)
+{
+    $price = '<i class="fa fa-inr mr-1" style="font-size:13px;color:#525252;"></i>' . number_format(round($price, 2), 2);;
+    return $price;
 }

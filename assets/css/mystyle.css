@@ -1,3 +1,50 @@
+  .coupon-box {
+      border: 1px solid black;
+      padding: 10px 15px 10px 15px;
+      border-style: dashed;
+      margin-top: 15px;
+  }
+
+  .shipping-offer {
+      border: 1px solid #dfdfdf;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      align-content: center;
+      padding: 6px;
+      color: #424242;
+      width: 100%;
+  }
+
+  .remove-btn-cart {
+      text-decoration: none !important;
+      color: #464646;
+      font-size: 14px;
+      font-weight: 600;
+  }
+
+  .wishlist-btn-cart {
+      text-decoration: none !important;
+      color: #d63242;
+      font-size: 14px;
+      font-weight: 600;
+  }
+
+  .remove-btn-cart:hover {
+      text-decoration: none;
+      color: #464646;
+  }
+
+  .wishlist-btn-cart:hover {
+      text-decoration: none;
+      color: #d63242;
+  }
+
+  .btn-coupon {
+      background: #ffffff;
+      color: #7f7f7f;
+  }
+
   .toastify {
       background: #000 !important;
       color: #fff !important;
@@ -562,7 +609,8 @@
 
   @media screen and (min-width: 768px) {
       .add-to-wishlist-mobile {
-          display: none !important;;
+          display: none !important;
+          ;
       }
   }
 
@@ -583,6 +631,18 @@
       position: absolute;
       top: 0px;
       right: 13px;
+      color: #fff;
+  }
+
+  .mybadgecart {
+      background-color: red;
+      height: 16px;
+      width: 16px;
+      border-radius: 50px;
+      font-size: 10px;
+      position: absolute;
+      top: 0px;
+      right: 8px;
       color: #fff;
   }
 

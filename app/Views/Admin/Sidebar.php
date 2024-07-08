@@ -497,6 +497,13 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="<?= base_url('Admin/shipping-view') ?>" class="nav-link d-flex align-items-center">
+                                <i class="nav-icon fa fa-circle"></i>
+
+                                <p>Shipping Settings</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="<?= base_url('Admin/payment-view') ?>" class="nav-link d-flex align-items-center">
                                 <i class="nav-icon fa fa-circle"></i>
 
