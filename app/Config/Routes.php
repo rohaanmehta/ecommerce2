@@ -147,6 +147,8 @@ $routes->group('', ['namespace' => 'App\controllers\Shop', "filter" => "Profile"
     $routes->post('profile/save_edit_profile', 'Profile::save_edit_profile');
     $routes->post('profile/get_address', 'Profile::get_address');
     $routes->post('profile/delete_address', 'Profile::delete_address');
+    $routes->post('profile/deliver_address', 'Profile::deliver_address');
+    $routes->post('profile/remove_address', 'Profile::remove_address');
     $routes->post('profile/save_edit_address', 'Profile::save_edit_address');
     $routes->get('profile/address', 'Profile::address_view');
     $routes->get('profile/change_password', 'Profile::change_password_view');
@@ -157,6 +159,7 @@ $routes->group('', ['namespace' => 'App\controllers\Shop', "filter" => "Profile"
 
 $routes->group('', ['namespace' => 'App\controllers\Shop', "filter" => "Cart"], static function ($routes) {
     $routes->get('checkout', 'Checkout::checkout_view');
+    $routes->post('place_order', 'Checkout::place_order');
 });
 
 $routes->group('', ['namespace' => 'App\controllers\Shop'], static function ($routes) {

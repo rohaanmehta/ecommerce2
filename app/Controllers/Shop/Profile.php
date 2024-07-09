@@ -47,30 +47,89 @@ class Profile extends BaseController
 
     public function save_edit_address()
     {
-        $userid = $this->session->get('userid');
+        $this->validation = \Config\Services::validation();
 
-        $array = array(
-            'user_id' => $userid,
-            'first_name' => $_POST['first_name'],
-            'last_name' => $_POST['last_name'],
-            'mobile_no' => $_POST['mobile_no'],
-            'postal_code' => $_POST['postal_code'],
-            'state' => $_POST['state'],
-            'city' => $_POST['city'],
-            'address_1' => $_POST['address'],
-            'landmark' => $_POST['landmark'],
-            'instructions' => $_POST['instructions'],
-            // 'is_default' => $_POST['instructions'],
-        );
+        $this->validation->setRule('first_name', 'First Name', 'required|trim');
+        $this->validation->setRule('last_name', 'last_name', 'required|trim');
+        $this->validation->setRule('mobile_no', 'mobile_no', 'required|trim');
+        $this->validation->setRule('postal_code', 'postal_code', 'required|trim');
+        $this->validation->setRule('state', 'state', 'required|trim');
+        $this->validation->setRule('city', 'city', 'required|trim');
+        $this->validation->setRule('address', 'address', 'required|trim');
+        $this->validation->setRule('landmark', 'landmark', 'required|trim');
+        // $this->validation->setRule('instructions', 'instructions', 'required|trim');
 
-        if ($_POST['address_id'] == '') {
-            $this->db->table('user_address')->insert($array);
+        if ($this->validation->withRequest($this->request)->run()) {
+            $userid = $this->session->get('userid');
+
+            $array = array(
+                'user_id' => $userid,
+                'first_name' => $_POST['first_name'],
+                'last_name' => $_POST['last_name'],
+                'mobile_no' => $_POST['mobile_no'],
+                'postal_code' => $_POST['postal_code'],
+                'state' => $_POST['state'],
+                'city' => $_POST['city'],
+                'address_1' => $_POST['address'],
+                'landmark' => $_POST['landmark'],
+                'instructions' => $_POST['instructions'],
+                // 'is_default' => $_POST['instructions'],
+            );
+
+            if (isset($_POST['default-address']) && !empty($_POST['default-address']) && $_POST['default-address'] == 'on') {
+                $this->db->table('user_address')->where('user_id', $userid)->update(['is_default' => '0']);
+                $array['is_default'] = '1';
+            } else {
+                $array['is_default'] = '0';
+            }
+
+            if ($_POST['address_id'] == '') {
+                $this->db->table('user_address')->insert($array);
+            } else {
+                $this->db->table('user_address')->where('id', $_POST['address_id'])->update($array);
+            }
+            $json['status'] = 200;
+
+            $this->session->setFlashdata('message', 'Your address has been saved !');
+            // return redirect()->to(base_url('profile/address'));
+            header('Content-Type: application/json');
+            echo json_encode($json);
         } else {
-            $this->db->table('user_address')->where('id', $_POST['address_id'])->update($array);
-        }
+            $json = array(
+                "error" => true,
+                "first_name" => $this->validation->getError("first_name"),
+                "last_name" => $this->validation->getError("last_name"),
+                "mobile_no" => $this->validation->getError("mobile_no"),
+                "postal_code" => $this->validation->getError("postal_code"),
+                "state" => $this->validation->getError("state"),
+                "city" => $this->validation->getError("city"),
+                "address" => $this->validation->getError("address"),
+                "landmark" => $this->validation->getError("landmark"),
+                // "instructions" => $this->validation->getError("instructions"),
+            );
 
-        $this->session->setFlashdata('message', 'Your address has been saved !');
-        return redirect()->to(base_url('profile/address'));
+            $json['status'] = 400;
+            header('Content-Type: application/json');
+            echo json_encode($json);
+        }
+    }
+
+    public function deliver_address()
+    {
+        $userid = $this->session->get('userid');
+        $this->db->table('user_address')->where('user_id', $userid)->update(['is_default' => '0']);
+        $this->db->table('user_address')->where('id', $_POST['id'])->update(['is_default' => '1']);
+        $data['status'] = 200;
+        header('Content-Type: application/json');
+        echo json_encode($data);
+    }
+
+    public function remove_address()
+    {
+        $this->db->table('user_address')->where('id', $_POST['id'])->delete();
+        $data['status'] = 200;
+        header('Content-Type: application/json');
+        echo json_encode($data);
     }
 
     public function address_view()

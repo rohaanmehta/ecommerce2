@@ -91,7 +91,11 @@
                 <?php include('order_summary.php'); ?>
                 <div class='row'>
                     <div class='col-12'>
-                        <a href='<?= base_url('/checkout'); ?>'><button class="btn black-btn w-100">CHECKOUT</button></a>
+                        <?php  $session = session(); $userid = $session->get('userid');if($userid != ''){?>
+                            <a href='<?= base_url('/checkout'); ?>'><button class="btn black-btn w-100">CHECKOUT</button></a>
+                        <?php } else { ?>
+                            <a ><button class="btn black-btn w-100" data-toggle="modal" data-target="#loginexampleModal">CHECKOUT</button></a>
+                        <?php } ?>
                     </div>
                 </div>
             </div>

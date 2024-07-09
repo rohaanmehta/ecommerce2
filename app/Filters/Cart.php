@@ -25,7 +25,20 @@ class Cart implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        //
+        //  
+        $session = session(); 
+        $userid = $session->get('userid');
+
+        if($userid == ''){
+            return redirect()->to(base_url('/cart'));
+        }
+
+        $cart_items = $session->get('cart');
+
+        if(empty($cart_items['items'])) {
+            return redirect()->to(base_url('/cart'));
+        }
+
     }
 
     /**

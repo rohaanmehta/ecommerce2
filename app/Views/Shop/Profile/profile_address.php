@@ -35,7 +35,7 @@
                         </div>
                     <?php } ?>
 
-                    <form action="<?= base_url('profile/save_edit_address'); ?>" class='m-0' method="post">
+                    <form class='save-address'>
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-md" role="document">
@@ -139,6 +139,34 @@
             $('#landmark').val('');
             $('#instructions').val('');
             $('#address_id').val('');
+        });
+
+        $('.save-address').submit(function(e) {
+            e.preventDefault();
+
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('profile/save_edit_address') ?>",
+                data: new FormData(this),
+                contentType: false,
+                cache: false,
+                processData: false,
+                dataType: "json",
+                success: function(data) {
+                    if (data.status == '200') {
+                        window.location.reload();
+                    } else {
+                        $.each(data, function(key, value) {
+                            // alert();
+                            if (value) {
+                                $("#" + key).addClass("border-danger");
+                            } else {
+                                $("#" + key).removeClass("border-danger");
+                            }
+                        });
+                    }
+                }
+            });
         });
 
         $('.edit-address').click(function() {
