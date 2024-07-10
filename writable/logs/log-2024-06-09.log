@@ -1,0 +1,871 @@
+INFO - 2024-06-09 07:29:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:29:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:30:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:30:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:30:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:30:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:30:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:30:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:30:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:30:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:31:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:31:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:32:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:33:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:34:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:34:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:34:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:35:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:35:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:35:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:35:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:36:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:36:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:36:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:36:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:36:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:36:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 07:36:29 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 07:36:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 07:37:10 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 07:37:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 07:39:10 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 07:39:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:39:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:39:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:47:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:48:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:49:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-09 07:49:38 --> Call to a member function insert() on bool
+in APPPATH\Controllers\Admin\Website_settings.php on line 160.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Website_settings->add_website_settings_product_share()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Website_settings))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 07:49:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-09 07:49:39 --> Call to a member function insert() on bool
+in APPPATH\Controllers\Admin\Website_settings.php on line 160.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Website_settings->add_website_settings_product_share()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Website_settings))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 07:49:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-09 07:49:48 --> Call to a member function insert() on bool
+in APPPATH\Controllers\Admin\Website_settings.php on line 160.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Website_settings->add_website_settings_product_share()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Website_settings))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 07:50:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:50:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:51:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 07:53:22 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 07:53:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 07:54:28 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 07:54:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 07:54:39 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 07:54:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:55:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:55:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:56:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:56:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:57:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:58:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:58:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 07:59:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 07:59:57 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 07:59:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 08:01:03 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 08:01:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 08:02:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 08:04:02 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 08:04:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 08:04:08 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 08:04:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 08:06:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-09 08:06:29 --> Undefined property: stdClass::$backtotop
+in APPPATH\Views\Admin\Views\Settings\footer_settings.php on line 77.
+ 1 APPPATH\Views\Admin\Views\Settings\footer_settings.php(77): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$backtotop', 'D:\\xampp\\htdocs\\ecommerce\\app\\Views\\Admin\\Views\\Settings\\footer_settings.php', 77)
+ 2 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce\\app\\Views\\Admin\\Views\\Settings\\footer_settings.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Admin/Views/Settings/footer_settings', [], true)
+ 5 APPPATH\Controllers\Admin\Website_settings.php(182): view('Admin/Views/Settings/footer_settings', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Admin\Website_settings->footer_settings()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin\Website_settings))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 08:07:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 08:07:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 08:08:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 08:08:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 08:08:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 08:09:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 08:09:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 08:09:18 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 08:09:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 08:10:14 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 08:10:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 08:10:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 08:10:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 08:10:35 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 08:10:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 08:10:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 08:10:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 08:11:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 08:11:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 08:12:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 08:12:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 08:12:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 08:12:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 08:12:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 08:12:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 08:12:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 08:12:52 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 08:12:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 08:13:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 08:13:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 08:13:08 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 08:13:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 08:13:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 08:13:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 08:13:20 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 08:13:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 09:56:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 09:57:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 09:57:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 09:58:02 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 09:58:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 09:59:41 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 09:59:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-09 09:59:42 --> Undefined property: stdClass::$discount
+in APPPATH\Views\Shop\page\product_page.php on line 407.
+ 1 APPPATH\Views\Shop\page\product_page.php(407): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$discount', 'D:\\xampp\\htdocs\\ecommerce\\app\\Views\\Shop\\page\\product_page.php', 407)
+ 2 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce\\app\\Views\\Shop\\page\\product_page.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/product_page', [], true)
+ 5 APPPATH\Controllers\Shop\Product.php(106): view('Shop/page/product_page', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Shop\Product->product_page_view('mens', 'AF45IK2Q1684180524014528')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop\Product))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+WARNING - 2024-06-09 10:00:21 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:00:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 10:00:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 10:00:41 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:00:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 10:03:26 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:03:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 10:03:34 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+WARNING - 2024-06-09 10:03:34 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:03:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 10:03:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 10:03:35 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:03:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 10:04:02 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:04:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 10:04:03 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:04:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 10:04:04 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:04:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 10:04:04 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:04:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 10:04:09 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:04:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 10:04:09 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:04:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 10:04:10 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:04:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 10:04:10 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:04:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 10:04:15 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:04:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 10:04:15 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:04:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 10:04:16 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:04:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 10:04:16 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:04:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 10:05:16 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:05:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 10:05:45 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:05:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 10:05:56 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:05:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 10:06:02 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:06:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 10:07:02 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:07:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 10:08:10 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:08:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-09 10:08:11 --> Call to undefined function get_product_discount_price()
+in APPPATH\Views\Shop\page\product_page.php on line 413.
+ 1 SYSTEMPATH\View\View.php(213): include()
+ 2 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/product_page', [], true)
+ 4 APPPATH\Controllers\Shop\Product.php(106): view('Shop/page/product_page', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Shop\Product->product_page_view('mens', 'AF45IK2Q1684180524014528')
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop\Product))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+WARNING - 2024-06-09 10:09:24 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-09 10:09:24 --> syntax error, unexpected token "}", expecting ";"
+in APPPATH\Helpers\custom_helper.php on line 150.
+ 1 SYSTEMPATH\Controller.php(85): helper([...])
+ 2 APPPATH\Controllers\BaseController.php(52): CodeIgniter\Controller->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 3 SYSTEMPATH\CodeIgniter.php(907): App\Controllers\BaseController->initController(Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), Object(CodeIgniter\Log\Logger))
+ 4 SYSTEMPATH\CodeIgniter.php(490): CodeIgniter\CodeIgniter->createController()
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+WARNING - 2024-06-09 10:09:31 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:09:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 10:09:48 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:09:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 10:10:34 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:10:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 10:11:25 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:11:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 10:12:08 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:12:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 10:12:24 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:12:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 10:12:30 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:12:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 10:12:32 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:12:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 10:13:17 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:13:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-09 10:13:17 --> Undefined property: stdClass::$discount
+in APPPATH\Views\Shop\page\single_product.php on line 66.
+ 1 APPPATH\Views\Shop\page\single_product.php(66): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$discount', 'D:\\xampp\\htdocs\\ecommerce\\app\\Views\\Shop\\page\\single_product.php', 66)
+ 2 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce\\app\\Views\\Shop\\page\\single_product.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/single_product', [], true)
+ 5 APPPATH\Views\Shop\page\product_page.php(657): view('Shop/page/single_product', [...])
+ 6 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce\\app\\Views\\Shop\\page\\product_page.php')
+ 7 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/product_page', [], true)
+ 9 APPPATH\Controllers\Shop\Product.php(106): view('Shop/page/product_page', [...])
+10 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Shop\Product->product_page_view('mens', 'AF45IK2Q1684180524014528')
+11 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop\Product))
+12 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+WARNING - 2024-06-09 10:13:20 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:13:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-09 10:13:20 --> Undefined property: stdClass::$discount
+in APPPATH\Views\Shop\page\single_product.php on line 66.
+ 1 APPPATH\Views\Shop\page\single_product.php(66): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$discount', 'D:\\xampp\\htdocs\\ecommerce\\app\\Views\\Shop\\page\\single_product.php', 66)
+ 2 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce\\app\\Views\\Shop\\page\\single_product.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/single_product', [], true)
+ 5 APPPATH\Views\Shop\page\product_page.php(657): view('Shop/page/single_product', [...])
+ 6 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce\\app\\Views\\Shop\\page\\product_page.php')
+ 7 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/product_page', [], true)
+ 9 APPPATH\Controllers\Shop\Product.php(106): view('Shop/page/product_page', [...])
+10 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Shop\Product->product_page_view('mens', 'AF45IK2Q1684180524014528')
+11 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop\Product))
+12 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+WARNING - 2024-06-09 10:14:34 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:14:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 10:15:00 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:15:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 10:15:10 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:15:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 10:16:16 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:16:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 10:16:52 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:16:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 10:16:58 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:16:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 10:17:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-09 10:17:08 --> Undefined property: stdClass::$discount
+in APPPATH\Views\Shop\page\single_product.php on line 66.
+ 1 APPPATH\Views\Shop\page\single_product.php(66): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$discount', 'D:\\xampp\\htdocs\\ecommerce\\app\\Views\\Shop\\page\\single_product.php', 66)
+ 2 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce\\app\\Views\\Shop\\page\\single_product.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/single_product', [], true)
+ 5 APPPATH\Views\Shop\page\homepage.php(124): view('Shop/page/single_product', [...])
+ 6 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce\\app\\Views\\Shop\\page\\homepage.php')
+ 7 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/homepage', [], true)
+ 9 APPPATH\Controllers\Shop\Homepage.php(121): view('Shop/page/homepage', [...])
+10 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Shop\Homepage->homepage()
+11 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop\Homepage))
+12 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:17:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-09 10:17:58 --> Undefined property: stdClass::$discount
+in APPPATH\Views\Shop\page\single_product.php on line 66.
+ 1 APPPATH\Views\Shop\page\single_product.php(66): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$discount', 'D:\\xampp\\htdocs\\ecommerce\\app\\Views\\Shop\\page\\single_product.php', 66)
+ 2 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce\\app\\Views\\Shop\\page\\single_product.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/single_product', [], true)
+ 5 APPPATH\Views\Shop\page\homepage.php(124): view('Shop/page/single_product', [...])
+ 6 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce\\app\\Views\\Shop\\page\\homepage.php')
+ 7 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/homepage', [], true)
+ 9 APPPATH\Controllers\Shop\Homepage.php(121): view('Shop/page/homepage', [...])
+10 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Shop\Homepage->homepage()
+11 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop\Homepage))
+12 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:17:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-09 10:17:59 --> Undefined property: stdClass::$discount
+in APPPATH\Views\Shop\page\single_product.php on line 66.
+ 1 APPPATH\Views\Shop\page\single_product.php(66): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$discount', 'D:\\xampp\\htdocs\\ecommerce\\app\\Views\\Shop\\page\\single_product.php', 66)
+ 2 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce\\app\\Views\\Shop\\page\\single_product.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/single_product', [], true)
+ 5 APPPATH\Views\Shop\page\homepage.php(124): view('Shop/page/single_product', [...])
+ 6 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce\\app\\Views\\Shop\\page\\homepage.php')
+ 7 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/homepage', [], true)
+ 9 APPPATH\Controllers\Shop\Homepage.php(121): view('Shop/page/homepage', [...])
+10 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Shop\Homepage->homepage()
+11 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop\Homepage))
+12 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:17:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-09 10:17:59 --> Undefined property: stdClass::$discount
+in APPPATH\Views\Shop\page\single_product.php on line 66.
+ 1 APPPATH\Views\Shop\page\single_product.php(66): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$discount', 'D:\\xampp\\htdocs\\ecommerce\\app\\Views\\Shop\\page\\single_product.php', 66)
+ 2 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce\\app\\Views\\Shop\\page\\single_product.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/single_product', [], true)
+ 5 APPPATH\Views\Shop\page\homepage.php(124): view('Shop/page/single_product', [...])
+ 6 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce\\app\\Views\\Shop\\page\\homepage.php')
+ 7 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/homepage', [], true)
+ 9 APPPATH\Controllers\Shop\Homepage.php(121): view('Shop/page/homepage', [...])
+10 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Shop\Homepage->homepage()
+11 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop\Homepage))
+12 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:18:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-09 10:18:50 --> Undefined property: stdClass::$discount
+in APPPATH\Views\Shop\page\single_product.php on line 66.
+ 1 APPPATH\Views\Shop\page\single_product.php(66): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$discount', 'D:\\xampp\\htdocs\\ecommerce\\app\\Views\\Shop\\page\\single_product.php', 66)
+ 2 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce\\app\\Views\\Shop\\page\\single_product.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/single_product', [], true)
+ 5 APPPATH\Views\Shop\page\homepage.php(124): view('Shop/page/single_product', [...])
+ 6 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce\\app\\Views\\Shop\\page\\homepage.php')
+ 7 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/homepage', [], true)
+ 9 APPPATH\Controllers\Shop\Homepage.php(121): view('Shop/page/homepage', [...])
+10 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Shop\Homepage->homepage()
+11 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop\Homepage))
+12 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:18:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-06-09 10:18:52 --> Undefined property: stdClass::$discount
+in APPPATH\Views\Shop\page\single_product.php on line 66.
+ 1 APPPATH\Views\Shop\page\single_product.php(66): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$discount', 'D:\\xampp\\htdocs\\ecommerce\\app\\Views\\Shop\\page\\single_product.php', 66)
+ 2 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce\\app\\Views\\Shop\\page\\single_product.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/single_product', [], true)
+ 5 APPPATH\Views\Shop\page\homepage.php(124): view('Shop/page/single_product', [...])
+ 6 SYSTEMPATH\View\View.php(213): include('D:\\xampp\\htdocs\\ecommerce\\app\\Views\\Shop\\page\\homepage.php')
+ 7 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1184): CodeIgniter\View\View->render('Shop/page/homepage', [], true)
+ 9 APPPATH\Controllers\Shop\Homepage.php(121): view('Shop/page/homepage', [...])
+10 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Shop\Homepage->homepage()
+11 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop\Homepage))
+12 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:19:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 10:19:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 10:20:16 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:20:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-09 10:20:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-09 10:20:21 --> [DEPRECATED] Required parameter $slug follows optional parameter $category in APPPATH\Controllers\Shop\Product.php on line 9.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(312): include_once()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('D:\\xampp\\htdocs\\ecommerce\\app\\controllers\\Shop\\Product.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\controllers\\Shop\\Product')
+ 4 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\controllers\\Shop\\Product')
+ 5 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\controllers\\Shop\\Product', true)
+ 6 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-09 10:20:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

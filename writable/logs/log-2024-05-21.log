@@ -1,0 +1,51 @@
+ERROR - 2024-05-21 09:42:41 --> mysqli_sql_exception: Column 'country' cannot be null in D:\xampp\htdocs\ecommerce2\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 D:\xampp\htdocs\ecommerce2\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `us...', 0)
+#1 D:\xampp\htdocs\ecommerce2\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 D:\xampp\htdocs\ecommerce2\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 D:\xampp\htdocs\ecommerce2\system\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#4 D:\xampp\htdocs\ecommerce2\app\Controllers\Shop\Login.php(26): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 D:\xampp\htdocs\ecommerce2\system\CodeIgniter.php(934): App\Controllers\Shop\Login->add_register_data()
+#6 D:\xampp\htdocs\ecommerce2\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop\Login))
+#7 D:\xampp\htdocs\ecommerce2\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 D:\xampp\htdocs\ecommerce2\index.php(67): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2024-05-21 09:42:41 --> Column 'country' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `users` (`first_name`, `password`, `country`, `state`, `city`, `email`, `role`) VALUES (\'ee\', \'1a100d2c0dab19c4430e7d73762b3423\', NULL, NULL, NULL, \'ee\', \'customer\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `users` (`first_name`, `password`, `country`, `state`, `city`, `email`, `role`) VALUES (\'ee\', \'1a100d2c0dab19c4430e7d73762b3423\', NULL, NULL, NULL, \'ee\', \'customer\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `users` (`first_name`, `password`, `country`, `state`, `city`, `email`, `role`) VALUES (\'ee\', \'1a100d2c0dab19c4430e7d73762b3423\', NULL, NULL, NULL, \'ee\', \'customer\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2309): CodeIgniter\Database\BaseConnection->query('INSERT INTO `users` (`first_name`, `password`, `country`, `state`, `city`, `email`, `role`) VALUES (:first_name:, :password:, :country:, :state:, :city:, :email:, :role:)', [...], false)
+ 5 APPPATH\Controllers\Shop\Login.php(26): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Shop\Login->add_register_data()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop\Login))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-21 17:33:33 --> Undefined array key 0
+in APPPATH\Controllers\Shop\Product.php on line 45.
+ 1 APPPATH\Controllers\Shop\Product.php(45): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'D:\\xampp\\htdocs\\ecommerce\\app\\Controllers\\Shop\\Product.php', 45)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Shop\Product->product_page_view('Tshirts', 'AF45IK2Q32612230424013322z')
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop\Product))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-21 17:33:40 --> Undefined array key 0
+in APPPATH\Controllers\Shop\Product.php on line 45.
+ 1 APPPATH\Controllers\Shop\Product.php(45): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'D:\\xampp\\htdocs\\ecommerce\\app\\Controllers\\Shop\\Product.php', 45)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Shop\Product->product_page_view('Tshirts', 'AF45IK2Q32612230424013322z')
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop\Product))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-21 17:33:41 --> Undefined array key 0
+in APPPATH\Controllers\Shop\Product.php on line 45.
+ 1 APPPATH\Controllers\Shop\Product.php(45): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'D:\\xampp\\htdocs\\ecommerce\\app\\Controllers\\Shop\\Product.php', 45)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Shop\Product->product_page_view('Tshirts', 'AF45IK2Q32612230424013322z')
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop\Product))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-21 17:33:41 --> Undefined array key 0
+in APPPATH\Controllers\Shop\Product.php on line 45.
+ 1 APPPATH\Controllers\Shop\Product.php(45): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'D:\\xampp\\htdocs\\ecommerce\\app\\Controllers\\Shop\\Product.php', 45)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Shop\Product->product_page_view('Tshirts', 'AF45IK2Q32612230424013322z')
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shop\Product))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
