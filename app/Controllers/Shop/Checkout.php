@@ -71,7 +71,8 @@ class Checkout extends BaseController
 
         $last_order = $this->db->table('orders')->select('order_no')->orderBy('id', 'desc')->limit(1)->get()->getResult();
         $order_no = '10000';
-        if (isset($last_order) && !empty($last_order)) {
+
+        if(isset($last_order) && !empty($last_order)){
             // print_r($last_order);exit;
             $order_no = $last_order[0]->order_no + 1;
         }
@@ -113,6 +114,9 @@ class Checkout extends BaseController
             foreach ($cart_items['items'] as $row) {
                 $variation_array = array();
 
+
+        if (isset($cart_items['items']) && !empty($cart_items['items'])) {
+            foreach ($cart_items['items'] as $row) {
                 $product = $this->db->table('products')->where('id', $row['product_id'])->get()->getResult();
                 $order_products = array(
                     'order_id' => $order_id,
