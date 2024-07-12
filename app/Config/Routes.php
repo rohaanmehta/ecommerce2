@@ -161,6 +161,9 @@ $routes->group('', ['namespace' => 'App\controllers\Shop', "filter" => "Profile"
     $routes->get('profile/change_password', 'Profile::change_password_view');
     $routes->post('change_password_post', 'Profile::change_password_post');
     $routes->get('profile/delete_account', 'Profile::delete_account_view');
+    $routes->get('profile/myorders', 'Profile::myorders');
+    $routes->get('orders/?(:any)', 'Profile::orders/$1');
+    
     //
 });
 

@@ -216,4 +216,11 @@ function get_order_variation($id)
     return $data;
 }
 
+function get_order_products($orderid){
+    $db = \Config\Database::connect();
+
+    $data = $db->table('order_products')->where('order_id', $orderid)->get()->getresult();
+    return $data;
+}
+
 
