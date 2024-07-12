@@ -38,6 +38,13 @@ $routes->group('', ['namespace' => 'App\controllers\Admin', "filter" => "Auth"],
     $routes->post('add_shipping_settings', 'Website_settings::add_shipping_settings');
 
 
+    $routes->get('Admin/orders-list', 'Orders::orders_list');
+    $routes->get('admin/order/?(:any)', 'Orders::order/$1');
+    $routes->post('update-order-status', 'Orders::update_order_status');
+    $routes->post('update-tracking-status', 'Orders::update_tracking_status');
+    $routes->post('ajax-order-info', 'Orders::ajax_order_info');
+
+
     $routes->get('Admin/footer_settings', 'Website_settings::footer_settings');
     $routes->post('add_footer_data', 'Website_settings::add_footer_data');
 

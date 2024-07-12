@@ -211,10 +211,9 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="<?= base_url('Admin/website_settings') ?>" class="nav-link d-flex align-items-center">
+                            <a href="<?= base_url('Admin/orders-list') ?>" class="nav-link d-flex align-items-center">
                                 <i class="nav-icon fa fa-circle"></i>
-
-                                <p>Orders</p>
+                                <p>Orders List</p>
                             </a>
                         </li>
                     </ul>
