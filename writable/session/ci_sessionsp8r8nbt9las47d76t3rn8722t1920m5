@@ -1,1 +1,1 @@
-__ci_last_regenerate|i:1720356180;_ci_previous_url|s:45:"http://localhost/ecommerce/index.php/checkout";cart|a:1:{s:5:"items";a:1:{i:0;a:6:{s:10:"product_id";s:1:"7";s:6:"cartid";s:14:"07072024114558";s:7:"user_id";N;s:8:"quantity";s:2:"01";s:5:"price";i:579;s:10:"unit_price";s:3:"579";}}}
+__ci_last_regenerate|i:1720860379;_ci_previous_url|s:45:"http://localhost/ecommerce/index.php/checkout";cart|a:1:{s:5:"items";a:1:{i:0;a:6:{s:10:"product_id";s:1:"7";s:6:"cartid";s:14:"07072024114558";s:7:"user_id";N;s:8:"quantity";s:2:"01";s:5:"price";i:579;s:10:"unit_price";s:3:"579";}}}
