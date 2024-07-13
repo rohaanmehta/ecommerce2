@@ -144,7 +144,7 @@ $url = $url . '?' . $params;
             <div class='d-flex justify-content-end close-sort-filter'><i class='fa fa-times'></i></div>
             <div style="color:#4e4e4e;padding:10px;font-size:13px;font-weight:700;border-bottom:1px solid #c5c5c5">SORT BY</div>
             <a class='sort-options' href='<?= $new; ?>'>
-                <div class="sort-options <?php if (strpos($url, '%3Asort=new') == true) {
+                <div class="sort-options <?php if (strpos($url, '%3Asort=low') == false && strpos($url, '%3Asort=high') == false) {
                                                 echo 'active-filter';
                                             } ?>">What's New</div>
             </a>

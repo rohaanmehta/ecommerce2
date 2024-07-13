@@ -39,9 +39,9 @@
     <div class="col-12">
         <a class="mb-2 profile-sidebar-value" href="<?= base_url('profile/change_password'); ?>">Change Password</a>
     </div>
-    <div class="col-12" style="padding-bottom:15px;border-bottom:1px solid #dfdfdf">
-        <a class="mb-2 profile-sidebar-value" href="<?= base_url('profile/delete_account'); ?>">Delete Account</a>
-    </div>
+    <!-- <div class="col-12" style="padding-bottom:15px;border-bottom:1px solid #dfdfdf">
+        <a class="mb-2 profile-sidebar-value" href="<//?= base_url('profile/delete_account'); ?>">Delete Account</a>
+    </div> -->
 
     <div class="col-12 mt-3">
         <p class="mb-2 h5 font-weight-light profile-sidebar-option">Orders</p>

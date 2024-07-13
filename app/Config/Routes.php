@@ -38,6 +38,13 @@ $routes->group('', ['namespace' => 'App\controllers\Admin', "filter" => "Auth"],
     $routes->post('add_shipping_settings', 'Website_settings::add_shipping_settings');
 
 
+    $routes->get('Admin/orders-list', 'Orders::orders_list');
+    $routes->get('admin/order/?(:any)', 'Orders::order/$1');
+    $routes->post('update-order-status', 'Orders::update_order_status');
+    $routes->post('update-tracking-status', 'Orders::update_tracking_status');
+    $routes->post('ajax-order-info', 'Orders::ajax_order_info');
+
+
     $routes->get('Admin/footer_settings', 'Website_settings::footer_settings');
     $routes->post('add_footer_data', 'Website_settings::add_footer_data');
 
@@ -145,16 +152,24 @@ $routes->group('', ['namespace' => 'App\controllers\Shop', "filter" => "Profile"
     $routes->get('profile', 'Profile::profile_view');
     $routes->get('profile/edit_profile', 'Profile::edit_profile_view');
     $routes->post('profile/save_edit_profile', 'Profile::save_edit_profile');
+    $routes->post('profile/get_address', 'Profile::get_address');
+    $routes->post('profile/delete_address', 'Profile::delete_address');
+    $routes->post('profile/deliver_address', 'Profile::deliver_address');
+    $routes->post('profile/remove_address', 'Profile::remove_address');
     $routes->post('profile/save_edit_address', 'Profile::save_edit_address');
     $routes->get('profile/address', 'Profile::address_view');
     $routes->get('profile/change_password', 'Profile::change_password_view');
     $routes->post('change_password_post', 'Profile::change_password_post');
     $routes->get('profile/delete_account', 'Profile::delete_account_view');
+    $routes->get('profile/myorders', 'Profile::myorders');
+    $routes->get('orders/?(:any)', 'Profile::orders/$1');
+    
     //
 });
 
 $routes->group('', ['namespace' => 'App\controllers\Shop', "filter" => "Cart"], static function ($routes) {
     $routes->get('checkout', 'Checkout::checkout_view');
+    $routes->post('place_order', 'Checkout::place_order');
 });
 
 $routes->group('', ['namespace' => 'App\controllers\Shop'], static function ($routes) {

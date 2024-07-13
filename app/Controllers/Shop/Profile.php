@@ -47,24 +47,116 @@ class Profile extends BaseController
 
     public function save_edit_address()
     {
-        $array = array(
-            'address1' => $_POST['address1'],
-            'address2' => $_POST['address2'],
-            'address3' => $_POST['address3'],
-        );
-        // print_r($_POST);exit;
+        $this->validation = \Config\Services::validation();
+
+        $this->validation->setRule('first_name', 'First Name', 'required|trim');
+        $this->validation->setRule('last_name', 'last_name', 'required|trim');
+        $this->validation->setRule('mobile_no', 'mobile_no', 'required|trim');
+        $this->validation->setRule('postal_code', 'postal_code', 'required|trim');
+        $this->validation->setRule('state', 'state', 'required|trim');
+        $this->validation->setRule('city', 'city', 'required|trim');
+        $this->validation->setRule('address', 'address', 'required|trim');
+        $this->validation->setRule('landmark', 'landmark', 'required|trim');
+        // $this->validation->setRule('instructions', 'instructions', 'required|trim');
+
+        if ($this->validation->withRequest($this->request)->run()) {
+            $userid = $this->session->get('userid');
+
+            $array = array(
+                'user_id' => $userid,
+                'first_name' => $_POST['first_name'],
+                'last_name' => $_POST['last_name'],
+                'mobile_no' => $_POST['mobile_no'],
+                'postal_code' => $_POST['postal_code'],
+                'state' => $_POST['state'],
+                'city' => $_POST['city'],
+                'address_1' => $_POST['address'],
+                'landmark' => $_POST['landmark'],
+                'instructions' => $_POST['instructions'],
+                // 'is_default' => $_POST['instructions'],
+            );
+
+            if (isset($_POST['default-address']) && !empty($_POST['default-address']) && $_POST['default-address'] == 'on') {
+                $this->db->table('user_address')->where('user_id', $userid)->update(['is_default' => '0']);
+                $array['is_default'] = '1';
+            } else {
+                $array['is_default'] = '0';
+            }
+
+            if ($_POST['address_id'] == '') {
+                $this->db->table('user_address')->insert($array);
+            } else {
+                $this->db->table('user_address')->where('id', $_POST['address_id'])->update($array);
+            }
+            $json['status'] = 200;
+
+            $this->session->setFlashdata('message', 'Your address has been saved !');
+            // return redirect()->to(base_url('profile/address'));
+            header('Content-Type: application/json');
+            echo json_encode($json);
+        } else {
+            $json = array(
+                "error" => true,
+                "first_name" => $this->validation->getError("first_name"),
+                "last_name" => $this->validation->getError("last_name"),
+                "mobile_no" => $this->validation->getError("mobile_no"),
+                "postal_code" => $this->validation->getError("postal_code"),
+                "state" => $this->validation->getError("state"),
+                "city" => $this->validation->getError("city"),
+                "address" => $this->validation->getError("address"),
+                "landmark" => $this->validation->getError("landmark"),
+                // "instructions" => $this->validation->getError("instructions"),
+            );
+
+            $json['status'] = 400;
+            header('Content-Type: application/json');
+            echo json_encode($json);
+        }
+    }
+
+    public function deliver_address()
+    {
         $userid = $this->session->get('userid');
-        $this->db->table('users')->where('id', $userid)->update($array);
-        $this->session->setFlashdata('message', 'Your address has been updated !');
-        return redirect()->to(base_url('profile/address'));
+        $this->db->table('user_address')->where('user_id', $userid)->update(['is_default' => '0']);
+        $this->db->table('user_address')->where('id', $_POST['id'])->update(['is_default' => '1']);
+        $data['status'] = 200;
+        header('Content-Type: application/json');
+        echo json_encode($data);
+    }
+
+    public function remove_address()
+    {
+        $this->db->table('user_address')->where('id', $_POST['id'])->delete();
+        $data['status'] = 200;
+        header('Content-Type: application/json');
+        echo json_encode($data);
     }
 
     public function address_view()
     {
         $userid = $this->session->get('userid');
-        $data['user'] = $this->db->table('users')->select('address1,address2,address3')->where('id', $userid)->get()->getResult();
+        $data['user'] = $this->db->table('user_address')->select('*')->where('user_id', $userid)->get()->getResult();
         return view('Shop/Profile/profile_address', $data);
     }
+
+    public function get_address()
+    {
+        $data['user'] = $this->db->table('user_address')->select('*')->where('id', $_POST['id'])->get()->getResult();
+        $data['status'] = 200;
+        header('Content-Type: application/json');
+        echo json_encode($data);
+    }
+
+    public function delete_address()
+    {
+        $this->db->table('user_address')->where('id', $_POST['id'])->delete();
+        $this->session->setFlashdata('message', 'Your address has been deleted !');
+
+        $data['status'] = 200;
+        header('Content-Type: application/json');
+        echo json_encode($data);
+    }
+
 
     public function change_password_view()
     {
@@ -98,9 +190,30 @@ class Profile extends BaseController
         $data['page'] = $this->db->table('pages')->where('page_name', 'delete-page')->get()->getResult();
         return view('Shop/Profile/delete_account_view', $data);
     }
+
     public function coupons()
     {
-        $data['coupons'] = $this->db->table('coupons')->where('start_date <=',date('Y-m-d'))->where('end_date >=',date('Y-m-d'))->where('status', '1')->get()->getResult();
+        $data['coupons'] = $this->db->table('coupons')->where('start_date <=', date('Y-m-d'))->where('end_date >=', date('Y-m-d'))->where('status', '1')->get()->getResult();
         return view('Shop/Profile/coupons', $data);
+    }
+
+    public function myorders()
+    {
+        $userid = $this->session->get('userid');
+        $data['orders'] = $this->db->table('orders')->where('user_id', $userid)->get()->getResult();
+        return view('Shop/Profile/orderslist', $data);
+    }
+
+    public function orders($orderno)
+    {
+        $userid = $this->session->get('userid');
+        $data['order'] = $this->db->table('orders')->where('order_no', $orderno)->where('user_id', $userid)->get()->getResult();
+        if ($data['order'][0]->user_id == $userid) {
+            $data['order_products'] = $this->db->table('order_products')->select('order_products.*,order_products.id as oid,products.*')->join('products', 'products.id = order_products.product_id')->where('order_id', $data['order'][0]->id)->get()->getResult();
+            $data['order_shipping'] = $this->db->table('order_shipping')->where('order_id', $data['order'][0]->id)->get()->getResult();
+            return view('Shop/Profile/orderdetails', $data);
+        }else{
+            echo 'wrong order no';
+        }
     }
 }

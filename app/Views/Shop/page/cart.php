@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row mb-5">
         <?php if (isset($cart_items['items']) && !empty($cart_items['items'])) { ?>
-            <div class="col-12 col-md-8 p-4">
+            <div class="col-12 col-md-8 pt-3 pr-3 pl-3 pb-0 p-md-4">
                 <?php if ($final_cart_value >= $shipping[0]->value_2) { ?>
                     <div class="shipping-offer">
                         <i class='fa fa-truck mr-1' style="font-size:20px;"></i>
@@ -21,10 +21,12 @@
                     <?php foreach ($cart_items['items'] as $row) {
                         // print_r($row);exit;
                         $cart_details = cartdetails($row['product_id']); ?>
-                        <div class='d-flex cart_Item_single table-bordered mb-3 p-2' style='align-items:top;justify-content:space-between'>
+                        <div class='d-flex cart_Item_single table-bordered mb-3 p-2' style='align-items:top;justify-content:space-between;flex-wrap:wrap;'>
                             <div class="d-flex">
-                                <div class=""><a href='<?= base_url($cart_details[0]->category_slug.'/'.$cart_details[0]->product_slug);?>'><img style='width:90%;max-width:150px;' src='<?= base_url('uploads/product_images/' . $cart_details[0]->image_name1) ?>' /></a></div>
+                                <div class=""><a href='<?= base_url($cart_details[0]->category_slug . '/' . $cart_details[0]->product_slug); ?>'><img style='width:90%;max-width:150px;' src='<?= base_url('uploads/product_images/' . $cart_details[0]->image_name1) ?>' /></a></div>
                                 <div class="mt-2 text-left" style='font-size:14px;font-weight:600;'><?= $cart_details[0]->title ?>
+                                    <div class="mt-1 mr-2 mobile_Head_Show" style='align-items:center;font-size:13px;font-weight:600;min-width: 90px;text-align:start;'><?= price_format($row['price']) ?></div>
+
                                     <!-- <p class="m-0" style='font-size:12px;color:#858585;font-weight:500;'> Color · Size S· Sleeves Half Sleeves· SKU 01-1058110</p> -->
                                     <p class="m-0" style='font-size:12px;color:#858585;font-weight:500;'> <?php foreach ($row as $key => $variation) {
                                                                                                                 if ($key != 'cartid' && $key != 'unit_price' &&  $key != 'product_id' && $key != 'user_id'  && $key != 'quantity' && $key != 'price') {
@@ -32,7 +34,8 @@
                                                                                                                 }
                                                                                                             } ?></p>
                                     <div class="d-flex" style="align-items:center;">
-                                        <label for="gfg" class='pt-3 mr-2' style='font-size:15px;'>QTY</label>
+                                        <label for="gfg" class='pt-3 mr-2 mobile_Head_Hide' style='font-size:15px;'>QTY</label>
+                                        <label for="gfg" class='pt-3 mr-2 mobile_Head_Show' style='font-size:13px;'>QTY</label>
                                         <select id='<?= $row['cartid'] ?>' class="change-cart-qty mt-2 form-control p-1" style='font-size:14px;width:50px;height:30px'>
                                             <option value='01' <?php if ($row['quantity'] == '01') {
                                                                     echo 'selected';
@@ -66,81 +69,33 @@
                                                                 } ?>>10</option>
                                         </select>
                                     </div>
-                                    <hr>
-                                    <a href="" id='<?= $row['cartid'] ?>' class="delete-from-cart remove-btn-cart ml-0 mt-3 mr-3 mb-3">REMOVE</a>
-                                    <a href="" id='<?= $row['cartid'] ?>' class="wishlist-btn-cart ml-0 mt-3 mr-3 mb-3">MOVE TO WISHLIST</a>
+                                    <hr class='m-2 m-md-2'>
+                                    <a href="" style='font-size:13px;' id='<?= $row['cartid'] ?>' class="mobile_Head_Hide delete-from-cart remove-btn-cart ml-0 mt-3 mr-3 mb-3">REMOVE</a>
+                                    <a href="" style='font-size:13px;' id='<?= $row['cartid'] ?>' class="mobile_Head_Hide wishlist-btn-cart ml-0 mt-3 mr-3 mb-3">MOVE TO WISHLIST</a>
                                 </div>
                             </div>
-                            <div class="mt-2 mr-2" style='font-size:16px;font-weight:600;min-width: 90px;text-align:end;'><?= price_format($row['price']) ?></div>
+                            <div class="mt-2 mr-2 mobile_Head_Hide" style='font-size:16px;font-weight:600;min-width: 90px;text-align:end;'><?= price_format($row['price']) ?></div>
                             <!-- <div class="col-lg-1"><a href="javascript:void(0)" id='<? //= $row->cartid 
                                                                                         ?>' class="delete-from-cart" style='font-size:40px;text-decoration:none;color:#000' id='closebtn'>&times;</a></div> -->
+
+
+                            <div class='d-flex w-100'>
+                                <a href="" style='font-size:13px;' id='<?= $row['cartid'] ?>' class="mobile_Head_Show delete-from-cart remove-btn-cart mt-2">REMOVE</a><span class='mobile_Head_Show ml-1 mr-1' style='margin-top:6px;font-weight:900;font-size:14px;'>|</span>
+                                <a href="" style='font-size:13px;' id='<?= $row['cartid'] ?>' class="mobile_Head_Show wishlist-btn-cart mt-2">MOVE TO WISHLIST</a>
+                            </div>
                         </div>
                     <?php } ?>
                 </div>
             </div>
-            <div class="col-12 col-md-4 p-4" style="border-left:1px solid #dfdfdf">
-                <div class='row'>
-                    <div class='col-6'>
-                        <p style='font-size:17px;font-weight:600'> Price Detail</p>
-                    </div>
-                </div>
-                <div class='row'>
-                    <div class='col-6'>
-                        <p class='mb-2' style='font-size:15px;font-weight:500'> Total MRP</p>
-                    </div>
-                    <div class='col-6'>
-                        <p class='mb-2' style='font-size:15px;font-weight:500'> <?= price_format($total_cart_value) ?></p>
-                    </div>
-                </div>
-                <?php if (isset($cart_items['discount']) && !empty($cart_items['discount'])) { ?>
-                    <div class='row'>
-                        <div class='col-6'>
-                            <p class='mb-2' style='font-size:15px;font-weight:500'> Discount</p>
-                        </div>
-                        <div class='col-6'>
-                            <p class='mb-2' style='font-size:15px;font-weight:500'> <?= price_format($cart_items['discount']) ?></p>
-                        </div>
-                    </div>
-                <?php } ?>
-
-                <div class='row'>
-                    <div class='col-6'>
-                        <p class='mb-2' style='font-size:15px;font-weight:500'> Delivery</p>
-                    </div>
-
-                    <?php if ($final_cart_value >= $shipping[0]->value_2) { ?>
-                        <div class='col-6'>
-                            <p class='m-0' style='font-size:15px;font-weight:500'> <span style='text-decoration:line-through !important;color:#6a6a6a !important;'> <?= price_format($shipping[0]->value_1) ?> </span>Free Delivery</p>
-                        </div>
-                    <?php } else { ?>
-                        <div class='col-6'>
-                            <p class='m-0' style='font-size:15px;font-weight:500'> <?= price_format($shipping[0]->value_1) ?></p>
-                        </div>
-                        <div class='col-12 p-2' style='background:#e9e9e9'>
-                            <p class='m-0' style='font-size:15px;font-weight:500'> <i class='fa fa-truck mr-2'></i><span style='font-weight:600;'>Free Delivery </span>Shop for more <?= price_format($shipping[0]->value_2 - $final_cart_value) ?> </p>
-                        </div>
-                    <?php } ?>
-                </div>
+            <div class="col-12 col-md-4 pt-0 pr-3 pl-3 pb-0 p-md-4" style="border-left:1px solid #dfdfdf">
+                <?php include('order_summary.php'); ?>
                 <div class='row'>
                     <div class='col-12'>
-                        <hr>
-                        <button class="btn btn-coupon w-100" data-toggle="modal" data-target="#couponModal"> Apply Coupon <i class=' ml-3 fa fa-angle-right'></i></button>
-                        <hr>
-                    </div>
-                </div>
-                <div class='row'>
-                    <div class='col-6'>
-                        <p style='font-size:17px;font-weight:600'> Total Amount</p>
-                    </div>
-                    <div class='col-6'>
-                        <?php if ($final_cart_value >= $shipping[0]->value_2) { ?>
-                            <p style='font-size:17px;font-weight:600'> <?= price_format($final_cart_value) ?> </p>
-                        <?php } else {?>
-                            <p style='font-size:17px;font-weight:600'> <?= price_format($final_cart_value + $shipping[0]->value_1)?> </p>
-                        <?php }?>
-                    </div>
-                    <div class='col-12'>
-                        <a href='<?= base_url('/checkout');?>'><button class="btn black-btn w-100">CHECKOUT</button></a>
+                        <?php  $session = session(); $userid = $session->get('userid');if($userid != ''){?>
+                            <a href='<?= base_url('/checkout'); ?>'><button class="btn black-btn w-100">CHECKOUT</button></a>
+                        <?php } else { ?>
+                            <a ><button class="btn black-btn w-100" data-toggle="modal" data-target="#loginexampleModal">CHECKOUT</button></a>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -201,6 +156,7 @@
         </div>
     </div>
 </div>
+
 <?= $this->endSection('content') ?>
 
 <?= $this->section('scripts') ?>
@@ -208,6 +164,8 @@
 <script>
     $(document).ready(function() {
         $('.apply-coupon').click(function() {
+            $('.coupon-msg2').html('');
+            $('.coupon-msg').html('');
             $.ajax({
                 type: "POST",
                 url: "<?= base_url('coupon-validate') ?>",

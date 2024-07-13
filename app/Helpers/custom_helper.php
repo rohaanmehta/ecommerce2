@@ -195,6 +195,32 @@ function get_cart_count()
 
 function price_format($price)
 {
-    $price = '<i class="fa fa-inr mr-1" style="font-size:13px;color:#525252;"></i>' . number_format(round($price, 2), 2);;
+    $price = '<i class="fa fa-inr" style="margin-right:1px;font-size:12px;color:#525252;"></i>' . number_format(round($price, 2), 2);;
     return $price;
 }
+
+function get_product_image($product_id)
+{
+    $db = \Config\Database::connect();
+
+    $data = $db->table('product_images')->where('product_id', $product_id)->get()->getresult();
+    $data = $data[0]->image_name1;
+    return $data;
+}
+
+function get_order_variation($id)
+{
+    $db = \Config\Database::connect();
+
+    $data = $db->table('order_variation')->where('order_products_id', $id)->get()->getresult();
+    return $data;
+}
+
+function get_order_products($orderid){
+    $db = \Config\Database::connect();
+
+    $data = $db->table('order_products')->where('order_id', $orderid)->get()->getresult();
+    return $data;
+}
+
+

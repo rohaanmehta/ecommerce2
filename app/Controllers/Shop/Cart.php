@@ -94,13 +94,14 @@ class Cart extends BaseController
                                 // echo '<pre>'; print_r($item);exit;
                                 $duplicate_product = 1;
                                 $existing_cart['items'][$key]['quantity'] = $single_item['quantity'] + $_POST['quantity'];
-
+                                $existing_cart['items'][$key]['price'] = $single_item['unit_price'] * $existing_cart['items'][$key]['quantity'];
                                 if (isset($single_item[$key2]) && $item[$key2] != $single_item[$key2]) {
                                     $duplicate_product = 0;
                                     // echo '<pre>'; print_r($single_item);
 
                                     // echo '<pre>'; print_r($item);
                                     $existing_cart['items'][$key]['quantity'] = $single_item['quantity'];
+                                    $existing_cart['items'][$key]['price'] = $single_item['price'];
                                     break;
                                 } else {
                                     // $duplicate_product = 0;
@@ -109,6 +110,7 @@ class Cart extends BaseController
                         }
                     } else {
                         $existing_cart['items'][$key]['quantity'] = $single_item['quantity'] + $_POST['quantity'];
+                        $existing_cart['items'][$key]['price'] = $single_item['unit_price'] * $existing_cart['items'][$key]['quantity'];
                         $duplicate_product = 1;
                         break;
                     }
@@ -120,6 +122,7 @@ class Cart extends BaseController
         // exit;
         if ($duplicate_product == 1) {
             $this->session->set('cart', $existing_cart);
+            // exit;
         } else {
             $cart['items'][] = $item;
             $this->session->set('cart', $cart);
