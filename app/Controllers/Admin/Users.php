@@ -19,8 +19,8 @@ class Users extends BaseController
         $offset = ($page - 1) * $perPage;
 
         if (isset($_GET['search']) && !empty($_GET['search'])) {
-            $data['users'] = $this->db->table('users')->like('first_name', $_GET['search'])->orlike('last_name', $_GET['search'])->orlike('email', $_GET['search'])->get($perPage, $offset)->getResult();
-            $total = $this->db->table('users')->like('first_name', $_GET['search'])->orlike('last_name', $_GET['search'])->orlike('email', $_GET['search'])->countAllResults();
+            $data['users'] = $this->db->table('users')->like('full_name', $_GET['search'])->orlike('last_name', $_GET['search'])->orlike('email', $_GET['search'])->get($perPage, $offset)->getResult();
+            $total = $this->db->table('users')->like('full_name', $_GET['search'])->orlike('last_name', $_GET['search'])->orlike('email', $_GET['search'])->countAllResults();
 
         } else {
             $data['users'] = $this->db->table('users')->get($perPage, $offset)->getResult();
@@ -36,8 +36,7 @@ class Users extends BaseController
     {
         $password = md5($_POST['password']);
         $array = array(
-            'first_name' =>  $_POST['firstname'],
-            'last_name' => $_POST['lastname'],
+            'full_name' =>  $_POST['firstname'],
             'email' => $_POST['email'],
             'password' => $password,
             'role' => $_POST['role']

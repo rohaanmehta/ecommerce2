@@ -32,13 +32,13 @@
         <form class='user-form row'>
             <div class='p-5 m-3 card col-6'>
                 <div class='mb-2'>
-                    <span class='form-label'> First Name </span>
+                    <span class='form-label'> Name </span>
                     <input required name='firstname' class='form-control' placeholder="First Name" value='<?php if(isset($product[0])){ echo $product[0]->title;}?>'>
                 </div>
-                <div class='mb-2'>
+                <!-- <div class='mb-2'>
                     <span class='form-label'> Last Name </span>
                     <input required name='lastname' class='form-control' placeholder="Last Name" value=''>
-                </div>
+                </div> -->
                 <div class='mb-2'>
                     <span class='form-label'> Email </span>
                     <input required name='email' class='form-control' placeholder="Email" value=''>

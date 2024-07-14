@@ -39,8 +39,7 @@
             <table class='table table-bordered table-striped'>
                 <tr>
                     <td>ID</td>
-                    <td>First Name</td>
-                    <td>Last Name</td>
+                    <td>Name</td>
                     <td>Email</td>
                 </tr>
 
@@ -48,8 +47,7 @@
                     foreach ($users as $row) { ?>
                         <tr>
                             <td><?= $row->id; ?></td>
-                            <td><?= $row->first_name; ?></td>
-                            <td><?= $row->last_name; ?></td>
+                            <td><?= $row->full_name; ?></td>
                             <td><?= $row->email; ?></td>
                         </tr>
                     <?php  }

@@ -300,7 +300,7 @@
         dataType: "json",
         success: function(data) {
           if (data.status == '200') {
-            // window.location.reload();
+             window.location.href = '<?= base_url('/orders/');?>'+data.orderno;
           }
         }
       });

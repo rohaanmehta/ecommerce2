@@ -14,10 +14,10 @@ class Orders extends BaseController
         $offset = ($page - 1) * $perPage;
 
         if (isset($_GET['search']) && !empty($_GET['search'])) {
-            $data['list'] = $this->db->table('orders')->select('orders.*,users.first_name,users.last_name')->join('users', 'users.id = orders.user_id')->like('order_no', $_GET['search'])->orlike('first_name', $_GET['search'])->orlike('last_name', $_GET['search'])->get()->getResult();
+            $data['list'] = $this->db->table('orders')->select('orders.*,users.full_name')->join('users', 'users.id = orders.user_id')->like('order_no', $_GET['search'])->orlike('first_name', $_GET['search'])->orlike('last_name', $_GET['search'])->get()->getResult();
             $total =  $this->db->table('orders')->join('users', 'users.id = orders.user_id')->like('order_no', $_GET['search'])->orlike('first_name', $_GET['search'])->orlike('last_name', $_GET['search'])->countAllResults();
         } else {
-            $data['list'] = $this->db->table('orders')->select('orders.*,users.first_name,users.last_name')->join('users', 'users.id = orders.user_id')->orderBy('orders.id', 'desc')->get($perPage, $offset)->getResult();
+            $data['list'] = $this->db->table('orders')->select('orders.*,users.full_name')->join('users', 'users.id = orders.user_id')->orderBy('orders.id', 'desc')->get($perPage, $offset)->getResult();
             $total = $this->db->table('orders')->countAllResults();
         }
 
@@ -28,7 +28,7 @@ class Orders extends BaseController
 
     public function order($orderno)
     {
-        $data['order'] = $this->db->table('orders')->select('orders.*,users.first_name,users.last_name,users.gender,users.email,users.dob')->join('users', 'users.id = orders.user_id')->where('order_no', $orderno)->get()->getResult();
+        $data['order'] = $this->db->table('orders')->select('orders.*,users.full_name,users.gender,users.email,users.dob')->join('users', 'users.id = orders.user_id')->where('order_no', $orderno)->get()->getResult();
         // print_r($data['order'][0]->id);exit;
         $data['order_products'] = $this->db->table('order_products')->select('order_products.*,order_products.id as oid,products.*')->join('products', 'products.id = order_products.product_id')->where('order_id', $data['order'][0]->id)->get()->getResult();
         $data['order_shipping'] = $this->db->table('order_shipping')->where('order_id', $data['order'][0]->id)->get()->getResult();

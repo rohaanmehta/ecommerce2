@@ -91,9 +91,11 @@
               <button class='login_Input login_Input_submit login_Links btn rounded-0 btn-dark'>LOGIN</button>
             </div>
           </div>
-          <div class="row text-center justify-content-center">
-            <p style='color:#666;font-size:14px;'>Don't have an account ? <a style='text-decoration:none;color:#000' href='<?= base_url("register") ?>'>Register Here </a>
-              <!-- | <a style="text-decoration:none" href=''> Forgot Password </a></p> -->
+          <div class="row text-center justify-content-center mb-0">
+            <p class='mb-2' style='color:#666;font-size:14px;'>Don't have an account ? <a style='text-decoration:none;color:#000' href='<?= base_url("register") ?>'>Register Here </a>
+          </div>
+          <div class="text-center">
+            <a style="text-decoration:none;color:#666;font-size:14px;" href='<?= base_url('/forgot-password');?>'> Forgot Password </a></p>
           </div>
         </form>
       </div>

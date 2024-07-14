@@ -200,7 +200,7 @@ class Profile extends BaseController
     public function myorders()
     {
         $userid = $this->session->get('userid');
-        $data['orders'] = $this->db->table('orders')->where('user_id', $userid)->get()->getResult();
+        $data['orders'] = $this->db->table('orders')->orderBy('id','desc')->where('user_id', $userid)->get()->getResult();
         return view('Shop/Profile/orderslist', $data);
     }
 
@@ -211,6 +211,7 @@ class Profile extends BaseController
         if ($data['order'][0]->user_id == $userid) {
             $data['order_products'] = $this->db->table('order_products')->select('order_products.*,order_products.id as oid,products.*')->join('products', 'products.id = order_products.product_id')->where('order_id', $data['order'][0]->id)->get()->getResult();
             $data['order_shipping'] = $this->db->table('order_shipping')->where('order_id', $data['order'][0]->id)->get()->getResult();
+            
             return view('Shop/Profile/orderdetails', $data);
         }else{
             echo 'wrong order no';
