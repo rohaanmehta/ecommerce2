@@ -101,7 +101,7 @@ $footersettings = footer_settings();
                 <!-- <a class='btn' onclick="openNav()" id='closebtn'><i id='ic' class='head_Icons fa fa-bars'></i></a> -->
                 <?php if (isset($website_images[0]->value_2) && !empty($website_images[0]->value_2)) { ?>
                     <a href='<?= base_url() ?>'>
-                        <img alt='logo' src='<?= base_url('uploads/website/' . $website_images[0]->value_2); ?>' height='52px' class='pl-3 pt-3 pb-3' />
+                        <img alt='logo' src='<?= base_url('uploads/website/' . $website_images[0]->value_2); ?>' height='62px' class='pl-3 pt-3 pb-3' />
                     </a>
                 <?php } ?>
             </div>
@@ -127,7 +127,7 @@ $footersettings = footer_settings();
         <div class='d-flex col-lg-7 mobile_Head_Hide pt-3'>
             <?php if (isset($website_images[0]->value_1) && !empty($website_images[0]->value_1)) { ?>
                 <a href='<?= base_url() ?>'>
-                    <img alt='logo' src='<?= base_url('uploads/website/' . $website_images[0]->value_1); ?>' width='120px' class='p-3' />
+                    <img alt='logo' src='<?= base_url('uploads/website/' . $website_images[0]->value_1); ?>' width='140px' class='p-2' />
                 </a>
             <?php } ?>
             <div class='col-lg-12 text-center nav_Categories mobile_Head_Hide pb-1' style='background:#fff;'>
