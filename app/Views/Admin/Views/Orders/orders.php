@@ -45,7 +45,7 @@
                     foreach ($list as $row) { ?>
                         <tr>
                             <td width='150px'><a href='<?= base_url('admin/order/' . $row->order_no); ?>'><?= $row->order_no; ?></a></td>
-                            <td width='150px'><?php echo $row->first_name . ' ' . $row->last_name; ?></td>
+                            <td width='150px'><?php echo $row->full_name; ?></td>
                             <td width='150px'><?php echo $row->coupon_code; ?></td>
                             <td width='150px'><?php echo price_format($row->final_price); ?></td>
                             <td width='150px'><?php echo $row->order_status; ?></td>

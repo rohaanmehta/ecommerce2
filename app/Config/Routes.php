@@ -181,6 +181,11 @@ $routes->group('', ['namespace' => 'App\controllers\Shop'], static function ($ro
         echo view('errors/forbidden_access');
     });
 
+    $routes->get('forgot-password', 'Login::forgot_password');
+    $routes->post('forgot-password-mail', 'Login::forgot_password_mail');
+    $routes->post('forgot-password-otp', 'Login::forgot_password_otp');
+    $routes->post('forgot-password-reset', 'Login::forgot_password_reset');
+
     $routes->get('search/?(:any)', 'Homepage::search_view/$1');
     $routes->get('pages/?(:any)', 'Pages::page/$1');
 

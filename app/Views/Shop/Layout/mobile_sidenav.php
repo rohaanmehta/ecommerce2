@@ -358,7 +358,7 @@
                 </a> -->
             </ul>
 
-            <a href="<?= base_url('orders'); ?>">
+            <a href="<?= base_url('profile/myorders'); ?>">
                 <li class='mobile-nav-bar font-weight-normal'>My Orders</li>
             </a>
         <?php } else { ?>

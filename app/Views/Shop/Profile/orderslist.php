@@ -16,7 +16,7 @@
                 <p class="mb-0 h5 font-weight-bold">Account</p>
             </div>
             <div class="col-12 mb-2">
-                <p class="m-0 h6 font-weight-light" style="font-size:14px;">Rohaan Mehta</p>
+                <p class="m-0 h6 font-weight-light" style="font-size:14px;"><?php $session = session(); echo $session->get('username'); ?></p>
             </div>
             <?php include('app/Views/Shop/Profile/profile_sidebar.php'); ?>
 
@@ -41,16 +41,16 @@
                                                 </div>
                                             </div>
                                         <?php } ?>
-                                        <div class='row'>
+                                        <div class='row p-3'>
                                             <a class='w-100' href='<?= base_url('/orders/'.$row->order_no);?>'>
-                                                <button class='m-3 btn black-btn w-100'>View Details</button>
+                                                <button class='btn black-btn w-100'>View Details</button>
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                             <?php }
                         } else { ?>
-                            <div class="w-100 text-center" style="font-size:13px;font-weight:600;"> No Coupons Available</div>
+                            <div class="w-100 text-center" style="font-size:13px;font-weight:600;"> No Orders Available</div>
                         <?php } ?>
                     </div>
                 </div>

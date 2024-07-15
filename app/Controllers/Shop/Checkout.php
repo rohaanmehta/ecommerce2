@@ -72,7 +72,7 @@ class Checkout extends BaseController
         $last_order = $this->db->table('orders')->select('order_no')->orderBy('id', 'desc')->limit(1)->get()->getResult();
         $order_no = '10000';
 
-        if(isset($last_order) && !empty($last_order)){
+        if (isset($last_order) && !empty($last_order)) {
             // print_r($last_order);exit;
             $order_no = $last_order[0]->order_no + 1;
         }
@@ -86,7 +86,7 @@ class Checkout extends BaseController
             'final_price' => $final_cart_value,
             'shipping_price' => $shipping_cost,
             'currency' => 'INR',
-            'order_status' => 'In Process',
+            'order_status' => 'IN PROCESS',
             'payment_status' => 'PAID',
         );
 
@@ -107,16 +107,12 @@ class Checkout extends BaseController
         );
 
         $this->db->table('order_shipping')->insert($order_shipping);
-        
+
         // echo'<pre>';print_r($cart_items['items']);exit;
 
         if (isset($cart_items['items']) && !empty($cart_items['items'])) {
             foreach ($cart_items['items'] as $row) {
                 $variation_array = array();
-
-
-        if (isset($cart_items['items']) && !empty($cart_items['items'])) {
-            foreach ($cart_items['items'] as $row) {
                 $product = $this->db->table('products')->where('id', $row['product_id'])->get()->getResult();
                 $order_products = array(
                     'order_id' => $order_id,
@@ -139,11 +135,18 @@ class Checkout extends BaseController
                         $variation_array['order_products_id'] = $order_products_id;
                         $variation_array['product_id'] = $row['product_id'];
                     }
-                    if(!empty($variation_array)){
+                    if (!empty($variation_array)) {
                         $this->db->table('order_variation')->insert($variation_array);
                     }
                 }
             }
         }
+
+        $this->session->setFlashdata('message', 'Your order has placed successfully !');
+        $json['status'] = '200';
+        $json['orderno'] = $order_no;
+
+        header('Content-Type: application/json');
+        echo json_encode($json);
     }
 }

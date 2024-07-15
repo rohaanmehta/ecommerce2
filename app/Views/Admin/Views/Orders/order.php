@@ -22,12 +22,8 @@
                         <p class='h6' style='font-size:22px;font-weight:500;'>User Details</p>
                     </div>
                     <div class='w-100 d-flex'>
-                        <p class='h6' style='font-size:15px;font-weight:600;'>First Name : </p>
-                        <p class='h6' style='font-size:15px;font-weight:500;'><?= $order[0]->first_name; ?></p>
-                    </div>
-                    <div class='w-100 d-flex'>
-                        <p class='h6' style='font-size:15px;font-weight:600;'>Last Name : </p>
-                        <p class='h6' style='font-size:15px;font-weight:500;'><?= $order[0]->last_name; ?></p>
+                        <p class='h6' style='font-size:15px;font-weight:600;'>Name : </p>
+                        <p class='h6' style='font-size:15px;font-weight:500;'><?= $order[0]->full_name; ?></p>
                     </div>
                     <div class='w-100 d-flex'>
                         <p class='h6' style='font-size:15px;font-weight:600;'>Email : </p>
@@ -97,9 +93,14 @@
                                         <?= $row->product_title ?>
                                     </td>
                                     <td style='align-content:center'>
-                                        <?php $variation = get_order_variation($row->oid); if(isset($variation) && !empty($variation)){ foreach($variation as $row2){?>
-                                        <div class='d-flex'><p class='m-0'><?= $row2->varaiation_name.' :'.$row2->variation_value ?></p></div>
-                                        <?php } } ?>
+                                        <?php $variation = get_order_variation($row->oid);
+                                        if (isset($variation) && !empty($variation)) {
+                                            foreach ($variation as $row2) { ?>
+                                                <div class='d-flex'>
+                                                    <p class='m-0'><?= $row2->varaiation_name . ' :' . $row2->variation_value ?></p>
+                                                </div>
+                                        <?php }
+                                        } ?>
                                     </td>
                                     <td style='align-content:center'>
                                         <?= $row->quantity ?>
@@ -125,10 +126,12 @@
                             <p class='h6' style='font-size:15px;font-weight:600;'>Order Total : </p>
                             <p class='h6 ml-2' style='font-size:15px;font-weight:500;'><?= price_format($order[0]->total_price); ?></p>
                         </div>
-                        <div class='w-100 d-flex'>
-                            <p class='h6' style='font-size:15px;font-weight:600;'>Coupon Discount :</p>
-                            <p class='h6 ml-2' style='font-size:15px;font-weight:500;'> <?= '-' . $order[0]->discount_price . ' (' . $order[0]->coupon_code . ') '; ?></p>
-                        </div>
+                        <?php if ($order[0]->discount_price != '0') { ?>
+                            <div class='w-100 d-flex'>
+                                <p class='h6' style='font-size:15px;font-weight:600;'>Coupon Discount :</p>
+                                <p class='h6 ml-2' style='font-size:15px;font-weight:500;'> <?= '-' . $order[0]->discount_price . ' (' . $order[0]->coupon_code . ') '; ?></p>
+                            </div>
+                        <?php } ?>
                         <div class='w-100 d-flex'>
                             <p class='h6' style='font-size:15px;font-weight:600;'>Shipping Price : </p>
                             <p class='h6 ml-2' style='font-size:15px;font-weight:500;'><?= price_format($order[0]->shipping_price); ?></p>
