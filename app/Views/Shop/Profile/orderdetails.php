@@ -19,10 +19,10 @@
         <?php if (isset($order) && !empty($order)) {
             foreach ($order as $row) {
                 $orderproducts = get_order_products($row->id); ?>
-                <div class="mt-0 col-12 col-md-8 p-3" style="background:#f3f3f3">
+                <div class="mt-0 col-12 col-md-8 p-2" style="border:1px solid #d5d5d5">
                     <div class='order-box'>
                         <?php foreach ($orderproducts as $row2) { ?>
-                            <div class=' p-2 mt-1' style='align-items:center;background:#e1e1e1'>
+                            <div class='p-2 mt-1' style='align-items:center;background:#f3f3f3'>
                                 <div class='d-flex' style='align-items:center;'>
                                     <img style='height:60px;width:60px;' height='60px' src='<?= base_url('uploads/product_images/' . get_product_image($row2->product_id)); ?>' />
                                     <div>
@@ -73,7 +73,7 @@
     <?php if ($order[0]->tracking_no != '') { ?>
         <div class="row mt-2 p-3" style="background:#f3f3f3">
             <p class="m-2 h4 w-100" style="">Tracking</p>
-            <p class="m-0 ml-2 mt-1 h6" style="">Tracking No - <?= $order[0]->tracking_no; ?></p>
+            <p class="m-0 ml-2 mt-1 h6" style="color:#747474;">Tracking No - <?= $order[0]->tracking_no; ?></p>
             <a class='w-100 ml-2' target='_blank' href="<?= $order[0]->tracking_url; ?>"> Track Your Order Here</a>
         </div>
     <?php } else { ?>

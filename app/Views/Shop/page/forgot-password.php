@@ -9,13 +9,13 @@
                     Enter your email here
                 </p>
                 <input type="text" class="form-control mb-2" name="email" id="email" placeholder="Email">
-                <input type="text" class="form-control mb-2" onkeypress="return event.charCode >= 48 && event.charCode <= 57" name="otp" id="otp" placeholder="OTP" style="display:none">
-                <input type="text" class="form-control mb-2" name="password" id="password" placeholder="New Password" style="display:none">
-                <button class="w-100 btn black-btn reset-btn">Verify Email</button>
-                <button class="w-100 btn black-btn pass-btn" style="display:none">Reset Password</button>
-                <button class="w-100 btn black-btn pass-updt" style="display:none">Update Password</button>
+                <input type="text" class="form-control" onkeypress="return event.charCode >= 48 && event.charCode <= 57" name="otp" id="otp" placeholder="OTP" style="display:none">
+                <input type="password" class="form-control" name="password" id="password" placeholder="New Password" style="display:none">
                 <p style='font-size:13px;' class="text-left m-0 text-secondary msg"></p>
                 <div style='font-size:13px;' class="text-left m-0 text-danger" id="error-password"></div>
+                <button class="w-100 btn black-btn reset-btn">Verify Email</button>
+                <button class="w-100 btn black-btn pass-btn mt-2" style="display:none">Verify Email</button>
+                <button class="w-100 btn black-btn pass-updt mt-2" style="display:none">Update Password</button>
             </div>
         </div>
     </div>
@@ -44,11 +44,13 @@
                         $('.reset-btn').css('display', 'none');
                         $('.pass-btn').css('display', 'block');
                         $("#email").removeClass("border-danger");
+                        $('.msg').removeClass('text-danger');
                         $('.msg').html('OTP is valid for 10 minutes');
                     } else {
                         // $('.register-btn').attr('disabled', false);                        
                         $("#email").addClass("border-danger");
-                        $('.msg').html('Email ID not found');
+                        $('.msg').addClass('text-danger');
+                        $('.msg').html('Email not registered');
                     }
                 }
             });
@@ -66,12 +68,14 @@
                 success: function(data) {
                     // console.log(data);
                     if (data.error == false) {
+                        $('.msg').removeClass('text-danger');
                         $('.msg').html('');
                         $('.pass-updt').css('display', 'block');
                         $('#password').css('display', 'block');
                         $('.pass-btn').css('display', 'none');
                         $('#otp').css('display', 'none');
                     } else {
+                        $('.msg').addClass('text-danger');
                         $('.msg').html('OTP is not valid !');
                     }
                 }
@@ -89,12 +93,14 @@
                 dataType: "json",
                 success: function(data) {
                     if (data.error == false) {
+                        $('.msg').addClass('text-success');
                         $('.msg').html('Password Updated Successfully !');
                         $("#error-password").html('');
                         $("#password").removeClass("border-danger");
-                        setTimeout(function(){
+                        setTimeout(function() {
                             $('#loginexampleModal').modal('toggle');
-                        },2000);
+                            $('.msg').html('');
+                        }, 2000);
                     } else {
                         $.each(data, function(key, value) {
                             if (value) {

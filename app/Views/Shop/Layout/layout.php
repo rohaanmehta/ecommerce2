@@ -124,10 +124,10 @@ $footersettings = footer_settings();
             } ?>
         </div>
         <!-- pc header  -->
-        <div class='d-flex col-lg-7 mobile_Head_Hide pt-3'>
+        <div class='d-flex col-lg-7 mobile_Head_Hide pt-3 pl-0'>
             <?php if (isset($website_images[0]->value_1) && !empty($website_images[0]->value_1)) { ?>
                 <a href='<?= base_url() ?>'>
-                    <img alt='logo' src='<?= base_url('uploads/website/' . $website_images[0]->value_1); ?>' width='140px' class='p-2' />
+                    <img alt='logo' src='<?= base_url('uploads/website/' . $website_images[0]->value_1); ?>' width='100px' style='padding-top:12px;' />
                 </a>
             <?php } ?>
             <div class='col-lg-12 text-center nav_Categories mobile_Head_Hide pb-1' style='background:#fff;'>
@@ -145,13 +145,22 @@ $footersettings = footer_settings();
 
         <!-- search bar  -->
 
-        <div class='col-lg-5 pt-3 pb-2 mobile_Head_Hide' style='display:flex;justify-content:end'>
-            <div style="text-align:start;position:relative;" class='pl-0 exit-search'>
-                <div class="mb-0 d-flex  justify-content-center mobile_Head_Hide search-wrapper exit-search">
+        <div class='col-lg-3 col-md-3 pt-3 pb-2 pr-0 mobile_Head_Hide' style='display:flex;justify-content:end'>
+
+            <div style="text-align:start;position:relative;" class='pl-0 exit-search search-pc-header'>
+                <div class="mb-0 d-flex  justify-content-center search-wrapper exit-search">
                     <i class="fa fa-search font-awesome-icon exit-search" aria-hidden="true"></i>
                     <input type="text" class="form-control search-box exit-search" placeholder="Search for products">
                 </div>
                 <div class='search-results exit-search'>
+                </div>
+            </div>
+
+            <div class='search-mob-header'>
+                <div style='text-align:center;display:flex;position:relative'>
+                    <a class='btn' href='<?= base_url("search") ?>'><i class='head_Icons fa-light fa fa-search'></i>
+                        <p style='color:#858585;padding-top:3px;font-size:12px;font-weight:600;margin-bottom:0px'>Search</p>
+                    </a>
                 </div>
             </div>
 
@@ -201,13 +210,14 @@ $footersettings = footer_settings();
                     <a class='btn mobile_Head_Hide' href='<?= base_url("wishlist") ?>'><i class='head_Icons fa-light fa fa-heart'></i>
                         <p style='color:#858585;padding-top:3px;font-size:12px;font-weight:600;margin-bottom:0px'>Wishlist</p>
                     </a>
-                    
+
                     <?php
-                    if ($session->get('userid') != '') { 
+                    if ($session->get('userid') != '') {
                         $wishlist_total = get_wishlist_count($session->get('userid'));
-                        if($wishlist_total > 0 ){?>
-                        <span class="mybadge"><?= $wishlist_total ?></span>
-                    <?php } } ?>
+                        if ($wishlist_total > 0) { ?>
+                            <span class="mybadge"><?= $wishlist_total ?></span>
+                    <?php }
+                    } ?>
 
                 </div>
                 <div style='text-align:center;display:flex;position:relative'>
@@ -215,8 +225,8 @@ $footersettings = footer_settings();
                         <p style='color:#858585;padding-top:3px;font-size:12px;font-weight:600;margin-bottom:0px'>Cart</p>
                     </a>
                     <?php
-                        $cart_total = get_cart_count();
-                        if($cart_total > 0 ){?>
+                    $cart_total = get_cart_count();
+                    if ($cart_total > 0) { ?>
                         <span class="mybadgecart"><?= $cart_total ?></span>
                     <?php }  ?>
                 </div>
@@ -229,23 +239,25 @@ $footersettings = footer_settings();
         <?php if (isset($categories) && !empty($categories)) {
             foreach ($categories as $row_main) {
                 if ($row_main->parent_category == '') {  ?>
-                    <div id='' showid='<?= $row_main->id; ?>' style='max-height:300px;z-index:3;width:80%;margin-top:2px;display:none;padding: 30px;padding-top:0px;border: 1px solid #e7e7e7;border-top:none;position:fixed;background:#fff' class='show<?= $row_main->id ?> pb-3 text-left allcategories allcategories-show'>
-                        <div class='nav_Categories_Sub_Menu_Tittle allcategories-show' style='border-right:1px solid #dfdfdf;width:180px;height:300px;display:flex;flex-wrap:wrap;flex-direction:column'>
-                            <?php
-                            foreach ($categories as $row) {
-                                if ($row->parent_category == $row_main->id) { ?>
-                                    <a class='link-none text-capitalize' href='<?= base_url('/' . $row->category_slug); ?>'>
-                                        <div class='nav_Categories_Sub_Menu_Tittle allcategories-show' style='color: <?= $category_color ?>'><?= $row->category_name ?></div>
-                                    </a>
-                                    <?php foreach ($categories as $row3) {
-                                        if ($row3->parent_category == $row->id) { ?>
-                                            <a class='link-none text-capitalize' href='<?= base_url('/' . $row3->category_slug); ?>'>
-                                                <div class='nav_Categories_Sub_Menu_Item allcategories-show'><?= $row3->category_name; ?></div>
-                                            </a>
-                                    <?php }
-                                    } ?>
-                            <?php }
-                            } ?>
+                    <div id='' showid='<?= $row_main->id; ?>' style='max-height:300px;z-index:3;width:100%;margin-top:0px;display:none;padding: 30px;padding-top:0px;border: 1px solid #e7e7e7;border-top:none;position:fixed;' class='show<?= $row_main->id ?> pb-3 text-left allcategories allcategories-show'>
+                        <div class='show<?= $row_main->id ?> pb-3 text-left allcategories allcategories-show' showid='<?= $row_main->id; ?>' style='padding: 30px;padding-top:0px;border: 1px solid #e7e7e7;border-top:none;margin-right:100px;margin-left:100px;background:#fff;'>
+                            <div class='nav_Categories_Sub_Menu_Tittle allcategories-show' style='border-right:1px solid #dfdfdf;width:180px;height:300px;display:flex;flex-wrap:wrap;flex-direction:column'>
+                                <?php
+                                foreach ($categories as $row) {
+                                    if ($row->parent_category == $row_main->id) { ?>
+                                        <a class='link-none text-capitalize' href='<?= base_url('/' . $row->category_slug); ?>'>
+                                            <div class='nav_Categories_Sub_Menu_Tittle allcategories-show' style='color: <?= $category_color ?>'><?= $row->category_name ?></div>
+                                        </a>
+                                        <?php foreach ($categories as $row3) {
+                                            if ($row3->parent_category == $row->id) { ?>
+                                                <a class='link-none text-capitalize' href='<?= base_url('/' . $row3->category_slug); ?>'>
+                                                    <div class='nav_Categories_Sub_Menu_Item allcategories-show'><?= $row3->category_name; ?></div>
+                                                </a>
+                                        <?php }
+                                        } ?>
+                                <?php }
+                                } ?>
+                            </div>
                         </div>
                     </div>
         <?php }
@@ -346,7 +358,7 @@ $footersettings = footer_settings();
 
                         if (data.error == false && data.loggedin == true) {
                             // setTimeout(function() {
-                                window.location.reload();
+                            window.location.reload();
                             // }, 500);
                         }
                     }

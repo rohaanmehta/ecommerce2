@@ -129,7 +129,6 @@ class Login extends BaseController
 
     public function forgot_password_mail()
     {
-        
         $this->session->removeTempdata('otp');
 
         if ($_POST['email'] != '') {
@@ -146,7 +145,7 @@ class Login extends BaseController
 
                 $json = array(
                     "error" => false,
-                    // 'otp' => $otp
+                    'otp' => $otp
                 );
             } else {
                 $json = array(
