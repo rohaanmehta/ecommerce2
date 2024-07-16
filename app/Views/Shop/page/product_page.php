@@ -535,7 +535,7 @@
                     </button>
                 <?php } else { ?>
                     <button class='mt-3 btn rounded addtowishlist' data-target="#loginexampleModal" data-toggle="modal">
-                        <i style='font-size:17px' class='fa fa-heart'></i>
+                        <i style='font-size:17px' class='fa fa-heart-o'></i>
                     </button>
                 <?php } ?>
             </div>

@@ -11,7 +11,9 @@ class Checkout extends BaseController
         $userid = $this->session->get('userid');
         $this->checkcoupon();
 
+
         $data['cart_items'] = $this->session->get('cart');
+        // echo'<pre>';print_r($data['cart_items']);exit;
 
         $total_price = 0;
 
@@ -145,6 +147,9 @@ class Checkout extends BaseController
         $this->session->setFlashdata('message', 'Your order has placed successfully !');
         $json['status'] = '200';
         $json['orderno'] = $order_no;
+
+        //clear cart session 
+        $this->session->remove('cart');
 
         header('Content-Type: application/json');
         echo json_encode($json);
