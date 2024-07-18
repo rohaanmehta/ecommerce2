@@ -60,6 +60,7 @@ class Category extends BaseController
         $url = current_url();
         $params   = $_SERVER['QUERY_STRING'];
         $url = $url . '?' . $params;
+        $url2 = $url . '?' . $params;
 
 
 
@@ -71,10 +72,39 @@ class Category extends BaseController
             $builder =  $builder->orderBy('id', 'desc');
         }
 
+        $full_price_url = '';
+        //price filter
+        if (strpos($url, '%3Amin-price=') == true) {
+            $min_price = '';
+            $max_price = '';
+            $min_price = $this->getBetween($params, 'min-price=', 'max-price');
+            $max_price = $this->getBetween($params, 'max-price', '+');
+            // echo $params;
+            // echo $min_price;
+            // echo $max_price;
+            // exit;
+
+            if ($min_price != '') {
+                $builder =  $builder->where('price >=', $min_price);
+                $data['min_price'] = $min_price;
+            } else {
+                $data['min_price'] = '';
+            }
+            if ($max_price != '' && $max_price != 0) {
+                $builder =  $builder->where('price <=', $max_price);
+                $data['max_price'] = $max_price;
+            } else {
+                $data['max_price'] = '';
+            }
+            $full_price_url = '%3Amin-price=' . $min_price . 'max-price' . $max_price . '+';
+        }
+
+
         $total = $this->db->table('products')->select('products.id')->join('product_category as pc', 'pc.product_id = products.id')->join('product_images as pi', 'pi.product_id = products.id')->wherein('category_id', $all_categories)->where('visibility', '1')->where('is_deleted', '0')->groupBy('id')->countAllResults();
 
 
         $data['products'] = $builder->get($perPage, $offset)->getresult();
+        // echo'<pre>';print_r($data['products']);exit;
 
         //filter names
         $data['filter_names'] = array();
@@ -90,6 +120,7 @@ class Category extends BaseController
                 }
             }
         }
+
         $data['filter_names'] = array_unique($data['filter_names']);
 
         //all subcategories
@@ -135,13 +166,17 @@ class Category extends BaseController
         }
 
 
+        // echo $full_price_url;
+
+        //sort filter
+        $url = str_replace('index.php/', '', $url);
+        $url_backup = $url;
         $url = str_replace('%3Asort=low&', '', $url);
         $url = str_replace('%3Asort=low', '', $url);
         $url = str_replace('%3Asort=high&', '', $url);
         $url = str_replace('%3Asort=high', '', $url);
         $url = str_replace('%3Asort=new&', '', $url);
         $url = str_replace('%3Asort=new', '', $url);
-        $url = str_replace('index.php/','',$url);
 
         if (strpos($url, '?') !== false) {
             $data['new'] = $url . '%3Asort=new';
@@ -152,6 +187,11 @@ class Category extends BaseController
             $data['low'] = $url . '?%3Asort=low';
             $data['high'] = $url . '?%3Asort=high';
         }
+
+        //price filter
+        $url_backup = str_replace($full_price_url, '', $url_backup);
+        $data['price_filter_url'] = $url_backup;
+
 
         $filters_db = ['colour', 'size'];
 
@@ -227,6 +267,7 @@ class Category extends BaseController
                 }
                 // echo $sql;exit;
                 // $sql = 'filter_name = "colour" AND filter_value = "black" OR filter_name = "colour" AND filter_value = "white"';
+                // $sql = ' OR price <= 1';
                 $builder->where(new RawSql($sql));
             }
             // exit;
@@ -238,11 +279,47 @@ class Category extends BaseController
 
             $total = $this->db->table('products')->select('products.id')->join('product_category as pc', 'pc.product_id = products.id')->join('product_images as pi', 'pi.product_id = products.id')->wherein('category_id', $all_categories)->where('visibility', '1')->where('is_deleted', '0')->groupBy('id')->countAllResults();
 
+
+            //again aplying sort and price filter on filter query
+            if (strpos($url2, '%3Asort=low') == true) {
+                $builder =  $builder->orderBy('price', 'asc');
+            } else if (strpos($url2, '%3Asort=high') == true) {
+                $builder =  $builder->orderBy('price', 'desc');
+            } else {
+                $builder =  $builder->orderBy('id', 'desc');
+            }
+
+            if (strpos($url2, '%3Amin-price=') == true) {
+                $min_price = '';
+                $max_price = '';
+                $min_price = $this->getBetween($params, 'min-price=', 'max-price');
+                $max_price = $this->getBetween($params, 'max-price', '+');
+                // echo $params;
+                // echo $min_price;
+                // echo $max_price;
+                // exit;
+
+                if ($min_price != '') {
+                    // exit;
+                    // $builder =  $builder->where('price >=', $min_price);
+                    $data['min_price'] = $min_price;
+                } else {
+                    $data['min_price'] = '';
+                }
+                if ($max_price != '' && $max_price != 0) {
+                    // exit;
+                    $builder =  $builder->where('price', '2');
+                    $data['max_price'] = $max_price;
+                } else {
+                    $data['max_price'] = '';
+                }
+                // $full_price_url = '%3Amin-price=' . $min_price . 'max-price' . $max_price . '+';
+            }
+
+            // $builder->where('price <=', '200');
             $data['products'] = $builder->get($perPage, $offset)->getresult();
 
-            // echo '<pre>';
-            // print_r($this->db->getLastQuery());
-            // exit;
+            // echo '<pre>'; print_r($this->db->getLastQuery()); exit;
         }
 
 
@@ -262,8 +339,7 @@ class Category extends BaseController
         // print_r($data['filters']);
         // // echo $this->db->getLastQuery();
         // echo sizeof($data['products']); 
-        // echo $total;
-        // exit;
+        // echo $url;exit;
 
         return view('Shop/page/category_page', $data);
     }
@@ -274,7 +350,7 @@ class Category extends BaseController
         $url = current_url();
         $params   = $_SERVER['QUERY_STRING'];
         $url = $url . '?' . $params;
-        $url = str_replace('index.php/','',$url);
+        $url = str_replace('index.php/', '', $url);
 
         // if (str_contains($url, $filter_value)) {
         if (strpos($url, $filter_value) !== false) {
@@ -294,5 +370,20 @@ class Category extends BaseController
         );
 
         return $array;
+    }
+
+    public function getBetween($string, $start = "", $end = "")
+    {
+        if (strpos($string, $start)) { // required if $start not exist in $string
+            $startCharCount = strpos($string, $start) + strlen($start);
+            $firstSubStr = substr($string, $startCharCount, strlen($string));
+            $endCharCount = strpos($firstSubStr, $end);
+            if ($endCharCount == 0) {
+                $endCharCount = strlen($firstSubStr);
+            }
+            return substr($firstSubStr, 0, $endCharCount);
+        } else {
+            return '';
+        }
     }
 }

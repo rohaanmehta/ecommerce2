@@ -5,9 +5,9 @@ $url = current_url();
 $params = $_SERVER['QUERY_STRING'];
 $url = $url . '?' . $params;
 ?>
-
 <style>
 </style>
+
 <div class=''>
     <div class='card'>
         <div class='row mobile_Head_Hide'>
@@ -108,18 +108,20 @@ $url = $url . '?' . $params;
                             }
                         } ?>
 
-                <?php if (isset($products) && !empty($products)) { ?>
-                    <div class='filter-box p-1'>
-                        <div class='filters-heading'>
-                            Price
-                        </div>
-                        <div class='d-flex'>
-                            <input class='form-control mr-2' placeholder="Min Price" />
-                            <input class='form-control mr-2' placeholder="Max Price" />
-                            <button class='btn black-btn'>Go</button>
-                        </div>
+                <div class='filter-box p-1'>
+                    <div class='filters-heading'>
+                        Price
                     </div>
-                <?php } ?>
+                    <div class='d-flex'>
+                        <input class='form-control mr-2 min-price' placeholder="Min Price" value='<?php if (isset($min_price) && $min_price != 0) {
+                                                                                                        echo $min_price;
+                                                                                                    } ?>' />
+                        <input class='form-control mr-2 max-price' placeholder="Max Price" value='<?php if (isset($max_price) && $max_price != 0) {
+                                                                                                        echo $max_price;
+                                                                                                    } ?>' />
+                        <button class='btn black-btn price-filter-btn' url='<?= $price_filter_url; ?>'>Go</button>
+                    </div>
+                </div>
             </div>
             <!-- <//?php echo'<pre>';print_r($products);exit?> -->
 
@@ -175,6 +177,7 @@ $url = $url . '?' . $params;
                                     <div class='mobile-filter-box' id='<?= $key; ?>' style='border-right: 1px solid #dfdfdf;height:20px'><?= $key; ?></div>
                             <?php }
                             } ?>
+                            <div class='mobile-filter-box' id='prices' style='border-right: 1px solid #dfdfdf;height:20px'> Price</div>
                         </div>
                     </div>
                     <div class='col-6 p-0 pl-2 pt-2'>
@@ -201,10 +204,21 @@ $url = $url . '?' . $params;
                                 </div> <?php
                                     }
                                 } ?>
+                        <div class="mobile-filter-options prices w-100 bg-light" id='' style="display:none;position:sticky;bottom:0;z-index:3;height:300px;">
+                            <input class='form-control min-price2 mb-2' style="width:90%;font-size:13px;" placeholder="Min Price" value='<?php if (isset($min_price) && $min_price != 0) {
+                                                                                                            echo $min_price;
+                                                                                                        } ?>' />
+                            <input class='form-control max-price2 mb-2' style="width:90%;font-size:13px;" placeholder="Max Price" value='<?php if (isset($max_price) && $max_price != 0) {
+                                                                                                            echo $max_price;
+                                                                                                        } ?>' />
+                            <button class='btn black-btn price-filter-btn2 rounded' style="width:90%;font-size:13px;" url='<?= $price_filter_url; ?>'>Submit</button>
+                        </div>
                     </div>
                 </div>
             </div>
         <?php } ?>
+
+
     </div>
     <?php if (isset($products) && !empty($products)) { ?>
         <div class='filter-filter-box row pt-3' style='border-top:1px solid #dfdfdf'>
@@ -232,12 +246,39 @@ $url = $url . '?' . $params;
             window.location.href = $('.sort').val();
         });
 
+        $('.price-filter-btn').click(function() {
+            // console.log($(this).attr('url'));
+            var min = $('.min-price').val();
+            var max = $('.max-price').val();
+            if ($('.min-price').val() == '') {
+                min = 0;
+            }
+            if ($('.max-price').val() == '') {
+                max = 0;
+            }
+            window.location.href = $(this).attr('url') + '%3Amin-price=' + min + 'max-price' + max + '+';
+        });
+
+        $('.price-filter-btn2').click(function() {
+            // console.log($(this).attr('url'));
+            var min = $('.min-price2').val();
+            var max = $('.max-price2').val();
+            if ($('.min-price2').val() == '') {
+                min = 0;
+            }
+            if ($('.max-price2').val() == '') {
+                max = 0;
+            }
+            window.location.href = $(this).attr('url') + '%3Amin-price=' + min + 'max-price' + max + '+';
+        });
+
         $('.filter_checkbox').click(function() {
             window.location.href = $(this).attr('url');
         });
 
         $('.filter-sort-btn').click(function() {
             $('.filter-filter-box').css('display', 'block');
+            $('.filter-filter-box2').css('display', 'none');
         });
 
         $('.close-sort-filter').click(function() {
@@ -250,12 +291,13 @@ $url = $url . '?' . $params;
 
         $('.filter-filter-btn').click(function() {
             $('.filter-filter-box2').css('display', 'block');
+            $('.filter-filter-box').css('display', 'none');
         });
 
         $('.mobile-filter-box').click(function() {
             $('.mobile-filter-options').css('display', 'none');
             var id = $(this).attr('id');
-            console.log(id);
+            // console.log(id);
 
             $('.' + id).css('display', 'block');
         });

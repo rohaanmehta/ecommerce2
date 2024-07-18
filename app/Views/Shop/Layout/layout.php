@@ -233,6 +233,7 @@ $footersettings = footer_settings();
             </div>
         </div>
     </div>
+
     <!-- multiple categories pc  -->
     <div class='d-flex justify-content-center' style='position:relative;'>
         <div class='nav_Categories_Btn_out_box' style='display:none;min-height:300px;z-index:1;width:80%;margin-top:0px;padding: 30px;padding-top:0px;border: 1px solid #e7e7e7;border-top:none;position:fixed;background:#fff;'></div>
@@ -240,7 +241,7 @@ $footersettings = footer_settings();
             foreach ($categories as $row_main) {
                 if ($row_main->parent_category == '') {  ?>
                     <div id='' showid='<?= $row_main->id; ?>' style='max-height:300px;z-index:3;width:100%;margin-top:0px;display:none;padding: 30px;padding-top:0px;border: 1px solid #e7e7e7;border-top:none;position:fixed;' class='show<?= $row_main->id ?> pb-3 text-left allcategories allcategories-show'>
-                        <div class='show<?= $row_main->id ?> pb-3 text-left allcategories allcategories-show' showid='<?= $row_main->id; ?>' style='padding: 30px;padding-top:0px;border: 1px solid #e7e7e7;border-top:none;margin-right:100px;margin-left:100px;background:#fff;'>
+                        <div class='show<?= $row_main->id ?> pb-3 text-left allcategories allcategories-show' style='padding: 30px;padding-top:0px;border: 1px solid #e7e7e7;border-top:none;margin-right:100px;margin-left:100px;background:#fff;'>
                             <div class='nav_Categories_Sub_Menu_Tittle allcategories-show' style='border-right:1px solid #dfdfdf;width:180px;height:300px;display:flex;flex-wrap:wrap;flex-direction:column'>
                                 <?php
                                 foreach ($categories as $row) {

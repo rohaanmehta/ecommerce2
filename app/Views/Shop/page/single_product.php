@@ -78,7 +78,7 @@
                             <i class='fa fa-heart-o mr-1 add-to-wishlist-mobile' data-target='' id='<?= $row->id ?>'></i>
                         <?php } ?>
                     <?php } else { ?>
-                        <i class='fa fa-heart-o mr-1' data-target="#loginexampleModal" data-toggle="modal"></i>
+                        <i class='fa fa-heart-o mr-1 add-to-wishlist-mobile' data-target="#loginexampleModal" data-toggle="modal"></i>
                     <?php } ?>
                 </div>
                 <p class='product_price'>
