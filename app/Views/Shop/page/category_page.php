@@ -142,7 +142,7 @@ $url = $url . '?' . $params;
             </div>
         <?php } ?>
 
-        <div class="filter-filter-box w-100 bg-light" style="display:none;position:sticky;bottom:0;z-index:3;height:300px;">
+        <div class="filter-filter-box w-100 bg-light" style="display:none;position:sticky;bottom:0;z-index:3;height:400px;">
             <div class='d-flex justify-content-end close-sort-filter'><i class='fa fa-times'></i></div>
             <div style="color:#4e4e4e;padding:10px;font-size:13px;font-weight:700;border-bottom:1px solid #c5c5c5">SORT BY</div>
             <a class='sort-options' href='<?= $new; ?>'>
